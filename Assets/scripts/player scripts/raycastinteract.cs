@@ -1,50 +1,109 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class raycastinteract : MonoBehaviour
 {
     // Start is called before the first frame update
-    public npcineract npcinteract;
     [SerializeField] public Transform playerCamera;
+    [SerializeField] public GameObject promptBox;
+    [SerializeField] public TextMeshProUGUI promptText;
+    [SerializeField] public float rayDist = 10f;
+    bool inDialogueBox;
 
-    void Start()
-    {
-        npcinteract = GetComponent<npcineract>();
-        
-    }
     // Update is called once per frame
     void Update()
     {
-        if (npcinteract != null)
-        {
-            Ray playerCameraRay = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+        
+            Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward*rayDist, Color.blue);
             RaycastHit hitObjects;
 
-            if (!npcinteract.isDisplayingText && Physics.Raycast(playerCameraRay, out hitObjects) && Input.GetKeyDown(KeyCode.E) && hitObjects.collider.gameObject.name != "player")
+            if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hitObjects, rayDist)) //raycast
             {
-                Debug.Log("Raycast hit object: " + hitObjects.collider.gameObject.name);
-                if (hitObjects.collider.gameObject.name == "Capsule")
+
+                if (!inDialogueBox)
                 {
-                    npcinteract.changeText();
+                    // check for capsule
+                    // TODO: change name check to tag check
+                    if (hitObjects.collider.gameObject.name == "Capsule" )
+                    {
+                        promptBox.SetActive(true);
+                        promptText.text = "[E] to talk";
+                    }
+                    else if (hitObjects.collider.gameObject.name != "Capsule")
+                    {
+                        promptBox.SetActive(false);
+                        promptText.text = "";
+                    }
                 }
-                //Debug.Log(npcinteract.isDisplayingText);
-            }
 
-            if (npcinteract.isDisplayingText && Input.GetKeyDown(KeyCode.E))
+                // check dialogue text
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    if (hitObjects.collider.gameObject.TryGetComponent(out npcinteract npc))
+                    {
+                        talkWithNpc(npc);
+                        Debug.Log(npc.name);
+                    }
+                    else
+                    {
+                        Debug.Log("asdasd");
+                    }
+
+                }
+                
+            }
+            else
             {
-                npcinteract.clearText();
-                //Debug.Log(npcinteract.isDisplayingText);
+                promptBox.SetActive(false);
+                promptText.text = "";
             }
 
+    }
+
+    void talkWithNpc(npcinteract npc)
+    {
+        if (inDialogueBox)
+        {
+            dialoguecontroller.instance.SkipLine();
         }
         else
         {
-            Debug.Log("sddfgafsgasdfgdsfg");
+            if (true) // TODO: check if npc tag
+            {
+                dialoguecontroller.instance.startDialogue(npc.dialogueObject, npc.StartAt, npc.name);
+            }
         }
     }
-        
+
+    void JoinConversation()
+    {
+        inDialogueBox = true;
+        playermovement.canMovePlayer = false;
+        playermovement.canMoveCamera = false;
+    }
+
+    void LeaveConversation()
+    {
+        inDialogueBox = false;
+        playermovement.canMovePlayer = true;
+        playermovement.canMoveCamera = true;
+    }
+
+    private void OnEnable()
+    {
+        dialoguecontroller.OnDialogueStarted += JoinConversation;
+        dialoguecontroller.OnDialogueEnded += LeaveConversation;
+    }
+
+    private void OnDisable()
+    {
+        dialoguecontroller.OnDialogueStarted -= JoinConversation;
+        dialoguecontroller.OnDialogueEnded -= LeaveConversation;
+    }
 }

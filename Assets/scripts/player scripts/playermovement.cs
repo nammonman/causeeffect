@@ -1,12 +1,14 @@
 using UnityEngine;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour
+public class playermovement : MonoBehaviour
 {
     private Vector3 playerKeyboardInput;
     private Vector3 playerMouseInput;
     private float xRotation;
     private bool canJump = true;
+    public static bool canMovePlayer = true;
+    public static bool canMoveCamera = true;
 
     [SerializeField] private Rigidbody player;
     [SerializeField] private float playerSpeed;
@@ -22,11 +24,27 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        playerKeyboardInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
-        playerMouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            canMoveCamera = false;
+        }
+        if (Input.GetKeyUp(KeyCode.F))
+        {
+            canMoveCamera = true;
+        }
 
-        MovePlayer();
-        MovePlayerCamera();
+        if (canMovePlayer)
+        {
+            playerKeyboardInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+            MovePlayer();
+        }
+        
+
+        if (canMoveCamera)
+        {
+            playerMouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+            MovePlayerCamera();
+        }
     }
 
     private void MovePlayer()
