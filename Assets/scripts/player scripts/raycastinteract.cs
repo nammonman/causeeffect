@@ -1,109 +1,83 @@
+using Subtegral.DialogueSystem.Runtime;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class raycastinteract : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] public Transform playerCamera;
-    [SerializeField] public GameObject promptBox;
+    [SerializeField] public GameObject wholeDialogueContainer;
     [SerializeField] public TextMeshProUGUI promptText;
     [SerializeField] public float rayDist = 10f;
     bool inDialogueBox;
 
+    public delegate void DialogueEnter(string GUID);
+    public static event DialogueEnter OnDialogueEnter;
+    //public static event Action OnDialogueEnded;
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         
-            Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward*rayDist, Color.blue);
-            RaycastHit hitObjects;
+        Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward*rayDist, Color.blue);
+        RaycastHit hitObject;
 
-            if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hitObjects, rayDist)) //raycast
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hitObject, rayDist)) //raycast
+        {
+            if (!inDialogueBox)
             {
-
-                if (!inDialogueBox)
+                if (hitObject.collider.gameObject.tag == "npc")
                 {
-                    // check for capsule
-                    // TODO: change name check to tag check
-                    if (hitObjects.collider.gameObject.name == "Capsule" )
-                    {
-                        promptBox.SetActive(true);
-                        promptText.text = "[E] to talk";
-                    }
-                    else if (hitObjects.collider.gameObject.name != "Capsule")
-                    {
-                        promptBox.SetActive(false);
-                        promptText.text = "";
-                    }
+                    promptText.text = "[E] to talk";
                 }
-
-                // check dialogue text
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    if (hitObjects.collider.gameObject.TryGetComponent(out npcinteract npc))
-                    {
-                        talkWithNpc(npc);
-                        Debug.Log(npc.name);
-                    }
-                    else
-                    {
-                        Debug.Log("asdasd");
-                    }
-
+                    Debug.Log(hitObject.transform.name);
+                    JoinConversation();
+                    OnDialogueEnter?.Invoke(hitObject.transform.name);
                 }
-                
+                else if (hitObject.collider.gameObject.tag != "npc")
+                {
+                    promptText.text = "";
+                }
             }
-            else
-            {
-                promptBox.SetActive(false);
-                promptText.text = "";
-            }
-
-    }
-
-    void talkWithNpc(npcinteract npc)
-    {
-        if (inDialogueBox)
-        {
-            dialoguecontroller.instance.SkipLine();
         }
         else
         {
-            if (true) // TODO: check if npc tag
-            {
-                dialoguecontroller.instance.startDialogue(npc.dialogueObject, npc.StartAt, npc.name);
-            }
+            promptText.text = "";
         }
+
     }
 
-    void JoinConversation()
+
+    public void JoinConversation()
     {
         inDialogueBox = true;
         playermovement.canMovePlayer = false;
         playermovement.canMoveCamera = false;
+        wholeDialogueContainer.SetActive(true);
     }
 
-    void LeaveConversation()
+    public void LeaveConversation()
     {
         inDialogueBox = false;
         playermovement.canMovePlayer = true;
         playermovement.canMoveCamera = true;
+        wholeDialogueContainer.SetActive(false);
     }
 
     private void OnEnable()
     {
-        dialoguecontroller.OnDialogueStarted += JoinConversation;
-        dialoguecontroller.OnDialogueEnded += LeaveConversation;
+        //OnDialogueStarted += JoinConversation;
+        //OnDialogueEnded += LeaveConversation;
+        DialogueParser.OnDialogueExit += LeaveConversation;
     }
 
     private void OnDisable()
     {
-        dialoguecontroller.OnDialogueStarted -= JoinConversation;
-        dialoguecontroller.OnDialogueEnded -= LeaveConversation;
+        //OnDialogueStarted -= JoinConversation;
+        //OnDialogueEnded -= LeaveConversation;
+        DialogueParser.OnDialogueExit -= LeaveConversation;
     }
 }
