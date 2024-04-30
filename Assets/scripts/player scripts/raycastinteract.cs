@@ -13,7 +13,7 @@ public class raycastinteract : MonoBehaviour
     [SerializeField] public float rayDist = 10f;
     bool inDialogueBox;
 
-    public delegate void DialogueEnter(string GUID);
+    public delegate void DialogueEnter(string GUID, bool E);
     public static event DialogueEnter OnDialogueEnter;
     //public static event Action OnDialogueEnded;
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class raycastinteract : MonoBehaviour
                 {
                     Debug.Log(hitObject.transform.name);
                     JoinConversation();
-                    OnDialogueEnter?.Invoke(hitObject.transform.name);
+                    OnDialogueEnter?.Invoke(hitObject.transform.name, true);
                 }
                 else if (hitObject.collider.gameObject.tag != "npc")
                 {

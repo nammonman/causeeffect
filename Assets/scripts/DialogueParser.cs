@@ -20,15 +20,38 @@ namespace Subtegral.DialogueSystem.Runtime
 
         public delegate void DialogueExit();
         public static event DialogueExit OnDialogueExit;
+        public Transform[] dialogues;
+        public Button[] buttons;
 
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape)) 
             {
+                //destroyExistingButtons(buttons);
+                //destroyExistingDialogueBoxes(dialogues);
                 OnDialogueExit?.Invoke(); 
             }
         }
-        public void ProceedToNarrative(string narrativeDataGUID)
+
+        private void destroyExistingDialogueBoxes(Transform[] dialogues)
+        {
+            for (int i = 1; i < dialogues.Length; i++)
+            {
+                Destroy(dialogues[i].gameObject);
+                dialogueContainer.transform.position.Set(dialogueContainer.transform.position.x, dialogueContainer.transform.position.y - 40, dialogueContainer.transform.position.z);
+            }
+        }
+
+        private void destroyExistingButtons(Button[] buttons)
+        {
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                Destroy(buttons[i].gameObject);
+                buttonContainer.transform.position.Set(buttonContainer.transform.position.x, buttonContainer.transform.position.y - 20, buttonContainer.transform.position.z);
+            }
+        }
+
+        public void ProceedToNarrative(string narrativeDataGUID, bool fromInteract)
         {
             //narrativeDataGUID = dialogue.NodeLinks.First().TargetNodeGUID;
             var text = dialogue.DialogueNodeData.Find(x => x.NodeGUID == narrativeDataGUID).DialogueText;
@@ -37,6 +60,12 @@ namespace Subtegral.DialogueSystem.Runtime
             Debug.Log(name);
             var choices = dialogue.NodeLinks.Where(x => x.BaseNodeGUID == narrativeDataGUID);
             TextMeshProUGUI[] dialoguePrefabs = dialogueBoxPrefab.GetComponentsInChildren<TextMeshProUGUI>();
+
+            dialogues = dialogueContainer.GetComponentsInChildren<Transform>();
+            if (fromInteract)
+            {
+                destroyExistingDialogueBoxes(dialogues);
+            }
             for (int i = 0; i < dialoguePrefabs.Length; i++)
             {
                 if (dialoguePrefabs[i].name == "Name")
@@ -45,19 +74,27 @@ namespace Subtegral.DialogueSystem.Runtime
                     dialoguePrefabs[i].text = ProcessProperties(text);
             }
             Instantiate(dialogueBoxPrefab, dialogueContainer.transform);
+            dialogueContainer.transform.position.Set(dialogueContainer.transform.position.x, dialogueContainer.transform.position.y+40, dialogueContainer.transform.position.z);
 
-            var buttons = buttonContainer.GetComponentsInChildren<Button>();
-            for (int i = 0; i < buttons.Length; i++)
-            {
-                Destroy(buttons[i].gameObject);
-            }
-
+            buttons = buttonContainer.GetComponentsInChildren<Button>();
+            destroyExistingButtons(buttons);
+            
             foreach (var choice in choices)
             {
                 var button = Instantiate(choicePrefab, buttonContainer.transform);
                 button.GetComponentInChildren<Text>().text = ProcessProperties(choice.PortName);
-                button.onClick.AddListener(() => ProceedToNarrative(choice.TargetNodeGUID));
+                button.onClick.AddListener(() => answerChoice(choice.TargetNodeGUID, choice.PortName));
+                buttonContainer.transform.position.Set(buttonContainer.transform.position.x, buttonContainer.transform.position.y + 20, buttonContainer.transform.position.z);
             }
+            
+        }
+
+        private void answerChoice(string GUID, string PortName)
+        {
+            TextMeshProUGUI[] yourDialoguePrefabs = yourDialogueBoxPrefab.GetComponentsInChildren<TextMeshProUGUI>();
+            yourDialoguePrefabs[1].text = ProcessProperties(PortName);
+            Instantiate(yourDialogueBoxPrefab, dialogueContainer.transform);
+            ProceedToNarrative(GUID, false);
         }
 
         private string ProcessProperties(string text)
