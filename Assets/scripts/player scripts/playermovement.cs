@@ -7,8 +7,8 @@ public class playermovement : MonoBehaviour
     private Vector3 playerMouseInput;
     private float xRotation;
     private bool canJump = true;
-    public static bool canMovePlayer = true;
-    public static bool canMoveCamera = true;
+    public bool canMovePlayer = true;
+    public bool canMoveCamera = true;
 
     [SerializeField] private Rigidbody player;
     [SerializeField] private float playerSpeed;
@@ -17,9 +17,21 @@ public class playermovement : MonoBehaviour
     [SerializeField] private Transform playerCamera;
     [SerializeField] private float playerCameraSensitivity;
 
+
+    public void SetCanMovePlayer(bool b)
+    {
+        canMovePlayer = b;
+    }
+
+    public void SetCanMoveCamera(bool b) 
+    { 
+        canMoveCamera = b; 
+    }
+
     private void Start()
     {
-        
+        canMoveCamera = true;
+        canMovePlayer = true;
     }
 
     private void Update()
@@ -73,4 +85,20 @@ public class playermovement : MonoBehaviour
         transform.Rotate(0f, playerMouseInput.x * playerCameraSensitivity, 0f);
         playerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
+
+    private void OnEnable()
+    {
+        InGamePauseMenu.SetPlayerMoveable += SetCanMoveCamera;
+        InGamePauseMenu.SetPlayerMoveable += SetCanMovePlayer;
+        raycastinteract.SetPlayerMoveable += SetCanMoveCamera;
+        raycastinteract.SetPlayerMoveable += SetCanMovePlayer;
+    }
+    private void OnDisable()
+    {
+        InGamePauseMenu.SetPlayerMoveable -= SetCanMoveCamera;
+        InGamePauseMenu.SetPlayerMoveable -= SetCanMovePlayer;
+        raycastinteract.SetPlayerMoveable -= SetCanMoveCamera;
+        raycastinteract.SetPlayerMoveable -= SetCanMovePlayer;
+    }
+
 }

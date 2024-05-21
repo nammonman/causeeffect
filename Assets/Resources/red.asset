@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: red
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 678dce9f-5baf-46ec-a5df-eb9b839fe61b
+    PortName: Next
+    TargetNodeGUID: b943ae39-2bf9-4eb5-9868-7e93c0e01677
+  - BaseNodeGUID: b943ae39-2bf9-4eb5-9868-7e93c0e01677
+    PortName: bro why?
+    TargetNodeGUID: ef048674-ea2d-4197-bc61-edd254dbb066
+  - BaseNodeGUID: b943ae39-2bf9-4eb5-9868-7e93c0e01677
+    PortName: your opinion is wrong
+    TargetNodeGUID: 94bf5950-97fc-42df-bc52-74164345a81c
+  - BaseNodeGUID: b943ae39-2bf9-4eb5-9868-7e93c0e01677
+    PortName: cant let the gang know i fw dubstep music
+    TargetNodeGUID: a3d38ccf-180e-4ad7-be20-deb7afa51572
+  DialogueNodeData:
+  - NodeGUID: b943ae39-2bf9-4eb5-9868-7e93c0e01677
+    NPCNameText: NEW NPC
+    DialogueText: i hate red trees
+    Position: {x: 350, y: 247}
+  - NodeGUID: 94bf5950-97fc-42df-bc52-74164345a81c
+    NPCNameText: NEW NPC
+    DialogueText: i will kill you
+    Position: {x: 750, y: 256}
+  - NodeGUID: ef048674-ea2d-4197-bc61-edd254dbb066
+    NPCNameText: NEW NPC
+    DialogueText: because i am jealous of blue
+    Position: {x: 790, y: 52}
+  - NodeGUID: a3d38ccf-180e-4ad7-be20-deb7afa51572
+    NPCNameText: NEW NPC
+    DialogueText: what are you talking about?
+    Position: {x: 783, y: 437}
+  ExposedProperties: []
+  CommentBlockData: []

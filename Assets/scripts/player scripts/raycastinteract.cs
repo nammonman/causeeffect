@@ -11,21 +11,28 @@ public class raycastinteract : MonoBehaviour
     [SerializeField] public GameObject wholeDialogueContainer;
     [SerializeField] public TextMeshProUGUI promptText;
     [SerializeField] public float rayDist = 10f;
-    bool inDialogueBox;
+    bool canInteract = true;
 
     public delegate void DialogueEnter(string GUID, bool E);
     public static event DialogueEnter OnDialogueEnter;
-    //public static event Action OnDialogueEnded;
+
+    public delegate void PlayerMoveable(bool b);
+    public static event PlayerMoveable SetPlayerMoveable;
+
+    public void Start()
+    {
+        canInteract = true;
+    }
     // Update is called once per frame
     public void Update()
     {
         
-        Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward*rayDist, Color.blue);
+        //Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward*rayDist, Color.blue);
         RaycastHit hitObject;
 
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hitObject, rayDist)) //raycast
         {
-            if (!inDialogueBox)
+            if (canInteract)
             {
                 if (hitObject.collider.gameObject.tag == "npc")
                 {
@@ -37,7 +44,7 @@ public class raycastinteract : MonoBehaviour
                     JoinConversation();
                     OnDialogueEnter?.Invoke(hitObject.transform.name, true);
                 }
-                else if (hitObject.collider.gameObject.tag != "npc")
+                else if (!hitObject.collider.gameObject.CompareTag("npc"))
                 {
                     promptText.text = "";
                 }
@@ -53,31 +60,32 @@ public class raycastinteract : MonoBehaviour
 
     public void JoinConversation()
     {
-        inDialogueBox = true;
-        playermovement.canMovePlayer = false;
-        playermovement.canMoveCamera = false;
+        SetCanInteract(false);
+        SetPlayerMoveable?.Invoke(false);
         wholeDialogueContainer.SetActive(true);
     }
 
     public void LeaveConversation()
     {
-        inDialogueBox = false;
-        playermovement.canMovePlayer = true;
-        playermovement.canMoveCamera = true;
+        SetCanInteract(true);
+        SetPlayerMoveable?.Invoke(true);
         wholeDialogueContainer.SetActive(false);
+    }
+
+    public void SetCanInteract(bool b) 
+    {
+        canInteract = b; 
     }
 
     private void OnEnable()
     {
-        //OnDialogueStarted += JoinConversation;
-        //OnDialogueEnded += LeaveConversation;
         DialogueParser.OnDialogueExit += LeaveConversation;
+        InGamePauseMenu.SetPlayerMoveable += SetCanInteract;
     }
 
     private void OnDisable()
     {
-        //OnDialogueStarted -= JoinConversation;
-        //OnDialogueEnded -= LeaveConversation;
         DialogueParser.OnDialogueExit -= LeaveConversation;
+        InGamePauseMenu.SetPlayerMoveable += SetCanInteract;
     }
 }

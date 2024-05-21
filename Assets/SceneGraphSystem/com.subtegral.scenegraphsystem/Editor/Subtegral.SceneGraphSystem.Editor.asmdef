@@ -1,0 +1,16 @@
+{
+    "name": "Subtegral.SceneGraphSystem.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:69e5c902d777dc84d8f813c1801fd496"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
