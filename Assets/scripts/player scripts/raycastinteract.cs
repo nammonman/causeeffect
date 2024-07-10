@@ -1,5 +1,6 @@
 using Subtegral.DialogueSystem.Runtime;
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -11,17 +12,13 @@ public class raycastinteract : MonoBehaviour
     [SerializeField] public GameObject wholeDialogueContainer;
     [SerializeField] public TextMeshProUGUI promptText;
     [SerializeField] public float rayDist = 10f;
-    bool canInteract = true;
 
     public delegate void DialogueEnter(string GUID, bool E);
     public static event DialogueEnter OnDialogueEnter;
 
-    public delegate void PlayerMoveable(bool b);
-    public static event PlayerMoveable SetPlayerMoveable;
-
     public void Start()
     {
-        canInteract = true;
+        GameStateManager.canPlayerInteract = true;
     }
     // Update is called once per frame
     public void Update()
@@ -32,7 +29,7 @@ public class raycastinteract : MonoBehaviour
 
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hitObject, rayDist)) //raycast
         {
-            if (canInteract)
+            if (GameStateManager.canPlayerInteract)
             {
                 if (hitObject.collider.gameObject.tag == "npc")
                 {
@@ -56,36 +53,42 @@ public class raycastinteract : MonoBehaviour
         }
 
     }
+    private void EnablePausing()
+    {
+        StartCoroutine(PauseDelay(0.1f));
+    }
 
-
+    IEnumerator PauseDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        GameStateManager.canPause = true;
+        //Debug.Log("Enabled Pausing");
+    }
     public void JoinConversation()
     {
-        SetCanInteract(false);
-        SetPlayerMoveable?.Invoke(false);
+        GameStateManager.canPlayerInteract = false;
+        GameStateManager.canPlayerMove = false;
+        GameStateManager.canPlayerMoveCamera = false;
+        GameStateManager.canPause = false;
         wholeDialogueContainer.SetActive(true);
     }
 
     public void LeaveConversation()
     {
-        SetCanInteract(true);
-        SetPlayerMoveable?.Invoke(true);
+        GameStateManager.canPlayerInteract = true;
+        GameStateManager.canPlayerMove = true;
+        GameStateManager.canPlayerMoveCamera = true;
+        EnablePausing();
         wholeDialogueContainer.SetActive(false);
-    }
-
-    public void SetCanInteract(bool b) 
-    {
-        canInteract = b; 
     }
 
     private void OnEnable()
     {
         DialogueParser.OnDialogueExit += LeaveConversation;
-        InGamePauseMenu.SetPlayerMoveable += SetCanInteract;
     }
 
     private void OnDisable()
     {
         DialogueParser.OnDialogueExit -= LeaveConversation;
-        InGamePauseMenu.SetPlayerMoveable += SetCanInteract;
     }
 }
