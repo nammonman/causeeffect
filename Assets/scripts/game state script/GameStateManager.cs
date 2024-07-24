@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
+    //current save file
+    public static string saveFileName;
+
+    //timeline event
+    public static int currentEventId;
+
     //pause menu
     public static bool canPause;
     public static bool isPaused;
@@ -28,6 +34,8 @@ public class GameStateManager : MonoBehaviour
     void Start()
     {
         //init variables
+        saveFileName = "slot1";
+
         canPause = true;
         isPaused = false;
 

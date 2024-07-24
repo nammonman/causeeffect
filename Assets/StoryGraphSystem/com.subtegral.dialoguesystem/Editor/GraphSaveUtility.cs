@@ -21,7 +21,7 @@ namespace Subtegral.DialogueSystem.Editor
         private List<Group> CommentBlocks =>
             _graphView.graphElements.ToList().Where(x => x is Group).Cast<Group>().ToList();
 
-        private DialogueContainer _dialogueContainer;
+        private Dialogue _dialogue;
         private StoryGraphView _graphView;
 
         public static GraphSaveUtility GetInstance(StoryGraphView graphView)
@@ -34,7 +34,7 @@ namespace Subtegral.DialogueSystem.Editor
 
         public void SaveGraph(string fileName)
         {
-            var dialogueContainerObject = ScriptableObject.CreateInstance<DialogueContainer>();
+            var dialogueContainerObject = ScriptableObject.CreateInstance<Dialogue>();
             if (!SaveNodes(fileName, dialogueContainerObject)) return;
             SaveExposedProperties(dialogueContainerObject);
             SaveCommentBlocks(dialogueContainerObject);
@@ -42,7 +42,7 @@ namespace Subtegral.DialogueSystem.Editor
             if (!AssetDatabase.IsValidFolder("Assets/Resources"))
                 AssetDatabase.CreateFolder("Assets", "Resources");
 
-            UnityEngine.Object loadedAsset = AssetDatabase.LoadAssetAtPath($"Assets/Resources/{fileName}.asset", typeof(DialogueContainer));
+            UnityEngine.Object loadedAsset = AssetDatabase.LoadAssetAtPath($"Assets/Resources/{fileName}.asset", typeof(Dialogue));
 
             if (loadedAsset == null || !AssetDatabase.Contains(loadedAsset)) 
 			{
@@ -50,7 +50,7 @@ namespace Subtegral.DialogueSystem.Editor
             }
             else 
 			{
-                DialogueContainer container = loadedAsset as DialogueContainer;
+                Dialogue container = loadedAsset as Dialogue;
                 container.NodeLinks = dialogueContainerObject.NodeLinks;
                 container.DialogueNodeData = dialogueContainerObject.DialogueNodeData;
                 container.ExposedProperties = dialogueContainerObject.ExposedProperties;
@@ -61,7 +61,7 @@ namespace Subtegral.DialogueSystem.Editor
             AssetDatabase.SaveAssets();
         }
 
-        private bool SaveNodes(string fileName, DialogueContainer dialogueContainerObject)
+        private bool SaveNodes(string fileName, Dialogue dialogueContainerObject)
         {
             if (!Edges.Any()) return false;
             
@@ -101,13 +101,13 @@ namespace Subtegral.DialogueSystem.Editor
             return true;
         }
 
-        private void SaveExposedProperties(DialogueContainer dialogueContainer)
+        private void SaveExposedProperties(Dialogue dialogueContainer)
         {
             dialogueContainer.ExposedProperties.Clear();
             dialogueContainer.ExposedProperties.AddRange(_graphView.ExposedProperties);
         }
 
-        private void SaveCommentBlocks(DialogueContainer dialogueContainer)
+        private void SaveCommentBlocks(Dialogue dialogueContainer)
         {
             foreach (var block in CommentBlocks)
             {
@@ -125,8 +125,8 @@ namespace Subtegral.DialogueSystem.Editor
 
         public void LoadNarrative(string fileName)
         {
-            _dialogueContainer = Resources.Load<DialogueContainer>(fileName);
-            if (_dialogueContainer == null)
+            _dialogue = Resources.Load<Dialogue>(fileName);
+            if (_dialogue == null)
             {
                 EditorUtility.DisplayDialog("File Not Found", "Target Narrative Data does not exist!", "OK");
                 return;
@@ -144,7 +144,7 @@ namespace Subtegral.DialogueSystem.Editor
         /// </summary>
         private void ClearGraph()
         {
-            Nodes.Find(x => x.EntyPoint).GUID = _dialogueContainer.NodeLinks[0].BaseNodeGUID;
+            Nodes.Find(x => x.EntyPoint).GUID = _dialogue.NodeLinks[0].BaseNodeGUID;
             foreach (var perNode in Nodes)
             {
                 if (perNode.EntyPoint) continue;
@@ -162,7 +162,7 @@ namespace Subtegral.DialogueSystem.Editor
         // reconstruct nodes
         private void GenerateDialogueNodes()
         {
-            foreach (var perNode in _dialogueContainer.DialogueNodeData)
+            foreach (var perNode in _dialogue.DialogueNodeData)
             {
                 var tempNode = _graphView.CreateNode(perNode.NPCNameText, perNode.DialogueText, perNode.Trigger, Vector2.zero, true);
                 tempNode.GUID = perNode.NodeGUID;
@@ -171,7 +171,7 @@ namespace Subtegral.DialogueSystem.Editor
                 tempNode.Trigger = perNode.Trigger;
                 _graphView.AddElement(tempNode);
 
-                var nodePorts = _dialogueContainer.NodeLinks.Where(x => x.BaseNodeGUID == perNode.NodeGUID).ToList();
+                var nodePorts = _dialogue.NodeLinks.Where(x => x.BaseNodeGUID == perNode.NodeGUID).ToList();
                 nodePorts.ForEach(x => _graphView.AddChoicePort(tempNode, x.PortName));
             }
         }
@@ -181,7 +181,7 @@ namespace Subtegral.DialogueSystem.Editor
             for (var i = 0; i < Nodes.Count; i++)
             {
                 var k = i; //Prevent access to modified closure
-                var connections = _dialogueContainer.NodeLinks.Where(x => x.BaseNodeGUID == Nodes[k].GUID).ToList();
+                var connections = _dialogue.NodeLinks.Where(x => x.BaseNodeGUID == Nodes[k].GUID).ToList();
                 for (var j = 0; j < connections.Count(); j++)
                 {
                     var targetNodeGUID = connections[j].TargetNodeGUID;
@@ -189,7 +189,7 @@ namespace Subtegral.DialogueSystem.Editor
                     LinkNodesTogether(Nodes[i].outputContainer[j].Q<Port>(), (Port) targetNode.inputContainer[0]);
 
                     targetNode.SetPosition(new Rect(
-                        _dialogueContainer.DialogueNodeData.First(x => x.NodeGUID == targetNodeGUID).Position,
+                        _dialogue.DialogueNodeData.First(x => x.NodeGUID == targetNodeGUID).Position,
                         _graphView.DefaultNodeSize));
                 }
             }
@@ -212,7 +212,7 @@ namespace Subtegral.DialogueSystem.Editor
         private void AddExposedProperties()
         {
             _graphView.ClearBlackBoardAndExposedProperties();
-            foreach (var exposedProperty in _dialogueContainer.ExposedProperties)
+            foreach (var exposedProperty in _dialogue.ExposedProperties)
             {
                 _graphView.AddPropertyToBlackBoard(exposedProperty);
             }
@@ -225,7 +225,7 @@ namespace Subtegral.DialogueSystem.Editor
                 _graphView.RemoveElement(commentBlock);
             }
 
-            foreach (var commentBlockData in _dialogueContainer.CommentBlockData)
+            foreach (var commentBlockData in _dialogue.CommentBlockData)
             {
                var block = _graphView.CreateCommentBlock(new Rect(commentBlockData.Position, _graphView.DefaultCommentBlockSize),
                     commentBlockData);

@@ -26,7 +26,6 @@ public class raycastinteract : MonoBehaviour
         
         //Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward*rayDist, Color.blue);
         RaycastHit hitObject;
-
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hitObject, rayDist)) //raycast
         {
             if (GameStateManager.canPlayerInteract)

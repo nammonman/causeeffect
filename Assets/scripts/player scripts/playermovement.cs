@@ -6,6 +6,7 @@ public class playermovement : MonoBehaviour
     private Vector3 playerKeyboardInput;
     private Vector3 playerMouseInput;
     private float xRotation;
+    private float yRotation;
 
     [SerializeField] private Rigidbody player;
     [SerializeField] private float playerSpeed;
@@ -17,21 +18,11 @@ public class playermovement : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            GameStateManager.canPlayerMoveCamera = false;
-        }
-        if (Input.GetKeyUp(KeyCode.F))
-        {
-            GameStateManager.canPlayerMoveCamera = true;
-        }
-
         if (GameStateManager.canPlayerMove)
         {
             playerKeyboardInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
             MovePlayer();
         }
-        
 
         if (GameStateManager.canPlayerMoveCamera)
         {
@@ -65,6 +56,7 @@ public class playermovement : MonoBehaviour
 
         transform.Rotate(0f, playerMouseInput.x * playerCameraSensitivity, 0f);
         playerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        
     }
 
 

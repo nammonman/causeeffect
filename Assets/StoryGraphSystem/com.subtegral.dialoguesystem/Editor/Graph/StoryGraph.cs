@@ -16,7 +16,7 @@ namespace Subtegral.DialogueSystem.Editor
         private string _fileName = "New Narrative";
 
         private StoryGraphView _graphView;
-        private DialogueContainer _dialogueContainer;
+        private Dialogue _dialogueContainer;
 
         [MenuItem("Graph/Narrative Graph")]
         public static void CreateGraphViewWindow()
