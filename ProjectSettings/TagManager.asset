@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - npc
+  - timeline event block
+  - item storage
   layers:
   - Default
   - TransparentFX

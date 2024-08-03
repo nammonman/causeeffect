@@ -6,9 +6,7 @@ public class playermovement : MonoBehaviour
     private Vector3 playerKeyboardInput;
     private Vector3 playerMouseInput;
     private float xRotation;
-    private bool canJump = true;
-    public static bool canMovePlayer = true;
-    public static bool canMoveCamera = true;
+    private float yRotation;
 
     [SerializeField] private Rigidbody player;
     [SerializeField] private float playerSpeed;
@@ -17,30 +15,16 @@ public class playermovement : MonoBehaviour
     [SerializeField] private Transform playerCamera;
     [SerializeField] private float playerCameraSensitivity;
 
-    private void Start()
-    {
-        
-    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            canMoveCamera = false;
-        }
-        if (Input.GetKeyUp(KeyCode.F))
-        {
-            canMoveCamera = true;
-        }
-
-        if (canMovePlayer)
+        if (GameStateManager.canPlayerMove)
         {
             playerKeyboardInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
             MovePlayer();
         }
-        
 
-        if (canMoveCamera)
+        if (GameStateManager.canPlayerMoveCamera)
         {
             playerMouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
             MovePlayerCamera();
@@ -52,10 +36,10 @@ public class playermovement : MonoBehaviour
         Vector3 MoveVector = transform.TransformDirection(playerKeyboardInput) * playerSpeed;
         player.velocity = new Vector3(MoveVector.x, player.velocity.y, MoveVector.z);
 
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        if (Input.GetKeyDown(KeyCode.Space) && GameStateManager.canPlayerJump)
         {
             player.AddForce(Vector3.up * playerJump, ForceMode.Impulse);
-            canJump = false;
+            GameStateManager.canPlayerJump = false;
             StartCoroutine(EnableJumpAfterDelay(1.5f)); // Cooldown period
         }
     }
@@ -63,7 +47,7 @@ public class playermovement : MonoBehaviour
     IEnumerator EnableJumpAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        canJump = true;
+        GameStateManager.canPlayerJump = true;
     }
     private void MovePlayerCamera()
     {
@@ -72,5 +56,8 @@ public class playermovement : MonoBehaviour
 
         transform.Rotate(0f, playerMouseInput.x * playerCameraSensitivity, 0f);
         playerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        
     }
+
+
 }
