@@ -11,7 +11,7 @@ namespace Subtegral.DialogueSystem.Runtime
 {
     public class DialogueParser : MonoBehaviour
     {
-        [SerializeField] private DialogueContainer dialogue;
+        [SerializeField] private Dialogue dialogue;
         [SerializeField] private Button choicePrefab;
         [SerializeField] private GameObject buttonContainer;
         [SerializeField] private GameObject dialogueContainer;
@@ -38,7 +38,7 @@ namespace Subtegral.DialogueSystem.Runtime
             for (int i = 1; i < dialogues.Length; i++)
             {
                 Destroy(dialogues[i].gameObject);
-                dialogueContainer.transform.position.Set(dialogueContainer.transform.position.x, dialogueContainer.transform.position.y - 40, dialogueContainer.transform.position.z);
+                //dialogueContainer.transform.position.Set(dialogueContainer.transform.position.x, dialogueContainer.transform.position.y - 40, dialogueContainer.transform.position.z);
             }
         }
 
@@ -47,17 +47,17 @@ namespace Subtegral.DialogueSystem.Runtime
             for (int i = 0; i < buttons.Length; i++)
             {
                 Destroy(buttons[i].gameObject);
-                buttonContainer.transform.position.Set(buttonContainer.transform.position.x, buttonContainer.transform.position.y - 20, buttonContainer.transform.position.z);
+                //buttonContainer.transform.position.Set(buttonContainer.transform.position.x, buttonContainer.transform.position.y - 20, buttonContainer.transform.position.z);
             }
         }
 
-        public void ProceedToNarrative(string narrativeDataGUID, bool fromInteract)
+        public void ProceedToNarrative(string narrativeDataGUID, bool fromInteract, Dialogue npcDialogue)
         {
-            //narrativeDataGUID = dialogue.NodeLinks.First().TargetNodeGUID;
+            dialogue = npcDialogue;
             var text = dialogue.DialogueNodeData.Find(x => x.NodeGUID == narrativeDataGUID).DialogueText;
-            Debug.Log(text);    
+            //Debug.Log(text);    
             var name = dialogue.DialogueNodeData.Find(x => x.NodeGUID == narrativeDataGUID).NPCNameText;
-            Debug.Log(name);
+            //Debug.Log(name);
             var choices = dialogue.NodeLinks.Where(x => x.BaseNodeGUID == narrativeDataGUID);
             TextMeshProUGUI[] dialoguePrefabs = dialogueBoxPrefab.GetComponentsInChildren<TextMeshProUGUI>();
 
@@ -74,7 +74,7 @@ namespace Subtegral.DialogueSystem.Runtime
                     dialoguePrefabs[i].text = ProcessProperties(text);
             }
             Instantiate(dialogueBoxPrefab, dialogueContainer.transform);
-            dialogueContainer.transform.position.Set(dialogueContainer.transform.position.x, dialogueContainer.transform.position.y+40, dialogueContainer.transform.position.z);
+            //dialogueContainer.transform.position.Set(dialogueContainer.transform.position.x, dialogueContainer.transform.position.y + 120, dialogueContainer.transform.position.z);
 
             buttons = buttonContainer.GetComponentsInChildren<Button>();
             destroyExistingButtons(buttons);
@@ -84,7 +84,7 @@ namespace Subtegral.DialogueSystem.Runtime
                 var button = Instantiate(choicePrefab, buttonContainer.transform);
                 button.GetComponentInChildren<Text>().text = ProcessProperties(choice.PortName);
                 button.onClick.AddListener(() => answerChoice(choice.TargetNodeGUID, choice.PortName));
-                buttonContainer.transform.position.Set(buttonContainer.transform.position.x, buttonContainer.transform.position.y + 20, buttonContainer.transform.position.z);
+                //buttonContainer.transform.position.Set(buttonContainer.transform.position.x, buttonContainer.transform.position.y - 60, buttonContainer.transform.position.z);
             }
             
         }
@@ -94,7 +94,7 @@ namespace Subtegral.DialogueSystem.Runtime
             TextMeshProUGUI[] yourDialoguePrefabs = yourDialogueBoxPrefab.GetComponentsInChildren<TextMeshProUGUI>();
             yourDialoguePrefabs[1].text = ProcessProperties(PortName);
             Instantiate(yourDialogueBoxPrefab, dialogueContainer.transform);
-            ProceedToNarrative(GUID, false);
+            ProceedToNarrative(GUID, false, dialogue);
         }
 
         private string ProcessProperties(string text)
@@ -106,7 +106,10 @@ namespace Subtegral.DialogueSystem.Runtime
             return text;
         }
 
-        
+        IEnumerator DelayResponse(float seconds)
+        {
+            yield return new WaitForSeconds(seconds);
+        }
 
         private void OnEnable()
         {
