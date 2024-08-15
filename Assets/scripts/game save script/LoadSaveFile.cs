@@ -148,7 +148,6 @@ namespace SaveGame
             timelineEvent.isEventStarted = currrentTimelineEventData.isEventStarted;
             timelineEvent.isEventFinished = currrentTimelineEventData.isEventFinished;
             timelineEvent.state = currrentTimelineEventData.state;
-            timelineEvent.screenShotPath = currrentTimelineEventData.screenshotPath;
             return true; 
         }
     }
