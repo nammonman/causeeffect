@@ -15,4 +15,6 @@ public class TimelineEvent : MonoBehaviour
     public bool isEventStarted;
     public bool isEventFinished;
     public string state;
+    public string screenShotPath;
 }
+

@@ -183,9 +183,9 @@ namespace Subtegral.DialogueSystem.Editor
             tempDialogueNode.mainContainer.Add(triggerButton);
             if (fromSave)
             {
-                for (int i = 0; i < trigger.Count; i++)
+                foreach (string triggerName in trigger)
                 {
-                    AddTrigger(tempDialogueNode, trigger[i], fromSave);
+                    AddTrigger(tempDialogueNode, triggerName, fromSave);
                 }
             }
 
@@ -350,6 +350,7 @@ namespace Subtegral.DialogueSystem.Editor
             {
                 text = "X"
             };
+            deleteButton.style.width = 10;
             nodeCache.mainContainer.Add(deleteButton);
         }
 

@@ -10,9 +10,14 @@ public class TimelineEventDisplay : MonoBehaviour
     [SerializeField] TextMeshProUGUI dayNumText;
     [SerializeField] TextMeshProUGUI timeDayText;
     [SerializeField] Image bg;
+    [SerializeField] GameObject selectBg;
+    [SerializeField] Button button;
+
+    public bool isSelected = false;
 
     private void OnEnable()
     {
+        deselectTimeline();
         TimelineEvent thisTimelineEvent = gameObject.GetComponent<TimelineEvent>();
         eventNameText.text = thisTimelineEvent.title;
         dayNumText.text = "DAY " + thisTimelineEvent.day.ToString();
@@ -43,4 +48,22 @@ public class TimelineEventDisplay : MonoBehaviour
         }
 
     }
+
+    public void selectTimeline()
+    {
+        GameObject[] allTimelines = GameObject.FindGameObjectsWithTag ( "timeline event block" );
+        foreach (GameObject t in allTimelines)
+        {
+            t.GetComponent<TimelineEventDisplay>().deselectTimeline();
+        }
+        isSelected = true;
+        selectBg.SetActive(true);
+    }
+
+    public void deselectTimeline()
+    {
+        isSelected = false;
+        selectBg.SetActive(false);
+    }
 }
+

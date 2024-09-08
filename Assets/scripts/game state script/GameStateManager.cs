@@ -56,7 +56,7 @@ public class GameStateManager : MonoBehaviour
         canLoadNewScene = true;    
     }
 
-    public void setCanPause(bool b) { canPause = b; Debug.Log(b); }
+    public void setCanPause(bool b) { canPause = b;}
     
     public void setIsPaused(bool b) { isPaused = b; }
 
