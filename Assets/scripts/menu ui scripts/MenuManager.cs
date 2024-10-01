@@ -1,27 +1,51 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] GameObject mainMenuWindow;
-    [SerializeField] GameObject sceneSelectWindow;
+
+    private List<GameObject> menuWindows;
+    private List<string> menuWindowsNames;
+
     // Start is called before the first frame update
     void Start()
     {
-        mainMenuWindow.SetActive(true);
-        sceneSelectWindow.SetActive(false);
+        // Get all GameObjects with the "menu window" tag
+        GameObject[] windows = GameObject.FindGameObjectsWithTag("menu window");
+        menuWindows = new List<GameObject>(windows);
+        menuWindowsNames = new List<string>();
+        foreach (GameObject w in windows) 
+        {
+            menuWindowsNames.Add(w.name);
+            //Debug.Log(w.name);
+        }
+        ShowMenu("MainMenu");
+        
     }
 
-    public void switchToSceneSelect()
+    // Function to activate a GameObject with a matching name and deactivate others
+    public void ShowMenu(string windowName)
     {
-        mainMenuWindow.SetActive(false);
-        sceneSelectWindow.SetActive(true);
-    }
-
-    public void switchToMainMenu()
-    {
-        mainMenuWindow.SetActive(true);
-        sceneSelectWindow.SetActive(false);
+        if (menuWindowsNames.Contains(windowName))
+        {
+            foreach (GameObject window in menuWindows)
+            {
+                if (window.name == windowName)
+                {
+                    window.SetActive(true);
+                }
+                else
+                {
+                    window.SetActive(false);
+                }
+            
+            }
+        }
+        else
+        {
+            Debug.Log("can't find menu: " + windowName);
+        }
     }
 }

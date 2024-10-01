@@ -7,6 +7,7 @@ TagManager:
   - npc
   - timeline event block
   - item storage
+  - menu window
   layers:
   - Default
   - TransparentFX
