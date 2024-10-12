@@ -12,7 +12,7 @@ namespace SaveGame
     public class SaveFileData
     {
         public Dictionary<int, PlayerSaveData> playerSaveDatas;
-        public Dictionary<int, TimelineEventData> timelineEventDatas;
+        public Dictionary<int, TimelineEvent> timelineEventDatas;
         public int currentTimelineEventDataId;
     }
 
@@ -23,14 +23,14 @@ namespace SaveGame
         SaveFileData save;
 
         Dictionary<int, PlayerSaveData> playerSaveDatas;
-        Dictionary<int, TimelineEventData> timelineEventDatas;
+        Dictionary<int, TimelineEvent> timelineEventDatas;
 
         void Start()
         {
             // Initialize save file
-            saveFilePath = Application.persistentDataPath + $"/{GameStateManager.saveFileName}.json";
+            saveFilePath = Application.persistentDataPath + $"/{GameStateManager.gameStates.saveFileName}.json";
             playerSaveDatas = new Dictionary<int, PlayerSaveData>();
-            timelineEventDatas = new Dictionary<int, TimelineEventData>();
+            timelineEventDatas = new Dictionary<int, TimelineEvent>();
         }
 
         public static IEnumerator delaySave() { yield return new WaitForSeconds(5); }
@@ -45,7 +45,7 @@ namespace SaveGame
         bool writeSaveFile()
         {
             StartCoroutine(delaySave());
-            saveId = GameStateManager.currentEventId;
+            saveId = GameStateManager.gameStates.currentEventId;
 
             if (File.Exists(saveFilePath))
             {
@@ -53,7 +53,7 @@ namespace SaveGame
             }
 
             PlayerSaveData p = getCurrentPlayerSaveData();
-            TimelineEventData t = getCurrentTimelineEventData();
+            TimelineEvent t = getCurrentTimelineEventData();
 
             if (save.timelineEventDatas[saveId] != null) // check if duplicate
             {
@@ -134,64 +134,33 @@ namespace SaveGame
             /*playerSaveData.items = */
 
             // get game states and write to SaveFileData class
-            List<bool> gameStateBools = new List<bool>();
-            List<int> gameStateInts = new List<int>();
-            List<string> gameStateStrings = new List<string>();
-            gameStateBools.Add(GameStateManager.isInDialogue);
-            gameStateBools.Add(GameStateManager.isPaused);
-            gameStateBools.Add(GameStateManager.canLoadNewScene);
-            gameStateBools.Add(GameStateManager.canPause);
-            gameStateBools.Add(GameStateManager.canPlayerInteract);
-            gameStateBools.Add(GameStateManager.canPlayerJump);
-            gameStateBools.Add(GameStateManager.canPlayerMove);
-            gameStateBools.Add(GameStateManager.canPlayerMoveCamera);
-
-            gameStateInts.Add(saveId);
-
-            gameStateStrings.Add(GameStateManager.CurrentSceneName);
-            gameStateStrings.Add(GameStateManager.saveFileName);
-
-            playerSaveData.gameStateBools = gameStateBools;
-            playerSaveData.gameStateInts = gameStateInts;
-            playerSaveData.gameStateStrings = gameStateStrings;
+            playerSaveData.gameStates = GameStateManager.gameStates;
 
 
             // get scene data and write to SaveFileData class
-            playerSaveData.sceneName = GameStateManager.CurrentSceneName;
-            playerSaveData.sceneSetting = GameStateManager.CurrentSceneSetting;
+            playerSaveData.sceneName = GameStateManager.gameStates.CurrentSceneName;
+            playerSaveData.sceneSetting = GameStateManager.gameStates.CurrentSceneSetting;
 
 
             return playerSaveData;
         }
 
-        TimelineEventData getCurrentTimelineEventData()
+        TimelineEvent getCurrentTimelineEventData()
         {
             // init
-            TimelineEventData timelineEventData = new TimelineEventData();
-
-
-            // set id
-            timelineEventData.id = saveId;
-
+            TimelineEvent timelineEventData = new TimelineEvent();
 
             // get current timeline event
             TimelineEvent currentTimelineEvent = GameObject.Find("Persistent Scripts").GetComponent<TimelineEvent>();
-            timelineEventData.type = currentTimelineEvent.type;
-            timelineEventData.title = currentTimelineEvent.title;
-            timelineEventData.day = currentTimelineEvent.day;
-            timelineEventData.timeOfDay = currentTimelineEvent.timeOfDay;
-            timelineEventData.description = currentTimelineEvent.description;
-            timelineEventData.saveDataId = saveId;
-            timelineEventData.isEventStarted = currentTimelineEvent.isEventStarted;
-            timelineEventData.isEventFinished = currentTimelineEvent.isEventFinished;
-            timelineEventData.state = currentTimelineEvent.state;
+            timelineEventData = currentTimelineEvent;
 
+            // set id
+            timelineEventData.id = saveId;
 
             //screenshot
             string filename = timelineEventData.id.ToString() + "_" + timelineEventData.title + "_" + timelineEventData.day.ToString();
             ScreenCapture.CaptureScreenshot(filename);
             timelineEventData.screenshotPath = Application.persistentDataPath + $"/{filename}.png";
-            
 
             return timelineEventData;
         }

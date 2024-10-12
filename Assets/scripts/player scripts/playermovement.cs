@@ -7,9 +7,12 @@ public class playermovement : MonoBehaviour
     private Vector3 playerMouseInput;
     private float xRotation;
     private float yRotation;
+    private float playerSpeed = 3;
 
     [SerializeField] private Rigidbody player;
-    [SerializeField] private float playerSpeed;
+    [SerializeField] private float playerNormalSpeed = 3;
+    [SerializeField] private float playerSprintSpeed = 6;
+
     [SerializeField] private float playerJump;
     [Space]
     [SerializeField] private Transform playerCamera;
@@ -18,16 +21,25 @@ public class playermovement : MonoBehaviour
 
     private void Update()
     {
-        if (GameStateManager.canPlayerMove)
+        if (GameStateManager.gameStates.canPlayerMove)
         {
             playerKeyboardInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
             MovePlayer();
         }
 
-        if (GameStateManager.canPlayerMoveCamera)
+        if (GameStateManager.gameStates.canPlayerMoveCamera)
         {
             playerMouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
             MovePlayerCamera();
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            playerSpeed = playerSprintSpeed;
+        }
+        else
+        {
+            playerSpeed = playerNormalSpeed;
         }
     }
 
@@ -36,10 +48,10 @@ public class playermovement : MonoBehaviour
         Vector3 MoveVector = transform.TransformDirection(playerKeyboardInput) * playerSpeed;
         player.velocity = new Vector3(MoveVector.x, player.velocity.y, MoveVector.z);
 
-        if (Input.GetKeyDown(KeyCode.Space) && GameStateManager.canPlayerJump)
+        if (Input.GetKeyDown(KeyCode.Space) && GameStateManager.gameStates.canPlayerJump )
         {
             player.AddForce(Vector3.up * playerJump, ForceMode.Impulse);
-            GameStateManager.canPlayerJump = false;
+            GameStateManager.gameStates.canPlayerJump = false;
             StartCoroutine(EnableJumpAfterDelay(1.5f)); // Cooldown period
         }
     }
@@ -47,7 +59,7 @@ public class playermovement : MonoBehaviour
     IEnumerator EnableJumpAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        GameStateManager.canPlayerJump = true;
+        GameStateManager.gameStates.canPlayerJump = true;
     }
     private void MovePlayerCamera()
     {

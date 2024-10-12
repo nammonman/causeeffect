@@ -16,7 +16,7 @@ namespace SaveGame
         string saveFilePath;
         SaveFileData save;
         PlayerSaveData currentPlayerSaveData;
-        TimelineEventData currrentTimelineEventData;
+        TimelineEvent currrentTimelineEventData;
         int currentTimelineEventDataId;
 
         GameObject playerGameObject;
@@ -29,7 +29,7 @@ namespace SaveGame
         void Start()
         {
             // Initialize save file
-            saveFilePath = Application.persistentDataPath + $"/{GameStateManager.saveFileName}.json";
+            saveFilePath = Application.persistentDataPath + $"/{GameStateManager.gameStates.saveFileName}.json";
         }
 
         bool loadSave()
@@ -90,24 +90,8 @@ namespace SaveGame
 
         bool setGameStates()
         {
-            var b = currentPlayerSaveData.gameStateBools;
-            var i = currentPlayerSaveData.gameStateInts;
-            var s = currentPlayerSaveData.gameStateStrings;
 
-            GameStateManager.isInDialogue = b[0];
-            GameStateManager.isPaused = b[1];
-            GameStateManager.canLoadNewScene = b[2];
-            GameStateManager.canPause = b[3];
-            GameStateManager.canPlayerInteract = b[4];
-            GameStateManager.canPlayerJump = b[5];
-            GameStateManager.canPlayerMove = b[6];
-            GameStateManager.canPlayerMoveCamera = b[7];
-
-            GameStateManager.currentEventId = i[0];
-
-            GameStateManager.CurrentSceneName = s[0];
-            GameStateManager.saveFileName = s[1];
-
+            GameStateManager.gameStates = currentPlayerSaveData.gameStates;
 
             return true;
         }
@@ -123,8 +107,8 @@ namespace SaveGame
 
             setGameStates();
             constructNpcs();
-            constructPuzzles();
-            setItems();
+            //constructPuzzles();
+            //setItems();
             setTimelineEvent();
             return true;
         }
@@ -139,16 +123,8 @@ namespace SaveGame
         }
         bool setTimelineEvent()
         {
-            timelineEvent.type = currrentTimelineEventData.type;
-            timelineEvent.title = currrentTimelineEventData.title;
-            timelineEvent.day = currrentTimelineEventData.day;
-            timelineEvent.timeOfDay = currrentTimelineEventData.timeOfDay;
-            timelineEvent.description = currrentTimelineEventData.description;
-            timelineEvent.lastEventId = currrentTimelineEventData.lastEventId;
-            timelineEvent.isEventStarted = currrentTimelineEventData.isEventStarted;
-            timelineEvent.isEventFinished = currrentTimelineEventData.isEventFinished;
-            timelineEvent.state = currrentTimelineEventData.state;
-            timelineEvent.screenShotPath = currrentTimelineEventData.screenshotPath;
+            timelineEvent = currrentTimelineEventData;
+
             return true; 
         }
     }

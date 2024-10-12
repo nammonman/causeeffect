@@ -19,7 +19,6 @@ public class raycastinteract : MonoBehaviour
 
     public void Start()
     {
-        GameStateManager.canPlayerInteract = true;
         promptText.text = "[E] to talk";
     }
     // Update is called once per frame
@@ -30,7 +29,7 @@ public class raycastinteract : MonoBehaviour
         RaycastHit hitObject;
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hitObject, rayDist)) //raycast
         {
-            if (GameStateManager.canPlayerInteract)
+            if (GameStateManager.gameStates.canPlayerInteract)
             {
                 if (hitObject.collider.gameObject.tag == "npc")
                 {
@@ -67,32 +66,24 @@ public class raycastinteract : MonoBehaviour
         }
 
     }
-    private void EnablePausing()
-    {
-        StartCoroutine(PauseDelay(0.1f));
-    }
 
     IEnumerator PauseDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        GameStateManager.canPause = true;
+        GameStateManager.setPausedState(false);
         //Debug.Log("Enabled Pausing");
     }
     public void JoinConversation()
     {
-        GameStateManager.canPlayerInteract = false;
-        GameStateManager.canPlayerMove = false;
-        GameStateManager.canPlayerMoveCamera = false;
-        GameStateManager.canPause = false;
+        GameStateManager.setPausedState(true);
+        GameStateManager.gameStates.isInDialogue = true;
         wholeDialogueContainer.SetActive(true);
     }
 
     public void LeaveConversation()
     {
-        GameStateManager.canPlayerInteract = true;
-        GameStateManager.canPlayerMove = true;
-        GameStateManager.canPlayerMoveCamera = true;
-        EnablePausing();
+        GameStateManager.gameStates.isInDialogue = false;
+        StartCoroutine(PauseDelay(0.1f));
         wholeDialogueContainer.SetActive(false);
     }
 

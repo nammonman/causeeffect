@@ -25,7 +25,7 @@ namespace Subtegral.DialogueSystem.Runtime
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape)) 
+            if (Input.GetKeyDown(KeyCode.Escape) && GameStateManager.gameStates.isInDialogue) 
             {
                 //destroyExistingButtons(buttons);
                 //destroyExistingDialogueBoxes(dialogues);

@@ -15,9 +15,7 @@ namespace SaveGame
         public List<NpcData> npcs;
         public List<int> puzzles;
         public Dictionary<int, int> unlockedItems; // ID, amount
-        public List<bool> gameStateBools;
-        public List<int> gameStateInts;
-        public List<string> gameStateStrings;
+        public GameStates gameStates;
         public string sceneName;
         public string sceneSetting;
     }

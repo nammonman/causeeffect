@@ -21,10 +21,14 @@ public class InGamePauseMenu : MonoBehaviour
     private float holdDurationLong = 2f; // Time in seconds to hold the key
     private float keyHoldTimer = 0f; // Timer to track how long the key is held
     private float checkRepeatTimer = 0f; // fix toggle multiple times
+
+    private int co = 0;
+    
+    private bool canUnPause = false;
+
     private void Start()
     {
-        GameStateManager.canPause = true;
-        GameStateManager.isPaused = false;
+        GameStateManager.setPausedState(false);
         pauseWindow.SetActive(false);
     }
 
@@ -55,6 +59,7 @@ public class InGamePauseMenu : MonoBehaviour
 
             if (checkRepeatTimer >= 0.2f)
             {
+                GameStateManager.setPausedState(true);
                 quickTL.SetActive(true);
                 allTL.SetActive(false);
                 checkRepeatTimer = 0f;
@@ -67,6 +72,7 @@ public class InGamePauseMenu : MonoBehaviour
 
             if (checkRepeatTimer >= 0.2f)
             {
+                GameStateManager.setPausedState(true);
                 quickTL.SetActive(false);
                 allTL.SetActive(true);
                 checkRepeatTimer = 0f;
@@ -77,8 +83,9 @@ public class InGamePauseMenu : MonoBehaviour
         {
             checkRepeatTimer += Time.deltaTime;
 
-            if (checkRepeatTimer >= 0.5f)
+            if (checkRepeatTimer >= 0.5f && backgroundTL.activeSelf)
             {
+                GameStateManager.setPausedState(false);
                 quickTL.SetActive(false);
                 allTL.SetActive(false);
                 backgroundTL.SetActive(false);
@@ -92,35 +99,33 @@ public class InGamePauseMenu : MonoBehaviour
         }
     }
 
+    IEnumerator EnableUnPauseAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        canUnPause = true;
+    }
     void Update()
     {
-        if (GameStateManager.canPause)
+        if (GameStateManager.gameStates.canPause)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (Input.GetKeyDown(KeyCode.Escape) && !GameStateManager.gameStates.isInDialogue)
             {
-                if (GameStateManager.isPaused)
+                if (pauseWindow.activeSelf && canUnPause)
                 {
                     //unpause
-                    GameStateManager.isPaused = false;
-                    GameStateManager.canPlayerMove = true;
-                    GameStateManager.canPlayerJump = true;
-                    GameStateManager.canPlayerMoveCamera = true;
-                    GameStateManager.canPlayerInteract = true;
-                    GameStateManager.canLoadNewScene = true;
+                    GameStateManager.setPausedState(false);
                     pauseWindow.SetActive(false);
+                    canUnPause = false;
                 }
                 else
                 {
                     //pause
-                    GameStateManager.isPaused = true;
-                    GameStateManager.canPlayerMove = false;
-                    GameStateManager.canPlayerJump = false;
-                    GameStateManager.canPlayerMoveCamera = false;
-                    GameStateManager.canPlayerInteract = false;
-                    GameStateManager.canLoadNewScene = false;
+                    GameStateManager.setPausedState(true);
                     pauseWindow.SetActive(true);
+                    StartCoroutine(EnableUnPauseAfterDelay(0.5f));
                 }
-                
+                //co++;
+                //Debug.Log(co);
             }
 
 
@@ -129,15 +134,15 @@ public class InGamePauseMenu : MonoBehaviour
 
             if (Input.GetKey(KeyCode.Tab))
             {
-                
-                if (loadingBar.value > 1.5f)
+                keyHoldTimer += Mathf.Clamp(Time.deltaTime, 0, 2);
+
+                if (loadingBar.value > 1.6f)
                 {
                     SliderEasing.easeEnable = true;
                 }
                 else
                 {
                     SliderEasing.easeEnable = false;
-                    keyHoldTimer += Mathf.Clamp(Time.deltaTime, 0, 2);
                     loadingBar.value = keyHoldTimer;
                 }
             }

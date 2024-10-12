@@ -8,18 +8,18 @@ public class LoadSceneFromMenu : MonoBehaviour
     // Load a scene by its name
     public void LoadSceneByName(string sceneName)
     {
-        if (GameStateManager.canLoadNewScene)
+        if (GameStateManager.gameStates.canLoadNewScene)
         {
-            SceneManager.UnloadScene(SceneManager.GetActiveScene().name);
-            SceneManager.LoadScene(sceneName);
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+            SceneManager.LoadSceneAsync(sceneName);
             StartCoroutine(DelayLoad(2.5f));
         }
 
         IEnumerator DelayLoad(float delay)
         {
-            GameStateManager.canLoadNewScene = false;
+            GameStateManager.gameStates.canLoadNewScene = false;
             yield return new WaitForSeconds(delay);
-            GameStateManager.canLoadNewScene = true;
+            GameStateManager.gameStates.canLoadNewScene = true;
         }
     }
 

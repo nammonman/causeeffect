@@ -1,77 +1,118 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+
+public class GameStates
+{
+    //current save file
+    public string saveFileName;
+    public bool isSaving;
+    public int saveId;
+
+    //timeline event
+    public int currentEventId;
+    public int currentDay;
+    public int currentTimeOfDay;
+    public int activeEventType;
+    public bool isInActiveEvent;
+
+    //pause menu
+    public bool canPause;
+    public bool isPaused;
+
+    //player movement
+    public bool canPlayerMove;
+    public bool canPlayerJump;
+    public bool canPlayerMoveCamera;
+
+    //player interaction with object
+    public bool canPlayerInteract;
+
+    //dialogue
+    public bool isInDialogue;
+
+    //loaded scene
+    public bool canLoadNewScene;
+    public string CurrentSceneName;
+    public string CurrentSceneSetting;
+}
 
 public class GameStateManager : MonoBehaviour
 {
-    //current save file
-    public static string saveFileName;
-    public static bool isSaving;
+    public static GameStates gameStates;
+    [SerializeField] TextMeshProUGUI DEBUGTEXT;
+    private void FixedUpdate()
+    {
+        DEBUGTEXT.text = JsonUtility.ToJson(gameStates, true);
+    }
+    private void Awake()
+    {
+        gameStates = new GameStates();
+        
+        //init variables
+        gameStates.saveFileName = "slot1";
 
-    //timeline event
-    public static int currentEventId;
-    public static int currentDay;
-    public static int currentTimeOfDay;
-    public static int activeEventType;
-    public static bool isInActiveEvent;
+        gameStates.canPause = true;
+        gameStates.isPaused = false;
 
-    //pause menu
-    public static bool canPause;
-    public static bool isPaused;
+        gameStates.canPlayerMove = true;
+        gameStates.canPlayerJump = true;
+        gameStates.canPlayerMoveCamera = true;
 
-    //player movement
-    public static bool canPlayerMove;
-    public static bool canPlayerJump;
-    public static bool canPlayerMoveCamera;
+        gameStates.canPlayerInteract = true;
 
-    //player interaction with object
-    public static bool canPlayerInteract;
+        gameStates.isInDialogue = false;
 
-    //dialogue
-    public static bool isInDialogue;
-
-    //loaded scene
-    public static bool canLoadNewScene;
-    public static string CurrentSceneName;
-    public static string CurrentSceneSetting;
+        gameStates.canLoadNewScene = true;   
+    }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //init variables
-        saveFileName = "slot1";
+        //gameStates = new GameStates();
 
-        canPause = true;
-        isPaused = false;
-
-        canPlayerMove = true;
-        canPlayerJump = true;
-        canPlayerMoveCamera = true;
-
-        canPlayerInteract = true;
-
-        isInDialogue = false;
-
-        canLoadNewScene = true;    
+         
     }
 
-    public void setCanPause(bool b) { canPause = b;}
+    public void setCanPause(bool b) { gameStates.canPause = b;}
     
-    public void setIsPaused(bool b) { isPaused = b; }
+    public void setIsPaused(bool b) { gameStates.isPaused = b; }
 
-    public void setCanPlayerMove(bool b) { canPlayerMove = b; }
+    public void setCanPlayerMove(bool b) { gameStates.canPlayerMove = b; }
 
-    public void setCanPlayerJump(bool b) { canPlayerJump = b; }
+    public void setCanPlayerJump(bool b) { gameStates.canPlayerJump = b; }
 
-    public void setCanPlayerMoveCamera(bool b) { canPlayerMoveCamera = b; }
+    public void setCanPlayerMoveCamera(bool b) { gameStates.canPlayerMoveCamera = b; }
 
-    public void setCanPlayerInteract(bool b) { canPlayerInteract = b; }
+    public void setCanPlayerInteract(bool b) { gameStates.canPlayerInteract = b; }
 
-    public void setIsInDialogue(bool b) { isInDialogue = b; }
+    public void setIsInDialogue(bool b) { gameStates.isInDialogue = b; }
 
-    public void setCanLoadNewScene(bool b) { canLoadNewScene = b; }
+    public void setCanLoadNewScene(bool b) { gameStates.canLoadNewScene = b; }
 
-    public static void incrementTimelineId() { currentEventId++; }
+    public static void incrementTimelineId() { gameStates.currentEventId++; }
 
+    public static void setPausedState(bool b)
+    {
+        //Debug.Log(b);
+        gameStates.isPaused = b;
+        gameStates.canPlayerMove = !b;
+        gameStates.canPlayerJump = !b;
+        gameStates.canPlayerMoveCamera = !b;
+        gameStates.canPlayerInteract = !b;
+        gameStates.canLoadNewScene = !b;
+    }
+
+    public static void setJumpState(bool b)
+    {
+        //Debug.Log(b? "can jump" : "can'T jump");
+        gameStates.canPlayerJump = b;
+    }
+
+    public static void setSceneLoadState(bool b)
+    {
+        gameStates.canLoadNewScene = b;
+    }
 }
