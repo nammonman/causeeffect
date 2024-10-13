@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+
 [ExecuteInEditMode]
 public class TimelineEventDisplay : MonoBehaviour
 {
@@ -13,16 +14,17 @@ public class TimelineEventDisplay : MonoBehaviour
     [SerializeField] public Image bg;
     [SerializeField] public GameObject selectBg;
     [SerializeField] public Button button;
+    [SerializeField] public Image overlay1;
+    [SerializeField] public Image overlay2;
 
     public bool isSelected = false;
 
+
     private void OnEnable()
     {
-        deselectTimeline();
-
         bg = GameObject.Find("TLImage").GetComponent<Image>();
         bg.enabled = false;
-        
+        enableDarkOverlay(true);
     }
 
     private void OnDestroy()
@@ -84,7 +86,22 @@ public class TimelineEventDisplay : MonoBehaviour
         }
         else
         {
-            Debug.LogError("File not found at: " + filePath);
+            Debug.Log("File not found at: " + filePath);
+        }
+    }
+
+    public void enableDarkOverlay(bool b)
+    {
+        overlay1.enabled = b;
+        overlay2.enabled = b;
+    }
+
+    public void selectCurrentTimeline()
+    {
+        if (gameObject.GetComponent<TimelineEvent>().id == GameStateManager.gameStates.currentEventId)
+        {
+            selectTimeline();
+            //Debug.Log(gameObject.GetComponent<TimelineEvent>().id);
         }
     }
     public void selectTimeline()
@@ -93,6 +110,7 @@ public class TimelineEventDisplay : MonoBehaviour
         foreach (GameObject t in allTimelines)
         {
             t.GetComponent<TimelineEventDisplay>().deselectTimeline();
+            t.GetComponent<TimelineEventDisplay>().enableDarkOverlay(true);
         }
         isSelected = true;
         selectBg.SetActive(true);
@@ -103,6 +121,20 @@ public class TimelineEventDisplay : MonoBehaviour
         {
             bg.enabled = false;
         }
+
+
+        int currId = thisTL.id;
+        GameObject g = gameObject;
+        InGamePauseMenu.selectedGameObject = g;
+        while (currId > 0) {
+            g.GetComponent<TimelineEventDisplay>().enableDarkOverlay(false);
+            currId = g.GetComponent<TimelineEvent>().lastEventId;
+            g = GameObject.Find(currId.ToString());
+        }
+        g.GetComponent<TimelineEventDisplay>().enableDarkOverlay(false);
+
+        
+        
     }
 
     public void deselectTimeline()

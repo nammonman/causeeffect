@@ -25,6 +25,8 @@ public class InGamePauseMenu : MonoBehaviour
     private int co = 0;
     
     private bool canUnPause = false;
+    public static bool allMode = false;
+    public static GameObject selectedGameObject = null;
 
     private void Start()
     {
@@ -60,8 +62,10 @@ public class InGamePauseMenu : MonoBehaviour
             if (checkRepeatTimer >= 0.2f)
             {
                 GameStateManager.setPausedState(true);
+                allMode = false;
                 quickTL.SetActive(true);
                 allTL.SetActive(false);
+                
                 checkRepeatTimer = 0f;
             }
 
@@ -73,8 +77,10 @@ public class InGamePauseMenu : MonoBehaviour
             if (checkRepeatTimer >= 0.2f)
             {
                 GameStateManager.setPausedState(true);
+                allMode = true;
                 quickTL.SetActive(false);
                 allTL.SetActive(true);
+                
                 checkRepeatTimer = 0f;
             }
         }
@@ -86,16 +92,18 @@ public class InGamePauseMenu : MonoBehaviour
             if (checkRepeatTimer >= 0.5f && backgroundTL.activeSelf)
             {
                 GameStateManager.setPausedState(false);
+                allMode = false;
                 quickTL.SetActive(false);
                 allTL.SetActive(false);
                 backgroundTL.SetActive(false);
+                
                 checkRepeatTimer = 0f;
             }
         }
         else
         {
             backgroundTL.SetActive(true);
-
+            
         }
     }
 
@@ -155,6 +163,25 @@ public class InGamePauseMenu : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Tab) && loadingBar.value >= 0.9f)
             {
                 loadingBar.value = 0;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Return) && (quickTL.activeSelf || allTL.activeSelf))
+            {
+                int id = int.Parse(selectedGameObject.name);
+                TimelineEvent currentTimelineEvent = GameObject.Find("Persistent Scripts").GetComponent<TimelineEvent>();
+                currentTimelineEvent.id = MakeTL.TL[id].id;
+                currentTimelineEvent.type = MakeTL.TL[id].type;
+                currentTimelineEvent.title = MakeTL.TL[id].title;
+                currentTimelineEvent.day = MakeTL.TL[id].day;
+                currentTimelineEvent.timeOfDay = MakeTL.TL[id].timeOfDay;
+                currentTimelineEvent.screenshotPath = MakeTL.TL[id].screenshotPath;
+                currentTimelineEvent.saveDataId = MakeTL.TL[id].saveDataId;
+                currentTimelineEvent.isEventStarted = MakeTL.TL[id].isEventStarted;
+                currentTimelineEvent.isEventFinished = MakeTL.TL[id].isEventFinished;
+                currentTimelineEvent.state = MakeTL.TL[id].state;
+                currentTimelineEvent.nextEventIds = MakeTL.TL[id].nextEventIds;
+                currentTimelineEvent.lastEventId = MakeTL.TL[id].lastEventId;
+                GameStateManager.gameStates.currentEventId = id;
             }
         }
     }
