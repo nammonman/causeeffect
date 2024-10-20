@@ -12,6 +12,8 @@ namespace SaveGame
         public int id;
         public Vector3 playerPos;
         public Quaternion playerRot;
+        public Vector3 cameraPos;
+        public Vector3 cameraRot;
         public List<NpcData> npcs;
         public List<int> puzzles;
         public Dictionary<int, int> unlockedItems; // ID, amount

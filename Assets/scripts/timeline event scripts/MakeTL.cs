@@ -28,8 +28,11 @@ public class MakeTL : MonoBehaviour
         newFromCurrentTL();
 
     }
+
+
     public void makePS(int id)
     {
+
         // init
         PlayerSaveData playerSaveData = new PlayerSaveData();
 
@@ -41,9 +44,12 @@ public class MakeTL : MonoBehaviour
         // get player position and write to SaveFileData class
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.transform.GetPositionAndRotation(out playerSaveData.playerPos, out playerSaveData.playerRot);
+        // get player position and write to SaveFileData class
+        playerSaveData.cameraRot = Camera.main.transform.eulerAngles;
+        playerSaveData.cameraPos = Camera.main.transform.position;
 
         PS.Add(id, playerSaveData);
-
+        Debug.Log("saved: " + JsonUtility.ToJson(PS[id]));
     }
 
     public void newFromCurrentTL()
@@ -88,5 +94,25 @@ public class MakeTL : MonoBehaviour
 
         Debug.Log("NEW: " + JsonUtility.ToJson(TL[eventId]));
         GameStateManager.gameStates.currentEventId = eventId;
+    }
+
+    public static void loadPSFromCurrentTL()
+    {
+        GameStateManager.setPausedState(true);
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Transform cam = Camera.main.transform;
+        //playermovement pm = player.GetComponent<playermovement>();
+        Rigidbody rb = player.GetComponent<Rigidbody>();
+
+        Debug.Log("loaded: " + JsonUtility.ToJson(PS[GameStateManager.gameStates.currentEventId]));
+
+        rb.MovePosition(PS[GameStateManager.gameStates.currentEventId].playerPos);
+        rb.MoveRotation(PS[GameStateManager.gameStates.currentEventId].playerRot);
+        playermovement.xRotation = PS[GameStateManager.gameStates.currentEventId].cameraRot.x;
+        playermovement.yRotation = PS[GameStateManager.gameStates.currentEventId].cameraRot.y;
+        cam.position = PS[GameStateManager.gameStates.currentEventId].cameraPos;
+
+        GameStateManager.setPausedState(false);
     }
 }

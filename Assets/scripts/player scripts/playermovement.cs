@@ -5,8 +5,8 @@ public class playermovement : MonoBehaviour
 {
     private Vector3 playerKeyboardInput;
     private Vector3 playerMouseInput;
-    private float xRotation;
-    private float yRotation;
+    public static float xRotation;
+    public static float yRotation;
     private float playerSpeed = 3;
 
     [SerializeField] private Rigidbody player;
@@ -15,12 +15,14 @@ public class playermovement : MonoBehaviour
 
     [SerializeField] private float playerJump;
     [Space]
+    [SerializeField] private Transform playerHead;
     [SerializeField] private Transform playerCamera;
     [SerializeField] private float playerCameraSensitivity;
 
 
     private void Update()
     {
+        playerCamera.transform.position = playerHead.position;
         if (GameStateManager.gameStates.canPlayerMove)
         {
             playerKeyboardInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
@@ -63,12 +65,16 @@ public class playermovement : MonoBehaviour
     }
     private void MovePlayerCamera()
     {
+        // Accumulate and clamp the X rotation (vertical rotation)
         xRotation -= playerMouseInput.y * playerCameraSensitivity;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        transform.Rotate(0f, playerMouseInput.x * playerCameraSensitivity, 0f);
-        playerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        
+        // Accumulate the Y rotation (horizontal rotation)
+        yRotation += playerMouseInput.x * playerCameraSensitivity;
+
+        // Apply both X and Y rotations to the camera's localRotation
+        transform.rotation = Quaternion.Euler(0f, yRotation, 0f);
+        playerCamera.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
     }
 
 

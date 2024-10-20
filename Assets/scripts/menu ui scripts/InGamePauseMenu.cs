@@ -15,17 +15,18 @@ public class InGamePauseMenu : MonoBehaviour
     [SerializeField] GameObject backgroundTL;
     [SerializeField] GameObject quickTL;
     [SerializeField] GameObject allTL;
+    [SerializeField] GameObject notebook;
     [SerializeField] Slider loadingBar;
 
     private float holdDuration = 1f; // Time in seconds to hold the key
     private float holdDurationLong = 2f; // Time in seconds to hold the key
+
     private float keyHoldTimer = 0f; // Timer to track how long the key is held
     private float checkRepeatTimer = 0f; // fix toggle multiple times
 
     private int co = 0;
     
     private bool canUnPause = false;
-    public static bool allMode = false;
     public static GameObject selectedGameObject = null;
 
     private void Start()
@@ -53,34 +54,94 @@ public class InGamePauseMenu : MonoBehaviour
             loadingBar.value = val;
         }
     }
+
+    public void activateQuickTL()
+    {
+        if (!quickTL.activeSelf)
+        {
+            GameStateManager.gameStates.isInDialogue = true;
+            GameStateManager.setPausedState(true);
+            quickTL.SetActive(true);
+            allTL.SetActive(false);
+            notebook.SetActive(false);
+            GameObject.Find(GameStateManager.gameStates.currentEventId.ToString()).GetComponent<TimelineEventDisplay>().selectTimeline();
+
+        }
+
+        
+
+    }
+
+    public void activateAllTL()
+    {
+        if (!allTL.activeSelf)
+        {
+            GameStateManager.gameStates.isInDialogue = true;
+            GameStateManager.setPausedState(true);
+            quickTL.SetActive(false);
+            allTL.SetActive(true);
+            notebook.SetActive(false);
+        }
+        
+    }
+
+    public void activateNotebook()
+    {
+        if (!notebook.activeSelf)
+        {
+            GameStateManager.gameStates.isInDialogue = true;
+            GameStateManager.setPausedState(true);
+            quickTL.SetActive(false);
+            allTL.SetActive(false);
+            notebook.SetActive(true);
+        }
+
+    }
+
+    public void deactivateTL()
+    {
+        if (backgroundTL.activeSelf)
+        {
+            GameStateManager.gameStates.isInDialogue = false;
+            GameStateManager.setPausedState(false);
+            quickTL.SetActive(false);
+            allTL.SetActive(false);
+            notebook.SetActive(false);
+            backgroundTL.SetActive(false);
+        }
+        
+    }
+
     void updateTL()
     {
-        if (loadingBar.value >= 0.5 && loadingBar.value < holdDurationLong - 0.3f)
+        if (loadingBar.value >= 0.5 && loadingBar.value < 2 - 0.3f)
         {
             checkRepeatTimer += Time.deltaTime;
 
-            if (checkRepeatTimer >= 0.2f)
+            if (checkRepeatTimer >= 0.3f)
             {
-                GameStateManager.setPausedState(true);
-                allMode = false;
-                quickTL.SetActive(true);
-                allTL.SetActive(false);
-                
+                activateQuickTL();
                 checkRepeatTimer = 0f;
             }
 
         }
-        else if (loadingBar.value >= holdDurationLong - 0.3f )
+        else if (loadingBar.value >= 2 - 0.3f && loadingBar.value < 3 - 0.3f)
         {
             checkRepeatTimer += Time.deltaTime;
 
-            if (checkRepeatTimer >= 0.2f)
+            if (checkRepeatTimer >= 0.3f)
             {
-                GameStateManager.setPausedState(true);
-                allMode = true;
-                quickTL.SetActive(false);
-                allTL.SetActive(true);
-                
+                activateAllTL();
+                checkRepeatTimer = 0f;
+            }
+        }
+        else if (loadingBar.value >= 3 - 0.3f)
+        {
+            checkRepeatTimer += Time.deltaTime;
+
+            if (checkRepeatTimer >= 0.3f)
+            {
+                activateNotebook();
                 checkRepeatTimer = 0f;
             }
         }
@@ -89,21 +150,16 @@ public class InGamePauseMenu : MonoBehaviour
         {
             checkRepeatTimer += Time.deltaTime;
 
-            if (checkRepeatTimer >= 0.5f && backgroundTL.activeSelf)
+            if (checkRepeatTimer >= 0.4f && backgroundTL.activeSelf)
             {
-                GameStateManager.setPausedState(false);
-                allMode = false;
-                quickTL.SetActive(false);
-                allTL.SetActive(false);
-                backgroundTL.SetActive(false);
-                
+                deactivateTL();
                 checkRepeatTimer = 0f;
             }
         }
         else
         {
+            GameStateManager.gameStates.isInDialogue = true;
             backgroundTL.SetActive(true);
-            
         }
     }
 
@@ -116,21 +172,28 @@ public class InGamePauseMenu : MonoBehaviour
     {
         if (GameStateManager.gameStates.canPause)
         {
-            if (Input.GetKeyDown(KeyCode.Escape) && !GameStateManager.gameStates.isInDialogue)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (pauseWindow.activeSelf && canUnPause)
+                if (!GameStateManager.gameStates.isInDialogue)
                 {
-                    //unpause
-                    GameStateManager.setPausedState(false);
-                    pauseWindow.SetActive(false);
-                    canUnPause = false;
+                    if (pauseWindow.activeSelf && canUnPause)
+                    {
+                        //unpause
+                        GameStateManager.setPausedState(false);
+                        pauseWindow.SetActive(false);
+                        canUnPause = false;
+                    }
+                    else
+                    {
+                        //pause
+                        GameStateManager.setPausedState(true);
+                        pauseWindow.SetActive(true);
+                        StartCoroutine(EnableUnPauseAfterDelay(0.5f));
+                    }
                 }
-                else
+                else 
                 {
-                    //pause
-                    GameStateManager.setPausedState(true);
-                    pauseWindow.SetActive(true);
-                    StartCoroutine(EnableUnPauseAfterDelay(0.5f));
+                    deactivateTL();
                 }
                 //co++;
                 //Debug.Log(co);
@@ -144,7 +207,7 @@ public class InGamePauseMenu : MonoBehaviour
             {
                 keyHoldTimer += Mathf.Clamp(Time.deltaTime, 0, 2);
 
-                if (loadingBar.value > 1.6f)
+                if (loadingBar.value > 0.6f)
                 {
                     SliderEasing.easeEnable = true;
                 }
@@ -165,7 +228,7 @@ public class InGamePauseMenu : MonoBehaviour
                 loadingBar.value = 0;
             }
 
-            if (Input.GetKeyDown(KeyCode.Return) && (quickTL.activeSelf || allTL.activeSelf))
+            if (Input.GetKeyDown(KeyCode.Return) && (allTL.activeSelf || quickTL.activeSelf))
             {
                 int id = int.Parse(selectedGameObject.name);
                 TimelineEvent currentTimelineEvent = GameObject.Find("Persistent Scripts").GetComponent<TimelineEvent>();
@@ -182,6 +245,9 @@ public class InGamePauseMenu : MonoBehaviour
                 currentTimelineEvent.nextEventIds = MakeTL.TL[id].nextEventIds;
                 currentTimelineEvent.lastEventId = MakeTL.TL[id].lastEventId;
                 GameStateManager.gameStates.currentEventId = id;
+                MakeTL.loadPSFromCurrentTL();
+                loadingBar.value = 0;
+                deactivateTL();
             }
         }
     }

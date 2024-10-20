@@ -94,7 +94,6 @@ public class QuickTimelinePopulator : MonoBehaviour
             
         }
         setUpNewInstance(0);
-        GameObject.Find(GameStateManager.gameStates.currentEventId.ToString()).GetComponent<TimelineEventDisplay>().selectTimeline();
     }
 
     public void clearTLPrefabs()

@@ -44,7 +44,7 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI DEBUGTEXT;
     private void FixedUpdate()
     {
-        DEBUGTEXT.text = JsonUtility.ToJson(gameStates, true);
+        //DEBUGTEXT.text = JsonUtility.ToJson(Camera.main.transform.rotation, true);
     }
     private void Awake()
     {
