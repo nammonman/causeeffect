@@ -8,6 +8,9 @@ TagManager:
   - timeline event block
   - item storage
   - menu window
+  - Iobj
+  - player prefab
+  - persistent scripts
   layers:
   - Default
   - TransparentFX

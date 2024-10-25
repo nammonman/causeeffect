@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
     private List<GameObject> menuWindows;
     private List<string> menuWindowsNames;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,5 +48,10 @@ public class MenuManager : MonoBehaviour
         {
             Debug.Log("can't find menu: " + windowName);
         }
+    }
+
+    public void LoadSceneFromMenu()
+    {
+        GameObject.FindGameObjectWithTag("player prefab").GetComponent<LoadScene>().LoadSceneAndTeleport("TestScene");
     }
 }

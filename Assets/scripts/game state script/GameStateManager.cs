@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -20,6 +21,7 @@ public class GameStates
     //pause menu
     public bool canPause;
     public bool isPaused;
+    public bool isSpecialMenu;
 
     //player movement
     public bool canPlayerMove;
@@ -52,18 +54,6 @@ public class GameStateManager : MonoBehaviour
         
         //init variables
         gameStates.saveFileName = "slot1";
-
-        gameStates.canPause = true;
-        gameStates.isPaused = false;
-
-        gameStates.canPlayerMove = true;
-        gameStates.canPlayerJump = true;
-        gameStates.canPlayerMoveCamera = true;
-
-        gameStates.canPlayerInteract = true;
-
-        gameStates.isInDialogue = false;
-
         gameStates.canLoadNewScene = true;   
     }
 
@@ -72,27 +62,10 @@ public class GameStateManager : MonoBehaviour
     void Start()
     {
         //gameStates = new GameStates();
-
+        Debug.Log("BEFORE JP TODO: \n1. load scene and implement with TL\n2. link main menu with actual game\n3. save file implementation");
          
     }
 
-    public void setCanPause(bool b) { gameStates.canPause = b;}
-    
-    public void setIsPaused(bool b) { gameStates.isPaused = b; }
-
-    public void setCanPlayerMove(bool b) { gameStates.canPlayerMove = b; }
-
-    public void setCanPlayerJump(bool b) { gameStates.canPlayerJump = b; }
-
-    public void setCanPlayerMoveCamera(bool b) { gameStates.canPlayerMoveCamera = b; }
-
-    public void setCanPlayerInteract(bool b) { gameStates.canPlayerInteract = b; }
-
-    public void setIsInDialogue(bool b) { gameStates.isInDialogue = b; }
-
-    public void setCanLoadNewScene(bool b) { gameStates.canLoadNewScene = b; }
-
-    public static void incrementTimelineId() { gameStates.currentEventId++; }
 
     public static void setPausedState(bool b)
     {
@@ -105,14 +78,4 @@ public class GameStateManager : MonoBehaviour
         gameStates.canLoadNewScene = !b;
     }
 
-    public static void setJumpState(bool b)
-    {
-        //Debug.Log(b? "can jump" : "can'T jump");
-        gameStates.canPlayerJump = b;
-    }
-
-    public static void setSceneLoadState(bool b)
-    {
-        gameStates.canLoadNewScene = b;
-    }
 }

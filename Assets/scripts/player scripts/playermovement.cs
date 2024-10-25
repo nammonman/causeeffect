@@ -22,7 +22,7 @@ public class playermovement : MonoBehaviour
 
     private void Update()
     {
-        playerCamera.transform.position = playerHead.position;
+        
         if (GameStateManager.gameStates.canPlayerMove)
         {
             playerKeyboardInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
@@ -48,13 +48,16 @@ public class playermovement : MonoBehaviour
     private void MovePlayer()
     {
         Vector3 MoveVector = transform.TransformDirection(playerKeyboardInput) * playerSpeed;
+        Quaternion targetRotation = Quaternion.Euler(0, playerCamera.transform.eulerAngles.y, 0);
+        MoveVector = targetRotation * MoveVector;
         player.velocity = new Vector3(MoveVector.x, player.velocity.y, MoveVector.z);
+
 
         if (Input.GetKeyDown(KeyCode.Space) && GameStateManager.gameStates.canPlayerJump )
         {
             player.AddForce(Vector3.up * playerJump, ForceMode.Impulse);
             GameStateManager.gameStates.canPlayerJump = false;
-            StartCoroutine(EnableJumpAfterDelay(1.5f)); // Cooldown period
+            StartCoroutine(EnableJumpAfterDelay(1.2f)); // Cooldown period
         }
     }
 
@@ -72,10 +75,12 @@ public class playermovement : MonoBehaviour
         // Accumulate the Y rotation (horizontal rotation)
         yRotation += playerMouseInput.x * playerCameraSensitivity;
 
-        // Apply both X and Y rotations to the camera's localRotation
-        transform.rotation = Quaternion.Euler(0f, yRotation, 0f);
+        // Apply both X and Y rotations 
         playerCamera.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
     }
 
-
+    public void FreezePlayer(bool b)
+    {
+        player.isKinematic = b;
+    }
 }
