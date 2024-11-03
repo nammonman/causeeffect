@@ -1,3 +1,4 @@
+using Subtegral.DialogueSystem.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,34 +12,42 @@ public class ScreenFader : MonoBehaviour
     private void Start()
     {
         SetCoverAlpha(0f);
-        testButton.onClick.AddListener(fadeTest);
-    }
-    public void fadeTest()
-    {
-        StartCoroutine(FadeBlackInOut());
+        
     }
 
-    public void menuFadeOut()
+    private void OnEnable()
+    {
+        GameStateManager.OnFadeIn += FadeBlackInCaller;
+        GameStateManager.OnFadeOut += FadeBlackOutCaller;
+    }
+
+    private void OnDisable()
+    {
+        GameStateManager.OnFadeIn -= FadeBlackInCaller;
+        GameStateManager.OnFadeOut -= FadeBlackOutCaller;
+    }
+
+
+    public void FadeBlackInCaller()
+    {
+        StartCoroutine(FadeBlackIn());
+    }
+
+    public void FadeBlackOutCaller()
     {
         StartCoroutine(FadeBlackOut());
     }
 
-    public IEnumerator FadeBlackInOut()
+    public IEnumerator FadeBlackIn()
     {
-        yield return FadeTo(new Color(0, 0, 0), 1f, 1f, 1f);
-        yield return FadeTo(new Color(0, 0, 0), 0f, 1f, 1f);
+        yield return FadeTo(new Color(0, 0, 0), 1f, 1f, 0f);
     }
 
     public IEnumerator FadeBlackOut()
     {
-        yield return FadeTo(new Color(0, 0, 0), 0f, 1f, 1f);
+        yield return FadeTo(new Color(0, 0, 0), 0f, 1f, 0f);
     }
 
-    public IEnumerator FadeWhiteInOut()
-    {
-        yield return FadeTo(new Color(0, 0, 0), 1f, 1f, 1f);
-        yield return FadeTo(new Color(0, 0, 0), 0f, 1f, 1f);
-    }
 
     public IEnumerator FadeTo(Color col, float targetAlpha, float fadeDuration, float holdDuration)
     {

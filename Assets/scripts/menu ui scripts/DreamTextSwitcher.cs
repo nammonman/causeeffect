@@ -6,12 +6,14 @@ using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static Subtegral.DialogueSystem.Runtime.DialogueParser;
 
 public class DreamTextSwitcher : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI dreamText;
     [SerializeField] Image cover;
     [SerializeField] Button nextButton;
+    [SerializeField] GameObject canvasGroup;
     private Dream currentDream;
     private int currentIndex = 0;
     private List<int> availableDreams = new List<int>();
@@ -27,30 +29,33 @@ public class DreamTextSwitcher : MonoBehaviour
         {
             availableDreams.Add(0);
         }
+        canvasGroup.SetActive(false);
     }
+
     private void OnEnable()
+    {
+        GameStateManager.OnDream += SwitchTextCaller;
+    }
+
+    private void OnDisable()
+    {
+        GameStateManager.OnDream -= SwitchTextCaller;
+    }
+
+    public void SwitchTextCaller(int i)
     {
         currentDream = null;
         currentIndex = 0;
         SetCoverAlpha(1f);
-        StartCoroutine(SwitchText());
-        nextButton.onClick.AddListener(SwitchTextHelper);
-    }
-
-
-    public void SwitchTextHelper()
-    {
-        if (nextButton.enabled)
-        {
-            StartCoroutine(SwitchText());
-        }
+        StartCoroutine(SwitchText(i));
+        nextButton.onClick.AddListener(() => StartCoroutine(SwitchText()));
         
     }
-    IEnumerator SwitchText()
+    IEnumerator SwitchText(int? i = null)
     {
         nextButton.enabled = false;
-
-        if (currentDream == null)
+        canvasGroup.SetActive(true);
+        if (currentDream == null && i == null)
         {
             currentIndex = 0;
 
@@ -71,11 +76,16 @@ public class DreamTextSwitcher : MonoBehaviour
             
             Debug.Log("start dream " + currentDream.dreamName);
         }
+        else if (i != null)
+        {
+            currentDream = DreamTexts.dreams[i.Value];
+        }
+
         if (currentIndex >= currentDream.dreamTexts.Count)
         {
             Debug.Log("end dream " + currentDream.dreamName);
             yield return new WaitForSeconds(2f);
-            gameObject.SetActive(false);
+            canvasGroup.SetActive(false);
             yield break;
         }
 

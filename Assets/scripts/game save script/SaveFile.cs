@@ -2,35 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SaveGame;
-using Unity.VisualScripting;
 using System.IO;
-using UnityEditor.Experimental.GraphView;
+using Newtonsoft.Json;
 using UnityEngine.SceneManagement;
+using Subtegral.SceneGraphSystem.Editor;
 
 namespace SaveGame
 {
     public class SaveFileData
     {
         public Dictionary<int, PlayerSaveData> playerSaveDatas;
-        public Dictionary<int, TimelineEvent> timelineEventDatas;
-        public int currentTimelineEventDataId;
+        public Dictionary<int, SerializableTimelineEvent> timelineEventDatas;
+        public int currentTimelineEventId;
     }
 
     public class SaveFile : MonoBehaviour
     {
-        int saveId;
         string saveFilePath;
         SaveFileData save;
 
+        public static bool saveFileExists;
+
         Dictionary<int, PlayerSaveData> playerSaveDatas;
-        Dictionary<int, TimelineEvent> timelineEventDatas;
+        Dictionary<int, SerializableTimelineEvent> timelineEventDatas;
 
         void Start()
         {
             // Initialize save file
             saveFilePath = Application.persistentDataPath + $"/{GameStateManager.gameStates.saveFileName}.json";
             playerSaveDatas = new Dictionary<int, PlayerSaveData>();
-            timelineEventDatas = new Dictionary<int, TimelineEvent>();
+            timelineEventDatas = new Dictionary<int, SerializableTimelineEvent>();
+
+        }
+
+        private void OnEnable()
+        {
+            GameStateManager.OnSave += writeSaveFile;
+        }
+
+        private void OnDisable()
+        {
+            GameStateManager.OnSave -= writeSaveFile;
         }
 
         public static IEnumerator delaySave() { yield return new WaitForSeconds(5); }
@@ -42,129 +54,157 @@ namespace SaveGame
         }
 
 
-        bool writeSaveFile()
+        public void writeSaveFile()
         {
-            StartCoroutine(delaySave());
-            saveId = GameStateManager.gameStates.currentEventId;
+            GameStateManager.gameStates.isSaving = true;
+            save = new SaveFileData();
+            
 
-            if (File.Exists(saveFilePath))
-            {
-                save = JsonUtility.FromJson<SaveFileData>(File.ReadAllText(saveFilePath));
+            save.currentTimelineEventId = GameStateManager.gameStates.currentEventId;
+            save.playerSaveDatas = MakeTL.PS;
+
+            save.timelineEventDatas = new Dictionary<int, SerializableTimelineEvent>();
+            foreach (int k in MakeTL.TL.Keys) {
+                SerializableTimelineEvent sv = new SerializableTimelineEvent();
+                sv.id = MakeTL.TL[k].id;
+                sv.type = MakeTL.TL[k].type;
+                sv.title = MakeTL.TL[k].title;
+                sv.day = MakeTL.TL[k].day;
+                sv.timeOfDay = MakeTL.TL[k].timeOfDay;
+                sv.screenshotPath = MakeTL.TL[k].screenshotPath;
+                sv.saveDataId = MakeTL.TL[k].saveDataId;
+                sv.isEventStarted = MakeTL.TL[k].isEventStarted;
+                sv.isEventFinished = MakeTL.TL[k].isEventFinished;
+                sv.state = MakeTL.TL[k].state;
+                sv.nextEventIds = MakeTL.TL[k].nextEventIds;
+                sv.lastEventId = MakeTL.TL[k].lastEventId;
+                save.timelineEventDatas.Add(k, sv);
             }
 
-            PlayerSaveData p = getCurrentPlayerSaveData();
-            TimelineEvent t = getCurrentTimelineEventData();
-
-            if (save.timelineEventDatas[saveId] != null) // check if duplicate
-            {
-                save.playerSaveDatas.Add(saveId, p);
-                save.timelineEventDatas.Add(saveId, t);
-            }
-            else
-            {
-                save.playerSaveDatas[saveId] = p;
-            }
-
-            string JSONData = JsonUtility.ToJson(save);
+            string JSONData = JsonConvert.SerializeObject(save, Formatting.Indented);
             try
             {
                 File.WriteAllText(saveFilePath, JSONData);
                 Debug.Log($"file saved at {saveFilePath}");
-                return true;
             }
             catch (System.Exception e)
             {
                 Debug.Log(e.ToString());
             }
-
-            return false;
+            GameStateManager.gameStates.isSaving = false;
         }
 
-        PlayerSaveData getCurrentPlayerSaveData()
+        public void loadSaveFile()
         {
-            // init
-            PlayerSaveData playerSaveData = new PlayerSaveData();
-            
-
-            // set id
-            playerSaveData.id = saveId;
-
-
-            // get player position and write to SaveFileData class
-            GameObject player = GameObject.FindGameObjectWithTag("player");
-            player.transform.GetPositionAndRotation(out playerSaveData.playerPos, out playerSaveData.playerRot);
-
-
-            // go through all GameObjects with npc tag and save data in a list
-            // get all data for Npc class and write to SaveFileData class
-            List<NpcData> npcDatas = new List<NpcData>();
-            GameObject[] npcs = GameObject.FindGameObjectsWithTag("npc");
-            for (int i = 0; i < npcs.Length; i++)
+            if (File.Exists(saveFilePath))
             {
-                npcs[i].transform.GetPositionAndRotation(out npcDatas[i].pos, out npcDatas[i].rot);
-                npcDatas[i].name = npcs[i].name;
-                NpcDialogue npcDialogue = npcs[i].GetComponent<NpcDialogue>();
-                npcDatas[i].isFirstInteract = npcDialogue.isFirstInteract;
-                npcDatas[i].canInteract = npcDialogue.canInteract;
-                npcDatas[i].firstStartNode = npcDialogue.firstStartNode;
-                npcDatas[i].secondStartNode = npcDialogue.secondStartNode;
-                npcDatas[i].firstDialogue = npcDialogue.firstDialogue;
-                npcDatas[i].secondDialogue = npcDialogue.secondDialogue;
+                string JSONData = File.ReadAllText(saveFilePath);
+                save = JsonConvert.DeserializeObject<SaveFileData>(JSONData);
+                GameStateManager.gameStates.currentEventId = save.currentTimelineEventId;
+
+                foreach (int k in save.timelineEventDatas.Keys)
+                {
+                    TimelineEvent v = new TimelineEvent();
+                    v.id = save.timelineEventDatas[k].id;
+                    v.type = save.timelineEventDatas[k].type;
+                    v.title = save.timelineEventDatas[k].title;
+                    v.day = save.timelineEventDatas[k].day;
+                    v.timeOfDay = save.timelineEventDatas[k].timeOfDay;
+                    v.screenshotPath = save.timelineEventDatas[k].screenshotPath;
+                    v.saveDataId = save.timelineEventDatas[k].saveDataId;
+                    v.isEventStarted = save.timelineEventDatas[k].isEventStarted;
+                    v.isEventFinished = save.timelineEventDatas[k].isEventFinished;
+                    v.state = save.timelineEventDatas[k].state;
+                    v.nextEventIds = save.timelineEventDatas[k].nextEventIds;
+                    v.lastEventId = save.timelineEventDatas[k].lastEventId;
+                    MakeTL.TL.Add(k, v);
+                }
+                
+                MakeTL.PS = save.playerSaveDatas;
+                MakeTL.LoadTL(save.currentTimelineEventId);
+                MakeTL.LoadPS(save.currentTimelineEventId);
             }
-            playerSaveData.npcs = npcDatas;
-
-
-            // go through all GameObjects with puzzle tag and save data in a list
-            // get all data for Puzzle class and write to SaveFileData class
-            List<PuzzleData> puzzleDatas = new List<PuzzleData>();
-            GameObject[] puzzles = GameObject.FindGameObjectsWithTag("puzzle");
-            for (int i = 0; i < puzzles.Length; i++)
+            else
             {
-                break;
+                
+
             }
-            /*playerSaveData.puzzles = */
-
-            // get item data and write to SaveFileData class
-            Dictionary<int, int> unlockedItems = new Dictionary<int, int>();
-            ItemStorage itemStorage = GameObject.FindGameObjectWithTag("item storage").GetComponent<ItemStorage>();
-            for (int i = 0;i < 0; i++)
-            {
-                break;
-            }
-            /*playerSaveData.items = */
-
-            // get game states and write to SaveFileData class
-            playerSaveData.gameStates = GameStateManager.gameStates;
-
-
-            // get scene data and write to SaveFileData class
-            playerSaveData.sceneName = GameStateManager.gameStates.CurrentSceneName;
-            playerSaveData.sceneSetting = GameStateManager.gameStates.CurrentSceneSetting;
-
-
-            return playerSaveData;
         }
 
-        TimelineEvent getCurrentTimelineEventData()
-        {
-            // init
-            TimelineEvent timelineEventData = new TimelineEvent();
 
-            // get current timeline event
+        public void NewGameProcedure()
+        {
+            MakeTL.TL = new Dictionary<int, TimelineEvent>();
+            MakeTL.PS = new Dictionary<int, PlayerSaveData>();
             TimelineEvent currentTimelineEvent = GameObject.Find("Persistent Scripts").GetComponent<TimelineEvent>();
-            timelineEventData = currentTimelineEvent;
-
-            // set id
-            timelineEventData.id = saveId;
-
-            //screenshot
-            string filename = timelineEventData.id.ToString() + "_" + timelineEventData.title + "_" + timelineEventData.day.ToString();
-            ScreenCapture.CaptureScreenshot(filename);
-            timelineEventData.screenshotPath = Application.persistentDataPath + $"/{filename}.png";
-
-            return timelineEventData;
+            currentTimelineEvent.id = 0;
+            currentTimelineEvent.type = 0;
+            currentTimelineEvent.title = "";
+            currentTimelineEvent.day = 0;
+            currentTimelineEvent.timeOfDay = 0;
+            currentTimelineEvent.screenshotPath = "";
+            currentTimelineEvent.saveDataId = 0;
+            currentTimelineEvent.isEventStarted = false;
+            currentTimelineEvent.isEventFinished = false;
+            currentTimelineEvent.state = "";
+            currentTimelineEvent.nextEventIds = new List<int>();
+            currentTimelineEvent.lastEventId = 0;
+            GameStateManager.gameStates.currentEventId = 0;
+            StartCoroutine(DeleteAllFilesInPersistentDataPath());
         }
 
-    }
+        public IEnumerator DeleteAllFilesInPersistentDataPath()
+        {
+            string startingSceneName = "TestScene";
+            string path = Application.persistentDataPath;
+
+            // Check if the directory exists
+            if (Directory.Exists(path))
+            {
+                // Get all files in the directory
+                string[] files = Directory.GetFiles(path);
+
+                foreach (string file in files)
+                {
+                    File.Delete(file);
+                    Debug.Log("Deleted file: " + file);
+                }
+
+                Debug.Log("All files in persistent data path deleted.");
+            }
+            else
+            {
+                Debug.LogWarning("Persistent data path does not exist.");
+            }
+
+            // Load the new scene asynchronously
+            GameObject player = GameObject.FindGameObjectWithTag("player prefab");
+            Rigidbody rb = player.GetComponent<Rigidbody>();
+            rb.isKinematic = true;
+
+            GameStateManager.setPausedState(true);
+            GameStateManager.gameStates.canPause = false;
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(startingSceneName);
+
+            // Wait until the scene has fully loaded
+            while (!asyncLoad.isDone)
+            {
+                GameStateManager.setPausedState(true);
+                GameStateManager.gameStates.canPause = false;
+
+                yield return asyncLoad;
+            }
+
+            GameStateManager.setPausedState(false);
+            GameStateManager.gameStates.canPause = true;
+            GameStateManager.setSceneName(startingSceneName);
+            rb.isKinematic = false;
+            // Now the scene is fully loaded, we can call the next line
+            GameStateManager.setNewTL();
+        }
+
+    }  
+
+    
 
 }

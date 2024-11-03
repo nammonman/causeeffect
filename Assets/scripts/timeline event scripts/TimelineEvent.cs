@@ -44,5 +44,62 @@ public class TimelineEvent : MonoBehaviour
             lastEventId = this.lastEventId
         };
     }
+
+    public SerializableTimelineEvent JSONSerialize()
+    {
+        return new SerializableTimelineEvent
+        {
+            id = this.id,
+            type = this.type,
+            title = this.title,
+            day = this.day,
+            timeOfDay = this.timeOfDay,
+            description = this.description,
+            screenshotPath = this.screenshotPath,
+            saveDataId = this.saveDataId,
+            isEventStarted = this.isEventStarted,
+            isEventFinished = this.isEventFinished,
+            state = this.state,
+            nextEventIds = new List<int>(this.nextEventIds), // Deep copy the list
+            lastEventId = this.lastEventId
+        };
+    }
+}
+
+public class SerializableTimelineEvent
+{
+    public int id;
+    public int type;
+    public string title;
+    public int day;
+    public int timeOfDay;
+    public string description;
+    public string screenshotPath;
+    public int saveDataId;
+    public bool isEventStarted;
+    public bool isEventFinished;
+    public string state;
+    public List<int> nextEventIds;
+    public int lastEventId;
+
+    public TimelineEvent DeJSONSerialize()
+    {
+        return new TimelineEvent
+        {
+            id = this.id,
+            type = this.type,
+            title = this.title,
+            day = this.day,
+            timeOfDay = this.timeOfDay,
+            description = this.description,
+            screenshotPath = this.screenshotPath,
+            saveDataId = this.saveDataId,
+            isEventStarted = this.isEventStarted,
+            isEventFinished = this.isEventFinished,
+            state = this.state,
+            nextEventIds = new List<int>(this.nextEventIds), // Deep copy the list
+            lastEventId = this.lastEventId
+        };
+    }
 }
 

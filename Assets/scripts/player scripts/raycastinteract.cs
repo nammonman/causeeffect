@@ -27,66 +27,71 @@ public class raycastinteract : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        //Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward*rayDist, Color.blue);
-        RaycastHit hitObject;
-        if (GameStateManager.gameStates.canPlayerInteract && Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hitObject, rayDist)) //raycast
+        if (GameStateManager.gameStates.canPlayerInteract)
         {
-            // check if tag is interactable
-            if (hitObject.collider.gameObject.tag == "Iobj" || hitObject.collider.gameObject.tag == "npc")
+            //Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward*rayDist, Color.blue);
+            RaycastHit hitObject;
+            if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hitObject, rayDist)) //raycast
             {
-                objInteractable = true;
+                // check if tag is interactable
+                if (hitObject.collider.gameObject.tag == "Iobj" || hitObject.collider.gameObject.tag == "npc")
+                {
+                    objInteractable = true;
+                }
+                else
+                {
+                    objInteractable = false;
+                }
+
+                // set prompt text
+                if (objInteractable && !promptText.gameObject.activeSelf)
+                {
+                    promptText.gameObject.SetActive(true);
+                }
+                else if (!objInteractable && promptText.gameObject.activeSelf)
+                {
+                    promptText.gameObject.SetActive(false);
+                }
+
+                // get input and run funcs
+                if (objInteractable && Input.GetKeyDown(KeyCode.E))
+                {
+                    Debug.Log(hitObject.transform.name);
+
+                    if (hitObject.collider.gameObject.tag == "npc")
+                    {
+                        JoinConversation();
+                        NpcDialogue npcDialogue = hitObject.collider.gameObject.GetComponent<NpcDialogue>();
+                        if (npcDialogue != null)
+                        {
+                            if (npcDialogue.isFirstInteract)
+                            {
+                                OnDialogueEnter?.Invoke(npcDialogue.firstStartNode, true, npcDialogue.firstDialogue);
+                            }
+                            else
+                            {
+                                OnDialogueEnter?.Invoke(npcDialogue.secondStartNode, true, npcDialogue.secondDialogue);
+                            }
+                        }
+                    }
+                    else if (hitObject.collider.gameObject.tag == "Iobj")
+                    {
+                        //StartCoroutine(FadeBlackForSeconds(3));
+                        StartCoroutine(GlitchForSeconds(3));
+                    }
+
+
+                }
+
+
             }
-            else
+            else if (promptText.gameObject.activeSelf)
             {
                 objInteractable = false;
-            }
-
-            // set prompt text
-            if (objInteractable && !promptText.gameObject.activeSelf)
-            {
-                promptText.gameObject.SetActive(true);
-            }
-            else if (!objInteractable && promptText.gameObject.activeSelf)
-            {
                 promptText.gameObject.SetActive(false);
             }
-
-            // get input and run funcs
-            if (objInteractable && Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log(hitObject.transform.name);
-
-                if (hitObject.collider.gameObject.tag == "npc")
-                {
-                    JoinConversation();
-                    NpcDialogue npcDialogue = hitObject.collider.gameObject.GetComponent<NpcDialogue>();
-                    if (npcDialogue != null)
-                    {
-                        if (npcDialogue.isFirstInteract)
-                        {
-                            OnDialogueEnter?.Invoke(npcDialogue.firstStartNode, true, npcDialogue.firstDialogue);
-                        }
-                        else
-                        {
-                            OnDialogueEnter?.Invoke(npcDialogue.secondStartNode, true, npcDialogue.secondDialogue);
-                        }
-                    }   
-                }
-                else if (hitObject.collider.gameObject.tag == "Iobj")
-                {
-                    
-                }
-
-
-            }
-
-            
         }
-        else if (promptText.gameObject.activeSelf)
-        {
-            objInteractable = false;
-            promptText.gameObject.SetActive(false);
-        }
+        
 
     }
 
@@ -96,18 +101,38 @@ public class raycastinteract : MonoBehaviour
         GameStateManager.setPausedState(false);
         //Debug.Log("Enabled Pausing");
     }
-    public void JoinConversation()
+
+    IEnumerator FadeBlackForSeconds(float delay)
     {
         GameStateManager.setPausedState(true);
+        GameStateManager.setScreenFadeIn();
+        yield return new WaitForSeconds(delay);
+        GameStateManager.setScreenFadeOut();
+        GameStateManager.setPausedState(false);
+    }
+
+    IEnumerator GlitchForSeconds(float delay)
+    {
+        GameStateManager.setStartGlitch();
+        yield return new WaitForSeconds(delay);
+        GameStateManager.setStopGlitch();
+    }
+    public void JoinConversation()
+    {
+        
+        GameStateManager.setPausedState(true);
+        GameStateManager.gameStates.canPause = false;
         GameStateManager.gameStates.isInDialogue = true;
         wholeDialogueContainer.SetActive(true);
     }
 
     public void LeaveConversation()
     {
-        GameStateManager.gameStates.isInDialogue = false;
+        
         StartCoroutine(PauseDelay(0.1f));
         wholeDialogueContainer.SetActive(false);
+        GameStateManager.gameStates.canPause = true;
+        GameStateManager.gameStates.isInDialogue = false;
     }
 
     private void OnEnable()

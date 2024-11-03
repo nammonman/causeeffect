@@ -1,3 +1,4 @@
+using SaveGame;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +10,10 @@ public class MenuManager : MonoBehaviour
     private List<GameObject> menuWindows;
     private List<string> menuWindowsNames;
 
+    private void Awake()
+    {
+        GameStateManager.setPausedState(true);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -50,8 +55,15 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void LoadSceneFromMenu()
+    public void NewFromMenu() // new game
     {
-        GameObject.FindGameObjectWithTag("player prefab").GetComponent<LoadScene>().LoadSceneAndTeleport("TestScene");
+        GameObject.FindGameObjectWithTag("persistent scripts").GetComponent<SaveFile>().NewGameProcedure();
+        
+        
+    }
+
+    public void LoadSaveFromMenu()
+    {
+        GameObject.FindGameObjectWithTag("persistent scripts").GetComponent<SaveFile>().loadSaveFile();
     }
 }

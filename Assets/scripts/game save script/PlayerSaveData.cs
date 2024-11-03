@@ -10,16 +10,30 @@ namespace SaveGame
     public class PlayerSaveData
     {
         public int id;
-        public Vector3 playerPos;
-        public Quaternion playerRot;
-        public Vector3 cameraPos;
-        public Vector3 cameraRot;
+        public MyVec3 playerPos;
+        public MyQuat playerRot;
+        public MyVec3 cameraPos;
+        public MyVec3 cameraRot;
         public List<NpcData> npcs;
         public List<int> puzzles;
         public Dictionary<int, int> unlockedItems; // ID, amount
-        public GameStates gameStates;
+        //public GameStates gameStates;
         public string sceneName;
         public string sceneSetting;
+    }
+
+    public class MyVec3
+    {
+        public float x;
+        public float y;
+        public float z;
+    }
+    public class MyQuat
+    {
+        public float x;
+        public float y;
+        public float z;
+        public float w;
     }
 
 }

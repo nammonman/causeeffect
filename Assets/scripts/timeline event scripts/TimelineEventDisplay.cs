@@ -117,7 +117,7 @@ public class TimelineEventDisplay : MonoBehaviour
 
         TimelineEvent thisTL = gameObject.GetComponent<TimelineEvent>();
         LoadAndDisplayImage(thisTL.screenshotPath);
-        if (thisTL.id == GameStateManager.gameStates.currentEventId)
+        if (thisTL.id == 999999) // present id
         {
             bg.enabled = false;
         }

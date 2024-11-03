@@ -19,7 +19,15 @@ public class playermovement : MonoBehaviour
     [SerializeField] private Transform playerCamera;
     [SerializeField] private float playerCameraSensitivity;
 
+    private void OnEnable()
+    {
+        GameStateManager.OnFreezePlayer += FreezePlayer;
+    }
 
+    private void OnDisable()
+    {
+        GameStateManager.OnFreezePlayer -= FreezePlayer;
+    }
     private void Update()
     {
         
@@ -43,6 +51,11 @@ public class playermovement : MonoBehaviour
         {
             playerSpeed = playerNormalSpeed;
         }
+
+        if (GameStateManager.gameStates.isPaused)
+        {
+            DeceleratePlayer();
+        }
     }
 
     private void MovePlayer()
@@ -64,7 +77,11 @@ public class playermovement : MonoBehaviour
     IEnumerator EnableJumpAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        GameStateManager.gameStates.canPlayerJump = true;
+        if (!GameStateManager.gameStates.isPaused)
+        {
+            GameStateManager.gameStates.canPlayerJump = true;
+        }
+        
     }
     private void MovePlayerCamera()
     {
@@ -82,5 +99,31 @@ public class playermovement : MonoBehaviour
     public void FreezePlayer(bool b)
     {
         player.isKinematic = b;
+    }
+
+    public void DeceleratePlayer()
+    {
+        // Get the current horizontal velocity (X, Z) and preserve the vertical velocity (Y)
+        Vector3 horizontalVelocity = new Vector3(player.velocity.x, 0, player.velocity.z);
+
+        if (horizontalVelocity.magnitude > 0.1f) // Only decelerate if there's significant horizontal movement
+        {
+            // Calculate horizontal deceleration
+            Vector3 deceleration = -horizontalVelocity.normalized * 5 * horizontalVelocity.magnitude * Time.deltaTime;
+
+            // Ensure we don’t reverse the horizontal direction
+            if (deceleration.magnitude > horizontalVelocity.magnitude)
+                horizontalVelocity = Vector3.zero;
+            else
+                horizontalVelocity += deceleration;
+
+            // Set the updated velocity, preserving the vertical component
+            player.velocity = new Vector3(horizontalVelocity.x, player.velocity.y, horizontalVelocity.z);
+        }
+        else
+        {
+            // Snap horizontal velocity to zero when close enough, preserving vertical component
+            player.velocity = new Vector3(0, player.velocity.y, 0);
+        }
     }
 }

@@ -38,18 +38,29 @@ public class LoadScene : MonoBehaviour
 
     public void LoadSceneDebug()
     {
-        LoadSceneAndTeleport(dropdownText.text);
+        LoadSceneByName(dropdownText.text);
     }
 
+    private void OnEnable()
+    {
+        GameStateManager.OnLoadNewScene += LoadSceneByName;
+        GameStateManager.OnLoadNewSceneWithPos += LoadSceneByNameAndPos;
+    }
+
+    private void OnDisable()
+    {
+        GameStateManager.OnLoadNewScene -= LoadSceneByName;
+        GameStateManager.OnLoadNewSceneWithPos -= LoadSceneByNameAndPos;
+    }
 
     // Method to load a scene by name and teleport player
-    public void LoadSceneAndTeleport(string sceneName)
+    public void LoadSceneByName(string sceneName)
     {
         // Check if the scene name exists in the dictionary
         if (scenePositionLookup.ContainsKey(sceneName))
         {
             // Load the scene asynchronously
-            StartCoroutine(LoadSceneAndMovePlayer(sceneName));
+            StartCoroutine(LoadSceneAndSetPlayerPos(sceneName));
         }
         else
         {
@@ -57,9 +68,27 @@ public class LoadScene : MonoBehaviour
         }
     }
 
-    private IEnumerator<AsyncOperation> LoadSceneAndMovePlayer(string sceneName, Vector3? pos = null)
+    public void LoadSceneByNameAndPos(string sceneName, Vector3 pos)
+    {
+        // Check if the scene name exists in the dictionary
+        if (scenePositionLookup.ContainsKey(sceneName))
+        {
+            // Load the scene asynchronously
+            StartCoroutine(LoadSceneAndSetPlayerPos(sceneName, pos));
+        }
+        else
+        {
+            Debug.LogError("Scene not found in the lookup table: " + sceneName);
+        }
+    }
+
+    private IEnumerator<AsyncOperation> LoadSceneAndSetPlayerPos(string sceneName, Vector3? pos = null)
     {
         // Load the new scene asynchronously
+        GameObject player = GameObject.FindGameObjectWithTag("player prefab");
+        Rigidbody rb = player.GetComponent<Rigidbody>();
+        rb.isKinematic = true;
+
         GameStateManager.setPausedState(true);
         GameStateManager.gameStates.canPause = false;
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
@@ -69,6 +98,7 @@ public class LoadScene : MonoBehaviour
         {
             GameStateManager.setPausedState(true);
             GameStateManager.gameStates.canPause = false;
+
             yield return asyncLoad;
         }
         
@@ -81,26 +111,30 @@ public class LoadScene : MonoBehaviour
         {
             GameStateManager.setPausedState(true);
             GameStateManager.gameStates.canPause = false;
+            pauseMenu.SetActive(false);
         }
 
         // Teleport the player to the specific position after scene loads
         if (playerPrefab != null && pos == null)
         {
-
-            playerPrefab.transform.position = scenePositionLookup[sceneName];
+            rb.position = scenePositionLookup[sceneName];
             Debug.Log($"Player teleported to {scenePositionLookup[sceneName]} in {sceneName}");
         }
         else if (playerPrefab != null && pos != null) 
         {
-            playerPrefab.transform.position = pos.Value;
-            Debug.Log($"Player teleported to {pos} in {sceneName}");
+            rb.position = pos.Value;
+            Debug.Log($"Player teleported to {pos.Value} in {sceneName}");
         }
         else
         {
             Debug.Log(sceneName + " is invalid");
         }
-
+        
         SelectCamera(defaultCameraLookup[sceneName]);
+        GameStateManager.setSceneName(sceneName);
+        rb.isKinematic = false;
+
+        
         
     }
 

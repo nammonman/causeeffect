@@ -136,17 +136,51 @@ public class FullTimelinePopulator : MonoBehaviour
         TimelineEventDisplay thisEventDisplay = newPrefabInstance.GetComponent<TimelineEventDisplay>();
         setTimelineDisplay(thisEventDisplay, thisEvent);
 
-        // Highlight the current event
-        if (id == GameStateManager.gameStates.currentEventId)
-        {
-            thisEventDisplay.selectTimeline();
-        }
-
         // Recursively instantiate the next events, incrementing the column number
         foreach (var nextId in MakeTL.TL[id].nextEventIds)
         {
             instantiateTLPrefabsRecursive(nextId, colNum + 1);
         }
+        if (id == GameStateManager.gameStates.currentEventId)
+        {
+            setUpPresentInstance(id, colNum + 1);
+        }
+    }
+
+    public void setUpPresentInstance(int id, int colNum)
+    {
+        int ideez = 999999;
+        // Ensure column for current colNum is created before processing event prefab
+        if (!cols.ContainsKey(colNum))
+        {
+            GameObject newCol = Instantiate(contentColPrefab);
+            newCol.transform.SetParent(contentRow.transform, false);
+            cols.Add(colNum, newCol);
+        }
+
+        // Instantiate the prefab for the current event
+        GameObject newPrefabInstance = Instantiate(TLPrefab);
+        newPrefabInstance.transform.SetParent(cols[colNum].transform, false); // Assign to correct column
+        newPrefabInstance.name = ideez.ToString();
+
+        // Set up the event data
+        TimelineEvent thisEvent = newPrefabInstance.GetComponent<TimelineEvent>();
+        thisEvent.id = ideez;
+        thisEvent.type = 1;
+        thisEvent.title = "PRESENT";
+        thisEvent.day = GameStateManager.gameStates.currentDay;
+        thisEvent.timeOfDay = GameStateManager.gameStates.currentTimeOfDay;
+        thisEvent.screenshotPath = null;
+        thisEvent.saveDataId = -1;
+        thisEvent.isEventStarted = false;
+        thisEvent.isEventFinished = false;
+        thisEvent.state = null;
+        thisEvent.nextEventIds = null;
+        thisEvent.lastEventId = id;
+
+        TimelineEventDisplay thisEventDisplay = newPrefabInstance.GetComponent<TimelineEventDisplay>();
+        setTimelineDisplay(thisEventDisplay, thisEvent);
+
     }
 
 

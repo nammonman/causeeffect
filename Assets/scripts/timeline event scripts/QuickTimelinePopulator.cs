@@ -76,10 +76,40 @@ public class QuickTimelinePopulator : MonoBehaviour
 
         trackRefs.Add(newPrefabInstance);
     }
+
+    public void setUpPresentInstance(int id)
+    {
+        int ideez = 999999;
+        GameObject newPrefabInstance = Instantiate(TLPrefab);
+        newPrefabInstance.transform.SetParent(content.transform, false);
+        newPrefabInstance.name = ideez.ToString();
+
+        TimelineEvent thisEvent = newPrefabInstance.GetComponent<TimelineEvent>();
+        thisEvent.id = ideez;
+        thisEvent.type = 1;
+        thisEvent.title = "PRESENT";
+        thisEvent.day = GameStateManager.gameStates.currentDay;
+        thisEvent.timeOfDay = GameStateManager.gameStates.currentTimeOfDay;
+        thisEvent.screenshotPath = null;
+        thisEvent.saveDataId = -1;
+        thisEvent.isEventStarted = false;
+        thisEvent.isEventFinished = false;
+        thisEvent.state = null;
+        thisEvent.nextEventIds = null;
+        thisEvent.lastEventId = id;
+
+        TimelineEventDisplay thisEventDisplay = newPrefabInstance.GetComponent<TimelineEventDisplay>();
+        setTimelineDisplay(thisEventDisplay, thisEvent);
+
+        trackRefs.Add(newPrefabInstance);
+    }
+
+
     public void instantiateTLPrefabs()
     {
         TimelineEvent currentTimelineEvent = GameObject.Find("Persistent Scripts").GetComponent<TimelineEvent>();
         int id = currentTimelineEvent.id;
+        setUpPresentInstance(id);
 
         int count = 0;
         while (id > 0 && count < 200)

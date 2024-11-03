@@ -23,14 +23,22 @@ namespace Subtegral.DialogueSystem.Runtime
         public Transform[] dialogues;
         public Button[] buttons;
 
+        private bool autoScroll = false;
+
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape) && GameStateManager.gameStates.isInDialogue) 
+            /*if (Input.GetKeyDown(KeyCode.Escape) && GameStateManager.gameStates.isInDialogue) 
             {
                 //destroyExistingButtons(buttons);
                 //destroyExistingDialogueBoxes(dialogues);
                 OnDialogueExit?.Invoke(); 
+            }*/
+            if (autoScroll)
+            {
+                Vector3 temp = dialogueContainer.transform.position;
+                dialogueContainer.transform.position = new Vector3(temp.x, temp.y + 10000, temp.z);
             }
+            //Debug.Log(autoScroll);
         }
 
         private void destroyExistingDialogueBoxes(Transform[] dialogues)
@@ -49,6 +57,13 @@ namespace Subtegral.DialogueSystem.Runtime
                 Destroy(buttons[i].gameObject);
                 //buttonContainer.transform.position.Set(buttonContainer.transform.position.x, buttonContainer.transform.position.y - 20, buttonContainer.transform.position.z);
             }
+        }
+
+        private void leaveNarrative()
+        {
+            buttons = buttonContainer.GetComponentsInChildren<Button>();
+            destroyExistingButtons(buttons);
+            OnDialogueExit?.Invoke();
         }
 
         public void ProceedToNarrative(string narrativeDataGUID, bool fromInteract, Dialogue npcDialogue)
@@ -74,10 +89,6 @@ namespace Subtegral.DialogueSystem.Runtime
                     dialoguePrefabs[i].text = ProcessProperties(text);
             }
             Instantiate(dialogueBoxPrefab, dialogueContainer.transform);
-            //dialogueContainer.transform.position.Set(dialogueContainer.transform.position.x, dialogueContainer.transform.position.y + 120, dialogueContainer.transform.position.z);
-
-            buttons = buttonContainer.GetComponentsInChildren<Button>();
-            destroyExistingButtons(buttons);
             
             foreach (var choice in choices)
             {
@@ -86,7 +97,12 @@ namespace Subtegral.DialogueSystem.Runtime
                 button.onClick.AddListener(() => answerChoice(choice.TargetNodeGUID, choice.PortName));
                 //buttonContainer.transform.position.Set(buttonContainer.transform.position.x, buttonContainer.transform.position.y - 60, buttonContainer.transform.position.z);
             }
-            
+            if (choices.Count() < 1)
+            {
+                var button = Instantiate(choicePrefab, buttonContainer.transform);
+                button.GetComponentInChildren<Text>().text = "I won’t keep you any longer";
+                button.onClick.AddListener(() => leaveNarrative()); 
+            }
         }
 
         private void answerChoice(string GUID, string PortName)
@@ -94,7 +110,9 @@ namespace Subtegral.DialogueSystem.Runtime
             TextMeshProUGUI[] yourDialoguePrefabs = yourDialogueBoxPrefab.GetComponentsInChildren<TextMeshProUGUI>();
             yourDialoguePrefabs[1].text = ProcessProperties(PortName);
             Instantiate(yourDialogueBoxPrefab, dialogueContainer.transform);
-            ProceedToNarrative(GUID, false, dialogue);
+            autoScroll = true;
+            StartCoroutine(DelayedResponse(1.1f, GUID, false));
+
         }
 
         private string ProcessProperties(string text)
@@ -106,10 +124,18 @@ namespace Subtegral.DialogueSystem.Runtime
             return text;
         }
 
-        IEnumerator DelayResponse(float seconds)
+        IEnumerator DelayedResponse(float seconds, string GUID, bool fromInteract)
         {
+            autoScroll = true;
+            buttons = buttonContainer.GetComponentsInChildren<Button>();
+            destroyExistingButtons(buttons);
             yield return new WaitForSeconds(seconds);
+            ProceedToNarrative(GUID, false, dialogue);
+            yield return new WaitForSeconds(0.1f);
+            autoScroll = false;
         }
+
+
 
         private void OnEnable()
         {
