@@ -198,4 +198,11 @@ public class MakeTL : MonoBehaviour
         currentTimelineEvent.lastEventId = TL[id].lastEventId;
         GameStateManager.gameStates.currentEventId = currentTimelineEvent.id;
     }
+
+    public static void LoadTLPS(int id)
+    {
+        LoadTL(id);
+        LoadPS(id);
+        GameStateManager.setSave();
+    }
 }

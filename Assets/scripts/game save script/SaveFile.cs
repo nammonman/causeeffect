@@ -102,6 +102,9 @@ namespace SaveGame
                 save = JsonConvert.DeserializeObject<SaveFileData>(JSONData);
                 GameStateManager.gameStates.currentEventId = save.currentTimelineEventId;
 
+                MakeTL.PS.Clear();
+                MakeTL.TL.Clear();
+
                 foreach (int k in save.timelineEventDatas.Keys)
                 {
                     TimelineEvent v = new TimelineEvent();
@@ -121,8 +124,7 @@ namespace SaveGame
                 }
                 
                 MakeTL.PS = save.playerSaveDatas;
-                MakeTL.LoadTL(save.currentTimelineEventId);
-                MakeTL.LoadPS(save.currentTimelineEventId);
+                MakeTL.LoadTLPS(save.currentTimelineEventId);
             }
             else
             {

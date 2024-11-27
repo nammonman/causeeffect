@@ -74,6 +74,13 @@ namespace Subtegral.DialogueSystem.Runtime
             var name = dialogue.DialogueNodeData.Find(x => x.NodeGUID == narrativeDataGUID).NPCNameText;
             //Debug.Log(name);
             var choices = dialogue.NodeLinks.Where(x => x.BaseNodeGUID == narrativeDataGUID);
+
+            var triggers = dialogue.DialogueNodeData.Find(x => x.NodeGUID == narrativeDataGUID).Trigger;
+            foreach (var trigger in triggers)
+            {
+                if (trigger != null) { triggerEvent(trigger); }
+            }
+
             TextMeshProUGUI[] dialoguePrefabs = dialogueBoxPrefab.GetComponentsInChildren<TextMeshProUGUI>();
 
             dialogues = dialogueContainer.GetComponentsInChildren<Transform>();
@@ -122,6 +129,12 @@ namespace Subtegral.DialogueSystem.Runtime
                 text = text.Replace($"[{exposedProperty.PropertyName}]", exposedProperty.PropertyValue);
             }
             return text;
+        }
+ 
+        private void triggerEvent(string e)
+        {
+            // trigger event named e
+            Debug.Log("trigger event " + e + " from dialogue");
         }
 
         IEnumerator DelayedResponse(float seconds, string GUID, bool fromInteract)

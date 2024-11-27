@@ -122,7 +122,7 @@ public class InGamePauseMenu : MonoBehaviour
         {
             checkRepeatTimer += Time.deltaTime;
 
-            if (checkRepeatTimer >= 0.3f)
+            if (checkRepeatTimer >= 0.4f)
             {
                 activateQuickTL();
                 checkRepeatTimer = 0f;
@@ -133,7 +133,7 @@ public class InGamePauseMenu : MonoBehaviour
         {
             checkRepeatTimer += Time.deltaTime;
 
-            if (checkRepeatTimer >= 0.3f)
+            if (checkRepeatTimer >= 0.4f)
             {
                 activateAllTL();
                 checkRepeatTimer = 0f;
@@ -143,7 +143,7 @@ public class InGamePauseMenu : MonoBehaviour
         {
             checkRepeatTimer += Time.deltaTime;
 
-            if (checkRepeatTimer >= 0.3f)
+            if (checkRepeatTimer >= 0.4f)
             {
                 activateNotebook();
                 checkRepeatTimer = 0f;
@@ -154,7 +154,7 @@ public class InGamePauseMenu : MonoBehaviour
         {
             checkRepeatTimer += Time.deltaTime;
 
-            if (checkRepeatTimer >= 0.4f && backgroundTL.activeSelf)
+            if (checkRepeatTimer >= 0.5f && backgroundTL.activeSelf)
             {
                 deactivateTL();
                 checkRepeatTimer = 0f;
@@ -248,8 +248,7 @@ public class InGamePauseMenu : MonoBehaviour
                     {
                         return;
                     }
-                    MakeTL.LoadTL(id);
-                    MakeTL.LoadPS(id);
+                    MakeTL.LoadTLPS(id);
                     loadingBar.value = 0;
                     selectedGameObject = null;
                 }
