@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -16,7 +17,7 @@ public class LoadScene : MonoBehaviour
         { "Home", new Vector3(-49, 3, -15) },   
         { "WorkHallway", new Vector3(-2, 7, 61) }, 
         { "WorkLab", new Vector3(-1, 7, -11) },
-        { "WorkPersonalRoom", new Vector3(0, 2, 0) },
+        { "WorkPersonalRoom", new Vector3(0, 2, -8) },
         { "WorkPresidentRoom", new Vector3(3, 2, 1) },
         { "presentation", new Vector3(18, 2, -8) },
         { "TestScene", new Vector3(0, 0, 0) },
@@ -85,6 +86,8 @@ public class LoadScene : MonoBehaviour
     private IEnumerator<AsyncOperation> LoadSceneAndSetPlayerPos(string sceneName, Vector3? pos = null)
     {
         // Load the new scene asynchronously
+        ShowSecretText.currentSceneTexts.Clear();
+        
         GameObject player = GameObject.FindGameObjectWithTag("player prefab");
         Rigidbody rb = player.GetComponent<Rigidbody>();
         rb.isKinematic = true;
@@ -134,7 +137,12 @@ public class LoadScene : MonoBehaviour
         GameStateManager.setSceneName(sceneName);
         rb.isKinematic = false;
 
-        
+        var temp = GameObject.FindGameObjectsWithTag("secret text");
+        foreach (var item in temp)
+        {
+            ShowSecretText.currentSceneTexts.Add(item);
+        }
+        GameStateManager.setSecretText(GameStateManager.gameStates.canSeeSecretText);
         
     }
 

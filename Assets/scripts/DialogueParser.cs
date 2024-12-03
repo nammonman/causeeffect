@@ -131,7 +131,7 @@ namespace Subtegral.DialogueSystem.Runtime
             return text;
         }
  
-        private void triggerEvent(string e)
+        private void triggerEvent(string e) // TRIGGER EVENT FROM ANSWER BUTTON
         {
             // trigger event named e
             Debug.Log("trigger event " + e + " from dialogue");

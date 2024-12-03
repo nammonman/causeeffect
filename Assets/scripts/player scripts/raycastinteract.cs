@@ -29,7 +29,7 @@ public class raycastinteract : MonoBehaviour
     {
         if (GameStateManager.gameStates.canPlayerInteract)
         {
-            //Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward*rayDist, Color.blue);
+            Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward*rayDist, Color.blue);
             RaycastHit hitObject;
             if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hitObject, rayDist)) //raycast
             {
@@ -53,10 +53,15 @@ public class raycastinteract : MonoBehaviour
                     promptText.gameObject.SetActive(false);
                 }
 
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Debug.Log(hitObject.transform.name);
+                }
+
                 // get input and run funcs
                 if (objInteractable && Input.GetKeyDown(KeyCode.E))
                 {
-                    Debug.Log(hitObject.transform.name);
+                    
 
                     if (hitObject.collider.gameObject.tag == "npc")
                     {
@@ -79,10 +84,21 @@ public class raycastinteract : MonoBehaviour
                         //StartCoroutine(FadeBlackForSeconds(3));
                         StartCoroutine(GlitchForSeconds(3));
                     }
-
-
                 }
 
+                if ( GameStateManager.gameStates.canSeeSecretText && hitObject.collider.gameObject.tag == "secret text")
+                {
+                    string seenSecretText = hitObject.collider.gameObject.GetComponent<TMP_Text>().text;
+                    int index = NotebookSwitcher.notes.IndexOf(seenSecretText);
+                    if (index > -1 && !NotebookSwitcher.unlockedNotes.Contains(index))
+                    {
+                        NotebookSwitcher.unlockedNotes.Add(index);
+                        StartCoroutine(SwitchPromptextForSeconds(2, "new entry added to notes"));
+                        Debug.Log("new entry added to notes");
+                        Debug.Log(seenSecretText);
+                    }
+                    
+                }
 
             }
             else if (promptText.gameObject.activeSelf)
@@ -91,8 +107,17 @@ public class raycastinteract : MonoBehaviour
                 promptText.gameObject.SetActive(false);
             }
         }
-        
 
+
+    }
+
+    IEnumerator SwitchPromptextForSeconds(float delay, string s)
+    {
+        promptText.text = s;
+        promptText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(delay);
+        promptText.gameObject.SetActive(false);
+        promptText.text = "[E] to interact";
     }
 
     IEnumerator PauseDelay(float delay)

@@ -34,6 +34,9 @@ public class GameStates
     //dialogue
     public bool isInDialogue;
 
+    //secret text
+    public bool canSeeSecretText;
+
     //loaded scene
     public bool canLoadNewScene;
     public string CurrentSceneName;
@@ -84,6 +87,7 @@ public class GameStateManager : MonoBehaviour
     public static event Action<string> OnLoadNewScene;
     public static event Action<string, Vector3> OnLoadNewSceneWithPos;
     public static event Action OnSave;
+    public static event Action<bool> OnSecretText;
 
     private void FixedUpdate()
     {
@@ -99,15 +103,14 @@ public class GameStateManager : MonoBehaviour
         //init variables
         gameStates.saveFileName = "slot1";
         gameStates.CurrentSceneName = SceneManager.GetActiveScene().name;
+        gameStates.canSeeSecretText = false;
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //gameStates = new GameStates();
-        Debug.Log("BEFORE JP TODO: save file implementation");
-         
+ 
     }
 
     public static void setPausedState(bool b)
@@ -192,5 +195,10 @@ public class GameStateManager : MonoBehaviour
     public static void setSave()
     {
         OnSave.Invoke();
+    }
+
+    public static void setSecretText(bool b)
+    {
+        OnSecretText.Invoke(b);
     }
 }

@@ -11,6 +11,8 @@ TagManager:
   - Iobj
   - player prefab
   - persistent scripts
+  - secret text
+  - secret text chunk
   layers:
   - Default
   - TransparentFX

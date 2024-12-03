@@ -14,7 +14,7 @@ public class NotebookSwitcher : MonoBehaviour
 
     public static List<int> unlockedNotes = new List<int> { 0, 1, 2 };
 
-    private List<string> notes = new List<string>
+    public static List<string> notes = new List<string>
     {
 
         "note 1 <br>" +
@@ -31,7 +31,31 @@ public class NotebookSwitcher : MonoBehaviour
 
         "note 3 <size=200%>oioioioioioioioioioioioioi"
         ,
-
+        "trust zeph"
+        ,
+        "trust yourself"
+        ,
+        "Every problem has a solution"
+        ,
+        "16>2"
+        ,
+        "10001"
+        ,
+        "711"
+        ,
+        "711123"
+        ,
+        "10101"
+        ,
+        "100010111"
+        ,
+        "16457"
+        ,
+        "100010011"
+        ,
+        "11155"
+        ,
+        "secret text test"
     };
 
     private void OnEnable()
