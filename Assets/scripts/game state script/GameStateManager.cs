@@ -36,6 +36,7 @@ public class GameStates
 
     //secret text
     public bool canSeeSecretText;
+    public bool canReadSecretText;
 
     //loaded scene
     public bool canLoadNewScene;
@@ -104,6 +105,7 @@ public class GameStateManager : MonoBehaviour
         gameStates.saveFileName = "slot1";
         gameStates.CurrentSceneName = SceneManager.GetActiveScene().name;
         gameStates.canSeeSecretText = false;
+        gameStates.canReadSecretText = false;
     }
 
 

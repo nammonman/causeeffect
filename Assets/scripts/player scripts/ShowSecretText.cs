@@ -20,7 +20,15 @@ public class ShowSecretText : MonoBehaviour
     public void DisplaySecretText(bool b)
     {
         GameStateManager.gameStates.canSeeSecretText = b;
-        
+        if (b)
+        {
+            GameStateManager.setStartGlitch();
+        }
+        else
+        {
+            GameStateManager.setStopGlitch();
+        }
+
         foreach (var item in currentSceneTexts) { item.SetActive(b); }
     }
 }

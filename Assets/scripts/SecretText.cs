@@ -189,7 +189,9 @@ public class SecretText : MonoBehaviour
 
     private void OnEnable()
     {
-        
+        ClearTextChunks();
+        SplitTextIntoChunks();
+        UpdateTextChunks();
     }
 
     void OnDisable()
