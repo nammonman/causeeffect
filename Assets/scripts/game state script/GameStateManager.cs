@@ -89,7 +89,6 @@ public class GameStateManager : MonoBehaviour
     public static event Action<string, Vector3> OnLoadNewSceneWithPos;
     public static event Action OnSave;
     public static event Action<bool> OnSecretText;
-    public static event Action<string> OnMonologue;
 
     private void FixedUpdate()
     {
@@ -203,10 +202,5 @@ public class GameStateManager : MonoBehaviour
     public static void setSecretText(bool b)
     {
         OnSecretText.Invoke(b);
-    }
-
-    public static void setMonologue(string s)
-    {
-        OnMonologue.Invoke(s); 
     }
 }

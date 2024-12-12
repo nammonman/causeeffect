@@ -4,27 +4,17 @@ using UnityEngine;
 
 public class DreamTexts : MonoBehaviour
 {
-    public static List<Dream> dreams = new List<Dream>
+    public static List<Dream> dreams;
+
+    void Start()
     {
+        // Initialize the List
+        dreams = new List<Dream>();
+
         // Add dreams 
-        
-        // dream 0
-        new Dream
-        {
-            dreamName = "no dream",
-            BGSoundFileName = ".mp3",
-            dreamTexts = new List<DreamText>
-            {
-                new DreamText
-                {
-                    text = "Tonight is a peaceful night",
-                    playSoundFileName = ".mp3",
-                    playEffectName = ""
-                },
-            }
-        },
+
         // dream 1
-        new Dream
+        dreams.Add(new Dream
         {
             dreamName = "Peaceful Garden",
             BGSoundFileName = ".mp3",
@@ -41,24 +31,12 @@ public class DreamTexts : MonoBehaviour
                     text = "The sun warms your skin...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
-                },
-                new DreamText
-                {
-                    text = "Among Us...",
-                    playSoundFileName = ".mp3",
-                    playEffectName = ""
-                },
-                new DreamText
-                {
-                    text = "Sussy lol...",
-                    playSoundFileName = ".mp3",
-                    playEffectName = ""
-                },
+                }
             }
-        },
+        });
 
         // dream 2
-        new Dream
+        dreams.Add(new Dream
         {
             dreamName = "Mystic Forest",
             BGSoundFileName = ".mp3",
@@ -75,24 +53,12 @@ public class DreamTexts : MonoBehaviour
                     text = "You hear the rustling of leaves...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
-                },
-                new DreamText
-                {
-                    text = "Hawk Tuah...",
-                    playSoundFileName = ".mp3",
-                    playEffectName = ""
-                },
-                new DreamText
-                {
-                    text = "Spit on that thang...",
-                    playSoundFileName = ".mp3",
-                    playEffectName = ""
-                },
+                }
             }
-        },
+        });
 
-        // dream 3
-        new Dream
+        // dream 2
+        dreams.Add(new Dream
         {
             dreamName = "Starry Night",
             BGSoundFileName = ".mp3",
@@ -111,11 +77,8 @@ public class DreamTexts : MonoBehaviour
                     playEffectName = ""
                 }
             }
-        }
-        
+        });
 
-    };
-
-    
+    }
 
 }

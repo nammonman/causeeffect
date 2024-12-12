@@ -68,7 +68,7 @@ public class MakeTL : MonoBehaviour
     private IEnumerator LoadAndCompressScreenshot(string filePath)
     {
         // Wait until the next frame to ensure the file has been written
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1);
 
         // Load the screenshot as a Texture2D
         byte[] fileData = File.ReadAllBytes(filePath);

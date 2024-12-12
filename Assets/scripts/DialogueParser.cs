@@ -118,7 +118,7 @@ namespace Subtegral.DialogueSystem.Runtime
             yourDialoguePrefabs[1].text = ProcessProperties(PortName);
             Instantiate(yourDialogueBoxPrefab, dialogueContainer.transform);
             autoScroll = true;
-            StartCoroutine(DelayedResponse(1f, GUID, false));
+            StartCoroutine(DelayedResponse(1.1f, GUID, false));
 
         }
 

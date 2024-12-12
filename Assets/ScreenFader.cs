@@ -1,4 +1,3 @@
-using Subtegral.DialogueSystem.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,44 +11,25 @@ public class ScreenFader : MonoBehaviour
     private void Start()
     {
         SetCoverAlpha(0f);
-        
+        testButton.onClick.AddListener(fadeTest);
     }
-
-    private void OnEnable()
+    public void fadeTest()
     {
-        GameStateManager.OnFadeIn += FadeBlackInCaller;
-        GameStateManager.OnFadeOut += FadeBlackOutCaller;
+        StartCoroutine(FadeBlackInOut());
     }
-
-    private void OnDisable()
+    IEnumerator FadeBlackInOut()
     {
-        GameStateManager.OnFadeIn -= FadeBlackInCaller;
-        GameStateManager.OnFadeOut -= FadeBlackOutCaller;
+        yield return FadeTo(new Color(0, 0, 0), 1f, 1f, 1f);
+        yield return FadeTo(new Color(0, 0, 0), 0f, 1f, 1f);
     }
 
-
-    public void FadeBlackInCaller()
+    IEnumerator FadeWhiteInOut()
     {
-        StartCoroutine(FadeBlackIn());
+        yield return FadeTo(new Color(0, 0, 0), 1f, 1f, 1f);
+        yield return FadeTo(new Color(0, 0, 0), 0f, 1f, 1f);
     }
 
-    public void FadeBlackOutCaller()
-    {
-        StartCoroutine(FadeBlackOut());
-    }
-
-    public IEnumerator FadeBlackIn()
-    {
-        yield return FadeTo(new Color(0, 0, 0), 1f, 1f, 0f);
-    }
-
-    public IEnumerator FadeBlackOut()
-    {
-        yield return FadeTo(new Color(0, 0, 0), 0f, 1f, 0f);
-    }
-
-
-    public IEnumerator FadeTo(Color col, float targetAlpha, float fadeDuration, float holdDuration)
+    IEnumerator FadeTo(Color col, float targetAlpha, float fadeDuration, float holdDuration)
     {
         screenFader.color = new Color(col.r, col.g, col.b, screenFader.color.a);
         Color currentColor = screenFader.color;
@@ -64,7 +44,6 @@ public class ScreenFader : MonoBehaviour
             SetCoverAlpha(newAlpha);
             yield return null; // Wait for the next frame
         }
-
         SetCoverAlpha(targetAlpha);
 
         while (time < fadeDuration + holdDuration)
@@ -74,7 +53,7 @@ public class ScreenFader : MonoBehaviour
         }
 
     }
-    public void SetCoverAlpha(float alpha)
+    void SetCoverAlpha(float alpha)
     {
         Color newColor = screenFader.color;
         newColor.a = alpha;

@@ -6,99 +6,34 @@ using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static Subtegral.DialogueSystem.Runtime.DialogueParser;
 
 public class DreamTextSwitcher : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI dreamText;
     [SerializeField] Image cover;
     [SerializeField] Button nextButton;
-    [SerializeField] GameObject canvasGroup;
-    private Dream currentDream;
-    private int currentIndex = 0;
-    private List<int> availableDreams = new List<int>();
-
-
-    private void Start()
-    {
-        for (int i = 0; i < DreamTexts.dreams.Count; i++)
-        {
-            availableDreams.Add(i);
-        }
-        for (int i = 0; i < 2; i++) // no dreams
-        {
-            availableDreams.Add(0);
-        }
-        canvasGroup.SetActive(false);
-    }
+    public static Dream currentDream;
+    int currentIndex;
 
     private void OnEnable()
     {
-        GameStateManager.OnDream += SwitchTextCaller;
+        SetCoverAlpha(0f);
+        nextButton.onClick.AddListener(SwitchText);
     }
 
-    private void OnDisable()
+    public void SwitchText()
     {
-        GameStateManager.OnDream -= SwitchTextCaller;
+        StartCoroutine(SwitchTextHelper());
     }
-
-    public void SwitchTextCaller(int i)
-    {
-        currentDream = null;
-        currentIndex = 0;
-        SetCoverAlpha(1f);
-        StartCoroutine(SwitchText(i));
-        nextButton.onClick.AddListener(() => StartCoroutine(SwitchText()));
-        
-    }
-    IEnumerator SwitchText(int? i = null)
+    IEnumerator SwitchTextHelper()
     {
         nextButton.enabled = false;
-        canvasGroup.SetActive(true);
-        if (currentDream == null && i == null)
-        {
-            currentIndex = 0;
-
-            int ran;
-            if (availableDreams.Count > 0)
-            {
-                ran = UnityEngine.Random.Range(0, availableDreams.Count);
-                currentDream = DreamTexts.dreams[availableDreams[ran]];
-                availableDreams.RemoveAt(ran);
-
-            }
-            else
-            {
-                currentDream = DreamTexts.dreams[0];
-                
-            }
-            
-            
-            Debug.Log("start dream " + currentDream.dreamName);
-        }
-        else if (i != null)
-        {
-            currentDream = DreamTexts.dreams[i.Value];
-        }
-
-        if (currentIndex >= currentDream.dreamTexts.Count)
-        {
-            Debug.Log("end dream " + currentDream.dreamName);
-            yield return new WaitForSeconds(2f);
-            canvasGroup.SetActive(false);
-            yield break;
-        }
-
         // Fade in
         yield return StartCoroutine(FadeTo(1f, 0.4f)); // Fade to full opacity
 
-        Debug.Log(currentIndex);
-        dreamText.text = currentDream.dreamTexts[currentIndex].text;
-
+        dreamText.text = DateTime.Now.ToString();
         // Fade out
         yield return StartCoroutine(FadeTo(0f, 0.4f)); // Fade back to 0 opacity
-        
-        currentIndex++;
         nextButton.enabled = true;
     }
 
