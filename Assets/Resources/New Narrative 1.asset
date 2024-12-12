@@ -9,70 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
   m_Name: New Narrative 1
   m_EditorClassIdentifier: 
-  NodeLinks:
-  - BaseNodeGUID: 72b37fc7-a4e0-4a05-95b7-284a2d5db447
-    PortName: Next
-    TargetNodeGUID: 09880fc6-8478-49ed-aa52-1f31727aca99
-  - BaseNodeGUID: 2c458a46-d51d-47a5-bb4b-06e8925d327b
-    PortName: a
-    TargetNodeGUID: 28d3fb91-dc10-41fb-8f5a-6c069f53f490
-  - BaseNodeGUID: 8023e709-9f1c-4519-aab3-aaf98de5d95d
-    PortName: a
-    TargetNodeGUID: a877b1e1-3d6a-4b54-afe4-640392708bcd
-  - BaseNodeGUID: 09880fc6-8478-49ed-aa52-1f31727aca99
-    PortName: sdfgt
-    TargetNodeGUID: b783de66-8f3e-4dad-8972-cab90e4e79b7
-  - BaseNodeGUID: 09880fc6-8478-49ed-aa52-1f31727aca99
-    PortName: dfg
-    TargetNodeGUID: 763a543e-489c-4bd5-bf4e-d80087e727e6
-  - BaseNodeGUID: 09880fc6-8478-49ed-aa52-1f31727aca99
-    PortName: d
-    TargetNodeGUID: 2c458a46-d51d-47a5-bb4b-06e8925d327b
-  - BaseNodeGUID: 09880fc6-8478-49ed-aa52-1f31727aca99
-    PortName: sw
-    TargetNodeGUID: 8023e709-9f1c-4519-aab3-aaf98de5d95d
-  - BaseNodeGUID: 09880fc6-8478-49ed-aa52-1f31727aca99
-    PortName: e
-    TargetNodeGUID: 45b2ec87-8f0b-48a3-bf15-255ec48e5ae4
-  DialogueNodeData:
-  - NodeGUID: 2c458a46-d51d-47a5-bb4b-06e8925d327b
-    NPCNameText: a
-    DialogueText: c
-    Position: {x: 734.4, y: 367.2}
-  - NodeGUID: 763a543e-489c-4bd5-bf4e-d80087e727e6
-    NPCNameText: a
-    DialogueText: asdasdasdasd
-    Position: {x: 736.8, y: 234.4}
-  - NodeGUID: 45b2ec87-8f0b-48a3-bf15-255ec48e5ae4
-    NPCNameText: a
-    DialogueText: e
-    Position: {x: 733.6, y: 620}
-  - NodeGUID: a877b1e1-3d6a-4b54-afe4-640392708bcd
-    NPCNameText: a
-    DialogueText: aaad
-    Position: {x: 1138.4, y: 632}
-  - NodeGUID: 8023e709-9f1c-4519-aab3-aaf98de5d95d
-    NPCNameText: a
-    DialogueText: d
-    Position: {x: 733.6, y: 496}
-  - NodeGUID: 28d3fb91-dc10-41fb-8f5a-6c069f53f490
-    NPCNameText: a
-    DialogueText: daaa
-    Position: {x: 1111.2, y: 451.2}
-  - NodeGUID: b783de66-8f3e-4dad-8972-cab90e4e79b7
-    NPCNameText: a
-    DialogueText: a
-    Position: {x: 736.8, y: 92.8}
-  - NodeGUID: 09880fc6-8478-49ed-aa52-1f31727aca99
-    NPCNameText: a
-    DialogueText: asdasdasdasdasdasdasdasd
-    Position: {x: 260.8, y: 224.8}
-  ExposedProperties:
-  - PropertyName: New String
-    PropertyValue: New Value
-  - PropertyName: New String(1)
-    PropertyValue: hamasmda
+  NodeLinks: []
+  DialogueNodeData: []
+  ExposedProperties: []
   CommentBlockData: []

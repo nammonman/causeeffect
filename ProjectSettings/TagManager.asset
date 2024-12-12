@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - npc
+  - timeline event block
+  - item storage
+  - menu window
+  - Iobj
+  - player prefab
+  - persistent scripts
+  - secret text
+  - secret text chunk
   layers:
   - Default
   - TransparentFX
