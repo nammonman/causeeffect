@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 516e481ca5a711741b08aec3f47757d6, type: 3}
+  m_Name: New Scene Tree
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: ecdf5413-5d51-4bce-a3cf-c25e20dc7bc5
+    PortName: Next
+    TargetNodeGUID: e5cb7b08-f0f0-4b96-94d7-99df0743cb9c
+  - BaseNodeGUID: e5cb7b08-f0f0-4b96-94d7-99df0743cb9c
+    PortName: red tree
+    TargetNodeGUID: 9c46a676-16a4-4963-a08b-65afeebed7f7
+  - BaseNodeGUID: e5cb7b08-f0f0-4b96-94d7-99df0743cb9c
+    PortName: blue tree
+    TargetNodeGUID: 9215c962-2d8c-4b55-9456-e15d25526ea7
+  SceneNodeData:
+  - NodeGUID: e5cb7b08-f0f0-4b96-94d7-99df0743cb9c
+    SceneName: TestScene
+    SceneSettings: DEFAULT SET
+    DialogueTreeName: New Narrative
+    Position: {x: 322, y: 235}
+  - NodeGUID: 9215c962-2d8c-4b55-9456-e15d25526ea7
+    SceneName: TestSwitchScene2
+    SceneSettings: DEFAULT SET
+    DialogueTreeName: New Narrative
+    Position: {x: 812, y: 354}
+  - NodeGUID: 9c46a676-16a4-4963-a08b-65afeebed7f7
+    SceneName: TestSwitchScene
+    SceneSettings: DEFAULT SET
+    DialogueTreeName: New Narrative
+    Position: {x: 866, y: 69}
+  ExposedProperties: []
+  CommentBlockData: []
