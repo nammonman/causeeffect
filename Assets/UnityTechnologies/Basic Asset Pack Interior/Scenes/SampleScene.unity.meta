@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/UnityTechnologies/Basic Asset Pack Interior/Scenes/SampleScene.unity.meta
 guid: 99c9720ab356a0642a771bea13969a05
+========
+guid: 316a5a00e1934e04abb51f8c24b99249
+>>>>>>>> 742a321173d6701db1c0bf43a627e8a1585c1b42:Assets/nappin/Office Props Softpack/SampleScene.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
