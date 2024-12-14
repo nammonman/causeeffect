@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WorkPersonalRoom.unity
     guid: b790fdf7ca4ee4d4c9c247803cf60c2a
+  - enabled: 1
+    path: Assets/Scenes/presentation tutorial.unity
+    guid: 55f28c5088c4b814b9ffe1831792c36c
   m_configObjects: {}

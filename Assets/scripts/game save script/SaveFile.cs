@@ -157,7 +157,7 @@ namespace SaveGame
 
         public IEnumerator DeleteAllFilesInPersistentDataPath()
         {
-            string startingSceneName = "TestScene";
+            string startingSceneName = "presentation tutorial";
             string path = Application.persistentDataPath;
 
             // Check if the directory exists
@@ -186,23 +186,11 @@ namespace SaveGame
 
             GameStateManager.setPausedState(true);
             GameStateManager.gameStates.canPause = false;
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(startingSceneName);
-
-            // Wait until the scene has fully loaded
-            while (!asyncLoad.isDone)
-            {
-                GameStateManager.setPausedState(true);
-                GameStateManager.gameStates.canPause = false;
-
-                yield return asyncLoad;
-            }
-
-            GameStateManager.setPausedState(false);
-            GameStateManager.gameStates.canPause = true;
-            GameStateManager.setSceneName(startingSceneName);
-            rb.isKinematic = false;
+            GameStateManager.setLoadNewScene(startingSceneName);
             // Now the scene is fully loaded, we can call the next line
             GameStateManager.setNewTL();
+
+            yield return null; 
         }
 
     }  

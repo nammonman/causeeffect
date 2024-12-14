@@ -20,6 +20,7 @@ public class LoadScene : MonoBehaviour
         { "WorkPersonalRoom", new Vector3(0, 2, -8) },
         { "WorkPresidentRoom", new Vector3(3, 2, 1) },
         { "presentation", new Vector3(18, 2, -8) },
+        { "presentation tutorial", new Vector3(18, 2, -8) },
         { "TestScene", new Vector3(0, 0, 0) },
         { "MainMenu", new Vector3(0, 2, 0) },
     };
@@ -32,6 +33,7 @@ public class LoadScene : MonoBehaviour
         { "WorkPersonalRoom", "Main Camera" },
         { "WorkPresidentRoom", "Main Camera" },
         { "presentation", "Main Camera" },
+        { "presentation tutorial", "Main Camera" },
         { "TestScene", "Main Camera" },
         { "MainMenu", "Main Camera" },
     };
