@@ -9,9 +9,7 @@ public class AutoLoadMainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameStateManager.setPausedState(true);
-        GameStateManager.gameStates.canPause = false;
-        SceneManager.LoadSceneAsync("MainMenu");
+        GameStateManager.setLoadNewScene("MainMenu");
     }
 
     

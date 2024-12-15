@@ -1556,7 +1556,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112476849}
   m_LocalRotation: {x: 0.7071068, y: 0.0000004842877, z: -0.00000050567394, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 3.64}
+  m_LocalPosition: {x: 0, y: 0, z: 3.1}
   m_LocalScale: {x: 0.085755, y: 0.085755, z: 0.085755}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9751,7 +9751,12 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Move with WASD
 
-    Look Around with Mouse'
+    Jump with Space
+
+    Sprint with Left Shift
+
+    Look
+    Around with Mouse'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d7c03fb8d8e00447b1f3bf65ed6f237, type: 2}
   m_sharedMaterial: {fileID: 4904836014996962540, guid: 8d7c03fb8d8e00447b1f3bf65ed6f237, type: 2}
@@ -9873,7 +9878,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241053364}
   m_LocalRotation: {x: 0.7071068, y: 0.0000004842877, z: -0.00000050567394, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: -2.3}
+  m_LocalPosition: {x: 0, y: 0, z: -1.25}
   m_LocalScale: {x: 0.085755, y: 0.085755, z: 0.085755}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9916,7 +9921,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 65.32404, y: 6.356752, z: 43.317787}
-  m_Center: {x: 10.806183, y: -1.0603755, z: -21.658901}
+  m_Center: {x: 10.806183, y: -10.11, z: -21.658901}
 --- !u!1001 &241904868
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17707,6 +17712,22 @@ PrefabInstance:
     - target: {fileID: 992387697232805803, guid: 1ee2c0e2bba19db48a2874a0fa5e9305, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330696558920104819, guid: 1ee2c0e2bba19db48a2874a0fa5e9305, type: 3}
+      propertyPath: firstDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 7827b43545e0a074694498e29617e945, type: 2}
+    - target: {fileID: 2330696558920104819, guid: 1ee2c0e2bba19db48a2874a0fa5e9305, type: 3}
+      propertyPath: firstStartNode
+      value: c1a51d32-9517-45ef-bdf8-1a8b55232665
+      objectReference: {fileID: 0}
+    - target: {fileID: 2330696558920104819, guid: 1ee2c0e2bba19db48a2874a0fa5e9305, type: 3}
+      propertyPath: secondDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 0405e71462ed25f46869931817438a71, type: 2}
+    - target: {fileID: 2330696558920104819, guid: 1ee2c0e2bba19db48a2874a0fa5e9305, type: 3}
+      propertyPath: secondStartNode
+      value: f83e2c13-f925-4c4f-a003-a8cbe304003f
       objectReference: {fileID: 0}
     - target: {fileID: 4059662453747000534, guid: 1ee2c0e2bba19db48a2874a0fa5e9305, type: 3}
       propertyPath: m_Name

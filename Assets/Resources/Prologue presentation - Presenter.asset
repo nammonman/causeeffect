@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: Prologue presentation - Presenter
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: f1989f95-f792-4bf9-8d63-8ad91ae58781
+    PortName: Next
+    TargetNodeGUID: c1a51d32-9517-45ef-bdf8-1a8b55232665
+  - BaseNodeGUID: c1a51d32-9517-45ef-bdf8-1a8b55232665
+    PortName: Thank you for invinting me.
+    TargetNodeGUID: f83e2c13-f925-4c4f-a003-a8cbe304003f
+  DialogueNodeData:
+  - NodeGUID: c1a51d32-9517-45ef-bdf8-1a8b55232665
+    NPCNameText: Presenter
+    DialogueText: We welcome the Head Researcher to press the button!
+    Trigger: []
+    Position: {x: 375.2, y: 332}
+  - NodeGUID: f83e2c13-f925-4c4f-a003-a8cbe304003f
+    NPCNameText: Presenter
+    DialogueText: Thank you for all your work! Now, please do the honors.
+    Trigger: []
+    Position: {x: 964.8, y: 320}
+  ExposedProperties: []
+  CommentBlockData: []

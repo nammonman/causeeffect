@@ -8826,7 +8826,7 @@ MonoBehaviour:
   playerCamera: {fileID: 4788303610693827153}
   wholeDialogueContainer: {fileID: 4546482655931489492}
   promptText: {fileID: 7753155044155515084}
-  rayDist: 6.71
+  rayDist: 4.5
 --- !u!114 &920072643603076866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22678,7 +22678,7 @@ MonoBehaviour:
     m_Top: 50
     m_Bottom: 20
   m_ChildAlignment: 1
-  m_Spacing: 40
+  m_Spacing: 52
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1

@@ -187,7 +187,13 @@ namespace SaveGame
             GameStateManager.setPausedState(true);
             GameStateManager.gameStates.canPause = false;
             GameStateManager.setLoadNewScene(startingSceneName);
+
+
             // Now the scene is fully loaded, we can call the next line
+            while (GameStateManager.gameStates.CurrentSceneName == "MainMenu")
+            {
+                yield return null;
+            }
             GameStateManager.setNewTL();
 
             yield return null; 

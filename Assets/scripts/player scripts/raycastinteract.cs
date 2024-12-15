@@ -72,6 +72,7 @@ public class raycastinteract : MonoBehaviour
                             if (npcDialogue.isFirstInteract)
                             {
                                 OnDialogueEnter?.Invoke(npcDialogue.firstStartNode, true, npcDialogue.firstDialogue);
+                                npcDialogue.isFirstInteract = false;    
                             }
                             else
                             {
