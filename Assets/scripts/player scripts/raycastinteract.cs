@@ -71,19 +71,18 @@ public class raycastinteract : MonoBehaviour
                         {
                             if (npcDialogue.isFirstInteract)
                             {
-                                OnDialogueEnter?.Invoke(npcDialogue.firstStartNode, true, npcDialogue.firstDialogue);
+                                OnDialogueEnter?.Invoke(npcDialogue.firstDialogue.NodeLinks[0].TargetNodeGUID, true, npcDialogue.firstDialogue);
                                 npcDialogue.isFirstInteract = false;    
                             }
                             else
                             {
-                                OnDialogueEnter?.Invoke(npcDialogue.secondStartNode, true, npcDialogue.secondDialogue);
+                                OnDialogueEnter?.Invoke(npcDialogue.secondDialogue.NodeLinks[0].TargetNodeGUID, true, npcDialogue.secondDialogue);
                             }
                         }
                     }
                     else if (hitObject.collider.gameObject.tag == "Iobj")
                     {
-                        //StartCoroutine(FadeBlackForSeconds(3));
-                        StartCoroutine(GlitchForSeconds(3));
+                        hitObject.collider.gameObject.GetComponent<IObjProperties>().RunFuncs();
                     }
                 }
 
@@ -128,21 +127,6 @@ public class raycastinteract : MonoBehaviour
         //Debug.Log("Enabled Pausing");
     }
 
-    IEnumerator FadeBlackForSeconds(float delay)
-    {
-        GameStateManager.setPausedState(true);
-        GameStateManager.setScreenFadeIn();
-        yield return new WaitForSeconds(delay);
-        GameStateManager.setScreenFadeOut();
-        GameStateManager.setPausedState(false);
-    }
-
-    IEnumerator GlitchForSeconds(float delay)
-    {
-        GameStateManager.setStartGlitch();
-        yield return new WaitForSeconds(delay);
-        GameStateManager.setStopGlitch();
-    }
     public void JoinConversation()
     {
         

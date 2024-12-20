@@ -14,7 +14,7 @@ namespace SaveGame
         public MyQuat playerRot;
         public MyVec3 cameraPos;
         public MyVec3 cameraRot;
-        public List<NpcData> npcs;
+        public Dictionary<string, Tuple<bool,bool>> npcs; // name, isFirstInteract, canInteract
         public List<int> puzzles;
         public Dictionary<int, int> unlockedItems; // ID, amount
         //public GameStates gameStates;

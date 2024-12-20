@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: TEST DIALOGUE
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: dab8b5df-6818-44eb-b24f-aecc1ec84562
+    PortName: Next
+    TargetNodeGUID: 8e43e702-b0a4-41de-a93f-0efe058af003
+  - BaseNodeGUID: 8e43e702-b0a4-41de-a93f-0efe058af003
+    PortName: A
+    TargetNodeGUID: 8c59d584-3954-4ed4-ae4b-8fcdeadf29fe
+  DialogueNodeData:
+  - NodeGUID: 8e43e702-b0a4-41de-a93f-0efe058af003
+    NPCNameText: NEW NPC
+    DialogueText: Dialogue Node
+    Trigger: []
+    Position: {x: 295.2, y: 156.8}
+  - NodeGUID: 8c59d584-3954-4ed4-ae4b-8fcdeadf29fe
+    NPCNameText: NEW NPC
+    DialogueText: ASDSDFASDFASFG
+    Trigger: []
+    Position: {x: 616.8, y: 166.4}
+  ExposedProperties: []
+  CommentBlockData: []

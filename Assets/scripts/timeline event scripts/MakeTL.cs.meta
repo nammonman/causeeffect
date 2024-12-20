@@ -3,7 +3,12 @@ guid: c3d3023dcedcdbd4ab105a4c21bdf158
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - titleInput: {instanceID: 0}
+  - dayNumInput: {instanceID: 0}
+  - timeinput: {instanceID: 0}
+  - idText: {instanceID: 0}
+  - npcPrefab: {fileID: 4059662453747000534, guid: 1ee2c0e2bba19db48a2874a0fa5e9305, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

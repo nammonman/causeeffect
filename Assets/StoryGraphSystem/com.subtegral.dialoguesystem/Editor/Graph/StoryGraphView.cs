@@ -181,7 +181,7 @@ namespace Subtegral.DialogueSystem.Editor
                 text = "Add Trigger"
             };
             tempDialogueNode.mainContainer.Add(triggerButton);
-            if (fromSave && trigger.Count > 0)
+            if (fromSave && trigger != null && trigger.Count > 0)
             {
                 foreach (string triggerName in trigger)
                 {

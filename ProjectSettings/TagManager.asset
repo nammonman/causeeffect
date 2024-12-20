@@ -13,6 +13,7 @@ TagManager:
   - persistent scripts
   - secret text
   - secret text chunk
+  - npc prefab
   layers:
   - Default
   - TransparentFX

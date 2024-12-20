@@ -3,9 +3,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MakeTL : MonoBehaviour
@@ -18,6 +20,22 @@ public class MakeTL : MonoBehaviour
     [SerializeField] TMP_InputField timeinput;
     [SerializeField] TextMeshProUGUI idText;
 
+    [SerializeField] TextMeshProUGUI DebugSceneSetting;
+
+    public static MakeTL Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         // init
@@ -90,7 +108,7 @@ public class MakeTL : MonoBehaviour
 
         // init
         PlayerSaveData playerSaveData = new PlayerSaveData();
-
+        playerSaveData.npcs = new Dictionary<string, Tuple<bool, bool>>();
 
         // set id
         playerSaveData.id = id;
@@ -108,9 +126,24 @@ public class MakeTL : MonoBehaviour
 
         // get scene name
         playerSaveData.sceneName = GameStateManager.gameStates.CurrentSceneName;
+        playerSaveData.sceneSetting = GameStateManager.gameStates.CurrentSceneSetting;
+
+        //get npcs
+        GameObject[] sceneNpcs = SceneObjectFinder.FindObjectsInSceneWithTag(GameStateManager.gameStates.CurrentSceneSetting, "npc");
+        if (sceneNpcs != null && sceneNpcs.Length > 0)
+        {
+            foreach (var npc in sceneNpcs)
+            {
+                NpcDialogue npcDialogue = npc.GetComponent<NpcDialogue>();
+                Dictionary<string, Tuple<bool, bool>> npcData = new Dictionary<string, Tuple<bool, bool>>();
+                playerSaveData.npcs.Add(npc.name, new Tuple<bool, bool>(npcDialogue.isFirstInteract, npcDialogue.canInteract));
+            }
+        }
 
         PS.Add(id, playerSaveData);
         Debug.Log("saved: " + JsonUtility.ToJson(PS[id]));
+
+        
     }
 
     public void newFromCurrentTL()
@@ -163,8 +196,98 @@ public class MakeTL : MonoBehaviour
         GameStateManager.setSave();
     }
 
-    public static void LoadPS(int id)
+    public IEnumerator<AsyncOperation> LoadNPCWithSave(int id)
     {
+        // unload current before loading new scene
+        if (SceneManager.GetSceneByName(GameStateManager.gameStates.CurrentSceneSetting).IsValid())
+        {
+            SceneManager.UnloadSceneAsync(GameStateManager.gameStates.CurrentSceneSetting);
+        }
+
+
+        GameStateManager.gameStates.CurrentSceneSetting = PS[id].sceneSetting;
+        if (!string.IsNullOrEmpty(PS[id].sceneSetting))
+        {
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(PS[id].sceneSetting, LoadSceneMode.Additive);
+            while (!asyncLoad.isDone)
+            {
+                yield return asyncLoad;
+            }
+
+            if (PS[id].npcs.Count > 0) 
+            {
+                foreach (var npc in PS[id].npcs)
+                {
+                    // set npcs properties
+                    GameObject sceneNpc = SceneObjectFinder.FindObjectInScene(GameStateManager.gameStates.CurrentSceneSetting, npc.Key);
+                    if (sceneNpc != null)
+                    {
+                        NpcDialogue npcDialogue = sceneNpc.GetComponentInChildren<NpcDialogue>();
+                        npcDialogue.isFirstInteract = npc.Value.Item1;
+                        npcDialogue.canInteract = npc.Value.Item2;
+                        Debug.Log("set properties for NPC " + npc.Key);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("fail to get sceneNpc");
+                    }
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("scene setting does not exist for PS id: " + id);
+        }
+
+        yield return null;
+    }
+
+    public void LoadNPCBySceneSetting(string sceneSetting)
+    {
+        // unload current before loading new scene
+        if (SceneManager.GetSceneByName(GameStateManager.gameStates.CurrentSceneSetting).IsValid())
+        {
+            SceneManager.UnloadSceneAsync(GameStateManager.gameStates.CurrentSceneSetting);
+        }
+
+
+        GameStateManager.gameStates.CurrentSceneSetting = sceneSetting;
+        if (!string.IsNullOrEmpty(sceneSetting))
+        {
+            SceneManager.LoadScene(sceneSetting, LoadSceneMode.Additive);
+            
+        }
+        else
+        {
+            Debug.Log("scene setting does not exist: " + sceneSetting);
+        }
+    }
+    public void LoadNPCBySceneSettingDebug()
+    {
+        string sceneSetting = DebugSceneSetting.text;
+
+        // unload current before loading new scene
+        if (SceneManager.GetSceneByName(GameStateManager.gameStates.CurrentSceneSetting).IsValid())
+        {
+            SceneManager.UnloadSceneAsync(GameStateManager.gameStates.CurrentSceneSetting);
+        }
+
+
+        GameStateManager.gameStates.CurrentSceneSetting = sceneSetting;
+        if (!string.IsNullOrEmpty(sceneSetting))
+        {
+            SceneManager.LoadScene(sceneSetting, LoadSceneMode.Additive);
+
+        }
+        else
+        {
+            Debug.Log("scene setting does not exist: " + sceneSetting);
+        }
+    }
+
+    public void LoadPS(int id)
+    {
+
         GameStateManager.setPausedState(true);
         GameObject player = GameObject.FindGameObjectWithTag("player prefab");
         Transform cam = Camera.main.transform;
@@ -174,14 +297,17 @@ public class MakeTL : MonoBehaviour
         player.GetComponent<LoadScene>().LoadSceneByNameAndPos(PS[id].sceneName, MyVec3Convert(PS[id].playerPos));
         playermovement.xRotation = PS[id].cameraRot.x;
         playermovement.yRotation = PS[id].cameraRot.y;
-        
+
+        StartCoroutine(LoadNPCWithSave(id));
+
         GameStateManager.setPausedState(false);
         Debug.Log("loaded: " + JsonUtility.ToJson(PS[id]));
         
     }
 
-    public static void LoadTL(int id)
+    public void LoadTL(int id)
     {
+        
 
         TimelineEvent currentTimelineEvent = GameObject.Find("Persistent Scripts").GetComponent<TimelineEvent>();
         currentTimelineEvent.id = TL[id].id;
@@ -201,8 +327,8 @@ public class MakeTL : MonoBehaviour
 
     public static void LoadTLPS(int id)
     {
-        LoadTL(id);
-        LoadPS(id);
+        Instance.LoadTL(id);
+        Instance.LoadPS(id);
         GameStateManager.setSave();
     }
 }

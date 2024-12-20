@@ -14,9 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/Scenes/TestSwitchScene.unity
-    guid: d0abe6570387cef41852d736e9680886
   - enabled: 1
     path: Assets/Scenes/Home.unity
     guid: 9571125ee90f5bc41825e8177793cf5e
@@ -38,4 +35,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/presentation tutorial.unity
     guid: 55f28c5088c4b814b9ffe1831792c36c
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/TestScene/TestSceneNPC1.unity
+    guid: 87ecd1a03f148874595b40c7a73a62f9
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/TestScene/TestSceneNPC2.unity
+    guid: b52042ec4f4c4764495fd9fd7b07b708
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/TestScene/TestSceneNPC3.unity
+    guid: 4955f4527a9277f4c8a7415261809829
   m_configObjects: {}

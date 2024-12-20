@@ -7,8 +7,6 @@ using UnityEngine;
 [Serializable]
 public class NpcDialogue : MonoBehaviour
 {
-    public string firstStartNode;
-    public string secondStartNode;
     public bool isFirstInteract = true;
     public bool canInteract = true;
     public Dialogue firstDialogue;
