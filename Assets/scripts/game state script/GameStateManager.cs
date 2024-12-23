@@ -87,6 +87,7 @@ public class GameStateManager : MonoBehaviour
     public static event Action OnNewTL;
     public static event Action<string> OnLoadNewScene;
     public static event Action<string, Vector3> OnLoadNewSceneWithPos;
+    public static event Action<string> OnLoadSceneSetting;
     public static event Action OnSave;
     public static event Action<bool> OnSecretText;
     public static event Action<string> OnMonologue;
@@ -194,7 +195,10 @@ public class GameStateManager : MonoBehaviour
         OnLoadNewSceneWithPos.Invoke(s, v3);
     }
 
-
+    public static void setLoadSceneSetting(string s)
+    {
+        OnLoadSceneSetting.Invoke(s);
+    }
     public static void setSave()
     {
         OnSave.Invoke();

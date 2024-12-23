@@ -13,22 +13,46 @@ MonoBehaviour:
   m_Name: Prologue presentation - Presenter
   m_EditorClassIdentifier: 
   NodeLinks:
-  - BaseNodeGUID: f1989f95-f792-4bf9-8d63-8ad91ae58781
+  - BaseNodeGUID: ecff45c2-b211-46fb-9201-a38f1a74bc8d
     PortName: Next
-    TargetNodeGUID: c1a51d32-9517-45ef-bdf8-1a8b55232665
-  - BaseNodeGUID: c1a51d32-9517-45ef-bdf8-1a8b55232665
-    PortName: Thank you for invinting me.
-    TargetNodeGUID: f83e2c13-f925-4c4f-a003-a8cbe304003f
+    TargetNodeGUID: 2092b8e2-40cf-4f91-9e4e-aeb8c81ad527
+  - BaseNodeGUID: dfe8680e-d224-4bb8-9047-e764d72ba087
+    PortName: sdfsdfsdfsdf
+    TargetNodeGUID: 4e448fbd-3893-4570-9912-3eb662208814
+  - BaseNodeGUID: 2092b8e2-40cf-4f91-9e4e-aeb8c81ad527
+    PortName: xcxvxcvxcv
+    TargetNodeGUID: dfe8680e-d224-4bb8-9047-e764d72ba087
+  - BaseNodeGUID: 2092b8e2-40cf-4f91-9e4e-aeb8c81ad527
+    PortName: 2
+    TargetNodeGUID: 0a1e1949-60c2-4421-8de5-e55e1940f599
+  - BaseNodeGUID: 2092b8e2-40cf-4f91-9e4e-aeb8c81ad527
+    PortName: 1
+    TargetNodeGUID: bb5262b7-c858-440c-829d-c1384c12fd33
   DialogueNodeData:
-  - NodeGUID: c1a51d32-9517-45ef-bdf8-1a8b55232665
-    NPCNameText: Presenter
-    DialogueText: We welcome the Head Researcher to press the button!
+  - NodeGUID: dfe8680e-d224-4bb8-9047-e764d72ba087
+    NPCNameText: NEW NPC
+    DialogueText: Dialogue Node
     Trigger: []
-    Position: {x: 375.2, y: 332}
-  - NodeGUID: f83e2c13-f925-4c4f-a003-a8cbe304003f
-    NPCNameText: Presenter
-    DialogueText: Thank you for all your work! Now, please do the honors.
+    Position: {x: 791.2, y: -109.600006}
+  - NodeGUID: 4e448fbd-3893-4570-9912-3eb662208814
+    NPCNameText: NEW NPC
+    DialogueText: Dialogue Node
     Trigger: []
-    Position: {x: 964.8, y: 320}
+    Position: {x: 1151.2, y: -78.399994}
+  - NodeGUID: 2092b8e2-40cf-4f91-9e4e-aeb8c81ad527
+    NPCNameText: NEW NPC
+    DialogueText: Dialogue Node
+    Trigger: []
+    Position: {x: 418.4, y: -65.6}
+  - NodeGUID: bb5262b7-c858-440c-829d-c1384c12fd33
+    NPCNameText: NEW NPC
+    DialogueText: Dialogue Node
+    Trigger: []
+    Position: {x: 864.8, y: 51.2}
+  - NodeGUID: 0a1e1949-60c2-4421-8de5-e55e1940f599
+    NPCNameText: NEW NPC
+    DialogueText: Dialogue Node
+    Trigger: []
+    Position: {x: 794.4, y: 221.59999}
   ExposedProperties: []
   CommentBlockData: []

@@ -18,6 +18,7 @@ namespace Subtegral.DialogueSystem.Editor
         private StoryGraphView _graphView;
         private Dialogue _dialogueContainer;
 
+
         [MenuItem("Graph/Narrative Graph")]
         public static void CreateGraphViewWindow()
         {
@@ -40,6 +41,7 @@ namespace Subtegral.DialogueSystem.Editor
             var toolbar = new Toolbar();
 
             var fileNameTextField = new TextField("File Name:");
+            fileNameTextField.name = "FileNameTextField";
             fileNameTextField.SetValueWithoutNotify(_fileName);
             fileNameTextField.MarkDirtyRepaint();
             fileNameTextField.RegisterValueChangedCallback(evt => _fileName = evt.newValue);
@@ -76,7 +78,38 @@ namespace Subtegral.DialogueSystem.Editor
             ConstructGraphView();
             GenerateToolbar();
             GenerateMiniMap();
-            //GenerateBlackBoard();
+            wantsMouseMove = true;
+            rootVisualElement.RegisterCallback<DragUpdatedEvent>(OnDragUpdated);
+            rootVisualElement.RegisterCallback<DragPerformEvent>(OnDragPerform);
+        }
+        private void OnDragUpdated(DragUpdatedEvent evt)
+        {
+            if (DragAndDrop.objectReferences.Length == 1 && DragAndDrop.objectReferences[0] is Dialogue)
+            {
+                DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
+            }
+        }
+        private void OnDragPerform(DragPerformEvent evt)
+        {
+            if (DragAndDrop.objectReferences.Length == 1 && DragAndDrop.objectReferences[0] is Dialogue dialogue)
+            {
+                DragAndDrop.AcceptDrag();
+                LoadDialogueDragAndDrop(dialogue.name);
+            }
+        }
+
+
+        private void LoadDialogueDragAndDrop(string s)
+        {
+            _fileName = s; // Update the internal file name
+            var fileNameTextField = rootVisualElement.Q<TextField>("FileNameTextField");
+            if (fileNameTextField != null)
+            {
+                fileNameTextField.SetValueWithoutNotify(_fileName); // Update the text field
+            }
+
+            var saveUtility = GraphSaveUtility.GetInstance(_graphView);
+            saveUtility.LoadNarrative(_fileName);
         }
 
         private void GenerateMiniMap()
@@ -116,6 +149,8 @@ namespace Subtegral.DialogueSystem.Editor
 
         private void OnDisable()
         {
+            rootVisualElement.UnregisterCallback<DragUpdatedEvent>(OnDragUpdated);
+            rootVisualElement.UnregisterCallback<DragPerformEvent>(OnDragPerform);
             rootVisualElement.Remove(_graphView);
         }
     }

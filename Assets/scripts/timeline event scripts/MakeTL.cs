@@ -47,11 +47,13 @@ public class MakeTL : MonoBehaviour
     private void OnEnable()
     {
         GameStateManager.OnNewTL += newFromCurrentTL;
+        GameStateManager.OnLoadSceneSetting += LoadNPCBySceneSetting;
     }
 
     private void OnDisable()
     {
         GameStateManager.OnNewTL -= newFromCurrentTL;
+        GameStateManager.OnLoadSceneSetting -= LoadNPCBySceneSetting;
     }
 
     public static Vector3 MyVec3Convert(MyVec3 v3)

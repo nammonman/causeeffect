@@ -9,6 +9,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using static UnityEditor.Experimental.GraphView.GraphView;
 using Button = UnityEngine.UIElements.Button;
 
 
@@ -40,8 +41,25 @@ namespace Subtegral.DialogueSystem.Editor
             AddElement(GetEntryPointNodeInstance());
 
             AddSearchWindow(editorWindow);
+
+            graphViewChanged = OnGraphViewChanged;
         }
 
+        private GraphViewChange OnGraphViewChanged(GraphViewChange change)
+        {
+            if (change.elementsToRemove != null)
+            {
+                foreach (var element in change.elementsToRemove)
+                {
+                    if (element is Edge edge)
+                    {
+                        OnEdgeDisconnected(edge);
+                    }
+                }
+            }
+
+            return change;
+        }
 
         private void AddSearchWindow(StoryGraph editorWindow)
         {
@@ -113,11 +131,32 @@ namespace Subtegral.DialogueSystem.Editor
             ports.ForEach((port) =>
             {
                 var portView = port;
-                if (startPortView != portView && startPortView.node != portView.node)
+                if (startPortView != portView && startPortView.node != portView.node && !portView.connected)
                     compatiblePorts.Add(port);
             });
 
             return compatiblePorts;
+        }
+
+        public void OnEdgeDisconnected(Edge edge)
+        {
+            if (edge?.input?.node is DialogueNode inputNode)
+            {
+                
+                markNodeUnsaved(inputNode);
+                edge.input.portColor = Color.red;
+                inputNode.RefreshPorts();
+                inputNode.RefreshExpandedState();
+            }
+
+            if (edge?.output?.node is DialogueNode outputNode)
+            {
+                
+                markNodeUnsaved(outputNode);
+                edge.output.portColor = Color.red;
+                outputNode.RefreshPorts();
+                outputNode.RefreshExpandedState();
+            }
         }
 
         public void CreateNewDialogueNode(string nodeName, Vector2 position)
@@ -220,20 +259,6 @@ namespace Subtegral.DialogueSystem.Editor
             
 
         }
-
-        public void markEdgeUnsaved(Port socket)
-        {
-            var targetEdge = edges.ToList()
-                .Where(x => x.output.portName == socket.portName && x.output.node == socket.node);
-            if (targetEdge.Any())
-            {
-                var edge = targetEdge.First();
-                edge.edgeControl.edgeColor =  Color.red;
-            }
-        }
-
-
-        
 
         public void AddChoicePort(DialogueNode nodeCache, string overriddenPortName = "")
         {

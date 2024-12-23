@@ -176,6 +176,7 @@ namespace Subtegral.DialogueSystem.Editor
             }
         }
 
+
         private void ConnectDialogueNodes()
         {
             for (var i = 0; i < Nodes.Count; i++)

@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Subtegral.DialogueSystem.DataContainers;
+using static UnityEditor.Progress;
 
 namespace Subtegral.DialogueSystem.Runtime
 {
@@ -135,6 +136,22 @@ namespace Subtegral.DialogueSystem.Runtime
         {
             // trigger event named e
             Debug.Log("trigger event " + e + " from dialogue");
+
+            string[] f = e.Split('_');
+            // funcname_arg1_arg2_arg3_...
+            
+            if (f[0] == "ChaneScene")
+            {
+                GameStateManager.setLoadNewScene(f[1]);
+            }
+            else if (f[0] == "ChaneSceneSetPos")
+            {
+                GameStateManager.setLoadNewSceneWithPos(f[1], new Vector3(int.Parse(f[2]), int.Parse(f[3]), int.Parse(f[4])));
+            }
+            else if (f[0] == "ChaneSetting")
+            {
+                GameStateManager.setLoadSceneSetting(f[1]);
+            }
         }
 
         IEnumerator DelayedResponse(float seconds, string GUID, bool fromInteract)

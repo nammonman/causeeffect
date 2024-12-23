@@ -17,13 +17,28 @@ public class IObjProperties : MonoBehaviour
         {
             foreach (var item in funcs)
             {
-                if (item == "FadeBlack_2")
+                string[] f = item.Split('_');
+                // funcname_arg1_arg2_arg3_...
+
+                if (f[0] == "FadeBlack")
                 {
-                    StartCoroutine(FadeBlackForSeconds(2));
+                    StartCoroutine(FadeBlackForSeconds(int.Parse(f[1])));
                 }
-                else if (item == "Glitch_4")
+                else if (f[0] == "Glitch")
                 {
-                    StartCoroutine(GlitchForSeconds(4));
+                    StartCoroutine(GlitchForSeconds(int.Parse(f[1])));
+                }
+                else if (f[0] == "ChaneScene")
+                {
+                    GameStateManager.setLoadNewScene(f[1]);
+                }
+                else if (f[0] == "ChaneSceneSetPos")
+                {
+                    GameStateManager.setLoadNewSceneWithPos(f[1], new Vector3(int.Parse(f[2]), int.Parse(f[3]), int.Parse(f[4])));
+                }
+                else if (f[0] == "ChaneSetting")
+                {
+                    GameStateManager.setLoadSceneSetting(f[1]);
                 }
             }
         }
