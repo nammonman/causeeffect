@@ -9868,8 +9868,11 @@ MonoBehaviour:
   interactable: 0
   onetime: 0
   funcs:
-  - FadeBlack_2
-  - Glitch_4
+  - BlackScreenText_firstSequence
+  - ChangeScene_WorkPresidentRoom
+  - ChangeSetting_WorkPresidentRoomNPC1
+  - Wait_2
+  - NewTL
 --- !u!1001 &235819528
 PrefabInstance:
   m_ObjectHideFlags: 0

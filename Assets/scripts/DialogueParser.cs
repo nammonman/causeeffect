@@ -140,15 +140,15 @@ namespace Subtegral.DialogueSystem.Runtime
             string[] f = e.Split('_');
             // funcname_arg1_arg2_arg3_...
             
-            if (f[0] == "ChaneScene")
+            if (f[0] == "ChangeScene")
             {
                 GameStateManager.setLoadNewScene(f[1]);
             }
-            else if (f[0] == "ChaneSceneSetPos")
+            else if (f[0] == "ChangeSceneSetPos")
             {
                 GameStateManager.setLoadNewSceneWithPos(f[1], new Vector3(int.Parse(f[2]), int.Parse(f[3]), int.Parse(f[4])));
             }
-            else if (f[0] == "ChaneSetting")
+            else if (f[0] == "ChangeSetting")
             {
                 GameStateManager.setLoadSceneSetting(f[1]);
             }

@@ -81,10 +81,12 @@ public class GameStateManager : MonoBehaviour
     public static event Action OnFadeIn;
     public static event Action OnFadeOut;
     public static event Action<int> OnDream;
+    public static event Action<string> OnBlackScreenText;
     public static event Action OnStartGlitch;
     public static event Action OnStopGlitch;
     public static event Action<bool> OnFreezePlayer;
     public static event Action OnNewTL;
+    public static event Action<string> OnNewTLTitle;
     public static event Action<string> OnLoadNewScene;
     public static event Action<string, Vector3> OnLoadNewSceneWithPos;
     public static event Action<string> OnLoadSceneSetting;
@@ -165,6 +167,10 @@ public class GameStateManager : MonoBehaviour
     {
         OnDream.Invoke(i);
     }
+    public static void setBlackScreenText(string s)
+    {
+        OnBlackScreenText.Invoke(s);
+    }
 
     public static void setStartGlitch()
     {
@@ -185,7 +191,10 @@ public class GameStateManager : MonoBehaviour
     {
         OnNewTL.Invoke();
     }
-
+    public static void setNewTLTitle(string s)
+    {
+        OnNewTLTitle.Invoke(s);
+    }
     public static void setLoadNewScene(string s)
     {
         OnLoadNewScene.Invoke(s);

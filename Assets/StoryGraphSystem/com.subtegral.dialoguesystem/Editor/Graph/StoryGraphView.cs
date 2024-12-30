@@ -201,6 +201,13 @@ namespace Subtegral.DialogueSystem.Editor
                 tempDialogueNode.NPCNameText = evt.newValue;
                 markNodeUnsaved(tempDialogueNode);
             });
+            titleField.RegisterCallback<InputEvent>(evt =>
+            {
+                titleField.label = "npc name*";
+                tempDialogueNode.title = titleField.value;
+                tempDialogueNode.NPCNameText = titleField.value;
+                markNodeUnsaved(tempDialogueNode);
+            });
             titleField.value = NPCName;
             tempDialogueNode.mainContainer.Add(titleField);
 
@@ -209,6 +216,12 @@ namespace Subtegral.DialogueSystem.Editor
             {
                 textField.label = "dialogue*";
                 tempDialogueNode.DialogueText = evt.newValue;
+                markNodeUnsaved(tempDialogueNode);
+            });
+            textField.RegisterCallback<InputEvent>(evt =>
+            {
+                textField.label = "dialogue*";
+                tempDialogueNode.DialogueText = textField.value;
                 markNodeUnsaved(tempDialogueNode);
             });
             textField.multiline = true;
@@ -291,8 +304,14 @@ namespace Subtegral.DialogueSystem.Editor
                 name = string.Empty,
                 value = overriddenPortName
             };
+
             textField.RegisterValueChangedCallback(evt => {
                 generatedPort.portName = evt.newValue;
+                markNodeUnsaved(nodeCache);
+            });
+            textField.RegisterCallback<InputEvent>(evt =>
+            {
+                generatedPort.portName = textField.value;
                 markNodeUnsaved(nodeCache);
             });
             generatedPort.portName = overriddenPortName;
@@ -365,7 +384,7 @@ namespace Subtegral.DialogueSystem.Editor
                     Debug.Log("======================================");
                     for (int i = 0; i < nodeCache.Trigger.Count; i++)
                     {
-                        Debug.Log(nodeCache.Trigger[i]);
+                        Debug.Log(nodeCache.Trigger[i]);    
                     }
                     
                 }

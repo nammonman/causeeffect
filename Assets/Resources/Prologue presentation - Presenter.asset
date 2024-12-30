@@ -17,42 +17,27 @@ MonoBehaviour:
     PortName: Next
     TargetNodeGUID: 2092b8e2-40cf-4f91-9e4e-aeb8c81ad527
   - BaseNodeGUID: dfe8680e-d224-4bb8-9047-e764d72ba087
-    PortName: sdfsdfsdfsdf
+    PortName: (I hope this goes well)
     TargetNodeGUID: 4e448fbd-3893-4570-9912-3eb662208814
   - BaseNodeGUID: 2092b8e2-40cf-4f91-9e4e-aeb8c81ad527
-    PortName: xcxvxcvxcv
+    PortName: (...)
     TargetNodeGUID: dfe8680e-d224-4bb8-9047-e764d72ba087
-  - BaseNodeGUID: 2092b8e2-40cf-4f91-9e4e-aeb8c81ad527
-    PortName: 2
-    TargetNodeGUID: 0a1e1949-60c2-4421-8de5-e55e1940f599
-  - BaseNodeGUID: 2092b8e2-40cf-4f91-9e4e-aeb8c81ad527
-    PortName: 1
-    TargetNodeGUID: bb5262b7-c858-440c-829d-c1384c12fd33
   DialogueNodeData:
-  - NodeGUID: dfe8680e-d224-4bb8-9047-e764d72ba087
-    NPCNameText: NEW NPC
-    DialogueText: Dialogue Node
-    Trigger: []
-    Position: {x: 791.2, y: -109.600006}
-  - NodeGUID: 4e448fbd-3893-4570-9912-3eb662208814
-    NPCNameText: NEW NPC
-    DialogueText: Dialogue Node
-    Trigger: []
-    Position: {x: 1151.2, y: -78.399994}
   - NodeGUID: 2092b8e2-40cf-4f91-9e4e-aeb8c81ad527
-    NPCNameText: NEW NPC
-    DialogueText: Dialogue Node
+    NPCNameText: Presenter
+    DialogueText: ...we are proud to announce the next breakthrough in renewable
+      energy!!
     Trigger: []
-    Position: {x: 418.4, y: -65.6}
-  - NodeGUID: bb5262b7-c858-440c-829d-c1384c12fd33
-    NPCNameText: NEW NPC
-    DialogueText: Dialogue Node
+    Position: {x: 322.4, y: 76}
+  - NodeGUID: dfe8680e-d224-4bb8-9047-e764d72ba087
+    NPCNameText: Presenter
+    DialogueText: The head researcher will now proceed with the demonstration.
     Trigger: []
-    Position: {x: 864.8, y: 51.2}
-  - NodeGUID: 0a1e1949-60c2-4421-8de5-e55e1940f599
-    NPCNameText: NEW NPC
-    DialogueText: Dialogue Node
+    Position: {x: 912, y: 76.8}
+  - NodeGUID: 4e448fbd-3893-4570-9912-3eb662208814
+    NPCNameText: Presenter
+    DialogueText: whenever you are ready, press the red button.
     Trigger: []
-    Position: {x: 794.4, y: 221.59999}
+    Position: {x: 1456.8, y: 74.399994}
   ExposedProperties: []
   CommentBlockData: []

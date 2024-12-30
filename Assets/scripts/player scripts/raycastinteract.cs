@@ -82,7 +82,7 @@ public class raycastinteract : MonoBehaviour
                     }
                     else if (hitObject.collider.gameObject.tag == "Iobj")
                     {
-                        hitObject.collider.gameObject.GetComponent<IObjProperties>().RunFuncs();
+                        RunFuncs(hitObject.collider.gameObject.GetComponent<IObjProperties>().funcs);
                     }
                 }
 
@@ -153,5 +153,146 @@ public class raycastinteract : MonoBehaviour
     private void OnDisable()
     {
         DialogueParser.OnDialogueExit -= LeaveConversation;
+    }
+    public void RunFuncs(List<string> funcs)
+    {
+        if (funcs.Count > 0)
+        {
+            StartCoroutine(ExecuteFuncsSequentially(funcs));
+        }
+    }
+
+    private IEnumerator ExecuteFuncsSequentially(List<string> funcs)
+    {
+        foreach (var item in funcs)
+        {
+            string[] parallelFuncs = item.Split(' '); // Split multiple functions by space
+            List<IEnumerator> parallelCoroutines = new List<IEnumerator>();
+
+            foreach (var func in parallelFuncs)
+            {
+                string[] f = func.Split('_'); // Split individual function and arguments
+
+                if (f[0] == "FadeBlack")
+                {
+                    parallelCoroutines.Add(FadeBlackForSeconds(float.Parse(f[1])));
+                }
+                else if (f[0] == "BlackScreenText")
+                {
+                    parallelCoroutines.Add(BlackScreenTextCoroutine(f[1]));
+                }
+                else if (f[0] == "Glitch")
+                {
+                    parallelCoroutines.Add(GlitchForSeconds(float.Parse(f[1])));
+                }
+                else if (f[0] == "Wait")
+                {
+                    parallelCoroutines.Add(WaitSeconds(float.Parse(f[1])));
+                }
+                else if (f[0] == "ChangeScene")
+                {
+                    parallelCoroutines.Add(LoadSceneCoroutine(f[1]));
+                }
+                else if (f[0] == "ChangeSceneSetPos")
+                {
+                    parallelCoroutines.Add(LoadSceneWithPosCoroutine(f[1], new Vector3(int.Parse(f[2]), int.Parse(f[3]), int.Parse(f[4]))));
+                }
+                else if (f[0] == "ChangeSetting")
+                {
+                    parallelCoroutines.Add(LoadSceneSettingCoroutine(f[1]));
+                }
+                else if (f[0] == "NewTL")
+                {
+                    GameStateManager.setNewTL();
+                }
+                else if (f[0] == "NewTLTitle")
+                {
+                    GameStateManager.setNewTLTitle(f[1]);
+                }
+                else if (f[0] == "kill")
+                {
+                    //Destroy(gameObject);
+                }
+                Debug.Log("ran " + item);
+            }
+
+            if (parallelCoroutines.Count > 0)
+            {
+                yield return ExecuteParallelCoroutines(parallelCoroutines);
+            }
+        }
+    }
+
+    private IEnumerator ExecuteParallelCoroutines(List<IEnumerator> coroutines)
+    {
+        List<Coroutine> runningCoroutines = new List<Coroutine>();
+
+        foreach (var coroutine in coroutines)
+        {
+            runningCoroutines.Add(StartCoroutine(coroutine));
+        }
+
+        foreach (var runningCoroutine in runningCoroutines)
+        {
+            yield return runningCoroutine;
+        }
+    }
+
+    IEnumerator FadeBlackForSeconds(float delay)
+    {
+        GameStateManager.setPausedState(true);
+        GameStateManager.setScreenFadeIn();
+        yield return new WaitForSeconds(delay);
+        GameStateManager.setScreenFadeOut();
+        GameStateManager.setPausedState(false);
+    }
+
+    IEnumerator GlitchForSeconds(float delay)
+    {
+        GameStateManager.setStartGlitch();
+        yield return new WaitForSeconds(delay);
+        GameStateManager.setStopGlitch();
+    }
+
+    IEnumerator WaitSeconds(float delay) { yield return new WaitForSeconds(delay); }
+
+    IEnumerator LoadSceneCoroutine(string sceneName)
+    {
+        bool isDone = false;
+
+        GameStateManager.setLoadNewScene(sceneName);
+
+        LoadScene.OnEnd += () => isDone = true;
+        yield return new WaitUntil(() => isDone);
+    }
+
+    IEnumerator LoadSceneWithPosCoroutine(string sceneName, Vector3 position)
+    {
+        bool isDone = false;
+
+        GameStateManager.setLoadNewSceneWithPos(sceneName, position);
+
+        LoadScene.OnEnd += () => isDone = true;
+        yield return new WaitUntil(() => isDone);
+    }
+
+    IEnumerator BlackScreenTextCoroutine(string name)
+    {
+        bool isDone = false;
+
+        GameStateManager.setBlackScreenText(name);
+
+        DreamTextSwitcher.OnEnd += () => isDone = true;
+        yield return new WaitUntil(() => isDone);
+    }
+
+    IEnumerator LoadSceneSettingCoroutine(string name)
+    {
+        bool isDone = false;
+
+        GameStateManager.setLoadSceneSetting(name);
+
+        MakeTL.OnEnd += () => isDone = true;
+        yield return new WaitUntil(() => isDone);
     }
 }

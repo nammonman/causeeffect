@@ -18,7 +18,8 @@ public class DreamTextSwitcher : MonoBehaviour
     public int currentIndex = 0;
     public List<int> availableDreams = new List<int>();
 
-
+    public static event Action OnStart;
+    public static event Action OnEnd;
     private void Start()
     {
         for (int i = 0; i < DreamTexts.dreams.Count; i++)
@@ -35,15 +36,28 @@ public class DreamTextSwitcher : MonoBehaviour
     private void OnEnable()
     {
         GameStateManager.OnDream += SwitchTextCaller;
+        GameStateManager.OnBlackScreenText += SwitchTextCaller;
     }
 
     private void OnDisable()
     {
         GameStateManager.OnDream -= SwitchTextCaller;
+        GameStateManager.OnBlackScreenText -= SwitchTextCaller;
+    }
+
+    public void SwitchTextCaller(string s)
+    {
+        currentDream = null;
+        currentIndex = 0;
+        SetCoverAlpha(1f);
+        StartCoroutine(SwitchText(null, s));
+        nextButton.onClick.AddListener(() => StartCoroutine(SwitchText()));
+
     }
 
     public void SwitchTextCaller(int i)
     {
+        OnStart?.Invoke();
         currentDream = null;
         currentIndex = 0;
         SetCoverAlpha(1f);
@@ -51,11 +65,12 @@ public class DreamTextSwitcher : MonoBehaviour
         nextButton.onClick.AddListener(() => StartCoroutine(SwitchText()));
         
     }
-    IEnumerator SwitchText(int? i = null)
+    IEnumerator SwitchText(int? i = null, string blackScreenText = "")
     {
+        
         nextButton.enabled = false;
         canvasGroup.SetActive(true);
-        if (currentDream == null && i == null)
+        if (currentDream == null && i == null && string.IsNullOrEmpty(blackScreenText)) // random dream from pool
         {
             currentIndex = 0;
 
@@ -77,17 +92,23 @@ public class DreamTextSwitcher : MonoBehaviour
             
             Debug.Log("start dream " + currentDream.dreamName);
         }
-        else if (i != null)
+        else if (i != null && string.IsNullOrEmpty(blackScreenText)) // select dream 
         {
             currentDream = DreamTexts.dreams[i.Value];
+        }
+        else if (i == null && !string.IsNullOrEmpty(blackScreenText)) // select black screen text
+        {
+            currentDream = DreamTexts.blackScreenTexts[blackScreenText];
         }
 
         if (currentIndex >= currentDream.dreamTexts.Count)
         {
             Debug.Log("end dream " + currentDream.dreamName);
             nextButton.onClick.RemoveAllListeners();
+            OnEnd?.Invoke();
             yield return new WaitForSeconds(2f);
             canvasGroup.SetActive(false);
+            
             yield break;
         }
 

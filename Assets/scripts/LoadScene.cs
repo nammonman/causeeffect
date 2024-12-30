@@ -11,6 +11,8 @@ public class LoadScene : MonoBehaviour
     public TextMeshProUGUI dropdownText;
     public GameObject pauseMenu;
 
+    public static event Action OnStart;
+    public static event Action OnEnd;
 
     private Dictionary<string, Vector3> scenePositionLookup = new Dictionary<string, Vector3>
     {
@@ -87,6 +89,7 @@ public class LoadScene : MonoBehaviour
 
     private IEnumerator<AsyncOperation> LoadSceneAndSetPlayerPos(string sceneName, Vector3? pos = null)
     {
+        OnStart?.Invoke();
         // Load the new scene asynchronously
         ShowSecretText.currentSceneTexts.Clear();
         
@@ -145,7 +148,7 @@ public class LoadScene : MonoBehaviour
             ShowSecretText.currentSceneTexts.Add(item);
         }
         GameStateManager.setSecretText(GameStateManager.gameStates.canSeeSecretText);
-        
+        OnEnd?.Invoke();
     }
 
     public void SelectCamera(string n)

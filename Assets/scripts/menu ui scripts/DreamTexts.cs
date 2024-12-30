@@ -111,6 +111,114 @@ public class DreamTexts : MonoBehaviour
 
     };
 
-    
+    public static Dictionary<string, Dream> blackScreenTexts = new Dictionary<string, Dream>
+    {
+        // Add dreams 
+        
+        // blackScreenTexts 0
+
+        {
+            "default",
+            new Dream
+            {
+                dreamName = "Echoing Caves",
+                BGSoundFileName = "",
+                dreamTexts = new List<DreamText>
+                {
+                    new DreamText
+                    {
+                        text = "The sound of dripping water echoed endlessly.",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "Shadows flickered on the damp cave walls.",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    }
+                }
+            }
+        },
+        {
+            "firstSequence",
+            new Dream
+            {
+                dreamName = "firstSequence",
+                BGSoundFileName = "",
+                dreamTexts = new List<DreamText>
+                {
+                    new DreamText
+                    {
+                        text = "The screen behind you changed to show the live camera feed from the lab",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "It is showing the result of you and your team's hard work",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"The machine that could solve earth's impending energy crisis\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "Noises and a very bright light starts emitting from the machine",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "There it is! It is working just as planned",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "Applause fills the conference room",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "...",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "Everything is going very well! you thought",
+                        playSoundFileName = "",
+                        playEffectName = ""
+
+                    },
+                    new DreamText
+                    {
+                        text = "Too well..",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "A loud crack can be heard from the machine, video feed cuts and the room went silent",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "You have to explain this, head researcher...",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                }
+            }
+        },
+
+    };
 
 }

@@ -22,6 +22,8 @@ public class MakeTL : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI DebugSceneSetting;
 
+    public static event Action OnStart;
+    public static event Action OnEnd;
     public static MakeTL Instance { get; private set; }
 
     private void Awake()
@@ -46,14 +48,14 @@ public class MakeTL : MonoBehaviour
 
     private void OnEnable()
     {
-        GameStateManager.OnNewTL += newFromCurrentTL;
-        GameStateManager.OnLoadSceneSetting += LoadNPCBySceneSetting;
+        GameStateManager.OnNewTL += autoNewFromCurrentTL;
+        GameStateManager.OnLoadSceneSetting += LoadNPCBySceneSettingCaller;
     }
 
     private void OnDisable()
     {
-        GameStateManager.OnNewTL -= newFromCurrentTL;
-        GameStateManager.OnLoadSceneSetting -= LoadNPCBySceneSetting;
+        GameStateManager.OnNewTL -= autoNewFromCurrentTL;
+        GameStateManager.OnLoadSceneSetting -= LoadNPCBySceneSettingCaller;
     }
 
     public static Vector3 MyVec3Convert(MyVec3 v3)
@@ -148,7 +150,12 @@ public class MakeTL : MonoBehaviour
         
     }
 
-    public void newFromCurrentTL()
+    public void autoNewFromCurrentTL()
+    {
+        newFromCurrentTL();
+    }
+
+    public void newFromCurrentTL(string title = "")
     {
 
         TimelineEvent currentTimelineEvent = GameObject.Find("Persistent Scripts").GetComponent<TimelineEvent>();
@@ -171,11 +178,11 @@ public class MakeTL : MonoBehaviour
         if (eventId > 0)
         {
             // set properties
-            currentTimelineEvent.title = titleInput.text;
+            currentTimelineEvent.title = string.IsNullOrEmpty(title) ? eventId.ToString() : title;
             currentTimelineEvent.id = eventId;
             currentTimelineEvent.lastEventId = prevEventId;
-            currentTimelineEvent.day = int.Parse(dayNumInput.text);
-            currentTimelineEvent.timeOfDay = int.Parse(timeinput.text);
+            currentTimelineEvent.day = GameStateManager.gameStates.currentDay;
+            currentTimelineEvent.timeOfDay = GameStateManager.gameStates.currentTimeOfDay;
             currentTimelineEvent.saveDataId = eventId;
         }
         else
@@ -197,6 +204,7 @@ public class MakeTL : MonoBehaviour
         GameStateManager.gameStates.currentEventId = eventId;
         GameStateManager.setSave();
     }
+
 
     public IEnumerator<AsyncOperation> LoadNPCWithSave(int id)
     {
@@ -244,8 +252,13 @@ public class MakeTL : MonoBehaviour
         yield return null;
     }
 
-    public void LoadNPCBySceneSetting(string sceneSetting)
+    public void LoadNPCBySceneSettingCaller(string s)
     {
+        StartCoroutine(LoadNPCBySceneSetting(s));
+    }
+    public IEnumerator<AsyncOperation> LoadNPCBySceneSetting(string sceneSetting)
+    {
+        OnStart?.Invoke();
         // unload current before loading new scene
         if (SceneManager.GetSceneByName(GameStateManager.gameStates.CurrentSceneSetting).IsValid())
         {
@@ -256,13 +269,18 @@ public class MakeTL : MonoBehaviour
         GameStateManager.gameStates.CurrentSceneSetting = sceneSetting;
         if (!string.IsNullOrEmpty(sceneSetting))
         {
-            SceneManager.LoadScene(sceneSetting, LoadSceneMode.Additive);
-            
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneSetting, LoadSceneMode.Additive);
+            while (!asyncLoad.isDone)
+            {
+                yield return asyncLoad;
+            }
         }
         else
         {
             Debug.Log("scene setting does not exist: " + sceneSetting);
         }
+        yield return null;
+        OnEnd?.Invoke();
     }
     public void LoadNPCBySceneSettingDebug()
     {

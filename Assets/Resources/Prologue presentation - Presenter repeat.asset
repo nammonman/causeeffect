@@ -19,7 +19,7 @@ MonoBehaviour:
   DialogueNodeData:
   - NodeGUID: f83e2c13-f925-4c4f-a003-a8cbe304003f
     NPCNameText: Presenter
-    DialogueText: Thank you for all your work! Now, please do the honors.
+    DialogueText: whenever you are ready, please press the red button.
     Trigger: []
     Position: {x: 472.8, y: 281.6}
   ExposedProperties: []

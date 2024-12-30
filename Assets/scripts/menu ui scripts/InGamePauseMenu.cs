@@ -244,10 +244,10 @@ public class InGamePauseMenu : MonoBehaviour
                         loadingBar.value = 0;
                         return;
                     }
-                    else if (id == 0)
+                    /*else if (id == 0)
                     {
                         return;
-                    }
+                    }*/
                     MakeTL.LoadTLPS(id);
                     loadingBar.value = 0;
                     selectedGameObject = null;
