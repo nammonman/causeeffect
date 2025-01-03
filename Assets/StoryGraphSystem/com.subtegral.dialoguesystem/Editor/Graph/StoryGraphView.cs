@@ -288,7 +288,9 @@ namespace Subtegral.DialogueSystem.Editor
             generatedPort.contentContainer.Remove(portLabel);
             //generatedPort.style.flexDirection = new StyleEnum<FlexDirection>(FlexDirection.Row);
             generatedPort.style.flexGrow = 1;
-            
+            generatedPort.contentContainer.style.height = 50;
+            generatedPort.contentContainer.style.paddingTop = 10;
+            generatedPort.contentContainer.style.paddingBottom = 10;
             var outputPortCount = nodeCache.outputContainer.Query("connector").ToList().Count();
             var outputPortName = string.IsNullOrEmpty(overriddenPortName)
                 ? $"Choice {outputPortCount + 1}"
@@ -304,7 +306,6 @@ namespace Subtegral.DialogueSystem.Editor
                 name = string.Empty,
                 value = overriddenPortName
             };
-
             textField.RegisterValueChangedCallback(evt => {
                 generatedPort.portName = evt.newValue;
                 markNodeUnsaved(nodeCache);
@@ -316,7 +317,8 @@ namespace Subtegral.DialogueSystem.Editor
             });
             generatedPort.portName = overriddenPortName;
             textField.multiline = true;
-            textField.style.width = 150;
+            textField.style.width = 300;
+            textField.style.height = 50;
             textField.style.whiteSpace = new StyleEnum<WhiteSpace>(WhiteSpace.Normal);
 
             generatedPort.contentContainer.Add(textField);
@@ -370,6 +372,10 @@ namespace Subtegral.DialogueSystem.Editor
                 markNodeUnsaved(nodeCache);
             });
             nodeCache.mainContainer.Add(triggerField);
+            if (nodeCache.Trigger == null)
+            {
+                nodeCache.Trigger = new List<string>();
+            }
 
             triggerField.RegisterCallback<KeyDownEvent>(evt =>
             {

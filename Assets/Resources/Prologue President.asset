@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: Prologue President
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 5405cd7b-750a-4e7f-a6c1-dec2fb4f4de1
+    PortName: Next
+    TargetNodeGUID: 744ee62b-234c-440f-8325-bf3427935f55
+  - BaseNodeGUID: 744ee62b-234c-440f-8325-bf3427935f55
+    PortName: I am very sorry about what had happened. But betray!? I can assure
+      you that in my extensive testing there is no scenario that this could have
+      happened by me!
+    TargetNodeGUID: 3f8b74e3-f1de-4e10-bab8-364831586d92
+  - BaseNodeGUID: 3f8b74e3-f1de-4e10-bab8-364831586d92
+    PortName: what are you talking about?
+    TargetNodeGUID: 03167107-eef2-428e-9100-65a80df8c78b
+  - BaseNodeGUID: 03167107-eef2-428e-9100-65a80df8c78b
+    PortName: but how? the account can only be accessed through my credentials and
+      I was not anywhere near the access machine...
+    TargetNodeGUID: dccc32b9-207b-4c1b-b283-68c11acdd81b
+  - BaseNodeGUID: dccc32b9-207b-4c1b-b283-68c11acdd81b
+    PortName: no! why!?
+    TargetNodeGUID: e8a07861-9382-4863-9109-e486426564ca
+  DialogueNodeData:
+  - NodeGUID: 744ee62b-234c-440f-8325-bf3427935f55
+    NPCNameText: The President
+    DialogueText: I have entrusted our most important project to you and you have
+      betrayed us all...
+    Trigger: []
+    Position: {x: 397.6, y: 163.2}
+  - NodeGUID: 3f8b74e3-f1de-4e10-bab8-364831586d92
+    NPCNameText: The President
+    DialogueText: The evidence is right there in the database log and you are still
+      lying to the very end
+    Trigger: []
+    Position: {x: 1063.2, y: 70.399994}
+  - NodeGUID: 03167107-eef2-428e-9100-65a80df8c78b
+    NPCNameText: The President
+    DialogueText: An hour ago a user that "just happened to" have all your verified
+      credentials tried to leak all our confidential documents
+    Trigger: []
+    Position: {x: 1800.8, y: 72}
+  - NodeGUID: dccc32b9-207b-4c1b-b283-68c11acdd81b
+    NPCNameText: The President
+    DialogueText: Well who else could it be then? Enough of this. You know what happens
+      to betrayers.
+    Trigger: []
+    Position: {x: 2716, y: 28}
+  - NodeGUID: e8a07861-9382-4863-9109-e486426564ca
+    NPCNameText: NEW NPC
+    DialogueText: Dialogue Node
+    Trigger:
+    - leave
+    Position: {x: 3444, y: 108}
+  ExposedProperties: []
+  CommentBlockData: []

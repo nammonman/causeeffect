@@ -69,6 +69,7 @@ public class raycastinteract : MonoBehaviour
                         NpcDialogue npcDialogue = hitObject.collider.gameObject.GetComponent<NpcDialogue>();
                         if (npcDialogue != null)
                         {
+                            
                             if (npcDialogue.isFirstInteract)
                             {
                                 OnDialogueEnter?.Invoke(npcDialogue.firstDialogue.NodeLinks[0].TargetNodeGUID, true, npcDialogue.firstDialogue);
@@ -133,6 +134,8 @@ public class raycastinteract : MonoBehaviour
         GameStateManager.setPausedState(true);
         GameStateManager.gameStates.canPause = false;
         GameStateManager.gameStates.isInDialogue = true;
+        GameStateManager.gameStates.canPlayerInteract = false;
+        promptText.gameObject.SetActive(false);
         wholeDialogueContainer.SetActive(true);
     }
 
@@ -143,6 +146,7 @@ public class raycastinteract : MonoBehaviour
         wholeDialogueContainer.SetActive(false);
         GameStateManager.gameStates.canPause = true;
         GameStateManager.gameStates.isInDialogue = false;
+        GameStateManager.gameStates.canPlayerInteract = true;
     }
 
     private void OnEnable()
@@ -213,7 +217,7 @@ public class raycastinteract : MonoBehaviour
                 {
                     //Destroy(gameObject);
                 }
-                Debug.Log("ran " + item);
+                Debug.Log("ran " + func);
             }
 
             if (parallelCoroutines.Count > 0)
