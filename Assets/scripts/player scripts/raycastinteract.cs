@@ -18,7 +18,7 @@ public class raycastinteract : MonoBehaviour
     public static event DialogueEnter OnDialogueEnter;
 
     private bool objInteractable = false;
-
+    private bool pauseFlag = false;
     public void Start()
     {
         promptText.text = "[E] to interact";
@@ -27,6 +27,10 @@ public class raycastinteract : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+        if (pauseFlag)
+        {
+            GameStateManager.setPausedState(true);
+        }
         if (GameStateManager.gameStates.canPlayerInteract)
         {
             Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward*rayDist, Color.blue);
@@ -67,15 +71,15 @@ public class raycastinteract : MonoBehaviour
                     {
                         JoinConversation();
                         NpcDialogue npcDialogue = hitObject.collider.gameObject.GetComponent<NpcDialogue>();
-                        if (npcDialogue != null)
+                        if (npcDialogue != null && npcDialogue.canInteract == true)
                         {
                             
-                            if (npcDialogue.isFirstInteract)
+                            if (npcDialogue.isFirstInteract && npcDialogue.firstDialogue != null)
                             {
                                 OnDialogueEnter?.Invoke(npcDialogue.firstDialogue.NodeLinks[0].TargetNodeGUID, true, npcDialogue.firstDialogue);
                                 npcDialogue.isFirstInteract = false;    
                             }
-                            else
+                            else if (npcDialogue.secondDialogue != null)
                             {
                                 OnDialogueEnter?.Invoke(npcDialogue.secondDialogue.NodeLinks[0].TargetNodeGUID, true, npcDialogue.secondDialogue);
                             }
@@ -108,7 +112,11 @@ public class raycastinteract : MonoBehaviour
                 promptText.gameObject.SetActive(false);
             }
         }
-
+        else
+        {
+            objInteractable = false;
+            promptText.gameObject.SetActive(false);
+        }
 
     }
 
@@ -170,7 +178,7 @@ public class raycastinteract : MonoBehaviour
     {
         foreach (var item in funcs)
         {
-            string[] parallelFuncs = item.Split(' '); // Split multiple functions by space
+            string[] parallelFuncs = item.Split('|'); // Split multiple functions
             List<IEnumerator> parallelCoroutines = new List<IEnumerator>();
 
             foreach (var func in parallelFuncs)
@@ -184,6 +192,14 @@ public class raycastinteract : MonoBehaviour
                 else if (f[0] == "BlackScreenText")
                 {
                     parallelCoroutines.Add(BlackScreenTextCoroutine(f[1]));
+                }
+                else if (f[0] == "CauseeffectText")
+                {
+                    parallelCoroutines.Add(CauseeffectTextCoroutine(f[1]));
+                }
+                else if (f[0] == "Monologue")
+                {
+                    parallelCoroutines.Add(MonologueCoroutine(f[1]));
                 }
                 else if (f[0] == "Glitch")
                 {
@@ -205,6 +221,23 @@ public class raycastinteract : MonoBehaviour
                 {
                     parallelCoroutines.Add(LoadSceneSettingCoroutine(f[1]));
                 }
+                else if (f[0] == "pause")
+                {
+                    pauseFlag = true;
+                }
+                else if (f[0] == "unpause")
+                {
+                    pauseFlag = false;
+                    GameStateManager.setPausedState(false);
+                }
+                else if (f[0] == "freeze")
+                {
+                    GameStateManager.setFreeze(true);
+                }
+                else if (f[0] == "unfreeze")
+                {
+                    GameStateManager.setFreeze(false);
+                }
                 else if (f[0] == "NewTL")
                 {
                     GameStateManager.setNewTL();
@@ -212,6 +245,14 @@ public class raycastinteract : MonoBehaviour
                 else if (f[0] == "NewTLTitle")
                 {
                     GameStateManager.setNewTLTitle(f[1]);
+                }
+                else if (f[0] == "IncrementTime")
+                {
+                    GameStateManager.setIncrementTime();
+                }
+                else if (f[0] == "SetDateTime")
+                {
+                    GameStateManager.setDateTime(int.Parse(f[1]), int.Parse(f[2]));
                 }
                 else if (f[0] == "kill")
                 {
@@ -289,7 +330,25 @@ public class raycastinteract : MonoBehaviour
         DreamTextSwitcher.OnEnd += () => isDone = true;
         yield return new WaitUntil(() => isDone);
     }
+    IEnumerator CauseeffectTextCoroutine(string name)
+    {
+        bool isDone = false;
 
+        GameStateManager.setCauseeffectText(name);
+
+        CauseeffectTextSwitcher.OnEnd += () => isDone = true;
+        yield return new WaitUntil(() => isDone);
+    }
+    IEnumerator MonologueCoroutine(string text)
+    {
+        bool isDone = false;
+
+        GameStateManager.setMonologue(text);
+
+        ShowMonologue.OnEnd += () => isDone = true;
+        yield return new WaitUntil(() => isDone);
+        yield return new WaitForSeconds(0.9f);
+    }
     IEnumerator LoadSceneSettingCoroutine(string name)
     {
         bool isDone = false;

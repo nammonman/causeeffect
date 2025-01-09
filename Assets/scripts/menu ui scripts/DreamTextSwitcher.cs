@@ -33,6 +33,15 @@ public class DreamTextSwitcher : MonoBehaviour
         canvasGroup.SetActive(false);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Backspace) && canvasGroup.activeSelf)
+        {
+            currentIndex = 999;
+            StartCoroutine(SwitchText());
+        }
+    }
+
     private void OnEnable()
     {
         GameStateManager.OnDream += SwitchTextCaller;
@@ -47,6 +56,7 @@ public class DreamTextSwitcher : MonoBehaviour
 
     public void SwitchTextCaller(string s)
     {
+        OnStart?.Invoke();
         currentDream = null;
         currentIndex = 0;
         SetCoverAlpha(1f);

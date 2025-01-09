@@ -25,19 +25,21 @@ namespace Subtegral.DialogueSystem.Runtime
         public Button[] buttons;
 
         private bool autoScroll = false;
-
+        private bool pauseFlag = false;
         void Update()
         {
-            /*if (Input.GetKeyDown(KeyCode.Escape) && GameStateManager.gameStates.isInDialogue) 
+            if (pauseFlag)
             {
-                //destroyExistingButtons(buttons);
-                //destroyExistingDialogueBoxes(dialogues);
-                OnDialogueExit?.Invoke(); 
-            }*/
+                GameStateManager.setPausedState(true);
+            }
             if (autoScroll)
             {
                 Vector3 temp = dialogueContainer.transform.position;
                 dialogueContainer.transform.position = new Vector3(temp.x, temp.y + 10000, temp.z);
+            }
+            if (Input.GetKeyDown(KeyCode.Escape) && dialogueContainer.activeSelf)
+            {
+                leaveNarrative();
             }
             //Debug.Log(autoScroll);
         }
@@ -84,13 +86,14 @@ namespace Subtegral.DialogueSystem.Runtime
             {
                 if (trigger != null)
                 {
-                    if (trigger == "leave")
+                    if (trigger.Contains("leave"))
                     {
                         leaveFlag = true;
                     }
-                    triggerCoroutines.Add(StartCoroutine(triggerEvent(trigger)));
+                    
                 }
             }
+            triggerCoroutines.Add(StartCoroutine(triggerEvent(triggers)));
 
             // Wait for all triggers to complete
             foreach (var coroutine in triggerCoroutines)
@@ -150,62 +153,98 @@ namespace Subtegral.DialogueSystem.Runtime
             return text;
         }
  
-        private IEnumerator triggerEvent(string e) // TRIGGER EVENT FROM ANSWER BUTTON
+        private IEnumerator triggerEvent(List<string> funcs) // TRIGGER EVENT FROM ANSWER BUTTON
         {
-
-            string[] parallelFuncs = e.Split(' '); // Split multiple functions by space
-            List<IEnumerator> parallelCoroutines = new List<IEnumerator>();
-
-            foreach (var func in parallelFuncs)
+            foreach (var item in funcs)
             {
-                string[] f = func.Split('_'); // Split individual function and arguments
+                string[] parallelFuncs = item.Split('|'); // Split multiple functions
+                List<IEnumerator> parallelCoroutines = new List<IEnumerator>();
 
-                if (f[0] == "FadeBlack")
+                foreach (var func in parallelFuncs)
                 {
-                    parallelCoroutines.Add(FadeBlackForSeconds(float.Parse(f[1])));
-                }
-                else if (f[0] == "BlackScreenText")
-                {
-                    parallelCoroutines.Add(BlackScreenTextCoroutine(f[1]));
-                }
-                else if (f[0] == "Glitch")
-                {
-                    parallelCoroutines.Add(GlitchForSeconds(float.Parse(f[1])));
-                }
-                else if (f[0] == "Wait")
-                {
-                    parallelCoroutines.Add(WaitSeconds(float.Parse(f[1])));
-                }
-                else if (f[0] == "ChangeScene")
-                {
-                    parallelCoroutines.Add(LoadSceneCoroutine(f[1]));
-                }
-                else if (f[0] == "ChangeSceneSetPos")
-                {
-                    parallelCoroutines.Add(LoadSceneWithPosCoroutine(f[1], new Vector3(int.Parse(f[2]), int.Parse(f[3]), int.Parse(f[4]))));
-                }
-                else if (f[0] == "ChangeSetting")
-                {
-                    parallelCoroutines.Add(LoadSceneSettingCoroutine(f[1]));
-                }
-                else if (f[0] == "NewTL")
-                {
-                    GameStateManager.setNewTL();
-                }
-                else if (f[0] == "NewTLTitle")
-                {
-                    GameStateManager.setNewTLTitle(f[1]);
-                }
-                else if (f[0] == "leave")
-                {
-                    leaveNarrative();
-                }
-                Debug.Log("ran " + func);
-            }
+                    string[] f = func.Split('_'); // Split individual function and arguments
 
-            if (parallelCoroutines.Count > 0)
-            {
-                yield return ExecuteParallelCoroutines(parallelCoroutines);
+                    if (f[0] == "FadeBlack")
+                    {
+                        parallelCoroutines.Add(FadeBlackForSeconds(float.Parse(f[1])));
+                    }
+                    else if (f[0] == "BlackScreenText")
+                    {
+                        parallelCoroutines.Add(BlackScreenTextCoroutine(f[1]));
+                    }
+                    else if (f[0] == "CauseeffectText")
+                    {
+                        parallelCoroutines.Add(CauseeffectTextCoroutine(f[1]));
+                    }
+                    else if (f[0] == "Monologue")
+                    {
+                        parallelCoroutines.Add(MonologueCoroutine(f[1]));
+                    }
+                    else if (f[0] == "Glitch")
+                    {
+                        parallelCoroutines.Add(GlitchForSeconds(float.Parse(f[1])));
+                    }
+                    else if (f[0] == "Wait")
+                    {
+                        parallelCoroutines.Add(WaitSeconds(float.Parse(f[1])));
+                    }
+                    else if (f[0] == "ChangeScene")
+                    {
+                        parallelCoroutines.Add(LoadSceneCoroutine(f[1]));
+                    }
+                    else if (f[0] == "ChangeSceneSetPos")
+                    {
+                        parallelCoroutines.Add(LoadSceneWithPosCoroutine(f[1], new Vector3(int.Parse(f[2]), int.Parse(f[3]), int.Parse(f[4]))));
+                    }
+                    else if (f[0] == "ChangeSetting")
+                    {
+                        parallelCoroutines.Add(LoadSceneSettingCoroutine(f[1]));
+                    }
+                    else if (f[0] == "pause")
+                    {
+                        pauseFlag = true;
+                    }
+                    else if (f[0] == "unpause")
+                    {
+                        pauseFlag = false;
+                        GameStateManager.setPausedState(false);
+                    }
+                    else if (f[0] == "freeze")
+                    {
+                        GameStateManager.setFreeze(true);
+                    }
+                    else if (f[0] == "unfreeze")
+                    {
+                        GameStateManager.setFreeze(false);
+                    }
+                    else if (f[0] == "NewTL")
+                    {
+                        GameStateManager.setNewTL();
+                    }
+                    else if (f[0] == "NewTLTitle")
+                    {
+                        GameStateManager.setNewTLTitle(f[1]);
+                    }
+                    else if (f[0] == "IncrementTime")
+                    {
+                        GameStateManager.setIncrementTime();
+                    }
+                    else if (f[0] == "SetDateTime")
+                    {
+                        GameStateManager.setDateTime(int.Parse(f[1]), int.Parse(f[2]));
+                    }
+                    else if (f[0] == "leave")
+                    {
+                        leaveNarrative();
+                    }
+                    Debug.Log("ran " + func);
+                }
+
+                if (parallelCoroutines.Count > 0)
+                {
+                    yield return ExecuteParallelCoroutines(parallelCoroutines);
+                }
+                
             }
             yield return null;
         }
@@ -283,7 +322,25 @@ namespace Subtegral.DialogueSystem.Runtime
             DreamTextSwitcher.OnEnd += () => isDone = true;
             yield return new WaitUntil(() => isDone);
         }
+        IEnumerator CauseeffectTextCoroutine(string name)
+        {
+            bool isDone = false;
 
+            GameStateManager.setCauseeffectText(name);
+
+            CauseeffectTextSwitcher.OnEnd += () => isDone = true;
+            yield return new WaitUntil(() => isDone);
+        }
+        IEnumerator MonologueCoroutine(string text)
+        {
+            bool isDone = false;
+
+            GameStateManager.setMonologue(text);
+
+            ShowMonologue.OnEnd += () => isDone = true;
+            yield return new WaitUntil(() => isDone);
+            yield return new WaitForSeconds(0.9f);
+        }
         IEnumerator LoadSceneSettingCoroutine(string name)
         {
             bool isDone = false;

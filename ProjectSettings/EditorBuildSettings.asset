@@ -47,4 +47,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NPC SCENES/WorkPresidentRoom/WorkPresidentRoomNPC1.unity
     guid: 3c8b2d5032c09734396f63e23e3fcf42
+  - enabled: 1
+    path: Assets/Scenes/HomePersonalRoom.unity
+    guid: 190c992748852ab44be5388d8df11010
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkHallway/WorkHallwayNPC1.unity
+    guid: 5c64c40acb50e8e42b844ce7051ce718
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkPresidentRoom/WorkPresidentRoomNPC2.unity
+    guid: ee7c20519058942449c2ec839f594b7f
   m_configObjects: {}

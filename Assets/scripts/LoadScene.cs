@@ -16,7 +16,8 @@ public class LoadScene : MonoBehaviour
 
     private Dictionary<string, Vector3> scenePositionLookup = new Dictionary<string, Vector3>
     {
-        { "Home", new Vector3(-49, 3, -15) },   
+        { "Home", new Vector3(-49, 3, -15) },
+        { "HomePersonalRoom", new Vector3(-5, 1, 7) },
         { "WorkHallway", new Vector3(-2, 7, 61) }, 
         { "WorkLab", new Vector3(-1, 7, -11) },
         { "WorkPersonalRoom", new Vector3(0, 2, -8) },
@@ -30,6 +31,7 @@ public class LoadScene : MonoBehaviour
     private Dictionary<string, string> defaultCameraLookup = new Dictionary<string, string>
     {
         { "Home", "CameraFarTerminal" },
+        { "HomePersonalRoom", "deskcam" },
         { "WorkHallway", "Main Camera" },
         { "WorkLab", "Main Camera" },
         { "WorkPersonalRoom", "Main Camera" },

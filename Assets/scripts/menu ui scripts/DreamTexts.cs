@@ -218,7 +218,105 @@ public class DreamTexts : MonoBehaviour
                 }
             }
         },
-
+        {
+            "presidentShootPlayer",
+            new Dream
+            {
+                dreamName = "presidentShootPlayer",
+                BGSoundFileName = "",
+                dreamTexts = new List<DreamText>
+                {
+                    new DreamText
+                    {
+                        text = "<b>MISSION FAILED</b>\nCause of death: Shot with projectile weapon",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "<b>INITIATE CAUSEEFFECT PROTOCOL</b>\nTarget: 2 weeks ago",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                }
+            }
+        },
+        {
+            "jokeEnding",
+            new Dream
+            {
+                dreamName = "jokeEnding",
+                BGSoundFileName = "",
+                dreamTexts = new List<DreamText>
+                {
+                    new DreamText
+                    {
+                        text = "<b>MISSION FAILED</b>\nCause of death: Refusal of mission",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "<b>INITIATE CAUSEEFFECT PROTOCOL</b>\nTarget: 1 week ago",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                }
+            }
+        },
+        {
+            "goToDoctor",
+            new Dream
+            {
+                dreamName = "goToDoctor",
+                BGSoundFileName = "",
+                dreamTexts = new List<DreamText>
+                {
+                    new DreamText
+                    {
+                        text = "You go to the appointment.",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"you have been diagnosed with head trauma so that is likely the cause of memory loss\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"do not worry though, as this is not life threathening and the memory loss is not permanent\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"just take it easy and your memory will slowly come back\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "The appointment took until the evening, so you go home to prepare for the next day.",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "But as you go upstairs, you see something unexpected.",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"what are you???\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                }
+            }
+        },
     };
 
 }

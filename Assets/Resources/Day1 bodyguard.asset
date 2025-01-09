@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: Day1 bodyguard
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 190a4e87-ac01-4358-9f92-ca81fece4e3d
+    PortName: Next
+    TargetNodeGUID: 293a8bc5-555e-4d66-92c8-a053d48ba218
+  - BaseNodeGUID: 293a8bc5-555e-4d66-92c8-a053d48ba218
+    PortName: can I go later? Can't you see I am busy right now
+    TargetNodeGUID: 43d6d52d-0b62-40f8-9120-637644bd3aef
+  - BaseNodeGUID: 293a8bc5-555e-4d66-92c8-a053d48ba218
+    PortName: ah... ok I'll go see The President now
+    TargetNodeGUID: 8f9f8235-77de-4f5d-abc6-d5c070246ab9
+  - BaseNodeGUID: 43d6d52d-0b62-40f8-9120-637644bd3aef
+    PortName: (wait, what health condition?)
+    TargetNodeGUID: e4da2c4c-6552-4b4a-bd6a-330edc0cb9a8
+  DialogueNodeData:
+  - NodeGUID: 293a8bc5-555e-4d66-92c8-a053d48ba218
+    NPCNameText: The President's assistant
+    DialogueText: Head Researcher, The President wants to see you
+    Trigger: []
+    Position: {x: 284.8, y: 165.59999}
+  - NodeGUID: 43d6d52d-0b62-40f8-9120-637644bd3aef
+    NPCNameText: The President's assistant
+    DialogueText: I am sorry but you need to go right now. The President really wants
+      to hear about your health condition
+    Trigger: []
+    Position: {x: 766.4, y: 34.4}
+  - NodeGUID: 8f9f8235-77de-4f5d-abc6-d5c070246ab9
+    NPCNameText: The President's assistant
+    DialogueText: '[]'
+    Trigger:
+    - leave
+    - ChangeScene_WorkPresidentRoom
+    - ChangeSetting_WorkPresidentRoomNPC2
+    Position: {x: 762.4, y: 394.40002}
+  - NodeGUID: e4da2c4c-6552-4b4a-bd6a-330edc0cb9a8
+    NPCNameText: NEW NPC
+    DialogueText: Dialogue Node
+    Trigger:
+    - leave
+    - ChangeScene_WorkPresidentRoom
+    - ChangeSetting_WorkPresidentRoomNPC2
+    Position: {x: 1536.8, y: 42.4}
+  ExposedProperties: []
+  CommentBlockData: []

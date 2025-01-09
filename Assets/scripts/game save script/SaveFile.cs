@@ -14,6 +14,8 @@ namespace SaveGame
         public Dictionary<int, PlayerSaveData> playerSaveDatas;
         public Dictionary<int, SerializableTimelineEvent> timelineEventDatas;
         public int currentTimelineEventId;
+        public int fixLevel;
+        public List<string> completedZF;
     }
 
     public class SaveFile : MonoBehaviour
@@ -61,6 +63,8 @@ namespace SaveGame
             
 
             save.currentTimelineEventId = GameStateManager.gameStates.currentEventId;
+            save.fixLevel = GameStateManager.gameStates.fixLevel;
+            save.completedZF = GameStateManager.gameStates.completedZF;
             save.playerSaveDatas = MakeTL.PS;
 
             save.timelineEventDatas = new Dictionary<int, SerializableTimelineEvent>();
@@ -101,7 +105,8 @@ namespace SaveGame
                 string JSONData = File.ReadAllText(saveFilePath);
                 save = JsonConvert.DeserializeObject<SaveFileData>(JSONData);
                 GameStateManager.gameStates.currentEventId = save.currentTimelineEventId;
-
+                GameStateManager.gameStates.fixLevel = save.fixLevel;
+                GameStateManager.gameStates.completedZF = save.completedZF;
                 MakeTL.PS.Clear();
                 MakeTL.TL.Clear();
 
@@ -152,6 +157,8 @@ namespace SaveGame
             currentTimelineEvent.nextEventIds = new List<int>();
             currentTimelineEvent.lastEventId = 0;
             GameStateManager.gameStates.currentEventId = 0;
+            GameStateManager.gameStates.fixLevel = 0;
+            GameStateManager.gameStates.completedZF.Clear();
             StartCoroutine(DeleteAllFilesInPersistentDataPath());
         }
 

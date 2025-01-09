@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CodiceApp;
 using Subtegral.DialogueSystem.DataContainers;
+using Subtegral.DialogueSystem.Editor;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -235,9 +236,9 @@ namespace Subtegral.DialogueSystem.Editor
             tempDialogueNode.mainContainer.Add(triggerButton);
             if (fromSave && trigger != null && trigger.Count > 0)
             {
-                foreach (string triggerName in trigger)
+                for (int i = 0; i < trigger.Count; i++)
                 {
-                    AddTrigger(tempDialogueNode, triggerName, fromSave);
+                    AddTrigger(tempDialogueNode, trigger[i], i, fromSave);
                 }
             }
 
@@ -348,80 +349,116 @@ namespace Subtegral.DialogueSystem.Editor
             node.RefreshExpandedState();
         }
 
-        public void AddTrigger(DialogueNode nodeCache, string trigger = "", bool fromSave = false)
+        private void AddTrigger(DialogueNode nodeCache, string trigger = "", int index = -1, bool fromSave = false)
         {
-            /// TRY nodeCache.mainContainer.IndexOf(triggerfield) TO GET INDEX OF EACH TEXTBOX
-
-            var triggerField = new TextField("");
-            if (fromSave)
-            {
-                triggerField.value = trigger;
-                triggerField.label = trigger;
-            }
-            else
-            {
-                triggerField.label = "press enter";
-            }
-            triggerField.RegisterValueChangedCallback(evt =>
-            {
-                /*Debug.Log("======================================");
-                for (int i = 0; i < nodeCache.Trigger.Count; i++)
-                {
-                    Debug.Log(nodeCache.Trigger[i]);
-                }*/
-                markNodeUnsaved(nodeCache);
-            });
-            nodeCache.mainContainer.Add(triggerField);
+            // Ensure trigger list is initialized
             if (nodeCache.Trigger == null)
             {
                 nodeCache.Trigger = new List<string>();
             }
 
-            triggerField.RegisterCallback<KeyDownEvent>(evt =>
+            // Create a container for the trigger field and buttons
+            var triggerContainer = new VisualElement() { name = "triggerContainer" };
+            triggerContainer.style.flexDirection = FlexDirection.Row; // Arrange elements horizontally
+
+            // Create the trigger field
+            var triggerField = new TextField("") {};
+            if (fromSave)
             {
-                if (evt.keyCode == KeyCode.Return && triggerField.value != "" && nodeCache.Trigger.IndexOf(triggerField.value) < 0 )
-                {
-                    try {
-                        nodeCache.Trigger.Remove(triggerField.label);
-                    } catch (Exception ex) { }
-                    nodeCache.Trigger.Add(triggerField.value);
-                    triggerField.label = triggerField.value;
-                    evt.StopPropagation();
-                    Debug.Log("======================================");
-                    for (int i = 0; i < nodeCache.Trigger.Count; i++)
-                    {
-                        Debug.Log(nodeCache.Trigger[i]);    
-                    }
-                    
-                }
+                triggerField.value = trigger;
+                triggerField.label = index.ToString();
+            }
+            else
+            {
+                triggerField.label = nodeCache.Trigger.Count.ToString();
+                nodeCache.Trigger.Add("");
+            }
+            triggerField.RegisterValueChangedCallback(evt =>
+            {
+                int i = int.Parse(triggerField.label);
+                markNodeUnsaved(nodeCache);
+                nodeCache.Trigger[i] = triggerField.value;
             });
 
+            // Add the buttons
             var deleteButton = new Button(() => RemoveTrigger(nodeCache, triggerField))
             {
-                text = "X"
+                text = "X",
             };
-            deleteButton.style.width = 10;
-            nodeCache.mainContainer.Add(deleteButton);
+            deleteButton.style.width = 20;
+
+            var upButton = new Button(() => SwapTrigger(nodeCache, int.Parse(triggerField.label), int.Parse(triggerField.label) - 1))
+            {
+                text = "up",
+            };
+            upButton.style.width = 40;
+
+            var downButton = new Button(() => SwapTrigger(nodeCache, int.Parse(triggerField.label), int.Parse(triggerField.label) + 1))
+            {
+                text = "down",
+            };
+            downButton.style.width = 40;
+
+            // Add elements to the container
+            triggerContainer.Add(deleteButton);
+            triggerContainer.Add(upButton);
+            triggerContainer.Add(downButton);
+            triggerContainer.Add(triggerField);
+
+            // Add the container to the main container
+            nodeCache.mainContainer.Add(triggerContainer);
+
+            
         }
+
 
         private void RemoveTrigger(DialogueNode nodeCache, TextField triggerField)
         {
-            nodeCache.Trigger.Remove(triggerField.value);
-            Debug.Log("======================================");
-            Debug.Log($"removed {triggerField.value}");
-            Debug.Log("======================================");
+            if (nodeCache.Trigger.Count() > int.Parse(triggerField.label))
+            {
+                nodeCache.Trigger.RemoveAt(int.Parse(triggerField.label));
+            }
+
+            RefreshTriggers(nodeCache);
+        }
+
+        private void SwapTrigger(DialogueNode nodeCache, int i, int j)
+        {
+            if (j < 0)
+            {
+                return;
+            }
+            if (j >= nodeCache.Trigger.Count())
+            {
+                return;
+            }
+            (nodeCache.Trigger[j], nodeCache.Trigger[i]) = (nodeCache.Trigger[i], nodeCache.Trigger[j]);
+            RefreshTriggers(nodeCache);
+        }
+
+        private void RefreshTriggers(DialogueNode nodeCache)
+        {
+            // Remove all elements with the "TriggerField" or "TriggerButton" name
+            var triggerElements = nodeCache.mainContainer.Children().Where(child =>
+                child.name == "triggerContainer").ToList();
+
+            foreach (var element in triggerElements)
+            {
+                nodeCache.mainContainer.Remove(element);
+            }
+
+            // Re-add trigger fields with updated indices
             for (int i = 0; i < nodeCache.Trigger.Count; i++)
             {
-                Debug.Log(nodeCache.Trigger[i]);
+                AddTrigger(nodeCache, nodeCache.Trigger[i], i, true);
             }
-            nodeCache.mainContainer.RemoveAt(nodeCache.mainContainer.IndexOf(triggerField) + 1);
-            nodeCache.mainContainer.Remove(triggerField);
-            
+
+            // Mark the node as unsaved and refresh its state
             markNodeUnsaved(nodeCache);
             nodeCache.RefreshPorts();
             nodeCache.RefreshExpandedState();
         }
-        
+
         private Port GetPortInstance(DialogueNode node, Direction nodeDirection,
             Port.Capacity capacity = Port.Capacity.Single)
         {

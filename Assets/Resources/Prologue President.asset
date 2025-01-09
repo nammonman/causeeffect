@@ -61,6 +61,17 @@ MonoBehaviour:
     DialogueText: Dialogue Node
     Trigger:
     - leave
-    Position: {x: 3444, y: 108}
+    - Glitch_3|pause
+    - CauseeffectText_presidentShootPlayer
+    - ChangeScene_HomePersonalRoom
+    - Monologue_what was that?
+    - Monologue_why do I keep getting these wierd and surreal dream as of late?
+    - Monologue_huh... oh my...  its 2PM! I have to go to work right now!
+    - FadeBlack_3
+    - ChangeScene_WorkHallway
+    - ChangeSetting_WorkHallwayNPC1
+    - Wait_2|unpause
+    - NewTL
+    Position: {x: 3411.2, y: -136}
   ExposedProperties: []
   CommentBlockData: []

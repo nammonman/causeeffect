@@ -26,7 +26,8 @@ public class UITextUpdater : MonoBehaviour
     }
     public void UpdateTimeText()
     {
-        timeText.text = "Day " + GameStateManager.gameStates.currentDay.ToString() + " - " + GameStateManager.gameStates.currentTimeOfDay.ToString();
+        string[] t = { "morning", "afternoon", "night" };
+        timeText.text = "Day " + GameStateManager.gameStates.currentDay.ToString() + " - " + t[GameStateManager.gameStates.currentTimeOfDay];
     }
 
     public void UpdateSceneText(string text) 

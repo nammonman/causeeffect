@@ -1,0 +1,164 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: Day1 President
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 765bf39a-58cc-46c9-a246-107cb56fc009
+    PortName: Next
+    TargetNodeGUID: 270a235c-031b-424a-b7d4-ff06e234a7ca
+  - BaseNodeGUID: 270a235c-031b-424a-b7d4-ff06e234a7ca
+    PortName: what's the matter? Mr. President
+    TargetNodeGUID: 21d6744e-45c0-49d8-ab29-c3082a7948ff
+  - BaseNodeGUID: 21d6744e-45c0-49d8-ab29-c3082a7948ff
+    PortName: incident? what happpened last week?
+    TargetNodeGUID: defd10fe-4206-4cd7-9c06-2d78ec2666e4
+  - BaseNodeGUID: defd10fe-4206-4cd7-9c06-2d78ec2666e4
+    PortName: (I have memory loss?)
+    TargetNodeGUID: 57dcd65e-720f-4fd8-b03a-d1015459a537
+  - BaseNodeGUID: 57dcd65e-720f-4fd8-b03a-d1015459a537
+    PortName: (oh, dear)
+    TargetNodeGUID: 34201634-effe-4ac8-9870-608e05d0272d
+  - BaseNodeGUID: 34201634-effe-4ac8-9870-608e05d0272d
+    PortName: sir I am sorry, but I am not confident that the energy machine will
+      be done in this week. the chemical formular and everything about the machine
+      is way too unstable and there has been no breakthrough yet
+    TargetNodeGUID: d2324871-94ce-401a-85ec-05c8f1941e4f
+  - BaseNodeGUID: d2324871-94ce-401a-85ec-05c8f1941e4f
+    PortName: ... ok sir I will go work on it right away!
+    TargetNodeGUID: 40001edd-d685-4595-921f-ebb505811652
+  - BaseNodeGUID: d2324871-94ce-401a-85ec-05c8f1941e4f
+    PortName: ... ok sir what kind of demands are these!? Do you not care about the
+      quality of the energy machine?? You know what, I am out of here!
+    TargetNodeGUID: a751ac67-ce4f-4264-b6c6-d341a22496a0
+  - BaseNodeGUID: 40001edd-d685-4595-921f-ebb505811652
+    PortName: will do
+    TargetNodeGUID: a969651c-6b7a-4f1b-9561-2ea08051a111
+  - BaseNodeGUID: a751ac67-ce4f-4264-b6c6-d341a22496a0
+    PortName: 'I. Am. Leaving. Do you know how fed up I am about your abysmal company? '
+    TargetNodeGUID: 4d98d6f9-53b5-4aaa-9347-f384a0deab31
+  - BaseNodeGUID: 4d98d6f9-53b5-4aaa-9347-f384a0deab31
+    PortName: no funding, we don't have anywhere near enough resources for this insane
+      expirement or whatever you want us to do
+    TargetNodeGUID: fa820d03-3a21-4eca-b3e8-609ea03d5306
+  - BaseNodeGUID: fa820d03-3a21-4eca-b3e8-609ea03d5306
+    PortName: and then you expected us to somehow make this alien meteor unknown
+      to humankind work for us in just 3 years!? are you mentally challenged??
+    TargetNodeGUID: 7ad4bfda-83d3-4370-b092-4fcedacbadc5
+  - BaseNodeGUID: 7ad4bfda-83d3-4370-b092-4fcedacbadc5
+    PortName: no matter what you say or do, I am out of here
+    TargetNodeGUID: 934692b4-eb03-404d-b19c-070b1cbb5665
+  - BaseNodeGUID: 934692b4-eb03-404d-b19c-070b1cbb5665
+    PortName: (wait, he is not fighting back?)
+    TargetNodeGUID: ef1b64ef-1956-4b1e-bfd9-280f1b131ab0
+  - BaseNodeGUID: ef1b64ef-1956-4b1e-bfd9-280f1b131ab0
+    PortName: goodbye
+    TargetNodeGUID: 79f58a97-65ec-45dd-a093-df896a099ad3
+  DialogueNodeData:
+  - NodeGUID: 270a235c-031b-424a-b7d4-ff06e234a7ca
+    NPCNameText: The President
+    DialogueText: there you are
+    Trigger: []
+    Position: {x: 274.4, y: 136}
+  - NodeGUID: 21d6744e-45c0-49d8-ab29-c3082a7948ff
+    NPCNameText: The President
+    DialogueText: are your health conditions getting better? I was worried that last
+      week's incident will make you unable to continue work on the project
+    Trigger: []
+    Position: {x: 795.2, y: 140}
+  - NodeGUID: defd10fe-4206-4cd7-9c06-2d78ec2666e4
+    NPCNameText: The President
+    DialogueText: ahh, so you still have memory loss. I'll remind you that last week
+      we found you unconcious after your prototype energy generator got overloaded
+      and there was a loud BANG
+    Trigger: []
+    Position: {x: 1837.6, y: 144}
+  - NodeGUID: 57dcd65e-720f-4fd8-b03a-d1015459a537
+    NPCNameText: The President
+    DialogueText: then after you have recovered, the first thing you did was to beg
+      me to move the presentation event to this week
+    Trigger: []
+    Position: {x: 2991.2, y: 125.59999}
+  - NodeGUID: 34201634-effe-4ac8-9870-608e05d0272d
+    NPCNameText: The President
+    DialogueText: do you know how stressful it is to tell every government officials,
+      the press and everyone involved that the event needs to be moved
+    Trigger: []
+    Position: {x: 3805.6, y: 128}
+  - NodeGUID: d2324871-94ce-401a-85ec-05c8f1941e4f
+    NPCNameText: The President
+    DialogueText: well, your words, not mine. It's impossible to move the event now
+      so get it done fast. This very important so prepare for the consequences if
+      you got nothing to show by then
+    Trigger: []
+    Position: {x: 4732.8, y: 136.8}
+  - NodeGUID: 40001edd-d685-4595-921f-ebb505811652
+    NPCNameText: The President
+    DialogueText: not so fast. I have arranged you a health inspection this afternoon.
+      Go do that to make sure you won't die before the project is finished
+    Trigger: []
+    Position: {x: 5939.2, y: 19.2}
+  - NodeGUID: a751ac67-ce4f-4264-b6c6-d341a22496a0
+    NPCNameText: The President
+    DialogueText: what did you just say??
+    Trigger: []
+    Position: {x: 5863.2, y: 258.40002}
+  - NodeGUID: 4d98d6f9-53b5-4aaa-9347-f384a0deab31
+    NPCNameText: The President
+    DialogueText: ...
+    Trigger: []
+    Position: {x: 6341.6, y: 250.40001}
+  - NodeGUID: fa820d03-3a21-4eca-b3e8-609ea03d5306
+    NPCNameText: The President
+    DialogueText: ...
+    Trigger: []
+    Position: {x: 6840.8, y: 239.99998}
+  - NodeGUID: 7ad4bfda-83d3-4370-b092-4fcedacbadc5
+    NPCNameText: The President
+    DialogueText: You...!
+    Trigger: []
+    Position: {x: 7299.2, y: 245.59999}
+  - NodeGUID: 934692b4-eb03-404d-b19c-070b1cbb5665
+    NPCNameText: The President
+    DialogueText: ... fine. Have it your way then, leave and do not let me see you
+      ever again
+    Trigger: []
+    Position: {x: 7775.2, y: 246.40001}
+  - NodeGUID: ef1b64ef-1956-4b1e-bfd9-280f1b131ab0
+    NPCNameText: The President
+    DialogueText: (this guy thinks he is an irreplaceable asset. how pitiful. my
+      goal will be achieved no matter if you exist or not)
+    Trigger: []
+    Position: {x: 8363.2, y: 235.99998}
+  - NodeGUID: a969651c-6b7a-4f1b-9561-2ea08051a111
+    NPCNameText: GO TO DOC
+    DialogueText: Dialogue Node
+    Trigger:
+    - leave
+    - BlackScreenText_goToDoctor
+    - ChangeScene_Home
+    Position: {x: 6865.6, y: -118.399994}
+  - NodeGUID: 79f58a97-65ec-45dd-a093-df896a099ad3
+    NPCNameText: JOKE ENDING
+    DialogueText: Dialogue Node
+    Trigger:
+    - leave
+    - FadeBlack_4
+    - SetDateTime_7_0
+    - ChangeScene_HomePersonalRoom
+    - Glitch_10
+    - CauseeffectText_jokeEnding
+    - ChangeScene_WorkHallway
+    - ChangeSetting_WorkHallwayNPC1
+    Position: {x: 9200, y: 301.6}
+  ExposedProperties: []
+  CommentBlockData: []

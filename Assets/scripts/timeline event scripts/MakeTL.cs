@@ -343,6 +343,7 @@ public class MakeTL : MonoBehaviour
         currentTimelineEvent.nextEventIds = TL[id].nextEventIds;
         currentTimelineEvent.lastEventId = TL[id].lastEventId;
         GameStateManager.gameStates.currentEventId = currentTimelineEvent.id;
+        GameStateManager.setDateTime(currentTimelineEvent.day, currentTimelineEvent.timeOfDay);
     }
 
     public static void LoadTLPS(int id)

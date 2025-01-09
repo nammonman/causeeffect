@@ -43,6 +43,9 @@ public class GameStates
     public string CurrentSceneName;
     public string CurrentSceneSetting;
 
+    //zf
+    public int fixLevel;
+    public List<string> completedZF;
     // Method to create a deep copy of GameStates
     public GameStates Clone()
     {
@@ -82,6 +85,7 @@ public class GameStateManager : MonoBehaviour
     public static event Action OnFadeOut;
     public static event Action<int> OnDream;
     public static event Action<string> OnBlackScreenText;
+    public static event Action<string> OnCauseeffectText;
     public static event Action OnStartGlitch;
     public static event Action OnStopGlitch;
     public static event Action<bool> OnFreezePlayer;
@@ -139,7 +143,21 @@ public class GameStateManager : MonoBehaviour
         gameStates.currentTimeOfDay = time;
         OnTimeUpdate.Invoke();
     }
-
+    public static void setIncrementTime()
+    {
+        gameStates.currentTimeOfDay++;
+        if (gameStates.currentTimeOfDay > 2)
+        {
+            gameStates.currentDay++;
+            gameStates.currentTimeOfDay = 0;
+        }
+        OnTimeUpdate.Invoke();
+    }
+    public static void setIncrementDate()
+    {
+        gameStates.currentDay++;
+        OnTimeUpdate.Invoke();
+    }
     public static void setSceneName(string name)
     {
         //Debug.Log(b);
@@ -171,7 +189,10 @@ public class GameStateManager : MonoBehaviour
     {
         OnBlackScreenText.Invoke(s);
     }
-
+    public static void setCauseeffectText(string s)
+    {
+        OnCauseeffectText.Invoke(s);
+    }
     public static void setStartGlitch()
     {
         OnStartGlitch.Invoke();

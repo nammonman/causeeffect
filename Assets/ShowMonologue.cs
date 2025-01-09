@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,6 +8,9 @@ public class ShowMonologue : MonoBehaviour
 {
     [SerializeField] CanvasGroup canvasOpacity;
     [SerializeField] TextMeshProUGUI monologue;
+
+    public static event Action OnStart;
+    public static event Action OnEnd;
 
     private void Start()
     {
@@ -29,14 +33,18 @@ public class ShowMonologue : MonoBehaviour
 
     private IEnumerator FadeInAndOut()
     {
+        OnStart?.Invoke();
         // Fade in
         yield return StartCoroutine(LerpCanvasAlpha(0f, 1f, 0.5f));
 
         // Wait for 3 seconds
         yield return new WaitForSeconds(3f);
+        OnEnd?.Invoke();
 
         // Fade out
         yield return StartCoroutine(LerpCanvasAlpha(1f, 0f, 0.5f));
+
+        
     }
 
     private IEnumerator LerpCanvasAlpha(float start, float end, float duration)

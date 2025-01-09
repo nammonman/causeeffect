@@ -7,7 +7,6 @@ using UnityEngine;
 public class IObjProperties : MonoBehaviour
 {
     public bool interactable;
-    public bool onetime;
     public List<string> funcs = new List<string>();
 
     
