@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: Day2 lab A leave
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: df8d5c9c-778c-4977-bbd7-1f3e4f6fd8b2
+    PortName: Next
+    TargetNodeGUID: 056bf245-4378-471d-8e73-0e25d9dc49c6
+  - BaseNodeGUID: 056bf245-4378-471d-8e73-0e25d9dc49c6
+    PortName: I'll go to my room now
+    TargetNodeGUID: 0fbd5285-48be-4091-a508-6f9363929b55
+  DialogueNodeData:
+  - NodeGUID: 056bf245-4378-471d-8e73-0e25d9dc49c6
+    NPCNameText: Assistant A
+    DialogueText: do you need anything?
+    Trigger: []
+    Position: {x: 268, y: 172}
+  - NodeGUID: 0fbd5285-48be-4091-a508-6f9363929b55
+    NPCNameText: NEW NPC
+    DialogueText: Dialogue Node
+    Trigger:
+    - leave
+    Position: {x: 749.6, y: 178.4}
+  ExposedProperties: []
+  CommentBlockData: []

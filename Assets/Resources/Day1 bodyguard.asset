@@ -37,14 +37,6 @@ MonoBehaviour:
       to hear about your health condition
     Trigger: []
     Position: {x: 766.4, y: 34.4}
-  - NodeGUID: 8f9f8235-77de-4f5d-abc6-d5c070246ab9
-    NPCNameText: The President's assistant
-    DialogueText: '[]'
-    Trigger:
-    - leave
-    - ChangeScene_WorkPresidentRoom
-    - ChangeSetting_WorkPresidentRoomNPC2
-    Position: {x: 762.4, y: 394.40002}
   - NodeGUID: e4da2c4c-6552-4b4a-bd6a-330edc0cb9a8
     NPCNameText: NEW NPC
     DialogueText: Dialogue Node
@@ -53,5 +45,13 @@ MonoBehaviour:
     - ChangeScene_WorkPresidentRoom
     - ChangeSetting_WorkPresidentRoomNPC2
     Position: {x: 1536.8, y: 42.4}
+  - NodeGUID: 8f9f8235-77de-4f5d-abc6-d5c070246ab9
+    NPCNameText: The President's assistant
+    DialogueText: '[]'
+    Trigger:
+    - leave
+    - ChangeScene_WorkPresidentRoom
+    - ChangeSetting_WorkPresidentRoomNPC2
+    Position: {x: 771.2, y: 226.4}
   ExposedProperties: []
   CommentBlockData: []

@@ -56,4 +56,103 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NPC SCENES/WorkPresidentRoom/WorkPresidentRoomNPC2.unity
     guid: ee7c20519058942449c2ec839f594b7f
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkHallway/WorkHallwayNPC2.unity
+    guid: 461674be2e449b447a4dd5eb2bec8059
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkLab/WorkLabNPC2-1.unity
+    guid: 6d861d7748427c94faff195d3e5a6436
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkLab/WorkLabNPC2-2.unity
+    guid: f9bc73152f5ff4d42b20c20f4e4ad6e2
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkLab/WorkLabNPC2-3.unity
+    guid: 6c2e2eff7d7228a4787c784a8a88984d
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkLab/WorkLabNPC2-4.unity
+    guid: ee03748fb734ac343a995f8eb2303cbb
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkHallway/WorkHallwayNPC2-1.unity
+    guid: 2c42729bd6ead52479c8644f8dcdd76a
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkPersonalRoom/WorkPersonalRoomNPC2-1.unity
+    guid: 39013d91c03058a45b7b379ac075f8e2
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkPersonalRoom/WorkPersonalRoomNPC2.unity
+    guid: 52862ba2fea35e84288b68faa13f48ab
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkHallway/WorkHallwayNPC2-3.unity
+    guid: 7e93e50c3fc4cea4cb0343101edad644
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkHallway/WorkHallwayNPC2-2.unity
+    guid: 8448a31da71f0184d9c5012d9e5fb130
+  - enabled: 0
+    path: Assets/Scenes/NPC SCENES/WorkHallway/WorkHallwayNPC.unity
+    guid: e9f7512955c4a0d459c9d58de6acb9b0
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkHallway/WorkHallwayNPC3.unity
+    guid: dceefd4d55912c74aa33a71999407daf
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkHallway/WorkHallwayNPC4.unity
+    guid: 6d53d7619956ef542bfba8b907a5555e
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkHallway/WorkHallwayNPC5.unity
+    guid: eed40e6bfb996724386a12a928d86c4f
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkHallway/WorkHallwayNPC6.unity
+    guid: 431cada476fe33943b9c7223110f8c24
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkLab/WorkLabNPC.unity
+    guid: ca0a4ce77f6cf4d429a4fd3930aa7f4e
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkLab/WorkLabNPC.unity
+    guid: ca0a4ce77f6cf4d429a4fd3930aa7f4e
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkPersonalRoom/WorkPersonalRoomNPC.unity
+    guid: 7e894923daa1f8145bddaa79bd5c909c
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkHallway/WorkHallwayNPC2-4.unity
+    guid: 045a74bef831bf843a07aab33bdb60a0
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkLab/WorkLabNPC2-5.unity
+    guid: 11071ae6142993a4786c1845b9f03d1f
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkLab/WorkLabNPC6.unity
+    guid: a80e85c52186c0c45975552d7558b817
+  - enabled: 0
+    path: Assets/Scenes/NPC SCENES/WorkLab/WorkLabNPC1.unity
+    guid: bfa5aaf15050f91409ea81569f15c66a
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkLab/WorkLabNPC3.unity
+    guid: 3bb89beaf414ff14cb00e2443e512aa7
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkLab/WorkLabNPC4.unity
+    guid: d908d4476cdbb4140b1fc3defb48a518
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkLab/WorkLabNPC5.unity
+    guid: 1cd48ce6552564643b0657a3705946c9
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkHallway/WorkHallwayNPC3-1.unity
+    guid: d7611d4052a701b45883bc88048d1f2b
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkHallway/WorkHallwayNPC4-1.unity
+    guid: 8289aec60b11f7d45ac83e78cb648de5
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkHallway/WorkHallwayNPC5-1.unity
+    guid: ac9df9799c7f9a1419e97f0aa827468a
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkHallway/WorkHallwayNPC6-1.unity
+    guid: 60b847f0c1d44704a9359fa3779e6caf
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkPresidentRoom/WorkPresidentRoomNPC3.unity
+    guid: 403442e27a1a5054faf259c8bd6c158b
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkPresidentRoom/WorkPresidentRoomNPC4.unity
+    guid: 1813541b8fc0f2242ab8447ec54db3d8
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkPresidentRoom/WorkPresidentRoomNPC5.unity
+    guid: d1389ea763103b54d99afbe12624d8c1
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkPresidentRoom/WorkPresidentRoomNPC6.unity
+    guid: 3ef4dc20b7ddec5419e1a16bf1cd3000
   m_configObjects: {}

@@ -49,12 +49,14 @@ public class MakeTL : MonoBehaviour
     private void OnEnable()
     {
         GameStateManager.OnNewTL += autoNewFromCurrentTL;
+        GameStateManager.OnNewTLTitle += autoNewFromCurrentTLWithTitle;
         GameStateManager.OnLoadSceneSetting += LoadNPCBySceneSettingCaller;
     }
 
     private void OnDisable()
     {
         GameStateManager.OnNewTL -= autoNewFromCurrentTL;
+        GameStateManager.OnNewTLTitle -= autoNewFromCurrentTLWithTitle;
         GameStateManager.OnLoadSceneSetting -= LoadNPCBySceneSettingCaller;
     }
 
@@ -153,6 +155,10 @@ public class MakeTL : MonoBehaviour
     public void autoNewFromCurrentTL()
     {
         newFromCurrentTL();
+    }
+    public void autoNewFromCurrentTLWithTitle(string title)
+    {
+        newFromCurrentTL(title);
     }
 
     public void newFromCurrentTL(string title = "")

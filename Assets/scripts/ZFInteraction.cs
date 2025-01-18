@@ -17,19 +17,21 @@ public class ZFInteraction : MonoBehaviour
     public TMP_InputField password;
     [SerializeField] GameObject optionsGameObject;
     public TMP_Dropdown options;
-    [SerializeField] Toggle newOnlyToggle;
+
+    [SerializeField] Button termButton;
+    private bool ZFTextsLoaded = false;
 
     public List<string> availableConversations = new List<string>();
     public List<int> playedTriggers = new List<int>();
     private int currentConversationIndex = -1; // Tracks the current conversation
     private int currentLineIndex = 0; // Tracks the current line in the conversation
-
+    private string selectedConversationKey = "";
     public void AddConversation(string s)
     {
         availableConversations.Add(s);
     }
 
-    private void RefreshDropdownOptions()
+    private void RefreshDropdownOptions(bool newOnly = false)
     {
         options.ClearOptions();
 
@@ -61,52 +63,66 @@ public class ZFInteraction : MonoBehaviour
                 prioritizedOptions.Add(optionData);
             }
         }
-        var pw = new Dropdown.OptionData
+        if (GameStateManager.gameStates.fixLevel == 0)
         {
-            text = "enter password"
-        };
-        prioritizedOptions.Add(pw);
+            var pw = new Dropdown.OptionData
+            {
+                text = "enter password"
+            };
+            prioritizedOptions.Add(pw);
+        }
+
         // Combine the prioritized options (new) at the top and completed options below
         prioritizedOptions.AddRange(completedOptions);
         options.AddOptions(prioritizedOptions.ConvertAll(option => option.text));
     }
 
-
-    private void Awake()
+    public void InitZFTexts()
     {
-        password = passwordGameObject.GetComponent<TMP_InputField>();
-        options = optionsGameObject.GetComponent<TMP_Dropdown>();
-        foreach (string item in ZFTexts.ZFDialogues.Keys)
+        if (!ZFTextsLoaded)
         {
-            if (ZFTexts.ZFDialogues[item].fixLevel <= GameStateManager.gameStates.fixLevel)
-            AddConversation(item);
+            password = passwordGameObject.GetComponent<TMP_InputField>();
+            options = optionsGameObject.GetComponent<TMP_Dropdown>();
+            enterButton.onClick.AddListener(OnEnterPressed);
+            upButton.onClick.AddListener(OnUpPressed);
+            downButton.onClick.AddListener(OnDownPressed);
+            foreach (string item in ZFTexts.ZFDialogues.Keys)
+            {
+                Debug.Log(item);
+                Debug.Log((GameStateManager.gameStates.fixLevel, ZFTexts.ZFDialogues[item].fixLevel));
+                if (ZFTexts.ZFDialogues[item].fixLevel <= GameStateManager.gameStates.fixLevel)
+                    AddConversation(item);
+            }
+            RefreshDropdownOptions();
         }
-        AddConversation("enter password");
-        // Attach button listeners
-        enterButton.onClick.AddListener(OnEnterPressed);
-        upButton.onClick.AddListener(OnUpPressed);
-        downButton.onClick.AddListener(OnDownPressed);
+        ZFTextsLoaded = true;
     }
 
+    private void Start()
+    {
+        termButton.onClick.AddListener(InitZFTexts);
+    }
     private void PasswordCheck(string s) 
     {
-        if (s != "amongus")
+        if (s != "90103141737")
         {
             display.text = "incorrect password";
-            userInput.text = ">" + s + "_";
+            userInput.text = ">_";
         }
         else
         {
-            display.text = "hackerman";
+            GameStateManager.gameStates.fixLevel++;
+            display.text = "you have unlocked the hidden module\nthe self repair module have been acelerated by 1 stage";
             userInput.text = ">_";
+            RefreshDropdownOptions();
         }
     }
     private void OnEnterPressed()
     {
-        string selectedConversationKey = command.text;
+        selectedConversationKey = command.GetParsedText();
         if (passwordGameObject.activeSelf)
         {
-            PasswordCheck(userInput.text);
+            PasswordCheck(password.text);
             optionsGameObject.SetActive(true);
             passwordGameObject.SetActive(false);
         }
@@ -115,14 +131,19 @@ public class ZFInteraction : MonoBehaviour
             optionsGameObject.SetActive(false);
             passwordGameObject.SetActive(true);
         }
-        
-        if (optionsGameObject.activeSelf && ZFTexts.ZFDialogues.TryGetValue(selectedConversationKey, out ZFDialogue dialogue))
+        else if (optionsGameObject.activeSelf && ZFTexts.ZFDialogues.TryGetValue(selectedConversationKey, out ZFDialogue dialogue))
         {
             currentConversationIndex = options.value;
             currentLineIndex = 0;
             playedTriggers.Clear();
             if (dialogue.conversation.Count > 0)
+            {
+                enterButton.enabled = false;
+                optionsGameObject.SetActive(false);
                 DisplayCurrentLine(dialogue);
+                OnDownPressed();
+            }
+                
         }
         else if (selectedConversationKey == "enter password")
         {
@@ -155,10 +176,10 @@ public class ZFInteraction : MonoBehaviour
     {
         if (currentConversationIndex >= 0)
         {
-            string selectedConversationKey = command.text;
+
             if (ZFTexts.ZFDialogues.TryGetValue(selectedConversationKey, out ZFDialogue dialogue))
             {
-                if (currentLineIndex > 0)
+                if (currentLineIndex > 1)
                 {
                     currentLineIndex--;
                     DisplayCurrentLine(dialogue);
@@ -172,15 +193,16 @@ public class ZFInteraction : MonoBehaviour
     {
         if (currentConversationIndex >= 0)
         {
-            string selectedConversationKey = command.text;
+
             if (ZFTexts.ZFDialogues.TryGetValue(selectedConversationKey, out ZFDialogue dialogue))
             {
                 if (currentLineIndex < dialogue.conversation.Count - 1)
                 {
+                    
                     if (dialogue.conversation[currentLineIndex].triggers != null && !playedTriggers.Contains(currentLineIndex))
                     {
                         playedTriggers.Add(currentLineIndex);
-                        ExecuteFuncsSequentially(dialogue.conversation[currentLineIndex].triggers);
+                        StartCoroutine(ExecuteFuncsSequentially(dialogue.conversation[currentLineIndex].triggers));
                     }
                     currentLineIndex++;
                     DisplayCurrentLine(dialogue);
@@ -190,6 +212,8 @@ public class ZFInteraction : MonoBehaviour
                     if (command.text != "enter password")
                     {
                         GameStateManager.gameStates.completedZF.Add(selectedConversationKey);
+                        enterButton.enabled = true;
+                        optionsGameObject.SetActive(true);
                         RefreshDropdownOptions();
                     }
                     

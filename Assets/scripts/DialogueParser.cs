@@ -120,9 +120,23 @@ namespace Subtegral.DialogueSystem.Runtime
             {
                 foreach (var choice in choices)
                 {
-                    var button = Instantiate(choicePrefab, buttonContainer.transform);
-                    button.GetComponentInChildren<TextMeshProUGUI>().text = ProcessProperties(choice.PortName);
-                    button.onClick.AddListener(() => answerChoice(choice.TargetNodeGUID, choice.PortName));
+                    if (choice.PortName.StartsWith("[ce]"))
+                    {
+                        if (GameStateManager.gameStates.globalFlags.Contains("causeeffect"))
+                        {
+                            string portName = choice.PortName.Split("[ce]")[1];
+                            var button = Instantiate(choicePrefab, buttonContainer.transform);
+                            button.GetComponentInChildren<TextMeshProUGUI>().text = ProcessProperties(portName);
+                            button.onClick.AddListener(() => answerChoice(choice.TargetNodeGUID, portName));
+                        }
+                    }
+                    else
+                    {
+                        var button = Instantiate(choicePrefab, buttonContainer.transform);
+                        button.GetComponentInChildren<TextMeshProUGUI>().text = ProcessProperties(choice.PortName);
+                        button.onClick.AddListener(() => answerChoice(choice.TargetNodeGUID, choice.PortName));
+                    }
+                    
                     //buttonContainer.transform.position.Set(buttonContainer.transform.position.x, buttonContainer.transform.position.y - 60, buttonContainer.transform.position.z);
                 }
                 if (choices.Count() < 1)
@@ -232,6 +246,20 @@ namespace Subtegral.DialogueSystem.Runtime
                     else if (f[0] == "SetDateTime")
                     {
                         GameStateManager.setDateTime(int.Parse(f[1]), int.Parse(f[2]));
+                    }
+                    else if (f[0] == "AddFlag")
+                    {
+                        if (!GameStateManager.gameStates.globalFlags.Contains(f[1]))
+                        {
+                            GameStateManager.gameStates.globalFlags.Add(f[1]);
+                        }
+                    }
+                    else if (f[0] == "RemoveFlag")
+                    {
+                        if (GameStateManager.gameStates.globalFlags.Contains(f[1]))
+                        {
+                            GameStateManager.gameStates.globalFlags.Remove(f[1]);
+                        }
                     }
                     else if (f[0] == "leave")
                     {

@@ -29,9 +29,9 @@ MonoBehaviour:
     PortName: (oh, dear)
     TargetNodeGUID: 34201634-effe-4ac8-9870-608e05d0272d
   - BaseNodeGUID: 34201634-effe-4ac8-9870-608e05d0272d
-    PortName: sir I am sorry, but I am not confident that the energy machine will
-      be done in this week. the chemical formular and everything about the machine
-      is way too unstable and there has been no breakthrough yet
+    PortName: I am sorry, but I am not confident that the energy machine will be
+      done in this week. the chemical formular and everything about the machine is
+      way too unstable and there has been no breakthrough yet
     TargetNodeGUID: d2324871-94ce-401a-85ec-05c8f1941e4f
   - BaseNodeGUID: d2324871-94ce-401a-85ec-05c8f1941e4f
     PortName: ... ok sir I will go work on it right away!
@@ -52,7 +52,7 @@ MonoBehaviour:
     TargetNodeGUID: fa820d03-3a21-4eca-b3e8-609ea03d5306
   - BaseNodeGUID: fa820d03-3a21-4eca-b3e8-609ea03d5306
     PortName: and then you expected us to somehow make this alien meteor unknown
-      to humankind work for us in just 3 years!? are you mentally challenged??
+      to humankind work for us in just 3 years!? are you insane??
     TargetNodeGUID: 7ad4bfda-83d3-4370-b092-4fcedacbadc5
   - BaseNodeGUID: 7ad4bfda-83d3-4370-b092-4fcedacbadc5
     PortName: no matter what you say or do, I am out of here
@@ -139,14 +139,6 @@ MonoBehaviour:
       goal will be achieved no matter if you exist or not)
     Trigger: []
     Position: {x: 8363.2, y: 235.99998}
-  - NodeGUID: a969651c-6b7a-4f1b-9561-2ea08051a111
-    NPCNameText: GO TO DOC
-    DialogueText: Dialogue Node
-    Trigger:
-    - leave
-    - BlackScreenText_goToDoctor
-    - ChangeScene_Home
-    Position: {x: 6865.6, y: -118.399994}
   - NodeGUID: 79f58a97-65ec-45dd-a093-df896a099ad3
     NPCNameText: JOKE ENDING
     DialogueText: Dialogue Node
@@ -160,5 +152,14 @@ MonoBehaviour:
     - ChangeScene_WorkHallway
     - ChangeSetting_WorkHallwayNPC1
     Position: {x: 9200, y: 301.6}
+  - NodeGUID: a969651c-6b7a-4f1b-9561-2ea08051a111
+    NPCNameText: GO TO DOC
+    DialogueText: Dialogue Node
+    Trigger:
+    - leave
+    - BlackScreenText_goToDoctor
+    - ChangeScene_Home
+    - SetDateTime_1_3
+    Position: {x: 6865.6, y: -118.399994}
   ExposedProperties: []
   CommentBlockData: []

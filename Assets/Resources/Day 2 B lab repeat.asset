@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: Day 2 B lab repeat
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 57918e03-80d8-48dd-8a48-d39c3b13d3fa
+    PortName: Next
+    TargetNodeGUID: 9ec04a1e-3c83-48ab-ae76-ae8da11d62e8
+  DialogueNodeData:
+  - NodeGUID: 9ec04a1e-3c83-48ab-ae76-ae8da11d62e8
+    NPCNameText: Assistant B
+    DialogueText: what?
+    Trigger: []
+    Position: {x: 267.2, y: 204}
+  ExposedProperties: []
+  CommentBlockData: []

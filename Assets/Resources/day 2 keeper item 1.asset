@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: day 2 keeper item 1
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 6cf9caec-6011-4308-9024-b29f628575e2
+    PortName: Next
+    TargetNodeGUID: a3de8e53-1fa7-4a5e-a585-efc2e76dc796
+  - BaseNodeGUID: a3de8e53-1fa7-4a5e-a585-efc2e76dc796
+    PortName: have you seen a piece of paper that has weird writing on it?
+    TargetNodeGUID: b4d53328-6dd5-4916-85c7-1d250aa510ca
+  - BaseNodeGUID: b4d53328-6dd5-4916-85c7-1d250aa510ca
+    PortName: do you remember seeing it?
+    TargetNodeGUID: ad2c78eb-eb00-4ad1-ad1f-c726b55e42ad
+  DialogueNodeData:
+  - NodeGUID: a3de8e53-1fa7-4a5e-a585-efc2e76dc796
+    NPCNameText: Keeper
+    DialogueText: oh, we meet again
+    Trigger: []
+    Position: {x: 244, y: 188}
+  - NodeGUID: b4d53328-6dd5-4916-85c7-1d250aa510ca
+    NPCNameText: Keeper
+    DialogueText: I have probably thrown it away with other trash
+    Trigger: []
+    Position: {x: 710.4, y: 179.2}
+  - NodeGUID: ad2c78eb-eb00-4ad1-ad1f-c726b55e42ad
+    NPCNameText: Keeper
+    DialogueText: hmm... I think I saw a weird piece of paper in one of the plant
+      pots around here.
+    Trigger:
+    - AddFlag_Item1Location
+    Position: {x: 1206.4, y: 180.8}
+  ExposedProperties: []
+  CommentBlockData: []

@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: Day2 B lab leave
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 3983b193-9d24-409f-9bd3-20b79983cb0c
+    PortName: Next
+    TargetNodeGUID: 1200fd34-c45e-4aaf-8df7-2a6870222273
+  - BaseNodeGUID: 2284d75d-3f71-495b-bc72-f56d253f9111
+    PortName: ...
+    TargetNodeGUID: 5b0ef2e9-b079-4ee7-bec1-043d0357a573
+  - BaseNodeGUID: 8121c4ff-d9e7-432c-938d-115530a3f48b
+    PortName: ...
+    TargetNodeGUID: 885bd927-03c8-4d0a-9026-20aa4d8e7424
+  - BaseNodeGUID: 1200fd34-c45e-4aaf-8df7-2a6870222273
+    PortName: why are you taking the leave?
+    TargetNodeGUID: 8121c4ff-d9e7-432c-938d-115530a3f48b
+  - BaseNodeGUID: 1200fd34-c45e-4aaf-8df7-2a6870222273
+    PortName: where is my room?
+    TargetNodeGUID: 2284d75d-3f71-495b-bc72-f56d253f9111
+  - BaseNodeGUID: 1200fd34-c45e-4aaf-8df7-2a6870222273
+    PortName: I'll go to my room now
+    TargetNodeGUID: ed112adf-37a5-4042-9d8a-9a20a852ee0c
+  DialogueNodeData:
+  - NodeGUID: 2284d75d-3f71-495b-bc72-f56d253f9111
+    NPCNameText: Assistant B
+    DialogueText: are you actually capable of working if you cannot even remember
+      that?
+    Trigger: []
+    Position: {x: 870.4, y: 489.6}
+  - NodeGUID: 8121c4ff-d9e7-432c-938d-115530a3f48b
+    NPCNameText: Assistant B
+    DialogueText: I am going to spend time on my kid's birthday. way better than
+      dealing with this nonsense
+    Trigger: []
+    Position: {x: 866.4, y: -113.600006}
+  - NodeGUID: 885bd927-03c8-4d0a-9026-20aa4d8e7424
+    NPCNameText: Assistant B
+    DialogueText: you'd better approve the leave...
+    Trigger: []
+    Position: {x: 1524.8, y: -109.600006}
+  - NodeGUID: 5b0ef2e9-b079-4ee7-bec1-043d0357a573
+    NPCNameText: Assistant B
+    DialogueText: its room 201. but its currently locked from the inside. A already
+      asked someone to take care of it
+    Trigger: []
+    Position: {x: 1416, y: 493.60004}
+  - NodeGUID: 1200fd34-c45e-4aaf-8df7-2a6870222273
+    NPCNameText: Assistant B
+    DialogueText: what do you want from me
+    Trigger: []
+    Position: {x: 265.6, y: 138.4}
+  - NodeGUID: ed112adf-37a5-4042-9d8a-9a20a852ee0c
+    NPCNameText: NEW NPC
+    DialogueText: Dialogue Node
+    Trigger:
+    - leave
+    Position: {x: 880, y: 688.8}
+  ExposedProperties: []
+  CommentBlockData: []

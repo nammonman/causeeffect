@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameStates
 {
@@ -46,37 +47,19 @@ public class GameStates
     //zf
     public int fixLevel;
     public List<string> completedZF;
-    // Method to create a deep copy of GameStates
-    public GameStates Clone()
-    {
-        return new GameStates
-        {
-            saveFileName = this.saveFileName,
-            isSaving = this.isSaving,
-            saveId = this.saveId,
-            currentEventId = this.currentEventId,
-            currentDay = this.currentDay,
-            currentTimeOfDay = this.currentTimeOfDay,
-            activeEventType = this.activeEventType,
-            isInActiveEvent = this.isInActiveEvent,
-            canPause = this.canPause,
-            isPaused = this.isPaused,
-            canPlayerMove = this.canPlayerMove,
-            canPlayerJump = this.canPlayerJump,
-            canPlayerMoveCamera = this.canPlayerMoveCamera,
-            canPlayerInteract = this.canPlayerInteract,
-            isInDialogue = this.isInDialogue,
-            canLoadNewScene = this.canLoadNewScene,
-            CurrentSceneName = this.CurrentSceneName,
-            CurrentSceneSetting = this.CurrentSceneSetting
-        };
-    }
+    public int causeEffectPower;
+
+    //story flags
+    public List<string> localFlags;
+    public List<string> globalFlags;
+
 }
 
 public class GameStateManager : MonoBehaviour
 {
     public static GameStates gameStates;
     [SerializeField] TextMeshProUGUI DEBUGTEXT;
+    [SerializeField] Slider debugFixLevelSlider;
 
     public static event Action<string> OnSceneUpdate;
     public static event Action OnTimeUpdate;
@@ -84,6 +67,7 @@ public class GameStateManager : MonoBehaviour
     public static event Action OnFadeIn;
     public static event Action OnFadeOut;
     public static event Action<int> OnDream;
+    public static event Action OnRandomDream;
     public static event Action<string> OnBlackScreenText;
     public static event Action<string> OnCauseeffectText;
     public static event Action OnStartGlitch;
@@ -114,6 +98,9 @@ public class GameStateManager : MonoBehaviour
         gameStates.CurrentSceneName = SceneManager.GetActiveScene().name;
         gameStates.canSeeSecretText = false;
         gameStates.canReadSecretText = false;
+        gameStates.completedZF = new List<string>();
+        gameStates.globalFlags = new List<string>();
+        debugFixLevelSlider.onValueChanged.AddListener(setFixLevelDebug);
     }
 
 
@@ -136,6 +123,14 @@ public class GameStateManager : MonoBehaviour
 
     }
 
+    public static void setFixLevel(int i)
+    {
+        gameStates.fixLevel = i;
+    }
+    public void setFixLevelDebug(float f)
+    {
+        gameStates.fixLevel = (int) f;
+    }
     public static void setDateTime(int date, int time)
     {
         //Debug.Log(b);
@@ -146,10 +141,9 @@ public class GameStateManager : MonoBehaviour
     public static void setIncrementTime()
     {
         gameStates.currentTimeOfDay++;
-        if (gameStates.currentTimeOfDay > 2)
+        if (gameStates.currentTimeOfDay > 3)
         {
-            gameStates.currentDay++;
-            gameStates.currentTimeOfDay = 0;
+            gameStates.currentTimeOfDay = 3;
         }
         OnTimeUpdate.Invoke();
     }
@@ -185,6 +179,11 @@ public class GameStateManager : MonoBehaviour
     {
         OnDream.Invoke(i);
     }
+
+    public static void setRandomDream()
+    {
+        OnRandomDream.Invoke();
+    }
     public static void setBlackScreenText(string s)
     {
         OnBlackScreenText.Invoke(s);
@@ -214,6 +213,7 @@ public class GameStateManager : MonoBehaviour
     }
     public static void setNewTLTitle(string s)
     {
+        Debug.Log("new tl title: "+s);
         OnNewTLTitle.Invoke(s);
     }
     public static void setLoadNewScene(string s)

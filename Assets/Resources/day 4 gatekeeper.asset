@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: day 4 gatekeeper
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 9436b8f7-3438-4b69-be42-553eba59d3d5
+    PortName: Next
+    TargetNodeGUID: 0fdc5e97-8bb7-42ad-8560-7a2a7644691a
+  - BaseNodeGUID: 0fdc5e97-8bb7-42ad-8560-7a2a7644691a
+    PortName: no. sorry for bothering you
+    TargetNodeGUID: 091f354f-2f8b-414e-97f3-530964385bf1
+  - BaseNodeGUID: 0fdc5e97-8bb7-42ad-8560-7a2a7644691a
+    PortName: yes. I have something to discuss with him
+    TargetNodeGUID: 50966222-40ea-40a0-826b-6c2ca233655e
+  DialogueNodeData:
+  - NodeGUID: 0fdc5e97-8bb7-42ad-8560-7a2a7644691a
+    NPCNameText: President's Assistant
+    DialogueText: do you have any business with The president?
+    Trigger: []
+    Position: {x: 223.2, y: 200.8}
+  - NodeGUID: 091f354f-2f8b-414e-97f3-530964385bf1
+    NPCNameText: NEW NPC
+    DialogueText: Dialogue Node
+    Trigger:
+    - leave
+    Position: {x: 674.4, y: 339.2}
+  - NodeGUID: 50966222-40ea-40a0-826b-6c2ca233655e
+    NPCNameText: NEW NPC
+    DialogueText: Dialogue Node
+    Trigger:
+    - ChangeScene_WorkPresidentRoom
+    - ChangeSetting_WorkPresidentRoomNPC4
+    Position: {x: 674.4, y: 128}
+  ExposedProperties: []
+  CommentBlockData: []

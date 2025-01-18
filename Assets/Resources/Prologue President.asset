@@ -63,6 +63,7 @@ MonoBehaviour:
     - leave
     - Glitch_3|pause
     - CauseeffectText_presidentShootPlayer
+    - SetDateTime_1_1
     - ChangeScene_HomePersonalRoom
     - Monologue_what was that?
     - Monologue_why do I keep getting these wierd and surreal dream as of late?
@@ -71,7 +72,7 @@ MonoBehaviour:
     - ChangeScene_WorkHallway
     - ChangeSetting_WorkHallwayNPC1
     - Wait_2|unpause
-    - NewTL
+    - NewTLTitle_LATE FOR WORK
     Position: {x: 3411.2, y: -136}
   ExposedProperties: []
   CommentBlockData: []

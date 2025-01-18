@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: day 6 lab b
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: c69be3c0-2f48-4fb3-ba3d-b88d62f1de86
+    PortName: Next
+    TargetNodeGUID: 7c1b1a7f-c05f-4e26-872a-b290ce13415e
+  DialogueNodeData:
+  - NodeGUID: 7c1b1a7f-c05f-4e26-872a-b290ce13415e
+    NPCNameText: Assistant B
+    DialogueText: I have to give it to you that you are still trying to make miracles
+      happen when everything is against you
+    Trigger: []
+    Position: {x: 242.4, y: 189.59999}
+  ExposedProperties: []
+  CommentBlockData: []

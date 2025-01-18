@@ -45,12 +45,14 @@ public class DreamTextSwitcher : MonoBehaviour
     private void OnEnable()
     {
         GameStateManager.OnDream += SwitchTextCaller;
+        GameStateManager.OnRandomDream += SwitchTextCaller;
         GameStateManager.OnBlackScreenText += SwitchTextCaller;
     }
 
     private void OnDisable()
     {
         GameStateManager.OnDream -= SwitchTextCaller;
+        GameStateManager.OnRandomDream += SwitchTextCaller;
         GameStateManager.OnBlackScreenText -= SwitchTextCaller;
     }
 
@@ -74,6 +76,16 @@ public class DreamTextSwitcher : MonoBehaviour
         StartCoroutine(SwitchText(i));
         nextButton.onClick.AddListener(() => StartCoroutine(SwitchText()));
         
+    }
+    public void SwitchTextCaller()
+    {
+        OnStart?.Invoke();
+        currentDream = null;
+        currentIndex = 0;
+        SetCoverAlpha(1f);
+        StartCoroutine(SwitchText());
+        nextButton.onClick.AddListener(() => StartCoroutine(SwitchText()));
+
     }
     IEnumerator SwitchText(int? i = null, string blackScreenText = "")
     {

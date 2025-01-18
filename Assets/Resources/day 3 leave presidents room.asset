@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: day 3 leave presidents room
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 1da83fb7-e5bc-4103-8aea-76277f5c245c
+    PortName: Next
+    TargetNodeGUID: 36fe0520-18b9-457f-9622-c25d898d6079
+  - BaseNodeGUID: 36fe0520-18b9-457f-9622-c25d898d6079
+    PortName: nothing
+    TargetNodeGUID: d508c821-7cd9-43d1-a20d-58ac8b48e320
+  - BaseNodeGUID: 36fe0520-18b9-457f-9622-c25d898d6079
+    PortName: I'm going back to work now
+    TargetNodeGUID: dc870338-afe3-40a9-83da-fb4c2e55c83a
+  DialogueNodeData:
+  - NodeGUID: 36fe0520-18b9-457f-9622-c25d898d6079
+    NPCNameText: President's Assistant
+    DialogueText: do you need anything?
+    Trigger: []
+    Position: {x: 276, y: 182.4}
+  - NodeGUID: d508c821-7cd9-43d1-a20d-58ac8b48e320
+    NPCNameText: President's Assistant
+    DialogueText: Dialogue Node
+    Trigger:
+    - leave
+    Position: {x: 772.8, y: 116}
+  - NodeGUID: dc870338-afe3-40a9-83da-fb4c2e55c83a
+    NPCNameText: President's Assistant
+    DialogueText: please follow me to the door
+    Trigger:
+    - Wait_2
+    - ChangeScene_WorkHallway
+    - ChangeSetting_WorkHallwayNPC3-1
+    Position: {x: 807.2, y: 382.40002}
+  ExposedProperties: []
+  CommentBlockData: []

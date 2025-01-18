@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: Day 2 B lab
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 57918e03-80d8-48dd-8a48-d39c3b13d3fa
+    PortName: Next
+    TargetNodeGUID: 9ec04a1e-3c83-48ab-ae76-ae8da11d62e8
+  - BaseNodeGUID: 9ec04a1e-3c83-48ab-ae76-ae8da11d62e8
+    PortName: 'hey B, I... '
+    TargetNodeGUID: 89d3f34f-dbac-45cb-b845-a22b8e1cf55d
+  - BaseNodeGUID: 89d3f34f-dbac-45cb-b845-a22b8e1cf55d
+    PortName: 'I am so sorry, guys, I cannot remember when or why I said that but
+      it is happening and we at least have to try to make it happen '
+    TargetNodeGUID: b790391b-2128-47de-bc99-fa2986e3e296
+  DialogueNodeData:
+  - NodeGUID: 9ec04a1e-3c83-48ab-ae76-ae8da11d62e8
+    NPCNameText: Assistant B
+    DialogueText: I can't believe you actually came back here after whatever you
+      did last week
+    Trigger: []
+    Position: {x: 267.2, y: 204}
+  - NodeGUID: 89d3f34f-dbac-45cb-b845-a22b8e1cf55d
+    NPCNameText: Assistant B
+    DialogueText: I thought you had gone crazy when you moved the due date to this
+      week. how are we supposed to make a breakthrough, then test and ship the product
+      in the span of a week?
+    Trigger: []
+    Position: {x: 872.8, y: 220.8}
+  - NodeGUID: b790391b-2128-47de-bc99-fa2986e3e296
+    NPCNameText: Assistant B
+    DialogueText: fine. but honestly, do you want to get fired that bad?
+    Trigger: []
+    Position: {x: 1988, y: 178.4}
+  ExposedProperties: []
+  CommentBlockData: []

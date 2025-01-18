@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: day 6 keeper item 3
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: d3fc3304-600f-405f-8e5e-83ca9825bc30
+    PortName: Next
+    TargetNodeGUID: b36cca82-2000-473d-b39a-6beb84cf280b
+  - BaseNodeGUID: b36cca82-2000-473d-b39a-6beb84cf280b
+    PortName: yes. have you seen any?
+    TargetNodeGUID: 5297d86f-efb0-47cc-880b-d7e4f55cfd9c
+  - BaseNodeGUID: 5297d86f-efb0-47cc-880b-d7e4f55cfd9c
+    PortName: thank you for letting me know
+    TargetNodeGUID: 7eac3e51-de27-4a44-b538-75486d767bb9
+  DialogueNodeData:
+  - NodeGUID: b36cca82-2000-473d-b39a-6beb84cf280b
+    NPCNameText: Keeper
+    DialogueText: are you here to ask about the weird papers again?
+    Trigger: []
+    Position: {x: 219.2, y: 163.2}
+  - NodeGUID: 5297d86f-efb0-47cc-880b-d7e4f55cfd9c
+    NPCNameText: Keeper
+    DialogueText: I found one in the lab
+    Trigger: []
+    Position: {x: 682.4, y: 173.59999}
+  - NodeGUID: 7eac3e51-de27-4a44-b538-75486d767bb9
+    NPCNameText: Keeper
+    DialogueText: Unfortunately though, I for got and already thrown it out with
+      the other trash
+    Trigger:
+    - AddFlag_Item3Location
+    Position: {x: 1152.8, y: 192}
+  ExposedProperties: []
+  CommentBlockData: []

@@ -15,6 +15,8 @@ namespace SaveGame
         public Dictionary<int, SerializableTimelineEvent> timelineEventDatas;
         public int currentTimelineEventId;
         public int fixLevel;
+        public int causeEffectPower;
+        public List<string> globalFlags;
         public List<string> completedZF;
     }
 
@@ -34,6 +36,7 @@ namespace SaveGame
             saveFilePath = Application.persistentDataPath + $"/{GameStateManager.gameStates.saveFileName}.json";
             playerSaveDatas = new Dictionary<int, PlayerSaveData>();
             timelineEventDatas = new Dictionary<int, SerializableTimelineEvent>();
+            
 
         }
 
@@ -64,7 +67,25 @@ namespace SaveGame
 
             save.currentTimelineEventId = GameStateManager.gameStates.currentEventId;
             save.fixLevel = GameStateManager.gameStates.fixLevel;
-            save.completedZF = GameStateManager.gameStates.completedZF;
+            save.causeEffectPower = GameStateManager.gameStates.causeEffectPower;
+            if (GameStateManager.gameStates.globalFlags != null)
+            {
+                save.globalFlags = new List<string>();
+                foreach (var item in GameStateManager.gameStates.globalFlags)
+                {
+                    save.globalFlags.Add(item);
+                }
+            }
+
+            if (GameStateManager.gameStates.completedZF != null)
+            {
+                save.completedZF = new List<string>();
+                foreach (var item in GameStateManager.gameStates.completedZF)
+                {
+                    save.completedZF.Add(item);
+                }
+            }
+            
             save.playerSaveDatas = MakeTL.PS;
 
             save.timelineEventDatas = new Dictionary<int, SerializableTimelineEvent>();
@@ -106,7 +127,24 @@ namespace SaveGame
                 save = JsonConvert.DeserializeObject<SaveFileData>(JSONData);
                 GameStateManager.gameStates.currentEventId = save.currentTimelineEventId;
                 GameStateManager.gameStates.fixLevel = save.fixLevel;
-                GameStateManager.gameStates.completedZF = save.completedZF;
+                GameStateManager.gameStates.causeEffectPower = save.causeEffectPower;
+                save.fixLevel = GameStateManager.gameStates.fixLevel;
+                if (save.globalFlags != null)
+                {
+                    foreach (var item in save.globalFlags)
+                    {
+                        GameStateManager.gameStates.globalFlags.Add(item);
+                    }
+                }
+
+                if (save.completedZF != null)
+                {
+                    foreach (var item in save.completedZF)
+                    {
+                        GameStateManager.gameStates.completedZF.Add(item);
+                    }
+                }
+
                 MakeTL.PS.Clear();
                 MakeTL.TL.Clear();
 
@@ -158,6 +196,12 @@ namespace SaveGame
             currentTimelineEvent.lastEventId = 0;
             GameStateManager.gameStates.currentEventId = 0;
             GameStateManager.gameStates.fixLevel = 0;
+            GameStateManager.gameStates.causeEffectPower = 10;
+            GameStateManager.setDateTime(7, 2);
+            if (GameStateManager.gameStates.completedZF == null)
+            {
+                GameStateManager.gameStates.completedZF = new List<string>();
+            }
             GameStateManager.gameStates.completedZF.Clear();
             StartCoroutine(DeleteAllFilesInPersistentDataPath());
         }

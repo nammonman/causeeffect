@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: president clue
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 61d523a2-3e3a-41a5-978e-057515288a0e
+    PortName: Next
+    TargetNodeGUID: 3445948a-fa24-4ff3-a6b7-01f5ca3c90a9
+  - BaseNodeGUID: 3445948a-fa24-4ff3-a6b7-01f5ca3c90a9
+    PortName: I have been wondering about the artwork in your room
+    TargetNodeGUID: 2091b283-0f1b-436d-a363-d35b1f40fa15
+  - BaseNodeGUID: 2091b283-0f1b-436d-a363-d35b1f40fa15
+    PortName: ...
+    TargetNodeGUID: b1509601-afe2-40fc-89b7-05d6d37a820e
+  - BaseNodeGUID: b1509601-afe2-40fc-89b7-05d6d37a820e
+    PortName: ...
+    TargetNodeGUID: eeb5249f-8c8c-4b8b-bde0-faba100c2854
+  - BaseNodeGUID: eeb5249f-8c8c-4b8b-bde0-faba100c2854
+    PortName: ...
+    TargetNodeGUID: 98d3baba-3146-4580-91dc-30c6dc862249
+  - BaseNodeGUID: 98d3baba-3146-4580-91dc-30c6dc862249
+    PortName: thank you, sir. that's al the question I have
+    TargetNodeGUID: cca927a5-7bb2-42c0-8fd3-9ca111168192
+  DialogueNodeData:
+  - NodeGUID: 3445948a-fa24-4ff3-a6b7-01f5ca3c90a9
+    NPCNameText: The President
+    DialogueText: oh, hey. I hope the research project is going swiftly
+    Trigger: []
+    Position: {x: 261.6, y: 176.8}
+  - NodeGUID: 2091b283-0f1b-436d-a363-d35b1f40fa15
+    NPCNameText: The President
+    DialogueText: Hmm,  Both of these pieces are works by a famous artist, painstakingly
+      acquired through auction
+    Trigger: []
+    Position: {x: 781.6, y: 161.59999}
+  - NodeGUID: b1509601-afe2-40fc-89b7-05d6d37a820e
+    NPCNameText: The President
+    DialogueText: "The one on the left involves a bird. It\u2019s the artist's 9th
+      piece and represents the freedom of life"
+    Trigger: []
+    Position: {x: 1482.4, y: 159.2}
+  - NodeGUID: eeb5249f-8c8c-4b8b-bde0-faba100c2854
+    NPCNameText: The President
+    DialogueText: "As for the one on the right, it's their 3rd piece. It represents\u2026
+      something very profound. Even I don\u2019t fully understand it."
+    Trigger: []
+    Position: {x: 2172.8, y: 164.8}
+  - NodeGUID: 98d3baba-3146-4580-91dc-30c6dc862249
+    NPCNameText: The President
+    DialogueText: I hope this answers your question
+    Trigger: []
+    Position: {x: 2987.2, y: 177.59999}
+  - NodeGUID: cca927a5-7bb2-42c0-8fd3-9ca111168192
+    NPCNameText: The President
+    DialogueText: Dialogue Node
+    Trigger:
+    - leave
+    Position: {x: 3456, y: 194.4}
+  ExposedProperties: []
+  CommentBlockData: []

@@ -1671,7 +1671,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 06:00 AM
+  m_text: 02:00 PM
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d7c03fb8d8e00447b1f3bf65ed6f237, type: 2}
   m_sharedMaterial: {fileID: 4904836014996962540, guid: 8d7c03fb8d8e00447b1f3bf65ed6f237, type: 2}

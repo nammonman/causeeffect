@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: day 6 presidents assistant ask repeat
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 73df2ffc-d838-4e35-8981-3e039b2be330
+    PortName: Next
+    TargetNodeGUID: fedaac44-0333-4d9a-acf6-60d71df4f8d8
+  DialogueNodeData:
+  - NodeGUID: fedaac44-0333-4d9a-acf6-60d71df4f8d8
+    NPCNameText: President's Assistant
+    DialogueText: please make sure that everything is ready for tomorrow's presentation
+    Trigger: []
+    Position: {x: 288, y: 192}
+  ExposedProperties: []
+  CommentBlockData: []

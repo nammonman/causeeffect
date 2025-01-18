@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: day 2 keeper unlock
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: c697601a-db25-4c97-bd6a-86b8819c0949
+    PortName: Next
+    TargetNodeGUID: a202a679-d0b7-4097-9dcb-32373269f36e
+  - BaseNodeGUID: a202a679-d0b7-4097-9dcb-32373269f36e
+    PortName: yes, please. also why is it locked from the inside?
+    TargetNodeGUID: 4480b188-d2a4-4696-9e3a-71a452ac8def
+  - BaseNodeGUID: 4480b188-d2a4-4696-9e3a-71a452ac8def
+    PortName: by the way. what is the newspaper rack doing here?
+    TargetNodeGUID: 41c09c26-e3da-43b3-bd47-9fa7cf6d4757
+  - BaseNodeGUID: 41c09c26-e3da-43b3-bd47-9fa7cf6d4757
+    PortName: ...
+    TargetNodeGUID: 92ba83c0-1371-4dd9-be91-5168cd06349a
+  - BaseNodeGUID: 92ba83c0-1371-4dd9-be91-5168cd06349a
+    PortName: alright. thank you. I will check out my room now
+    TargetNodeGUID: d5ba92a8-541d-4657-b0fb-29f37597b991
+  DialogueNodeData:
+  - NodeGUID: a202a679-d0b7-4097-9dcb-32373269f36e
+    NPCNameText: Keeper
+    DialogueText: Head Researcher, do you want to unlock the room?
+    Trigger: []
+    Position: {x: 255.2, y: 176.8}
+  - NodeGUID: 4480b188-d2a4-4696-9e3a-71a452ac8def
+    NPCNameText: Keeper
+    DialogueText: well after the explosion, you ordered that no one can enter your
+      room until you came back and opened it yourself
+    Trigger: []
+    Position: {x: 748, y: 179.2}
+  - NodeGUID: 41c09c26-e3da-43b3-bd47-9fa7cf6d4757
+    NPCNameText: Keeper
+    DialogueText: you also ordered some newspaper. specifically issue 3-5 from Owl
+      Publishing.
+    Trigger: []
+    Position: {x: 1494.4, y: 182.4}
+  - NodeGUID: 92ba83c0-1371-4dd9-be91-5168cd06349a
+    NPCNameText: Keeper
+    DialogueText: you said you wanted to look at the crossword sections. I didn't
+      know you are a newspaper crossword enthusiast because these are very hard to
+      get.
+    Trigger: []
+    Position: {x: 2072, y: 183.2}
+  - NodeGUID: d5ba92a8-541d-4657-b0fb-29f37597b991
+    NPCNameText: Keeper
+    DialogueText: the door is unlocked. please head in
+    Trigger:
+    - ChangeSetting_WorkHallwayNPC2-2
+    - NewTLTitle_UNLOCKED ROOM
+    Position: {x: 3039.2, y: 191.2}
+  ExposedProperties: []
+  CommentBlockData: []

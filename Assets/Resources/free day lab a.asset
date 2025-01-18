@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: free day lab a
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 0fc7afbc-61e0-4c94-a3eb-c029a601a8d3
+    PortName: Next
+    TargetNodeGUID: 78f3e5a6-70bf-46e1-8a6c-5d15e71e8873
+  DialogueNodeData:
+  - NodeGUID: 78f3e5a6-70bf-46e1-8a6c-5d15e71e8873
+    NPCNameText: Assistant A
+    DialogueText: lets get to work
+    Trigger: []
+    Position: {x: 244, y: 178.4}
+  ExposedProperties: []
+  CommentBlockData: []

@@ -65,7 +65,10 @@ public class InGamePauseMenu : MonoBehaviour
         {
 
             GameStateManager.setPausedState(true);
-            quickTL.SetActive(true);
+            if (GameStateManager.gameStates.fixLevel >= 2)
+            {
+                quickTL.SetActive(true);
+            }
             allTL.SetActive(false);
             notebook.SetActive(false);
             GameObject.Find("999999").GetComponent<TimelineEventDisplay>().selectTimeline();
@@ -83,7 +86,10 @@ public class InGamePauseMenu : MonoBehaviour
 
             GameStateManager.setPausedState(true);
             quickTL.SetActive(false);
-            allTL.SetActive(true);
+            if (GameStateManager.gameStates.fixLevel >= 2)
+            {
+                allTL.SetActive(true);
+            }
             notebook.SetActive(false);
             GameObject.Find("999999").GetComponent<TimelineEventDisplay>().selectTimeline();
         }
@@ -98,7 +104,11 @@ public class InGamePauseMenu : MonoBehaviour
             GameStateManager.setPausedState(true);
             quickTL.SetActive(false);
             allTL.SetActive(false);
-            notebook.SetActive(true);
+            if (GameStateManager.gameStates.globalFlags.Contains("Notebook"))
+            {
+                notebook.SetActive(true);
+            }
+            
         }
 
     }
@@ -170,7 +180,14 @@ public class InGamePauseMenu : MonoBehaviour
 
     IEnumerator EnableUnPauseAfterDelay(float delay)
     {
-        yield return new WaitForSeconds(delay);
+        float elapsedTime = 0f;
+
+        while (elapsedTime < delay)
+        {
+            GameStateManager.setPausedState(true);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
         canUnPause = true;
     }
     void Update()
@@ -210,7 +227,7 @@ public class InGamePauseMenu : MonoBehaviour
 
             if (!inPause)
             {
-                if (Input.GetKey(KeyCode.Tab))
+                if (Input.GetKey(KeyCode.Tab) && GameStateManager.gameStates.fixLevel >= 2)
                 {
                     keyHoldTimer += Mathf.Clamp(Time.deltaTime, 0, 2);
 
@@ -235,22 +252,37 @@ public class InGamePauseMenu : MonoBehaviour
                     loadingBar.value = 0;
                 }
 
-                if (Input.GetKeyDown(KeyCode.Return) && selectedGameObject && (allTL.activeSelf || quickTL.activeSelf))
+                if (Input.GetKeyDown(KeyCode.Return) && selectedGameObject )
                 {
-                    int id = int.Parse(selectedGameObject.name);
-                    Debug.Log("selected id: " + id);
-                    if (id == 999999) // forbidden id
+                    if (allTL.activeSelf && !quickTL.activeSelf && GameStateManager.gameStates.fixLevel >=4)
                     {
+                        int id = int.Parse(selectedGameObject.name);
+                        Debug.Log("selected id: " + id);
+                        if (id == 999999) // forbidden id
+                        {
+                            loadingBar.value = 0;
+                            return;
+                        }
+
+                        MakeTL.LoadTLPS(id);
                         loadingBar.value = 0;
-                        return;
+                        selectedGameObject = null;
                     }
-                    /*else if (id == 0)
+                    else if (quickTL.activeSelf && !allTL.activeSelf && GameStateManager.gameStates.fixLevel >= 2)
                     {
-                        return;
-                    }*/
-                    MakeTL.LoadTLPS(id);
-                    loadingBar.value = 0;
-                    selectedGameObject = null;
+                        int id = int.Parse(selectedGameObject.name);
+                        Debug.Log("selected id: " + id);
+                        if (id == 999999) // forbidden id
+                        {
+                            loadingBar.value = 0;
+                            return;
+                        }
+
+                        MakeTL.LoadTLPS(id);
+                        loadingBar.value = 0;
+                        selectedGameObject = null;
+                    }
+                    
                 }
             }
             else

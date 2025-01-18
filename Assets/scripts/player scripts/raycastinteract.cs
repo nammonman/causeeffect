@@ -1,5 +1,6 @@
 using Subtegral.DialogueSystem.DataContainers;
 using Subtegral.DialogueSystem.Runtime;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -16,9 +17,10 @@ public class raycastinteract : MonoBehaviour
 
     public delegate void DialogueEnter(string GUID, bool E, Dialogue D);
     public static event DialogueEnter OnDialogueEnter;
-
+    public static event Action OnPCEnter;
+    public static event Action OnMixEnter;
     private bool objInteractable = false;
-    private bool pauseFlag = false;
+    
     public void Start()
     {
         promptText.text = "[E] to interact";
@@ -27,10 +29,6 @@ public class raycastinteract : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        if (pauseFlag)
-        {
-            GameStateManager.setPausedState(true);
-        }
         if (GameStateManager.gameStates.canPlayerInteract)
         {
             Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward*rayDist, Color.blue);
@@ -73,7 +71,6 @@ public class raycastinteract : MonoBehaviour
                         NpcDialogue npcDialogue = hitObject.collider.gameObject.GetComponent<NpcDialogue>();
                         if (npcDialogue != null && npcDialogue.canInteract == true)
                         {
-                            
                             if (npcDialogue.isFirstInteract && npcDialogue.firstDialogue != null)
                             {
                                 OnDialogueEnter?.Invoke(npcDialogue.firstDialogue.NodeLinks[0].TargetNodeGUID, true, npcDialogue.firstDialogue);
@@ -87,7 +84,38 @@ public class raycastinteract : MonoBehaviour
                     }
                     else if (hitObject.collider.gameObject.tag == "Iobj")
                     {
-                        RunFuncs(hitObject.collider.gameObject.GetComponent<IObjProperties>().funcs);
+                        
+                        if (hitObject.collider.gameObject.name == "PC TRIGGER")
+                        {
+                            OnPCEnter?.Invoke();
+                            
+                        }
+                        else if (hitObject.collider.gameObject.name == "control panel interact")
+                        {
+                            if (GameStateManager.gameStates.currentTimeOfDay < 2)
+                            {
+                                OnMixEnter?.Invoke();
+                                TriggerRunner.RunFuncsCaller(hitObject.collider.gameObject.GetComponent<IObjProperties>().funcs);
+                            }
+                            else
+                            {
+                                GameStateManager.setMonologue("I have already spent the whole day on this, I should go");
+                            }
+                            
+                        }
+                        else if (hitObject.collider.gameObject.name.StartsWith("FoundItem"))
+                        {
+                            TriggerRunner.RunFuncsCaller(hitObject.collider.gameObject.GetComponent<IObjProperties>().funcs);
+                            Destroy(hitObject.collider.gameObject);
+                        }
+                        else if (hitObject.collider.gameObject.name.StartsWith("NEWSPAPER"))
+                        {
+                            hitObject.collider.gameObject.GetComponent<Newspaper>().readNewspaper();
+                        }
+                        else
+                        {
+                            TriggerRunner.RunFuncsCaller(hitObject.collider.gameObject.GetComponent<IObjProperties>().funcs);
+                        }
                     }
                 }
 
@@ -166,196 +194,5 @@ public class raycastinteract : MonoBehaviour
     {
         DialogueParser.OnDialogueExit -= LeaveConversation;
     }
-    public void RunFuncs(List<string> funcs)
-    {
-        if (funcs.Count > 0)
-        {
-            StartCoroutine(ExecuteFuncsSequentially(funcs));
-        }
-    }
 
-    private IEnumerator ExecuteFuncsSequentially(List<string> funcs)
-    {
-        foreach (var item in funcs)
-        {
-            string[] parallelFuncs = item.Split('|'); // Split multiple functions
-            List<IEnumerator> parallelCoroutines = new List<IEnumerator>();
-
-            foreach (var func in parallelFuncs)
-            {
-                string[] f = func.Split('_'); // Split individual function and arguments
-
-                if (f[0] == "FadeBlack")
-                {
-                    parallelCoroutines.Add(FadeBlackForSeconds(float.Parse(f[1])));
-                }
-                else if (f[0] == "BlackScreenText")
-                {
-                    parallelCoroutines.Add(BlackScreenTextCoroutine(f[1]));
-                }
-                else if (f[0] == "CauseeffectText")
-                {
-                    parallelCoroutines.Add(CauseeffectTextCoroutine(f[1]));
-                }
-                else if (f[0] == "Monologue")
-                {
-                    parallelCoroutines.Add(MonologueCoroutine(f[1]));
-                }
-                else if (f[0] == "Glitch")
-                {
-                    parallelCoroutines.Add(GlitchForSeconds(float.Parse(f[1])));
-                }
-                else if (f[0] == "Wait")
-                {
-                    parallelCoroutines.Add(WaitSeconds(float.Parse(f[1])));
-                }
-                else if (f[0] == "ChangeScene")
-                {
-                    parallelCoroutines.Add(LoadSceneCoroutine(f[1]));
-                }
-                else if (f[0] == "ChangeSceneSetPos")
-                {
-                    parallelCoroutines.Add(LoadSceneWithPosCoroutine(f[1], new Vector3(int.Parse(f[2]), int.Parse(f[3]), int.Parse(f[4]))));
-                }
-                else if (f[0] == "ChangeSetting")
-                {
-                    parallelCoroutines.Add(LoadSceneSettingCoroutine(f[1]));
-                }
-                else if (f[0] == "pause")
-                {
-                    pauseFlag = true;
-                }
-                else if (f[0] == "unpause")
-                {
-                    pauseFlag = false;
-                    GameStateManager.setPausedState(false);
-                }
-                else if (f[0] == "freeze")
-                {
-                    GameStateManager.setFreeze(true);
-                }
-                else if (f[0] == "unfreeze")
-                {
-                    GameStateManager.setFreeze(false);
-                }
-                else if (f[0] == "NewTL")
-                {
-                    GameStateManager.setNewTL();
-                }
-                else if (f[0] == "NewTLTitle")
-                {
-                    GameStateManager.setNewTLTitle(f[1]);
-                }
-                else if (f[0] == "IncrementTime")
-                {
-                    GameStateManager.setIncrementTime();
-                }
-                else if (f[0] == "SetDateTime")
-                {
-                    GameStateManager.setDateTime(int.Parse(f[1]), int.Parse(f[2]));
-                }
-                else if (f[0] == "kill")
-                {
-                    //Destroy(gameObject);
-                }
-                Debug.Log("ran " + func);
-            }
-
-            if (parallelCoroutines.Count > 0)
-            {
-                yield return ExecuteParallelCoroutines(parallelCoroutines);
-            }
-        }
-    }
-
-    private IEnumerator ExecuteParallelCoroutines(List<IEnumerator> coroutines)
-    {
-        List<Coroutine> runningCoroutines = new List<Coroutine>();
-
-        foreach (var coroutine in coroutines)
-        {
-            runningCoroutines.Add(StartCoroutine(coroutine));
-        }
-
-        foreach (var runningCoroutine in runningCoroutines)
-        {
-            yield return runningCoroutine;
-        }
-    }
-
-    IEnumerator FadeBlackForSeconds(float delay)
-    {
-        GameStateManager.setPausedState(true);
-        GameStateManager.setScreenFadeIn();
-        yield return new WaitForSeconds(delay);
-        GameStateManager.setScreenFadeOut();
-        GameStateManager.setPausedState(false);
-    }
-
-    IEnumerator GlitchForSeconds(float delay)
-    {
-        GameStateManager.setStartGlitch();
-        yield return new WaitForSeconds(delay);
-        GameStateManager.setStopGlitch();
-    }
-
-    IEnumerator WaitSeconds(float delay) { yield return new WaitForSeconds(delay); }
-
-    IEnumerator LoadSceneCoroutine(string sceneName)
-    {
-        bool isDone = false;
-
-        GameStateManager.setLoadNewScene(sceneName);
-
-        LoadScene.OnEnd += () => isDone = true;
-        yield return new WaitUntil(() => isDone);
-    }
-
-    IEnumerator LoadSceneWithPosCoroutine(string sceneName, Vector3 position)
-    {
-        bool isDone = false;
-
-        GameStateManager.setLoadNewSceneWithPos(sceneName, position);
-
-        LoadScene.OnEnd += () => isDone = true;
-        yield return new WaitUntil(() => isDone);
-    }
-
-    IEnumerator BlackScreenTextCoroutine(string name)
-    {
-        bool isDone = false;
-
-        GameStateManager.setBlackScreenText(name);
-
-        DreamTextSwitcher.OnEnd += () => isDone = true;
-        yield return new WaitUntil(() => isDone);
-    }
-    IEnumerator CauseeffectTextCoroutine(string name)
-    {
-        bool isDone = false;
-
-        GameStateManager.setCauseeffectText(name);
-
-        CauseeffectTextSwitcher.OnEnd += () => isDone = true;
-        yield return new WaitUntil(() => isDone);
-    }
-    IEnumerator MonologueCoroutine(string text)
-    {
-        bool isDone = false;
-
-        GameStateManager.setMonologue(text);
-
-        ShowMonologue.OnEnd += () => isDone = true;
-        yield return new WaitUntil(() => isDone);
-        yield return new WaitForSeconds(0.9f);
-    }
-    IEnumerator LoadSceneSettingCoroutine(string name)
-    {
-        bool isDone = false;
-
-        GameStateManager.setLoadSceneSetting(name);
-
-        MakeTL.OnEnd += () => isDone = true;
-        yield return new WaitUntil(() => isDone);
-    }
 }

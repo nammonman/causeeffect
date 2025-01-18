@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: day 4 keeper item 2
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: db7fdd96-c441-4f83-94b1-db679efff9e6
+    PortName: Next
+    TargetNodeGUID: 65ed9975-2fea-4448-bd49-270d58779099
+  - BaseNodeGUID: 65ed9975-2fea-4448-bd49-270d58779099
+    PortName: have you seen any other pieces of paper with weird writing on it?
+    TargetNodeGUID: c8c5cd49-8a9d-4bca-b107-a9865cbefd76
+  - BaseNodeGUID: c8c5cd49-8a9d-4bca-b107-a9865cbefd76
+    PortName: where is it now?
+    TargetNodeGUID: a59626a4-a057-4c8f-9148-7182d09742d2
+  DialogueNodeData:
+  - NodeGUID: 65ed9975-2fea-4448-bd49-270d58779099
+    NPCNameText: Keeper
+    DialogueText: Oh, hello there
+    Trigger: []
+    Position: {x: 257.6, y: 224}
+  - NodeGUID: c8c5cd49-8a9d-4bca-b107-a9865cbefd76
+    NPCNameText: Keeper
+    DialogueText: 'let me think... I think there is one in The President''s room
+      that I picked up yesterday '
+    Trigger: []
+    Position: {x: 729.6, y: 224.8}
+  - NodeGUID: a59626a4-a057-4c8f-9148-7182d09742d2
+    NPCNameText: Keeper
+    DialogueText: in the trash. sorry again
+    Trigger:
+    - AddFlag_Item2Location
+    Position: {x: 1406.4, y: 222.4}
+  ExposedProperties: []
+  CommentBlockData: []

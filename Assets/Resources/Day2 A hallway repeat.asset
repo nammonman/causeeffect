@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: Day2 A hallway repeat
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: ca32170f-133e-4f1e-a378-734de306a016
+    PortName: Next
+    TargetNodeGUID: 714c5a67-f7b0-4049-9032-668799b76a23
+  DialogueNodeData:
+  - NodeGUID: 714c5a67-f7b0-4049-9032-668799b76a23
+    NPCNameText: Assistant A
+    DialogueText: please head to the elevator at the end of the hallway and go to
+      the lab. me and B already did the setup and waiting for you to start
+    Trigger: []
+    Position: {x: 272, y: 189.59999}
+  ExposedProperties: []
+  CommentBlockData: []

@@ -9866,13 +9866,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactable: 0
-  onetime: 0
   funcs:
   - BlackScreenText_firstSequence
   - ChangeScene_WorkPresidentRoom
   - ChangeSetting_WorkPresidentRoomNPC1
   - Wait_2
-  - NewTL
+  - NewTLTitle_PRESENTATION GONE WRONG
 --- !u!1001 &235819528
 PrefabInstance:
   m_ObjectHideFlags: 0

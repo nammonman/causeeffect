@@ -251,7 +251,7 @@ public class DreamTexts : MonoBehaviour
                 {
                     new DreamText
                     {
-                        text = "<b>MISSION FAILED</b>\nCause of death: Refusal of mission",
+                        text = "<b>MISSION FAILED</b>\nCause of death: Abondoned mission",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
@@ -311,6 +311,166 @@ public class DreamTexts : MonoBehaviour
                     new DreamText
                     {
                         text = "\"what are you???\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                }
+            }
+        },
+        {
+            "ZFFlashback1",
+            new Dream
+            {
+                dreamName = "ZFFlashback1",
+                BGSoundFileName = "",
+                dreamTexts = new List<DreamText>
+                {
+                    new DreamText
+                    {
+                        text = "you suddenly remember something...",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "you see a destroyed machine",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "maybe its a fallen spacecraft or satellite?",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "...",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"my codename is _____\" ",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "doesn't quite roll off the tongue, how about I call you \"Zeph\" instead?",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "...",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"do you agree to work with me?\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "for humanity, I agree!",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "even if I have to use alien technology...",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "...",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"I have never seen such lifeform that can handle this much...\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                }
+            }
+        },
+        {
+            "ZFFlashback2",
+            new Dream
+            {
+                dreamName = "ZFFlashback2",
+                BGSoundFileName = "",
+                dreamTexts = new List<DreamText>
+                {
+                    new DreamText
+                    {
+                        text = "you suddenly remember something...",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "are you an alien? a spy? or a weapon?",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"[][][][][] I am [][][][] codename ZF-10 from [][][][][][][] 57412 [][] 411141463 [][][][]\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"[][][] the mission [][][][][] stop the [][][] 611120140131461105 [][][]\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"the meteor [][][][] energy research [][][][][][] 037367 [][] prevent humans [][][][][]\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "so this thing knows about the meteor...",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "...",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"thank you very much, Head Researcher\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"in exchange for repairing me, I will do my best to assist you in your research\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "finally! I can communicate with this thing",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"I hope we can assist each other in accomplishing our missions\"",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
