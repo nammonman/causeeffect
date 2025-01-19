@@ -26,31 +26,61 @@ public class DreamTexts : MonoBehaviour
         // dream 1
         new Dream
         {
-            dreamName = "Peaceful Garden",
+            dreamName = "Zeph takeover",
             BGSoundFileName = ".mp3",
             dreamTexts = new List<DreamText>
             {
                 new DreamText
                 {
-                    text = "You find yourself in a serene garden...",
+                    text = "Aaagh.....Aaargh!!!",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "The sun warms your skin...",
+                    text = "???: synchronization level: 38%",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "ChatGPT totally did not write this",
+                    text = "you betrayed me...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "lol",
+                    text = "???: synchronization level: 54%",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "I should have known...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "???: synchronization level: 79%",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "???: you should be proud that you are our first step to...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "no...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "???: synchronization level: 100%",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
@@ -60,55 +90,305 @@ public class DreamTexts : MonoBehaviour
         // dream 2
         new Dream
         {
-            dreamName = "Mystic Forest",
+            dreamName = "exposed",
             BGSoundFileName = ".mp3",
             dreamTexts = new List<DreamText>
             {
                 new DreamText
                 {
-                    text = "The forest is dark but full of life...",
+                    text = "a gunshot is fired. you have been shot.",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "You hear the rustling of leaves...",
+                    text = "???: you could have avoided this if you accepted my offer",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "hi",
+                    text = "that thing will destroy humanity! why are you doing this?",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
-
+                new DreamText
+                {
+                    text = "???: I know we can control it.",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "???: do you really think that I can't just get someone better than you to continue the project",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "???: you are not the main character, don't be stupid now.",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
             }
         },
 
         // dream 3
         new Dream
         {
-            dreamName = "Starry Night",
+            dreamName = "war 1",
             BGSoundFileName = ".mp3",
             dreamTexts = new List<DreamText>
             {
                 new DreamText
                 {
-                    text = "The stars shine brightly above you...",
+                    text = "A: no!!! its over for humanity!!!",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "A shooting star crosses the sky...",
+                    text = "B: not my son...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
-                }
+                },
+                new DreamText
+                {
+                    text = "I could have stopped it. why...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "let me redo this loop again... please...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "I know it will work...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
             }
-        }
-        
+        },
 
+        new Dream
+        {
+            dreamName = "war 2",
+            BGSoundFileName = ".mp3",
+            dreamTexts = new List<DreamText>
+            {
+                new DreamText
+                {
+                    text = "no...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "???: breaking news. many nuclear weapons have been detonated by country...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "its still not working...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "try... again...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+
+            }
+        },
+        new Dream
+        {
+            dreamName = "war 6",
+            BGSoundFileName = ".mp3",
+            dreamTexts = new List<DreamText>
+            {
+                new DreamText
+                {
+                    text = "the war happened six times now...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "those \"dreams\" really did happen in another timeline...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "ZF: that is a possibility... before... failure...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "ZF: but the density of Chronolencos... breaks the system... return...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "I hope this can reach me, in another loop, in another timeline...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "hello future me... failed the mission... the war rages on... it has been activated...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "The President is not tie only traitor... could be one of the assistants...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "...deal with them next time",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+            }
+        },
+
+        new Dream
+        {
+            dreamName = "war ???",
+            BGSoundFileName = ".mp3",
+            dreamTexts = new List<DreamText>
+            {
+                new DreamText
+                {
+                    text = "...countless variations of this war has happened...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "...should I just give up?...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "???: I was chosen by the Chronolenchos as the initializer. now I must challenge and evolve humans to become the ideal race",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "???: the Chronolenchos chose humans for a reason. now its your turn to evolve with us",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "you're A?...how...you were dead...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "A: my death was greatly exaggerated. I am now one with the Chronolenchos",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+            }
+        },
+        new Dream
+        {
+            dreamName = "zeph achieved",
+            BGSoundFileName = ".mp3",
+            dreamTexts = new List<DreamText>
+            {
+                new DreamText
+                {
+                    text = "what is that? are you kidding me!",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "???: ...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "answer me!",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "ZF: sorry, head researcher, but it is mmy duty to stop humanity from using Chronolenchos",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "ZF: but don't fear. humanity will be safe under our government",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+            }
+        },
+        new Dream
+        {
+            dreamName = "????",
+            BGSoundFileName = ".mp3",
+            dreamTexts = new List<DreamText>
+            {
+                new DreamText
+                {
+                    text = "finally...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "...I've done it...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "...revert to...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "...the cycle will end...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "...I have to note it down...now...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+                new DreamText
+                {
+                    text = "...before it's too late...",
+                    playSoundFileName = ".mp3",
+                    playEffectName = ""
+                },
+            }
+        },
     };
 
     public static Dictionary<string, Dream> blackScreenTexts = new Dictionary<string, Dream>

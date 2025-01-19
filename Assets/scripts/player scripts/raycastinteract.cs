@@ -119,7 +119,7 @@ public class raycastinteract : MonoBehaviour
                     }
                 }
 
-                if (GameStateManager.gameStates.canSeeSecretText && GameStateManager.gameStates.canReadSecretText && hitObject.collider.gameObject.tag == "secret text")
+                /*if (GameStateManager.gameStates.canSeeSecretText && GameStateManager.gameStates.canReadSecretText && hitObject.collider.gameObject.tag == "secret text")
                 {
                     string seenSecretText = hitObject.collider.gameObject.GetComponent<TMP_Text>().text;
                     int index = NotebookSwitcher.notes.IndexOf(seenSecretText);
@@ -131,7 +131,7 @@ public class raycastinteract : MonoBehaviour
                         Debug.Log(seenSecretText);
                     }
                     
-                }
+                }*/
 
             }
             else if (promptText.gameObject.activeSelf)

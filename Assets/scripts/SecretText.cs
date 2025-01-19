@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,13 +9,13 @@ using UnityEngine.SceneManagement;
 public class SecretText : MonoBehaviour
 {
     public TMP_Text textMeshPro; // Reference to the TextMeshPro component
-    public Transform originPoint; // Origin point for movement calculation
-    public float movementMultiplier = 1.0f; // Controlled by a slider
+    public float movementMultiplier = 0f; // Controlled by a slider
     //public float alphaValue = 1.0f; // Controlled by another slider
 
-    private List<GameObject> textChunks = new List<GameObject>();
     private string lastText; // To track changes in text
     private bool playerSaw = false;
+    int frameCount = 0;
+    float originalSize = 5;
 
     void Reset()
     {
@@ -25,7 +26,6 @@ public class SecretText : MonoBehaviour
             Debug.LogWarning("No TMP_Text component found! Please add one to this GameObject.");
         }
 
-        originPoint = transform;
         UpdateTextChunks();
 
     }
@@ -48,11 +48,6 @@ public class SecretText : MonoBehaviour
         {
             textMeshPro = GetComponent<TMP_Text>();
         }
-        if (originPoint == null)
-        {
-            originPoint = transform;
-
-        }
 
         UpdateTextChunks();
     }
@@ -64,10 +59,13 @@ public class SecretText : MonoBehaviour
 
     void FixedUpdate()
     {
-        
-        
-        UpdateTextChunks(true);
-        
+        frameCount++;
+        frameCount %= 2;
+        if (frameCount % 2 == 1)
+        {
+            UpdateTextChunks(true);
+        }
+
     }
 
     void UpdateTextChunks(bool fromOnVal = false)
@@ -77,33 +75,21 @@ public class SecretText : MonoBehaviour
         // Check if the text has changed to avoid unnecessary updates
         if (textMeshPro.text != lastText && !fromOnVal)
         {
-            ClearTextChunks();
-            SplitTextIntoChunks();
             lastText = textMeshPro.text;
         }
 
+        TMP_Text chunkText = gameObject.GetComponent<TMP_Text>();
         if (movementMultiplier > 0.01f)
         {
-            if (textMeshPro.enabled)
-            {
-                textMeshPro.enabled = false;
-            }
-            foreach (var chunkObject in textChunks)
-            {
-                chunkObject.SetActive(true);
-                Vector3 randomDirection = Random.insideUnitSphere;
-                chunkObject.transform.localPosition = randomDirection * movementMultiplier;
-
-                TMP_Text chunkText = chunkObject.GetComponent<TMP_Text>();
-                // Calculate alpha range based on movementMultiplier
-                float minAlpha = Mathf.Clamp01(1 - movementMultiplier);
-                float maxAlpha = Mathf.Clamp01(2 - movementMultiplier);
-
-                // Set a random opacity within the calculated range
-                Color randomColor = textMeshPro.color;
-                randomColor.a = Random.Range(minAlpha, maxAlpha);
-                chunkText.color = randomColor;
-            }
+            // Calculate alpha range based on movementMultiplier
+            float minAlpha = Mathf.Clamp01(1 - movementMultiplier);
+            float maxAlpha = Mathf.Clamp01(2 - movementMultiplier);
+            float fontSize = Random.Range(1, (movementMultiplier + 1) * 10);
+            // Set a random opacity within the calculated range
+            Color randomColor = textMeshPro.color;
+            randomColor.a = Random.Range(minAlpha, maxAlpha);
+            chunkText.color = randomColor;
+            chunkText.fontSize = fontSize;
         }
         else
         {
@@ -111,100 +97,16 @@ public class SecretText : MonoBehaviour
             {
                 textMeshPro.enabled = true;
             }
-            foreach (var chunkObject in textChunks)
-            {
-                chunkObject.SetActive(false);
-            }
-        }
 
-    }
-
-    void SplitTextIntoChunks()
-    {
-        string originalText = textMeshPro.text;
-        List<string> chunks = SplitIntoRandomChunks(originalText);
-
-        foreach (var chunk in chunks)
-        {
-            GameObject chunkObject = new GameObject("Chunk");
-            chunkObject.tag = "secret text chunk";
-            chunkObject.transform.SetParent(transform);
-            chunkObject.transform.localPosition = Vector3.zero;
-
-            TMP_Text chunkText = chunkObject.AddComponent<TextMeshPro>();
-            chunkText.text = chunk;
-            chunkText.font = textMeshPro.font;
-            chunkText.fontSize = textMeshPro.fontSize;
-            chunkText.alignment = TextAlignmentOptions.Center;
-
-            // Calculate alpha range based on movementMultiplier
-            float minAlpha = Mathf.Clamp01(1 - movementMultiplier);
-            float maxAlpha = Mathf.Clamp01(2 - movementMultiplier);
-
-            // Set a random opacity within the calculated range
             Color randomColor = textMeshPro.color;
-            randomColor.a = Random.Range(minAlpha, maxAlpha);
+            randomColor.a = 1;
             chunkText.color = randomColor;
-
-            textChunks.Add(chunkObject);
-        }
-    }
-
-    List<string> SplitIntoRandomChunks(string text)
-    {
-        List<string> chunks = new List<string>();
-        int index = 0;
-
-        while (index < text.Length)
-        {
-            int chunkSize = Random.Range(1, Mathf.Min(4, text.Length - index + 1));
-            string chunk = new string(' ', index*2) + text.Substring(index, chunkSize); // Add spaces before the chunk
-            chunks.Add(chunk);
-            index += chunkSize;
+            chunkText.fontSize = originalSize;
         }
 
-        return chunks;
     }
 
-    void ClearTextChunks()
-    {
-        foreach (var chunk in textChunks)
-        {
-            if (chunk != null)
-            {
-                if (Application.isPlaying)
-                {
-                    Destroy(chunk);
-                }
-                else
-                {
-                    DestroyImmediate(chunk);
-                }
 
-
-            }
-        }
-        textChunks.Clear();
-    }
-
-    private void OnEnable()
-    {
-        ClearTextChunks();
-        SplitTextIntoChunks();
-        UpdateTextChunks();
-    }
-
-    void OnDisable()
-    {
-        // Clear chunks when the script is disabled
-        ClearTextChunks();
-    }
-
-    void OnDestroy()
-    {
-        // Clear chunks when the script is removed
-        ClearTextChunks();
-    }
 
     public void SetMovementMultiplier(float value)
     {
