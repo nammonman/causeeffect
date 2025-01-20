@@ -122,9 +122,19 @@ namespace Subtegral.DialogueSystem.Runtime
                 {
                     if (choice.PortName.StartsWith("[ce]"))
                     {
-                        if (GameStateManager.gameStates.globalFlags.Contains("causeeffect"))
+                        if (GameStateManager.gameStates.fixLevel > 1)
                         {
                             string portName = choice.PortName.Split("[ce]")[1];
+                            var button = Instantiate(choicePrefab, buttonContainer.transform);
+                            button.GetComponentInChildren<TextMeshProUGUI>().text = ProcessProperties(portName);
+                            button.onClick.AddListener(() => answerChoice(choice.TargetNodeGUID, portName));
+                        }
+                    }
+                    if (choice.PortName.StartsWith("[spyTruth]"))
+                    {
+                        if (GameStateManager.gameStates.globalFlags.Contains("spyTruth"))
+                        {
+                            string portName = choice.PortName.Split("[spyTruth]")[1];
                             var button = Instantiate(choicePrefab, buttonContainer.transform);
                             button.GetComponentInChildren<TextMeshProUGUI>().text = ProcessProperties(portName);
                             button.onClick.AddListener(() => answerChoice(choice.TargetNodeGUID, portName));

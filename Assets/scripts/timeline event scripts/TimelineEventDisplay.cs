@@ -36,7 +36,7 @@ public class TimelineEventDisplay : MonoBehaviour
     {
         eventNameText.text = thisTimelineEvent.title;
         dayNumText.text = "DAY " + thisTimelineEvent.day.ToString();
-        string[] t = { "morning", "afternoon", "night" };
+        string[] t = { "morning", "afternoon", "evening", "night" };
         timeDayText.text = t[thisTimelineEvent.timeOfDay];
         if (thisTimelineEvent.type == 0)
         {

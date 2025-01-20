@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: day 4 b truth
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 4493e1e8-89cf-4260-ba5e-7b514a283aac
+    PortName: Next
+    TargetNodeGUID: 35ec3ab0-54f2-46aa-987d-2eed96451b37
+  - BaseNodeGUID: 35ec3ab0-54f2-46aa-987d-2eed96451b37
+    PortName: i'm trying here
+    TargetNodeGUID: 5874ec48-a814-4a24-a94f-858f950b9afd
+  - BaseNodeGUID: 5874ec48-a814-4a24-a94f-858f950b9afd
+    PortName: (come closer)
+    TargetNodeGUID: 7656759f-4b18-4f9b-82b5-cb849c407bba
+  - BaseNodeGUID: 7656759f-4b18-4f9b-82b5-cb849c407bba
+    PortName: (shock)
+    TargetNodeGUID: b87783fa-a173-4317-93fe-5eb558fb49f9
+  - BaseNodeGUID: b87783fa-a173-4317-93fe-5eb558fb49f9
+    PortName: ...
+    TargetNodeGUID: 125f63d9-8b2f-4dca-afa5-a233afa66267
+  - BaseNodeGUID: 125f63d9-8b2f-4dca-afa5-a233afa66267
+    PortName: ...
+    TargetNodeGUID: e0e4328a-07d3-42df-9d78-16b1d9af8aa6
+  - BaseNodeGUID: 35ec3ab0-54f2-46aa-987d-2eed96451b37
+    PortName: '[spyTruth] now before you go, tell me the secret code'
+    TargetNodeGUID: 30b1634e-006f-4a5a-8411-d12f962643b4
+  - BaseNodeGUID: 30b1634e-006f-4a5a-8411-d12f962643b4
+    PortName: I'll tell you the way out that ensures they can't get you after you
+      bail on them
+    TargetNodeGUID: 4b238615-782f-4366-a169-b3e3add32533
+  - BaseNodeGUID: 4b238615-782f-4366-a169-b3e3add32533
+    PortName: '[tell the way out]'
+    TargetNodeGUID: c8ccd7d8-81e6-47a1-a90f-19bc9640878a
+  DialogueNodeData:
+  - NodeGUID: 35ec3ab0-54f2-46aa-987d-2eed96451b37
+    NPCNameText: Assistant B
+    DialogueText: you better get everything done today since I'm leaving tomorrow
+    Trigger: []
+    Position: {x: 264.8, y: 152.8}
+  - NodeGUID: 5874ec48-a814-4a24-a94f-858f950b9afd
+    NPCNameText: Assistant B
+    DialogueText: I have one thing I gotta tell you before I leave (gesture to come
+      closer)
+    Trigger: []
+    Position: {x: 824.8, y: 164}
+  - NodeGUID: 7656759f-4b18-4f9b-82b5-cb849c407bba
+    NPCNameText: Assistant B
+    DialogueText: the truth is that both me and A are spies sent to observe the research
+    Trigger: []
+    Position: {x: 1372, y: 169.59999}
+  - NodeGUID: b87783fa-a173-4317-93fe-5eb558fb49f9
+    NPCNameText: Assistant B
+    DialogueText: but I'm not gonna lie, I only did it for the money. now I have
+      what I came here for I'm getting the hell out of here
+    Trigger: []
+    Position: {x: 1923.2, y: 166.4}
+  - NodeGUID: 125f63d9-8b2f-4dca-afa5-a233afa66267
+    NPCNameText: Assistant B
+    DialogueText: tomorrow's leave is for getting away as far away as possible
+    Trigger: []
+    Position: {x: 2652.8, y: 164.8}
+  - NodeGUID: e0e4328a-07d3-42df-9d78-16b1d9af8aa6
+    NPCNameText: Assistant B
+    DialogueText: 'my final words: you have never had this conversation and will
+      never hear from me again.'
+    Trigger:
+    - AddFlag_spyTruth
+    Position: {x: 3116, y: 174.4}
+  - NodeGUID: 30b1634e-006f-4a5a-8411-d12f962643b4
+    NPCNameText: Assistant B
+    DialogueText: what the.... how did-
+    Trigger: []
+    Position: {x: 803.2, y: 371.2}
+  - NodeGUID: c8ccd7d8-81e6-47a1-a90f-19bc9640878a
+    NPCNameText: Assistant B
+    DialogueText: that might actually work better than my original plan... thank
+      you
+    Trigger: []
+    Position: {x: 1739.2, y: 376.80002}
+  - NodeGUID: 4b238615-782f-4366-a169-b3e3add32533
+    NPCNameText: Assistant B
+    DialogueText: ...ok, deal. pr0j3ct_C
+    Trigger: []
+    Position: {x: 1267.2, y: 376}
+  ExposedProperties: []
+  CommentBlockData: []

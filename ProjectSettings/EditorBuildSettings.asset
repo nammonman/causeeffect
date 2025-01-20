@@ -155,4 +155,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NPC SCENES/WorkPresidentRoom/WorkPresidentRoomNPC6.unity
     guid: 3ef4dc20b7ddec5419e1a16bf1cd3000
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkLab/WorkLabNPC4 b leave.unity
+    guid: b0f39a90dfa276c4584cb9651e9696af
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkLab/WorkLabNPC5 b leave.unity
+    guid: b3ffea6cfcf561f4abd92091bd2a0d11
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkLab/WorkLabNPC6 b leave.unity
+    guid: 88b28f8ee0c6a4b4faebef8dc0aac1db
   m_configObjects: {}

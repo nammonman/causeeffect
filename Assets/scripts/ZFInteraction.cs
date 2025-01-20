@@ -71,7 +71,14 @@ public class ZFInteraction : MonoBehaviour
             };
             prioritizedOptions.Add(pw);
         }
-
+        if (GameStateManager.gameStates.currentDay >= 6)
+        {
+            var pw = new Dropdown.OptionData
+            {
+                text = "hack with secret code"
+            };
+            prioritizedOptions.Add(pw);
+        }
         // Combine the prioritized options (new) at the top and completed options below
         prioritizedOptions.AddRange(completedOptions);
         options.AddOptions(prioritizedOptions.ConvertAll(option => option.text));
@@ -104,18 +111,49 @@ public class ZFInteraction : MonoBehaviour
     }
     private void PasswordCheck(string s) 
     {
-        if (s != "90103141737")
+        if (GameStateManager.gameStates.currentDay >= 6 && GameStateManager.gameStates.globalFlags.Contains("approveLeave"))
         {
-            display.text = "incorrect password";
-            userInput.text = ">_";
+            if (s != "pr0j3ct_C")
+            {
+                display.text = "authentication failed. this incident will be reported";
+                userInput.text = ">_";
+                GameStateManager.gameStates.globalFlags.Add("FAIL HACK DOCUMENT");
+                if (GameStateManager.gameStates.globalFlags.Contains("HACKED DOCUMENT"))
+                {
+                    GameStateManager.gameStates.globalFlags.Remove("HACKED DOCUMENT");
+                }
+            }
+            else
+            {
+                GameStateManager.gameStates.globalFlags.Add("HACKED DOCUMENT");
+                if (GameStateManager.gameStates.globalFlags.Contains("FAIL HACK DOCUMENT"))
+                {
+                    GameStateManager.gameStates.globalFlags.Remove("FAIL HACK DOCUMENT");
+                }
+                display.text = "level 10 document access granted\n" +
+                    "copied data to local memory\n" +
+                    "override logging system\n" +
+                    "logged out";
+                userInput.text = ">_";
+                RefreshDropdownOptions();
+            }
         }
-        else
+        if (GameStateManager.gameStates.fixLevel == 0)
         {
-            GameStateManager.gameStates.fixLevel++;
-            display.text = "you have unlocked the hidden module\nthe self repair module have been acelerated by 1 stage";
-            userInput.text = ">_";
-            RefreshDropdownOptions();
+            if (s != "90103141737")
+            {
+                display.text = "incorrect password";
+                userInput.text = ">_";
+            }
+            else
+            {
+                GameStateManager.gameStates.fixLevel++;
+                display.text = "you have unlocked the hidden module\nthe self repair module have been acelerated by 1 stage";
+                userInput.text = ">_";
+                RefreshDropdownOptions();
+            }
         }
+        
     }
     private void OnEnterPressed()
     {
@@ -126,7 +164,7 @@ public class ZFInteraction : MonoBehaviour
             optionsGameObject.SetActive(true);
             passwordGameObject.SetActive(false);
         }
-        else if (selectedConversationKey == "enter password")
+        else if (selectedConversationKey == "enter password" || selectedConversationKey == "hack with secret code")
         {
             optionsGameObject.SetActive(false);
             passwordGameObject.SetActive(true);
