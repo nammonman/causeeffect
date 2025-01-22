@@ -140,6 +140,16 @@ namespace Subtegral.DialogueSystem.Runtime
                             button.onClick.AddListener(() => answerChoice(choice.TargetNodeGUID, portName));
                         }
                     }
+                    if (choice.PortName.StartsWith("[HACKED DOCUMENT]"))
+                    {
+                        if (GameStateManager.gameStates.globalFlags.Contains("HACKED DOCUMENT"))
+                        {
+                            string portName = choice.PortName.Split("[HACKED DOCUMENT]")[1];
+                            var button = Instantiate(choicePrefab, buttonContainer.transform);
+                            button.GetComponentInChildren<TextMeshProUGUI>().text = ProcessProperties(portName);
+                            button.onClick.AddListener(() => answerChoice(choice.TargetNodeGUID, portName));
+                        }
+                    }
                     else
                     {
                         var button = Instantiate(choicePrefab, buttonContainer.transform);
@@ -249,6 +259,10 @@ namespace Subtegral.DialogueSystem.Runtime
                     {
                         GameStateManager.setNewTLTitle(f[1]);
                     }
+                    else if (f[0] == "LoadTL")
+                    {
+                        MakeTL.LoadTLPS(int.Parse(f[1]));
+                    }
                     else if (f[0] == "IncrementTime")
                     {
                         GameStateManager.setIncrementTime();
@@ -274,6 +288,14 @@ namespace Subtegral.DialogueSystem.Runtime
                     else if (f[0] == "leave")
                     {
                         leaveNarrative();
+                    }
+                    else if (f[0] == "good ending finale")
+                    {
+                        TrueEndingSequence.GoodEndScreen();
+                    }
+                    else if (f[0] == "true ending finale")
+                    {
+                        TrueEndingSequence.TrueEndScreen();
                     }
                     Debug.Log("ran " + func);
                 }

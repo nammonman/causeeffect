@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: ending 3 you
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 4a725172-0f81-4891-a84b-54312d305fb5
+    PortName: Next
+    TargetNodeGUID: 0588f558-f631-489c-a310-ea2f14b15cac
+  - BaseNodeGUID: 0588f558-f631-489c-a310-ea2f14b15cac
+    PortName: '[touch]'
+    TargetNodeGUID: c5377e0e-78a0-491e-abf8-6b70715dff70
+  - BaseNodeGUID: 0588f558-f631-489c-a310-ea2f14b15cac
+    PortName: '[talk]'
+    TargetNodeGUID: e9063b8b-6c5a-4691-86a5-c522ff512728
+  DialogueNodeData:
+  - NodeGUID: 0588f558-f631-489c-a310-ea2f14b15cac
+    NPCNameText: you
+    DialogueText: ...
+    Trigger: []
+    Position: {x: 219.2, y: 184.8}
+  - NodeGUID: e9063b8b-6c5a-4691-86a5-c522ff512728
+    NPCNameText: you
+    DialogueText: woah!  what the-
+    Trigger:
+    - Wait_1
+    - leave
+    - Glitch_4
+    - CauseeffectText_ending 3 finale
+    - LoadTL_2
+    Position: {x: 702.4, y: 477.6}
+  - NodeGUID: c5377e0e-78a0-491e-abf8-6b70715dff70
+    NPCNameText: you
+    DialogueText: woah!  what the-
+    Trigger:
+    - Wait_1
+    - leave
+    - Glitch_4
+    - CauseeffectText_ending 3 finale
+    - LoadTL_2
+    Position: {x: 703.2, y: 175.2}
+  ExposedProperties: []
+  CommentBlockData: []

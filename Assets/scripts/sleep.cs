@@ -17,22 +17,26 @@ public class sleep : MonoBehaviour
 
     public void GoToSleep()
     {
-        firstFloorCamera.SetActive(true);
-        secondFloorCameraClose.SetActive(false);
-        secondFloorCameraFar.SetActive(false);
-        GameStateManager.setDateTime(GameStateManager.gameStates.currentDay + 1, 0);
-        List<string> funcs = new List<string>
+        if (GameStateManager.gameStates.currentDay < 6)
         {
-            "RandomDreamText",
-            "FadeBlack_4",
-            "ChangeScene_WorkHallway",
-            $"ChangeSetting_WorkHallwayNPC{GameStateManager.gameStates.currentDay.ToString()}",
-            "IncrementFix",
-            "Wait_2",
-            $"NewTLTitle_BEGIN DAY {GameStateManager.gameStates.currentDay.ToString()}"
-        };
+            firstFloorCamera.SetActive(true);
+            secondFloorCameraClose.SetActive(false);
+            secondFloorCameraFar.SetActive(false);
+            GameStateManager.setDateTime(GameStateManager.gameStates.currentDay + 1, 0);
+            List<string> funcs = new List<string>
+            {
+                "RandomDreamText",
+                "FadeBlack_4",
+                "ChangeScene_WorkHallway",
+                $"ChangeSetting_WorkHallwayNPC{GameStateManager.gameStates.currentDay.ToString()}",
+                "IncrementFix",
+                "Wait_2",
+                $"NewTLTitle_BEGIN DAY {GameStateManager.gameStates.currentDay.ToString()}"
+            };
 
-        TriggerRunner.RunFuncsCaller(funcs);
+            TriggerRunner.RunFuncsCaller(funcs);
+        }
+        
     }
 
 }

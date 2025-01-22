@@ -36,8 +36,20 @@ namespace SaveGame
             saveFilePath = Application.persistentDataPath + $"/{GameStateManager.gameStates.saveFileName}.json";
             playerSaveDatas = new Dictionary<int, PlayerSaveData>();
             timelineEventDatas = new Dictionary<int, SerializableTimelineEvent>();
-            
+        }
 
+        private float timer = 0f; 
+        private const float interval = 60f; 
+        private void Update()
+        {
+            // auto save
+            timer += Time.deltaTime; 
+
+            if (timer >= interval)
+            {
+                writeSaveFile(); 
+                timer = 0f; 
+            }
         }
 
         private void OnEnable()

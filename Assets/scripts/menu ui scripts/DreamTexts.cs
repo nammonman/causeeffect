@@ -514,7 +514,7 @@ public class DreamTexts : MonoBehaviour
                     },
                     new DreamText
                     {
-                        text = "<b>INITIATE CAUSEEFFECT PROTOCOL</b>\nTarget: 2 weeks ago",
+                        text = "<b>INITIATE CAUSEEFFECT PROTOCOL</b>\nTarget: 1 week ago",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
@@ -751,6 +751,259 @@ public class DreamTexts : MonoBehaviour
                     new DreamText
                     {
                         text = "\"I hope we can assist each other in accomplishing our missions\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                }
+            }
+        },
+        {
+            "ending 1",
+            new Dream
+            {
+                dreamName = "ending 1",
+                BGSoundFileName = "",
+                dreamTexts = new List<DreamText>
+                {
+                    new DreamText
+                    {
+                        text = "The screen behind you changed to show the live camera feed from the lab",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "It is showing the result of you and your team's hard work",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"The machine that could solve earth's impending energy crisis\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "Noises and a very bright light starts emitting from the machine",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "There it is! It is working just as planned",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "Applause fills the conference room",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "its time!",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "???: we are going to temporarily interrupt this presentation",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "???: Head Researcher, come with us. this is urgent",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                }
+            }
+        },
+        {
+            "ending 1 finale",
+            new Dream
+            {
+                dreamName = "ending 1 finale",
+                BGSoundFileName = "",
+                dreamTexts = new List<DreamText>
+                {
+                    new DreamText
+                    {
+                        text = "<b>MISSION FAILED</b>\nCause of death: Shot with projectile weapon",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "<b>INITIATE CAUSEEFFECT PROTOCOL</b>\nTarget: 1 week ago",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                }
+            }
+        },
+        {
+            "ending 2",
+            new Dream
+            {
+                dreamName = "ending 2",
+                BGSoundFileName = "",
+                dreamTexts = new List<DreamText>
+                {
+                    new DreamText
+                    {
+                        text = "The screen behind you changed to show the live camera feed from the lab",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "It is showing the result of you and your team's hard work",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"The machine that could solve earth's impending energy crisis\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "Noises and a very bright light starts emitting from the machine",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "There it is! It is working just as planned",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "Applause fills the conference room",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "its time!",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"I also have something else to tell you\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"if you look at your phones right now there is a file that just opened\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"please take a look at it\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"the true intentions of the government, who will be taking over this research project\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"see it with your own eyes and-\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "before you can say the whole speech, everything turned bright.",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "light engulfs the entire room",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                }
+            }
+        },
+        {
+            "ending 2 finale",
+            new Dream
+            {
+                dreamName = "ending 2 finale",
+                BGSoundFileName = "",
+                dreamTexts = new List<DreamText>
+                {
+                    new DreamText
+                    {
+                        text = "your duty is now over. I will take over from here",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "synchronization level: 38%\nthank you for being an important step in our plan",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "synchronization level: 79%\nplease be proud. assets as good as you are hard to come by",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "synchronization level: 100%\ncontinue with the next mission.",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "<b>MISSION COMPLETE</b>\nCause of death: [][][][][][][] [][][][][][][]",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "<b>INITIATE CAUSEEFFECT PROTOCOL</b>\nTarget: 1 week ago",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                }
+            }
+        },
+        {
+            "ending 3 finale",
+            new Dream
+            {
+                dreamName = "ending 2 finale",
+                BGSoundFileName = "",
+                dreamTexts = new List<DreamText>
+                {
+                    new DreamText
+                    {
+                        text = "<b>MISSION FAILED</b>\nCause of death: [][][][][][][] [][][][][][][]",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "<b>INITIATE CAUSEEFFECT PROTOCOL</b>\nTarget: 1 week ago",
                         playSoundFileName = "",
                         playEffectName = ""
                     },

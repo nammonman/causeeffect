@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: ending 4 you
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: ab25584f-cc43-498e-9c85-ee3f67367ef5
+    PortName: Next
+    TargetNodeGUID: 89441927-66e5-453c-ac2b-84347d457d75
+  - BaseNodeGUID: 89441927-66e5-453c-ac2b-84347d457d75
+    PortName: '[touch]'
+    TargetNodeGUID: e228fd3a-aebf-4f2c-9495-fb838380bd5f
+  - BaseNodeGUID: 89441927-66e5-453c-ac2b-84347d457d75
+    PortName: '[HACKED DOCUMENT][tell about the future]'
+    TargetNodeGUID: 69647e3b-2e6f-4af4-a685-7598277b4f0f
+  - BaseNodeGUID: 69647e3b-2e6f-4af4-a685-7598277b4f0f
+    PortName: '[hand over the secret government document]'
+    TargetNodeGUID: b6a8059a-a7c1-4d5b-a2c8-502d81ef8041
+  - BaseNodeGUID: b6a8059a-a7c1-4d5b-a2c8-502d81ef8041
+    PortName: 'you don''t have to understand. just spread this as far and wide as
+      possible and save humanity''s future '
+    TargetNodeGUID: fbb798f3-f147-4834-ad10-a3905a85439b
+  - BaseNodeGUID: fbb798f3-f147-4834-ad10-a3905a85439b
+    PortName: please trust me, for humanity's sake.
+    TargetNodeGUID: 7a2a851d-2034-43e4-9646-fca78d896420
+  - BaseNodeGUID: 7a2a851d-2034-43e4-9646-fca78d896420
+    PortName: 'I don''t have much time left. The Paradox effect will get me soon. '
+    TargetNodeGUID: ac63adcd-f653-42e7-bed1-00557c2e6e2e
+  - BaseNodeGUID: ac63adcd-f653-42e7-bed1-00557c2e6e2e
+    PortName: goodbye, myself.
+    TargetNodeGUID: cc954eb5-faaa-4952-af67-a2c4af90ae7a
+  DialogueNodeData:
+  - NodeGUID: 89441927-66e5-453c-ac2b-84347d457d75
+    NPCNameText: you
+    DialogueText: wha-
+    Trigger: []
+    Position: {x: 233.6, y: 166.4}
+  - NodeGUID: 69647e3b-2e6f-4af4-a685-7598277b4f0f
+    NPCNameText: you
+    DialogueText: I don't understand what you're saying and why are you here
+    Trigger: []
+    Position: {x: 693.6, y: 284.80002}
+  - NodeGUID: e228fd3a-aebf-4f2c-9495-fb838380bd5f
+    NPCNameText: you
+    DialogueText: ARRGHH!!!
+    Trigger:
+    - Wait_1
+    - leave
+    - Glitch_5|Monologue_I have to remove myself before I discovered Zeph
+    - Glitch_5|Monologue_I will no longer exist, but cutting the timeline off before
+      Zeph gets to be in it is worth it
+    - Glitch_5|Monologue_goodbye, Universe. goodbye, Zeph.
+    - good ending finale
+    Position: {x: 694.4, y: -54.399998}
+  - NodeGUID: b6a8059a-a7c1-4d5b-a2c8-502d81ef8041
+    NPCNameText: you
+    DialogueText: ...
+    Trigger: []
+    Position: {x: 1220.8, y: 296}
+  - NodeGUID: fbb798f3-f147-4834-ad10-a3905a85439b
+    NPCNameText: you
+    DialogueText: the government? what am I supposed to do against that?
+    Trigger: []
+    Position: {x: 1690.4, y: 303.2}
+  - NodeGUID: 7a2a851d-2034-43e4-9646-fca78d896420
+    NPCNameText: you
+    DialogueText: ...
+    Trigger: []
+    Position: {x: 2160, y: 308.80002}
+  - NodeGUID: ac63adcd-f653-42e7-bed1-00557c2e6e2e
+    NPCNameText: you
+    DialogueText: ...I will try my best
+    Trigger: []
+    Position: {x: 2607.2, y: 316}
+  - NodeGUID: cc954eb5-faaa-4952-af67-a2c4af90ae7a
+    NPCNameText: NEW NPC
+    DialogueText: Dialogue Node
+    Trigger:
+    - leave
+    - Glitch_5
+    - true ending finale
+    Position: {x: 3063.2, y: 321.6}
+  ExposedProperties: []
+  CommentBlockData: []

@@ -24,11 +24,11 @@ public class PasswordPC : MonoBehaviour
         "by transporting my physical self back 5 years ago (when I..., well, you first discovered Zeph) and intercept " +
         "my past self, creating a paradox before the first event happened and exit this cycle once and for all\n\n" +
         "but no matter what I try I could not get it to work.\n\n" +
-        "this attempt is my closest to making it work. I actually managed to send my physical self back in time " +
-        "but the moment I saw my past self, we both got fused together. the memories became one with mine, and things became " +
+        "this attempt is my closest to making it work. I actually managed to send my physical self back 2 weeks " +
+        "but the moment I touched my past self, we both got fused together. the memories became one with mine, and things became " +
         "increasingly unstable. I think this loop is getting reset very soon.\n\n" +
         "read carefully. I don't have much time. \n" +
-        "add as much catalyst as possible. keep your Chronolencos energy low. this should get you further back than me\n" +
+        "the ratio should be 0 9 2 5. use with Zeph's mixture and this should get you further back than me. hopefully its 5 years\n" +
         "the notes in your head are puzzles in order to obfuscate the information from Zeph. I know you can solve them\n" +
         "the one who infected zeph with a virus is me. this should slow down Zeph enough to stop it from realizing what you are trying to do\n" +
         "now, go make the new mixture. everything is ready. please release us from the cycle.";

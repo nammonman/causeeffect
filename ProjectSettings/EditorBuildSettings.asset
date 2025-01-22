@@ -164,4 +164,26 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NPC SCENES/WorkLab/WorkLabNPC6 b leave.unity
     guid: 88b28f8ee0c6a4b4faebef8dc0aac1db
+  - enabled: 1
+    path: Assets/Scenes/Home true ending.unity
+    guid: e67fc8179189be745aad83bc1052d05b
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/presentation/presentationNPC ending 1.unity
+    guid: d5fd63ad190e9dc4eb5a46dcc4d3f88a
+  - enabled: 1
+    path: Assets/Scenes/presentation empty.unity
+    guid: 5ecce5b4db4901244ab8d340f7921691
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/WorkPresidentRoom/WorkPresidentRoomNPC ending
+      1.unity
+    guid: 35737c224fdf98a4da9faa36217f7a0b
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/presentation/presentationNPC ending 2.unity
+    guid: bbc0653de4fd6e246b46a801c1738512
+  - enabled: 1
+    path: Assets/Scenes/NPC SCENES/presentation/presentationNPC ending 2 finale.unity
+    guid: 01f7916529fda234cacb32fee36ceb94
+  - enabled: 1
+    path: Assets/Scenes/Home good ending.unity
+    guid: 5fc63eca3daf297429226099e4cc98ca
   m_configObjects: {}

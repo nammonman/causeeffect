@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: ending 1 president
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 51f5dff4-c17d-40b0-ba2c-fe55148f1b76
+    PortName: Next
+    TargetNodeGUID: 2efeaaa8-2bf9-4e21-a009-bd167ee0b389
+  - BaseNodeGUID: 2efeaaa8-2bf9-4e21-a009-bd167ee0b389
+    PortName: (is this what they call "Deja Vu"?)
+    TargetNodeGUID: 2fcd1149-f102-41ad-aa24-7a3cc91eab27
+  - BaseNodeGUID: 2fcd1149-f102-41ad-aa24-7a3cc91eab27
+    PortName: 'what are you talking about? '
+    TargetNodeGUID: 5427a0a8-3053-4fa4-a821-4b06930654c0
+  - BaseNodeGUID: 5427a0a8-3053-4fa4-a821-4b06930654c0
+    PortName: that is impossible. how am-
+    TargetNodeGUID: a1ae911d-6c55-4cc7-af34-cea828db25a7
+  - BaseNodeGUID: a1ae911d-6c55-4cc7-af34-cea828db25a7
+    PortName: you are supporting the biggest chemical warfare on earth! I can't let
+      it happen
+    TargetNodeGUID: 5b0b0766-6811-4aeb-80ae-0f34d4e769e8
+  - BaseNodeGUID: 2c672484-3adc-4222-90ee-1cf881a4fb04
+    PortName: no!
+    TargetNodeGUID: 280e7357-86ab-499c-a9eb-28a4774ebec8
+  - BaseNodeGUID: 5b0b0766-6811-4aeb-80ae-0f34d4e769e8
+    PortName: (!)
+    TargetNodeGUID: 2c672484-3adc-4222-90ee-1cf881a4fb04
+  DialogueNodeData:
+  - NodeGUID: 2efeaaa8-2bf9-4e21-a009-bd167ee0b389
+    NPCNameText: The President
+    DialogueText: I have entrusted our most important project to you and you have
+      betrayed us all...
+    Trigger: []
+    Position: {x: 211.2, y: 195.2}
+  - NodeGUID: 2fcd1149-f102-41ad-aa24-7a3cc91eab27
+    NPCNameText: The President
+    DialogueText: tell me why you are trying to hack into that document
+    Trigger: []
+    Position: {x: 818.4, y: 198.4}
+  - NodeGUID: 5427a0a8-3053-4fa4-a821-4b06930654c0
+    NPCNameText: The President
+    DialogueText: a user that "just happened to" have all your verified credentials
+      tried to leak all our confidential documents
+    Trigger: []
+    Position: {x: 1294.4, y: 195.2}
+  - NodeGUID: a1ae911d-6c55-4cc7-af34-cea828db25a7
+    NPCNameText: The President
+    DialogueText: coming up with excuses? I already know what you did.
+    Trigger: []
+    Position: {x: 2029.6, y: 191.2}
+  - NodeGUID: 2c672484-3adc-4222-90ee-1cf881a4fb04
+    NPCNameText: The President
+    DialogueText: 'rest assured we will use the results of you hard work to it''s
+      fullest potential '
+    Trigger: []
+    Position: {x: 2940, y: 208.8}
+  - NodeGUID: 5b0b0766-6811-4aeb-80ae-0f34d4e769e8
+    NPCNameText: The President
+    DialogueText: I'm sorry Mr. Superhero, but this story is never about you.
+    Trigger: []
+    Position: {x: 2472.8, y: 202.4}
+  - NodeGUID: 280e7357-86ab-499c-a9eb-28a4774ebec8
+    NPCNameText: NEW NPC
+    DialogueText: Dialogue Node
+    Trigger:
+    - leave
+    - Glitch_4
+    - CauseeffectText_ending 1 finale
+    - LoadTL_2
+    Position: {x: 3510.4, y: 208.8}
+  ExposedProperties: []
+  CommentBlockData: []

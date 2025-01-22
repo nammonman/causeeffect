@@ -60,6 +60,8 @@ public class GameStateManager : MonoBehaviour
     public static GameStates gameStates;
     [SerializeField] TextMeshProUGUI DEBUGTEXT;
     [SerializeField] Slider debugFixLevelSlider;
+    [SerializeField] TMP_InputField debugFlagField;
+    
 
     public static event Action<string> OnSceneUpdate;
     public static event Action OnTimeUpdate;
@@ -104,12 +106,14 @@ public class GameStateManager : MonoBehaviour
     }
 
 
-    // Start is called before the first frame update
-    void Start()
+    public void DebugAddFlags()
     {
- 
+        gameStates.globalFlags.Add(debugFlagField.text);
     }
-
+    public void DebugRemoveFlags()
+    {
+        gameStates.globalFlags.Remove(debugFlagField.text);
+    }
     public static void setPausedState(bool b)
     {
         //Debug.Log(b);

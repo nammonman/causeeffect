@@ -75,7 +75,7 @@ public class ZFInteraction : MonoBehaviour
         {
             var pw = new Dropdown.OptionData
             {
-                text = "hack with secret code"
+                text = "<b>obtain government document<\\b>"
             };
             prioritizedOptions.Add(pw);
         }
@@ -164,7 +164,7 @@ public class ZFInteraction : MonoBehaviour
             optionsGameObject.SetActive(true);
             passwordGameObject.SetActive(false);
         }
-        else if (selectedConversationKey == "enter password" || selectedConversationKey == "hack with secret code")
+        else if (selectedConversationKey == "enter password" || selectedConversationKey == "<b>obtain government document<\\b>")
         {
             optionsGameObject.SetActive(false);
             passwordGameObject.SetActive(true);
@@ -249,7 +249,10 @@ public class ZFInteraction : MonoBehaviour
                 {
                     if (command.text != "enter password")
                     {
-                        GameStateManager.gameStates.completedZF.Add(selectedConversationKey);
+                        if (!GameStateManager.gameStates.completedZF.Contains(selectedConversationKey))
+                        {
+                            GameStateManager.gameStates.completedZF.Add(selectedConversationKey);
+                        }
                         enterButton.enabled = true;
                         optionsGameObject.SetActive(true);
                         RefreshDropdownOptions();

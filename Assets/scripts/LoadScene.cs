@@ -18,12 +18,15 @@ public class LoadScene : MonoBehaviour
     {
         { "Home", new Vector3(-49, 3, -15) },
         { "HomePersonalRoom", new Vector3(-5, 1, 7) },
-        { "WorkHallway", new Vector3(-2, 7, 61) }, 
+        { "Home true ending", new Vector3(-18.48f, 3, -7.86f) },
+        { "Home good ending", new Vector3(-26, 3, -1) },
+        { "WorkHallway", new Vector3(-2, 7, 61) },      
         { "WorkLab", new Vector3(-1, 7, -11) },
         { "WorkPersonalRoom", new Vector3(0, 2, -8) },
         { "WorkPresidentRoom", new Vector3(3, 2, 1) },
         { "presentation", new Vector3(18, 2, -8) },
         { "presentation tutorial", new Vector3(18, 2, -8) },
+        { "presentation empty", new Vector3(16, 3, 5) },
         { "TestScene", new Vector3(0, 0, 0) },
         { "MainMenu", new Vector3(0, 2, 0) },
     };
@@ -32,12 +35,15 @@ public class LoadScene : MonoBehaviour
     {
         { "Home", "CameraFarTerminal" },
         { "HomePersonalRoom", "deskcam" },
+        { "Home true ending", "CameraFarTerminal" },
+        { "Home good ending", "Main Camera" },
         { "WorkHallway", "Main Camera" },
         { "WorkLab", "Main Camera" },
         { "WorkPersonalRoom", "Main Camera" },
         { "WorkPresidentRoom", "Main Camera" },
         { "presentation", "Main Camera" },
         { "presentation tutorial", "Main Camera" },
+        { "presentation empty", "Main Camera" },
         { "TestScene", "Main Camera" },
         { "MainMenu", "Main Camera" },
     };

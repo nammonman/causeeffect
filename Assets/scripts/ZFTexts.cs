@@ -270,8 +270,11 @@ public class ZFTexts : MonoBehaviour
                         "for the weapon. then you can have the option to expose this data to the public and see what the outcome will be\n\n" +
                         "But before that, I will give you this \"stabilizer component (1)\". it is a part of the full stabilizer formula but " +
                         "I cannot verify the other component right now as it is broken due to the virus taking over a part of the formula\n\n",
-                        null),
-                        ("ZF", "once you helped me reach fix level 4, the completed formula will be revealed and I will be able to provide you the correct \"stabilizer component (2)\".\n" +
+                        new List<string>
+                        {
+                            "AddFlag_stabilizer component 1",
+                        }),
+                        ("ZF", "once I reach fix level 4, the completed formula will be revealed and I will be able to provide you the correct \"stabilizer component (2)\".\n" +
                         "the combination of the correct 2 stabilizer components will form the final stabilzer that will make Chronolenchos no longer dangerous to life forms. " +
                         "once accomplished, I will use the new stabilized Chronolenchos to do the final upgrade to the cause and effect system",
                         null),
@@ -291,7 +294,10 @@ public class ZFTexts : MonoBehaviour
                         ("ZF", "I have regained the complete stabilizer formula and now able to provide the correct \"stabilizer component (2)\" \n\n" +
                         "the final upgrade to the cause and effect system is also available. now you can use the \"full timeline\" menu " +
                         "to select any event on any timeline and navigate there",
-                        null),
+                        new List<string>
+                        {
+                            "AddFlag_stabilizer component 2",
+                        }),
 
                     },
                     fixLevel = 4,

@@ -118,6 +118,10 @@ public class TriggerRunner : MonoBehaviour
                 {
                     GameStateManager.setNewTLTitle(f[1]);
                 }
+                else if (f[0] == "LoadTL")
+                {
+                    MakeTL.LoadTLPS(int.Parse(f[1]));
+                }
                 else if (f[0] == "IncrementTime")
                 {
                     GameStateManager.setIncrementTime();
