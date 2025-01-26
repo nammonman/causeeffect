@@ -9870,8 +9870,9 @@ MonoBehaviour:
   - BlackScreenText_firstSequence
   - ChangeScene_WorkPresidentRoom
   - ChangeSetting_WorkPresidentRoomNPC1
+  - SetDateTime_7_2
   - Wait_2
-  - NewTLTitle_PRESENTATION GONE WRONG
+  - NewTLTitle_prologue
 --- !u!1001 &235819528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11359,7 +11360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 3
   m_UsePipelineSettings: 1
-  m_AdditionalLightsShadowResolutionTier: -1
+  m_AdditionalLightsShadowResolutionTier: 2
   m_LightLayerMask: 1
   m_RenderingLayers: 1
   m_CustomShadowLayers: 0

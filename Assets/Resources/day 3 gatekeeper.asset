@@ -40,6 +40,7 @@ MonoBehaviour:
     Trigger:
     - ChangeScene_WorkPresidentRoom
     - ChangeSetting_WorkPresidentRoomNPC3
+    - leave
     Position: {x: 669.6, y: 93.600006}
   ExposedProperties: []
   CommentBlockData: []

@@ -130,7 +130,7 @@ namespace Subtegral.DialogueSystem.Runtime
                             button.onClick.AddListener(() => answerChoice(choice.TargetNodeGUID, portName));
                         }
                     }
-                    if (choice.PortName.StartsWith("[spyTruth]"))
+                    else if (choice.PortName.StartsWith("[spyTruth]"))
                     {
                         if (GameStateManager.gameStates.globalFlags.Contains("spyTruth"))
                         {
@@ -140,7 +140,7 @@ namespace Subtegral.DialogueSystem.Runtime
                             button.onClick.AddListener(() => answerChoice(choice.TargetNodeGUID, portName));
                         }
                     }
-                    if (choice.PortName.StartsWith("[HACKED DOCUMENT]"))
+                    else if (choice.PortName.StartsWith("[HACKED DOCUMENT]"))
                     {
                         if (GameStateManager.gameStates.globalFlags.Contains("HACKED DOCUMENT"))
                         {

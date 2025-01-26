@@ -39,6 +39,7 @@ MonoBehaviour:
     DialogueText: please follow me to the door
     Trigger:
     - Wait_2
+    - leave
     - ChangeScene_WorkHallway
     - ChangeSetting_WorkHallwayNPC4-1
     Position: {x: 820.8, y: 376}

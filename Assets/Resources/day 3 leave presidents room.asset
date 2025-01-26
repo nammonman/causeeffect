@@ -39,8 +39,9 @@ MonoBehaviour:
     DialogueText: please follow me to the door
     Trigger:
     - Wait_2
+    - leave
     - ChangeScene_WorkHallway
     - ChangeSetting_WorkHallwayNPC3-1
-    Position: {x: 807.2, y: 382.40002}
+    Position: {x: 810.4, y: 380}
   ExposedProperties: []
   CommentBlockData: []

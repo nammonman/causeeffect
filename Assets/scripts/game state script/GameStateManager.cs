@@ -108,11 +108,28 @@ public class GameStateManager : MonoBehaviour
 
     public void DebugAddFlags()
     {
-        gameStates.globalFlags.Add(debugFlagField.text);
+        
+        if (!string.IsNullOrEmpty(debugFlagField.text))
+        {
+            gameStates.globalFlags.Add(debugFlagField.text);
+        }
+
+        foreach (var item in gameStates.globalFlags)
+        {
+            Debug.Log("active flag: " + item);
+        }
     }
     public void DebugRemoveFlags()
     {
-        gameStates.globalFlags.Remove(debugFlagField.text);
+        if (!string.IsNullOrEmpty(debugFlagField.text))
+        {
+            gameStates.globalFlags.Remove(debugFlagField.text);
+        }
+
+        foreach (var item in gameStates.globalFlags)
+        {
+            Debug.Log("active flag: " + item);
+        }
     }
     public static void setPausedState(bool b)
     {

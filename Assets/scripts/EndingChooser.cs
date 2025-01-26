@@ -73,7 +73,12 @@ public class EndingChooser : MonoBehaviour
         }
 
         // default ending
-        else { funcs.Add("LoadTL_1"); }
+        else 
+        {
+            funcs.Add("ChangeScene_presentation");
+            funcs.Add("ChangeSetting_presentationNPC ending default");
+
+        }
 
         // start tomorrow
         GoToSleep();

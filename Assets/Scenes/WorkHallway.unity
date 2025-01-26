@@ -20106,7 +20106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: 1
   funcs:
-  - AddTrigger_FoundItem1
+  - AddFlag_FoundItem1
   - Wait_0.1
   - kill
 --- !u!4 &2054958342

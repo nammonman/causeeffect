@@ -47,7 +47,10 @@ namespace SaveGame
 
             if (timer >= interval)
             {
-                writeSaveFile(); 
+                if (GameStateManager.gameStates.currentEventId > 0 && !(SceneManager.GetSceneByName("MainMenu").isLoaded || SceneManager.GetSceneByName("player scene").isLoaded))
+                {
+                    writeSaveFile(); 
+                }
                 timer = 0f; 
             }
         }

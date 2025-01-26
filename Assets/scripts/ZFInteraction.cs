@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ZFInteraction : MonoBehaviour
 {
+    [SerializeField] Canvas canvas;
     [SerializeField] Button enterButton;
     [SerializeField] Button exitButton;
     [SerializeField] Button upButton;
@@ -274,6 +275,7 @@ public class ZFInteraction : MonoBehaviour
     }
     private IEnumerator ExecuteFuncsSequentially(List<string> funcs)
     {
+        canvas.enabled = false;
         foreach (var item in funcs)
         {
             string[] parallelFuncs = item.Split('|'); // Split multiple functions
@@ -364,6 +366,7 @@ public class ZFInteraction : MonoBehaviour
                 yield return ExecuteParallelCoroutines(parallelCoroutines);
             }
         }
+        canvas.enabled = true;
     }
 
     private IEnumerator ExecuteParallelCoroutines(List<IEnumerator> coroutines)
