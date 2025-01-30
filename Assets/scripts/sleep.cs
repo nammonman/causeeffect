@@ -33,7 +33,14 @@ public class sleep : MonoBehaviour
                 "Wait_2",
                 $"NewTLTitle_BEGIN DAY {GameStateManager.gameStates.currentDay.ToString()}"
             };
-
+            if (GameStateManager.gameStates.fixLevel == 1)
+            {
+                funcs.Add("pause");
+                funcs.Add("Glitch_2");
+                funcs.Add("Wait_1");
+                funcs.Add("unpause");
+                funcs.Add("Monologue_you can now hold [TAB] to access something...");
+            }
             TriggerRunner.RunFuncsCaller(funcs);
         }
         

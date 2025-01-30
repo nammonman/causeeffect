@@ -893,8 +893,8 @@ MonoBehaviour:
   interactable: 1
   funcs:
   - Glitch_2
-  - ChangeSetting_WorkPersonalRoomNPC2-1
   - AddFlag_Notebook
+  - AddFlag_MIX_EnhancedVision
   - NewTLTitle_FOUND NOTEBOOK
 --- !u!114 &1271622593
 MonoBehaviour:
@@ -929,7 +929,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!64 &1360617325
 MeshCollider:
   m_ObjectHideFlags: 0

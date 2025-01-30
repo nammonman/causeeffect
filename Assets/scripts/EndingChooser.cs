@@ -35,7 +35,7 @@ public class EndingChooser : MonoBehaviour
 
         // ending 1 (bad ending): made Zeph's mixture but fail to hack
         // flags: "zephMixture", "FAIL HACK DOCUMENT" 
-        if (GameStateManager.gameStates.globalFlags.Contains("zephMixture") && GameStateManager.gameStates.globalFlags.Contains("FAIL HACK DOCUMENT"))
+        if (GameStateManager.gameStates.globalFlags.Contains("MIX_AlienInvasion") && GameStateManager.gameStates.globalFlags.Contains("FAIL HACK DOCUMENT"))
         {
             funcs.Add("ChangeScene_presentation");
             funcs.Add("ChangeSetting_presentationNPC ending 1");
@@ -44,7 +44,7 @@ public class EndingChooser : MonoBehaviour
 
         // ending 2 (bad ending): made Zeph's mixture and hacked sucessfully
         // flags: "zephMixture", "HACKED DOCUMENT" 
-        else if (GameStateManager.gameStates.globalFlags.Contains("zephMixture") && GameStateManager.gameStates.globalFlags.Contains("HACKED DOCUMENT"))
+        else if (GameStateManager.gameStates.globalFlags.Contains("MIX_AlienInvasion") && GameStateManager.gameStates.globalFlags.Contains("HACKED DOCUMENT"))
         {
             funcs.Add("ChangeScene_presentation");
             funcs.Add("ChangeSetting_presentationNPC ending 2");
@@ -53,7 +53,7 @@ public class EndingChooser : MonoBehaviour
 
         // ending 3 (good ending): made the mixture from the notes but did not made Zeph's mixture
         // flags: to be determined
-        else if (!GameStateManager.gameStates.globalFlags.Contains("zephMixture") && GameStateManager.gameStates.globalFlags.Contains("noteMixture"))
+        else if (!GameStateManager.gameStates.globalFlags.Contains("MIX_AlienInvasion") && GameStateManager.gameStates.globalFlags.Contains("MIX_TimeBomb"))
         {
             funcs.Add("ChangeScene_Home good ending");
             funcs.Add("Monologue_darn it! did not go back far enough");
@@ -65,7 +65,7 @@ public class EndingChooser : MonoBehaviour
 
         // ending 4 (true ending): made the mixture from the notes and made Zeph's mixture
         // flags: to be determined
-        else if (GameStateManager.gameStates.globalFlags.Contains("zephMixture") && GameStateManager.gameStates.globalFlags.Contains("noteMixture"))
+        else if (GameStateManager.gameStates.globalFlags.Contains("MIX_AlienInvasion") && GameStateManager.gameStates.globalFlags.Contains("MIX_TimeBomb"))
         {
             funcs.Add("ChangeScene_Home true ending");
             funcs.Add("Monologue_yes! I made it before Zeph existed");

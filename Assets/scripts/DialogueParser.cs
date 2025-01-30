@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Subtegral.DialogueSystem.DataContainers;
-using static UnityEditor.Progress;
+//using static UnityEditor.Progress;
 
 namespace Subtegral.DialogueSystem.Runtime
 {

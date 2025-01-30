@@ -4480,7 +4480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &654902007
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4960,7 +4960,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &734927659
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12668,56 +12668,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<b>causeeffect development team</b>
-
-
-    Sirapat Siripataravanit
-
-    Wallop
-    Wiwidhaworarat
-
-
-    <b>main programming and 3D scene</b>
-
-
-    Sirapat Siripataravanit
-
-
-    <b>story,
-    puzzle, minigame programming and logo design</b>
-
-
-    Wallop Wiwidhaworarat
-
-
-    <b>additional
-    3D assets</b>
-
-
-    "Newspaper Stand" (https://skfb.ly/oHEDw) by Spaxeboi is
-    licensed under Creative Commons Attribution-NonCommercial (http://creativecommons.org/licenses/by-nc/4.0/).
-
-
-    "Crumbled
-    Paper" (https://skfb.ly/o99tQ) by janexx (looking for work) is licensed under
-    Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
-
-
-    "Crumpled
-    paper" (https://skfb.ly/6UxqX) by Darxkl05 is licensed under Creative Commons
-    Attribution (http://creativecommons.org/licenses/by/4.0/).
-
-
-    <b>this game
-    is developed as a senior prooject for our
-
-    Bachelor''s degree :)</b>
-
-
-    made
-    with <s> excruciating pain </s> Unity
-
-'
+  m_text: "<b>causeeffect development team</b>\n\nSirapat Siripataravanit\nWallop
+    Wiwidhaworarat\n\n<b>main programming and 3D scene</b>\n\nSirapat Siripataravanit\n\n<b>story,
+    puzzle, minigame programming and logo design</b>\n\nWallop Wiwidhaworarat\n\n<b>additional
+    3D assets</b>\n\n\"Newspaper Stand\" (https://skfb.ly/oHEDw) by Spaxeboi is licensed
+    under Creative Commons Attribution-NonCommercial (http://creativecommons.org/licenses/by-nc/4.0/).\n\n\"Crumbled
+    Paper\" (https://skfb.ly/o99tQ) by janexx (looking for work) is licensed under
+    Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).\n\n\"Crumpled
+    paper\" (https://skfb.ly/6UxqX) by Darxkl05 is licensed under Creative Commons
+    Attribution (http://creativecommons.org/licenses/by/4.0/).\n\n<b>this game is
+    developed as a project for our\nBachelor's degree :)</b>\n \nmade with <s> excruciating
+    pain </s> Unity\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d7c03fb8d8e00447b1f3bf65ed6f237, type: 2}
   m_sharedMaterial: {fileID: 4904836014996962540, guid: 8d7c03fb8d8e00447b1f3bf65ed6f237, type: 2}

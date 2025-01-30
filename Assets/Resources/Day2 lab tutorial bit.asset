@@ -20,9 +20,6 @@ MonoBehaviour:
     PortName: yeah, it make sense. but why is there so few recipes when I have already
       made a lot of activators?
     TargetNodeGUID: e0955335-fbcd-4315-9a73-b78b267371b6
-  - BaseNodeGUID: 056bf245-4378-471d-8e73-0e25d9dc49c6
-    PortName: I want to go over it again
-    TargetNodeGUID: 6bfbf09b-ab8f-4bac-a14f-bd39a9c81ec8
   - BaseNodeGUID: e0955335-fbcd-4315-9a73-b78b267371b6
     PortName: a notenook? where is it?
     TargetNodeGUID: 59bef296-4108-47de-8c62-8715dbc6bc52
@@ -72,11 +69,5 @@ MonoBehaviour:
     Trigger:
     - ChangeSetting_WorkLabNPC2-3
     Position: {x: 3755.2, y: 120.8}
-  - NodeGUID: 6bfbf09b-ab8f-4bac-a14f-bd39a9c81ec8
-    NPCNameText: NEW NPC
-    DialogueText: Dialogue Node
-    Trigger:
-    - leave
-    Position: {x: 780.8, y: 324}
   ExposedProperties: []
   CommentBlockData: []

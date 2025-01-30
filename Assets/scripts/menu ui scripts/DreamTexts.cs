@@ -598,6 +598,53 @@ public class DreamTexts : MonoBehaviour
             }
         },
         {
+            "tutorial",
+            new Dream
+            {
+                dreamName = "tutorial",
+                BGSoundFileName = "",
+                dreamTexts = new List<DreamText>
+                {
+                    new DreamText
+                    {
+                        text = "A: this is the substance mixer",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "A: you can use the interface to create a mixture with certain properties",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "A: simply drag a block from the right side to the middle grid to add it, and drag a block out to remove it",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "A: you can also press [R] to rotate the blocks if needed",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "A: last but not least, just keep an eye on the 4 numbers on the top right and make sure it isn't in the dangerous list",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "A: try creating a mixture.",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                }
+            }
+        },
+        {
             "ZFFlashback1",
             new Dream
             {
@@ -991,13 +1038,36 @@ public class DreamTexts : MonoBehaviour
             "ending 3 finale",
             new Dream
             {
-                dreamName = "ending 2 finale",
+                dreamName = "ending 3 finale",
                 BGSoundFileName = "",
                 dreamTexts = new List<DreamText>
                 {
                     new DreamText
                     {
                         text = "<b>MISSION FAILED</b>\nCause of death: [][][][][][][] [][][][][][][]",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "<b>INITIATE CAUSEEFFECT PROTOCOL</b>\nTarget: 1 week ago",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                }
+            }
+        },
+        {
+            "dangerous mix",
+            new Dream
+            {
+                dreamName = "dangerous mix",
+                BGSoundFileName = "",
+                dreamTexts = new List<DreamText>
+                {
+                    new DreamText
+                    {
+                        text = "<b>MISSION FAILED</b>\nCause of death: sudden exposure to dangerous substance",
                         playSoundFileName = "",
                         playEffectName = ""
                     },

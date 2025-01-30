@@ -26,6 +26,7 @@ public class MakeTL : MonoBehaviour
     public static event Action OnEnd;
     public static MakeTL Instance { get; private set; }
 
+
     private void Awake()
     {
         if (Instance == null)
@@ -268,11 +269,23 @@ public class MakeTL : MonoBehaviour
         // unload current before loading new scene
         if (SceneManager.GetSceneByName(GameStateManager.gameStates.CurrentSceneSetting).IsValid())
         {
-            SceneManager.UnloadSceneAsync(GameStateManager.gameStates.CurrentSceneSetting);
+            if (sceneSetting == "SubstanceMix")
+            {
+                // dont unload lab npcs
+            }
+            else
+            {
+                SceneManager.UnloadSceneAsync(GameStateManager.gameStates.CurrentSceneSetting);
+
+            }
+            
         }
 
-
-        GameStateManager.gameStates.CurrentSceneSetting = sceneSetting;
+        if (sceneSetting != "SubstanceMix")
+        {
+            GameStateManager.gameStates.CurrentSceneSetting = sceneSetting;
+        }
+        
         if (!string.IsNullOrEmpty(sceneSetting))
         {
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneSetting, LoadSceneMode.Additive);

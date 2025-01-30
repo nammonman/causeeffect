@@ -27,6 +27,11 @@ public class NotebookSwitcher : MonoBehaviour
         {
             notes = new List<string>
             {
+                "Recipes for Substance Mixes\n\n" +
+                "E[]ha[]c[][] Vi[]i[][]\n22 -6 20 32\n\n" +
+                "[][][][][][][][][][][][]\n[][][][][][][][]\n\n" +
+                "[][][][][][][]\n[][][][][][][][]\n\n",
+
                 "Caesar Salad\n\n" +
                 "Don’t forget to buy vegetables for making Caesar salad.\n" +
                 "You should eat Caesar salad first to nourish your eyes and brain.\n" +
@@ -89,7 +94,7 @@ public class NotebookSwitcher : MonoBehaviour
                 "dreamt that the research project failed and Chronolencos has contaminated the earth. the earth is nothing " +
                 "but a wasteland.\n\n" +
                 "but Zeph told me that Chronolencos is now safe???" +
-                "[][][][]][][][][][][][][][][][][]",
+                "[][][][][][][][][][][][][][][][][]",
 
                 "Dear Diary #55\n\n" +
                 "so tired of this time travelling. no matter how many times I restarted the loop something seems to go wrong.\n\n" +

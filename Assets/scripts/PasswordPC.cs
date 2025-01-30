@@ -28,7 +28,7 @@ public class PasswordPC : MonoBehaviour
         "but the moment I touched my past self, we both got fused together. the memories became one with mine, and things became " +
         "increasingly unstable. I think this loop is getting reset very soon.\n\n" +
         "read carefully. I don't have much time. \n" +
-        "the ratio should be 0 9 2 5. use with Zeph's mixture and this should get you further back than me. hopefully its 5 years\n" +
+        "the ratio should be =8 <8 <48 >20. use with Zeph's mixture and this should get you further back than me. hopefully its 5 years\n" +
         "the notes in your head are puzzles in order to obfuscate the information from Zeph. I know you can solve them\n" +
         "the one who infected zeph with a virus is me. this should slow down Zeph enough to stop it from realizing what you are trying to do\n" +
         "now, go make the new mixture. everything is ready. please release us from the cycle.";
@@ -108,6 +108,7 @@ public class PasswordPC : MonoBehaviour
         else
         {
             GameStateManager.gameStates.globalFlags.Add("PCSolved");
+            GameStateManager.gameStates.globalFlags.Add("RECIPE_TimeBomb");
             canvas.enabled = false;
             screenText.text = "unlocked: final note";
             bigScreenText.text = reward;

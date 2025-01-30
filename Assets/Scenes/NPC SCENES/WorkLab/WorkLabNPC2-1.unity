@@ -614,7 +614,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: 1
   funcs:
+  - BlackScreenText_tutorial
   - ChangeSetting_WorkLabNPC2-2
+  - ChangeSetting_SubstanceMix
 --- !u!4 &1107065507
 Transform:
   m_ObjectHideFlags: 0

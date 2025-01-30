@@ -272,7 +272,7 @@ public class ZFTexts : MonoBehaviour
                         "I cannot verify the other component right now as it is broken due to the virus taking over a part of the formula\n\n",
                         new List<string>
                         {
-                            "AddFlag_stabilizer component 1",
+                            "AddFlag_RECIPE_StabilizerI",
                         }),
                         ("ZF", "once I reach fix level 4, the completed formula will be revealed and I will be able to provide you the correct \"stabilizer component (2)\".\n" +
                         "the combination of the correct 2 stabilizer components will form the final stabilzer that will make Chronolenchos no longer dangerous to life forms. " +
@@ -296,7 +296,7 @@ public class ZFTexts : MonoBehaviour
                         "to select any event on any timeline and navigate there",
                         new List<string>
                         {
-                            "AddFlag_stabilizer component 2",
+                            "AddFlag_RECIPE_StabilizerII",
                         }),
 
                     },

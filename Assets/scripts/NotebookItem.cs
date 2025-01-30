@@ -10,5 +10,18 @@ public class NotebookItem : MonoBehaviour
         {
             gameObject.tag = "Untagged";
         }
+        if (GameStateManager.gameStates.globalFlags.Contains("MIX_EnhancedVision"))
+        {
+            StartCoroutine(SecretTextUnlockSequence());
+        }
+    }
+
+    public IEnumerator SecretTextUnlockSequence()
+    {
+        yield return null;
+        GameStateManager.setSecretText(true);
+        TriggerRunner.RunFuncsCaller(new List<string> { "Monologue_you can now press [T] to toggle something..." });
+        yield return new WaitForSeconds(3);
+        GameStateManager.setSecretText(false);
     }
 }

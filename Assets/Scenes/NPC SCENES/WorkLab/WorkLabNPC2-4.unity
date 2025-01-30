@@ -791,8 +791,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: 0
   funcs:
+  - IncrementTime
   - ChangeSceneSetPos_WorkHallway_2_7_9
-  - SetDateTime_2_1
   - ChangeSetting_WorkHallwayNPC2-1
   - MakeTL
 --- !u!4 &2078598918

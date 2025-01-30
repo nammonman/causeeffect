@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
-using Subtegral.SceneGraphSystem.Editor;
+
 
 public class SceneObjectFinder : MonoBehaviour
 {

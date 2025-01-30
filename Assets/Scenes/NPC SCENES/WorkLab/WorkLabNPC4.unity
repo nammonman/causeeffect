@@ -476,7 +476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: 1
   funcs:
-  - IncrementTime
+  - ChangeSetting_SubstanceMix
 --- !u!4 &331112639
 Transform:
   m_ObjectHideFlags: 0

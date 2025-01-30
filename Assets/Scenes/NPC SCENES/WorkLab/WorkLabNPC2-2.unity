@@ -144,7 +144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &192499623
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -476,7 +476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: 1
   funcs:
-  - ChangeSetting_WorkLabNPC2-2
+  - ChangeSetting_SubstanceMix
 --- !u!4 &192499629
 Transform:
   m_ObjectHideFlags: 0
@@ -502,7 +502,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 992387697232805803, guid: 1ee2c0e2bba19db48a2874a0fa5e9305, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.78
+      value: 1.73
       objectReference: {fileID: 0}
     - target: {fileID: 992387697232805803, guid: 1ee2c0e2bba19db48a2874a0fa5e9305, type: 3}
       propertyPath: m_LocalPosition.y
@@ -510,7 +510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 992387697232805803, guid: 1ee2c0e2bba19db48a2874a0fa5e9305, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.75
+      value: -4.81
       objectReference: {fileID: 0}
     - target: {fileID: 992387697232805803, guid: 1ee2c0e2bba19db48a2874a0fa5e9305, type: 3}
       propertyPath: m_LocalRotation.w

@@ -5,7 +5,6 @@ using SaveGame;
 using System.IO;
 using Newtonsoft.Json;
 using UnityEngine.SceneManagement;
-using Subtegral.SceneGraphSystem.Editor;
 
 namespace SaveGame
 {
@@ -218,6 +217,16 @@ namespace SaveGame
                 GameStateManager.gameStates.completedZF = new List<string>();
             }
             GameStateManager.gameStates.completedZF.Clear();
+            if (GameStateManager.gameStates.globalFlags == null)
+            {
+                GameStateManager.gameStates.globalFlags = new List<string>();
+            }
+            GameStateManager.gameStates.globalFlags.Clear();
+            GameStateManager.gameStates.globalFlags.Add("RECIPE_Overheat");
+            GameStateManager.gameStates.globalFlags.Add("RECIPE_Explosive");
+            GameStateManager.gameStates.globalFlags.Add("RECIPE_Corrosion");
+            GameStateManager.gameStates.globalFlags.Add("RECIPE_Overheat");
+            GameStateManager.gameStates.globalFlags.Add("RECIPE_RadiationPoisoning");
             StartCoroutine(DeleteAllFilesInPersistentDataPath());
         }
 
@@ -234,11 +243,14 @@ namespace SaveGame
 
                 foreach (string file in files)
                 {
-                    File.Delete(file);
-                    Debug.Log("Deleted file: " + file);
+                    if (file.EndsWith(".jpg") || file == "slot1.json")
+                    {
+                        File.Delete(file);
+                        Debug.Log("Deleted file: " + file);
+                    }
                 }
 
-                Debug.Log("All files in persistent data path deleted.");
+                Debug.Log("All save files in persistent data path deleted.");
             }
             else
             {
