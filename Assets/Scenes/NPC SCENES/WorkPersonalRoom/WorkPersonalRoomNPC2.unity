@@ -892,9 +892,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: 1
   funcs:
-  - Glitch_2
   - AddFlag_Notebook
-  - AddFlag_MIX_EnhancedVision
+  - Glitch_2
+  - Monologue_I found the notebook!
+  - AddFlag_RECIPE_EnhancedVision
   - NewTLTitle_FOUND NOTEBOOK
 --- !u!114 &1271622593
 MonoBehaviour:

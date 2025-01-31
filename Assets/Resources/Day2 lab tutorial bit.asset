@@ -17,11 +17,10 @@ MonoBehaviour:
     PortName: Next
     TargetNodeGUID: 056bf245-4378-471d-8e73-0e25d9dc49c6
   - BaseNodeGUID: 056bf245-4378-471d-8e73-0e25d9dc49c6
-    PortName: yeah, it make sense. but why is there so few recipes when I have already
-      made a lot of activators?
+    PortName: Yeah, it makes sense. But why are there so few recipes when I have already made a lot of activators?
     TargetNodeGUID: e0955335-fbcd-4315-9a73-b78b267371b6
   - BaseNodeGUID: e0955335-fbcd-4315-9a73-b78b267371b6
-    PortName: a notenook? where is it?
+    PortName: A notebook? Where is it?
     TargetNodeGUID: 59bef296-4108-47de-8c62-8715dbc6bc52
   - BaseNodeGUID: 59bef296-4108-47de-8c62-8715dbc6bc52
     PortName: ...
@@ -35,37 +34,32 @@ MonoBehaviour:
   DialogueNodeData:
   - NodeGUID: 056bf245-4378-471d-8e73-0e25d9dc49c6
     NPCNameText: Assistant A
-    DialogueText: did you understand the process?
+    DialogueText: Did you understand the process?
     Trigger: []
     Position: {x: 268, y: 172}
   - NodeGUID: e0955335-fbcd-4315-9a73-b78b267371b6
     NPCNameText: Assistant B
-    DialogueText: oh, I don't know. maybe someone here did not listen to me and left
-      to create activators alone while only putting the recipes in a notebook and
-      not the system
+    DialogueText: Oh, I don't know. Maybe someone here did not listen to me and left to create activators alone while only putting the recipes in a notebook and not the system.
     Trigger: []
     Position: {x: 765.6, y: 103.2}
   - NodeGUID: 59bef296-4108-47de-8c62-8715dbc6bc52
     NPCNameText: Assistant B
-    DialogueText: oh, its so over for you
+    DialogueText: Oh, it's so over for you.
     Trigger: []
     Position: {x: 1765.6, y: 107.2}
   - NodeGUID: 911cf05c-b5e7-41e0-86ac-01ff6adc210d
     NPCNameText: Assistant A
-    DialogueText: its probably in your room since you did the expirements alone in
-      there
+    DialogueText: It's probably in your room since you did the experiments alone in there.
     Trigger: []
     Position: {x: 2237.6, y: 107.2}
   - NodeGUID: 6b252ca1-1262-4902-b584-3dca5b3d2e41
     NPCNameText: Assistant B
-    DialogueText: you are lucky A still looks up to you after all that insanity that
-      is last week. me, on the other hand, has had enough and will be taking a leave
-      on day 5
+    DialogueText: You are lucky A still looks up to you after all that insanity last week. Me, on the other hand, have had enough and will be taking a leave on day 5.
     Trigger: []
     Position: {x: 2798.4, y: 107.2}
   - NodeGUID: 45e34170-8a41-4d10-ab86-1eb238fb2eb8
     NPCNameText: Assistant B
-    DialogueText: 'good luck finishing this project '
+    DialogueText: Good luck finishing this project.
     Trigger:
     - ChangeSetting_WorkLabNPC2-3
     Position: {x: 3755.2, y: 120.8}

@@ -17,26 +17,26 @@ MonoBehaviour:
     PortName: Next
     TargetNodeGUID: 0fdc5e97-8bb7-42ad-8560-7a2a7644691a
   - BaseNodeGUID: 0fdc5e97-8bb7-42ad-8560-7a2a7644691a
-    PortName: no. sorry for bothering you
+    PortName: No. Sorry for bothering you
     TargetNodeGUID: 091f354f-2f8b-414e-97f3-530964385bf1
   - BaseNodeGUID: 0fdc5e97-8bb7-42ad-8560-7a2a7644691a
-    PortName: yes. I have something to discuss with him
+    PortName: Yes. I have something to discuss with him
     TargetNodeGUID: 50966222-40ea-40a0-826b-6c2ca233655e
   DialogueNodeData:
   - NodeGUID: 0fdc5e97-8bb7-42ad-8560-7a2a7644691a
     NPCNameText: President's Assistant
-    DialogueText: do you have any business with The president?
+    DialogueText: Do you have any business with the president?
     Trigger: []
     Position: {x: 223.2, y: 200.8}
   - NodeGUID: 091f354f-2f8b-414e-97f3-530964385bf1
     NPCNameText: NEW NPC
-    DialogueText: Dialogue Node
+    DialogueText: Dialogue node
     Trigger:
     - leave
     Position: {x: 674.4, y: 339.2}
   - NodeGUID: 50966222-40ea-40a0-826b-6c2ca233655e
     NPCNameText: NEW NPC
-    DialogueText: Dialogue Node
+    DialogueText: Dialogue node
     Trigger:
     - ChangeScene_WorkPresidentRoom
     - ChangeSetting_WorkPresidentRoomNPC4

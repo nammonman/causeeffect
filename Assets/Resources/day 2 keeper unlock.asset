@@ -17,16 +17,16 @@ MonoBehaviour:
     PortName: Next
     TargetNodeGUID: a202a679-d0b7-4097-9dcb-32373269f36e
   - BaseNodeGUID: a202a679-d0b7-4097-9dcb-32373269f36e
-    PortName: yes, please. also why is it locked from the inside?
+    PortName: Yes, please. Also why is it locked from the inside?
     TargetNodeGUID: 4480b188-d2a4-4696-9e3a-71a452ac8def
   - BaseNodeGUID: 4480b188-d2a4-4696-9e3a-71a452ac8def
-    PortName: by the way. what is the newspaper rack doing here?
+    PortName: By the way. What is the newspaper rack doing here?
     TargetNodeGUID: 41c09c26-e3da-43b3-bd47-9fa7cf6d4757
   - BaseNodeGUID: 41c09c26-e3da-43b3-bd47-9fa7cf6d4757
     PortName: ...
     TargetNodeGUID: 92ba83c0-1371-4dd9-be91-5168cd06349a
   - BaseNodeGUID: 92ba83c0-1371-4dd9-be91-5168cd06349a
-    PortName: alright. thank you. I will check out my room now
+    PortName: Alright. Thank you. I will check out my room now
     TargetNodeGUID: d5ba92a8-541d-4657-b0fb-29f37597b991
   DialogueNodeData:
   - NodeGUID: a202a679-d0b7-4097-9dcb-32373269f36e
@@ -36,26 +36,26 @@ MonoBehaviour:
     Position: {x: 255.2, y: 176.8}
   - NodeGUID: 4480b188-d2a4-4696-9e3a-71a452ac8def
     NPCNameText: Keeper
-    DialogueText: well after the explosion, you ordered that no one can enter your
+    DialogueText: Well after the explosion, you ordered that no one can enter your
       room until you came back and opened it yourself
     Trigger: []
     Position: {x: 748, y: 179.2}
   - NodeGUID: 41c09c26-e3da-43b3-bd47-9fa7cf6d4757
     NPCNameText: Keeper
-    DialogueText: you also ordered some newspaper. specifically issue 3-5 from Owl
+    DialogueText: You also ordered some newspaper. Specifically issue 3-5 from Owl
       Publishing.
     Trigger: []
     Position: {x: 1494.4, y: 182.4}
   - NodeGUID: 92ba83c0-1371-4dd9-be91-5168cd06349a
     NPCNameText: Keeper
-    DialogueText: you said you wanted to look at the crossword sections. I didn't
+    DialogueText: You said you wanted to look at the crossword sections. I didn't
       know you are a newspaper crossword enthusiast because these are very hard to
       get.
     Trigger: []
     Position: {x: 2072, y: 183.2}
   - NodeGUID: d5ba92a8-541d-4657-b0fb-29f37597b991
     NPCNameText: Keeper
-    DialogueText: the door is unlocked. please head in
+    DialogueText: The door is unlocked. Please head in
     Trigger:
     - ChangeSetting_WorkHallwayNPC2-2
     - NewTLTitle_UNLOCKED ROOM

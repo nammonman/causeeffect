@@ -19,8 +19,7 @@ MonoBehaviour:
   DialogueNodeData:
   - NodeGUID: 7c1b1a7f-c05f-4e26-872a-b290ce13415e
     NPCNameText: Assistant B
-    DialogueText: I have to give it to you that you are still trying to make miracles
-      happen when everything is against you
+    DialogueText: I have to give it to you that you are still trying to make miracles happen when everything is against you.
     Trigger: []
     Position: {x: 242.4, y: 189.59999}
   ExposedProperties: []

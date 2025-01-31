@@ -19,7 +19,7 @@ MonoBehaviour:
   DialogueNodeData:
   - NodeGUID: 9ec04a1e-3c83-48ab-ae76-ae8da11d62e8
     NPCNameText: Assistant B
-    DialogueText: what?
+    DialogueText: What?
     Trigger: []
     Position: {x: 267.2, y: 204}
   ExposedProperties: []

@@ -19,7 +19,7 @@ MonoBehaviour:
   DialogueNodeData:
   - NodeGUID: e0e4328a-07d3-42df-9d78-16b1d9af8aa6
     NPCNameText: Assistant B
-    DialogueText: make this day count
+    DialogueText: Make this day count
     Trigger: []
     Position: {x: 252.8, y: 193.59999}
   ExposedProperties: []

@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56d3dc72c248eba4aaeee27fdc3b0fdb, type: 3}
+  m_Name: Day 2 A Lab
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: f3c38bd0-cae3-45f5-98b2-2912095cf2ba
+    PortName: Next
+    TargetNodeGUID: d260d666-2993-4439-858f-7b5da0077b26
+  - BaseNodeGUID: d260d666-2993-4439-858f-7b5da0077b26
+    PortName: '[ask about the research project]'
+    TargetNodeGUID: 1b193dfb-11e4-426c-8743-e7c85b238064
+  - BaseNodeGUID: d260d666-2993-4439-858f-7b5da0077b26
+    PortName: '[ask about what happened last week]'
+    TargetNodeGUID: 6b262416-e00c-490d-8c3e-ad38b504ab05
+  - BaseNodeGUID: 6b262416-e00c-490d-8c3e-ad38b504ab05
+    PortName: ...
+    TargetNodeGUID: 6979cf9b-e24e-46a0-9133-762bd761c157
+  - BaseNodeGUID: 1b193dfb-11e4-426c-8743-e7c85b238064
+    PortName: I'm sorry that I cannot remember anything
+    TargetNodeGUID: 9ad7100e-a6c5-4f42-abd0-578a3085fe09
+  - BaseNodeGUID: 9ad7100e-a6c5-4f42-abd0-578a3085fe09
+    PortName: ...
+    TargetNodeGUID: bc2db3e6-aafb-4e85-abb4-47d7b9c5241a
+  - BaseNodeGUID: bc2db3e6-aafb-4e85-abb4-47d7b9c5241a
+    PortName: ...
+    TargetNodeGUID: b234bbdc-94f7-421a-8043-af3a5f69c752
+  - BaseNodeGUID: b234bbdc-94f7-421a-8043-af3a5f69c752
+    PortName: ...
+    TargetNodeGUID: 1af68ef3-dd5c-46ad-ba24-cdd2b4a9daa0
+  - BaseNodeGUID: 1af68ef3-dd5c-46ad-ba24-cdd2b4a9daa0
+    PortName: I assume that the last activator I created made it explode
+    TargetNodeGUID: 64d1c661-6ca1-4825-bc4d-bda32cbe2d9b
+  - BaseNodeGUID: 64d1c661-6ca1-4825-bc4d-bda32cbe2d9b
+    PortName: how do I make a new activator?
+    TargetNodeGUID: 2e669799-6d84-4628-b8bb-afbc731ffa8b
+  - BaseNodeGUID: 6979cf9b-e24e-46a0-9133-762bd761c157
+    PortName: ...
+    TargetNodeGUID: a2d0edf0-8cef-4cbb-a8c1-aaa56e8b8bda
+  - BaseNodeGUID: a2d0edf0-8cef-4cbb-a8c1-aaa56e8b8bda
+    PortName: wow... that is really weird
+    TargetNodeGUID: c9b2cf61-b8eb-491a-9dbd-673707b1295f
+  DialogueNodeData:
+  - NodeGUID: d260d666-2993-4439-858f-7b5da0077b26
+    NPCNameText: Assistant A
+    DialogueText: I'm sorry B is being like this. do you need anything?
+    Trigger: []
+    Position: {x: 256, y: 156.8}
+  - NodeGUID: 6b262416-e00c-490d-8c3e-ad38b504ab05
+    NPCNameText: Assistant A
+    DialogueText: last week you were testing a new activator alone, something went
+      wrong, causing an explosion and knocking you out
+    Trigger: []
+    Position: {x: 796, y: 320.80002}
+  - NodeGUID: 1b193dfb-11e4-426c-8743-e7c85b238064
+    NPCNameText: Assistant A
+    DialogueText: oh no! you even forgot about the research!
+    Trigger: []
+    Position: {x: 792.8, y: 58.399998}
+  - NodeGUID: 9ad7100e-a6c5-4f42-abd0-578a3085fe09
+    NPCNameText: Assistant A
+    DialogueText: its ok, i'll get you up to speed on what we are doing
+    Trigger: []
+    Position: {x: 1294.4, y: 57.600002}
+  - NodeGUID: bc2db3e6-aafb-4e85-abb4-47d7b9c5241a
+    NPCNameText: Assistant A
+    DialogueText: we are trying to extract energy from a special meteor
+    Trigger: []
+    Position: {x: 1772.8, y: 73.600006}
+  - NodeGUID: 6979cf9b-e24e-46a0-9133-762bd761c157
+    NPCNameText: Assistant A
+    DialogueText: when you regained consciousness you weren't acting like yourself,
+      proceeding to move the deadline to this week and quickly made a lot of activators
+      by yourself
+    Trigger: []
+    Position: {x: 1612, y: 325.6}
+  - NodeGUID: a2d0edf0-8cef-4cbb-a8c1-aaa56e8b8bda
+    NPCNameText: Assistant A
+    DialogueText: you also mentioned that "the next week I will be back to normal
+      again"
+    Trigger: []
+    Position: {x: 2624.8, y: 335.2}
+  - NodeGUID: c9b2cf61-b8eb-491a-9dbd-673707b1295f
+    NPCNameText: Assistant A
+    DialogueText: that is also why B is being very angry today. but please don't
+      listen to B too much
+    Trigger: []
+    Position: {x: 3189.6, y: 340}
+  - NodeGUID: b234bbdc-94f7-421a-8043-af3a5f69c752
+    NPCNameText: Assistant A
+    DialogueText: to extract the energy, we need to activate the meteor with a substance
+      made from that machine
+    Trigger: []
+    Position: {x: 2241.6, y: 70.399994}
+  - NodeGUID: 1af68ef3-dd5c-46ad-ba24-cdd2b4a9daa0
+    NPCNameText: Assistant A
+    DialogueText: from before you lost your memory, we created and tested different
+      kinds of activators that, when in contact with the meteor, produce difference
+      results
+    Trigger: []
+    Position: {x: 2927.2, y: 69.600006}
+  - NodeGUID: 64d1c661-6ca1-4825-bc4d-bda32cbe2d9b
+    NPCNameText: Assistant A
+    DialogueText: yes, that is why we need to create a new activator that can get
+      the meteor to release energy while being as stable as possible
+    Trigger: []
+    Position: {x: 3901.6, y: 72.8}
+  - NodeGUID: 2e669799-6d84-4628-b8bb-afbc731ffa8b
+    NPCNameText: Assistant A
+    DialogueText: go to the middle control panel and try creating one
+    Trigger: []
+    Position: {x: 4726.4, y: 78.399994}
+  ExposedProperties: []
+  CommentBlockData: []

@@ -17,26 +17,25 @@ MonoBehaviour:
     PortName: Next
     TargetNodeGUID: 7cda8238-ee50-4457-a53b-89dca668b4cc
   - BaseNodeGUID: 7cda8238-ee50-4457-a53b-89dca668b4cc
-    PortName: '[stable]'
+    PortName: It's pretty much ready.
     TargetNodeGUID: 5a5bbc0d-610f-4bdf-9a80-f8b1a0d09b11
   - BaseNodeGUID: 7cda8238-ee50-4457-a53b-89dca668b4cc
-    PortName: its not done yet but I'll sort everything out by the end of today
+    PortName: It's not done yet but I'll sort everything out by the end of today.
     TargetNodeGUID: fedaac44-0333-4d9a-acf6-60d71df4f8d8
   DialogueNodeData:
   - NodeGUID: fedaac44-0333-4d9a-acf6-60d71df4f8d8
     NPCNameText: President's Assistant
-    DialogueText: 'please make sure that everything is ready for tomorrow''s presentation '
+    DialogueText: Please make sure that everything is ready for tomorrow's presentation.
     Trigger: []
     Position: {x: 868.8, y: 333.6}
   - NodeGUID: 7cda8238-ee50-4457-a53b-89dca668b4cc
     NPCNameText: President's Assistant
-    DialogueText: The President has sent me here to inquire about the progress of
-      the research
+    DialogueText: The President has sent me here to inquire about the progress of the research.
     Trigger: []
     Position: {x: 247.2, y: 189.59999}
   - NodeGUID: 5a5bbc0d-610f-4bdf-9a80-f8b1a0d09b11
     NPCNameText: President's Assistant
-    DialogueText: good. please get ready for tomorrow's presentation
+    DialogueText: Good. Please get ready for tomorrow's presentation.
     Trigger: []
     Position: {x: 852, y: 90.399994}
   ExposedProperties: []

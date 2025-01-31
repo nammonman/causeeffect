@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class PasswordPC : MonoBehaviour
 {
@@ -17,21 +18,21 @@ public class PasswordPC : MonoBehaviour
     [SerializeField] TMP_InputField password4;
     [SerializeField] TMP_InputField password5;
     [SerializeField] Button enterButton;
-
-    private string reward = "hello future me. \n\n" +
-        "Zeph was right. I could not send mass back in the past using the cause and effect system.\n\n" +
-        "the original plan was to exploit the rule of paradox: \"the same entity cannot exist in the same timeline.\" " +
-        "by transporting my physical self back 5 years ago (when I..., well, you first discovered Zeph) and intercept " +
-        "my past self, creating a paradox before the first event happened and exit this cycle once and for all\n\n" +
-        "but no matter what I try I could not get it to work.\n\n" +
-        "this attempt is my closest to making it work. I actually managed to send my physical self back 2 weeks " +
-        "but the moment I touched my past self, we both got fused together. the memories became one with mine, and things became " +
-        "increasingly unstable. I think this loop is getting reset very soon.\n\n" +
-        "read carefully. I don't have much time. \n" +
-        "the ratio should be =8 <8 <48 >20. use with Zeph's mixture and this should get you further back than me. hopefully its 5 years\n" +
-        "the notes in your head are puzzles in order to obfuscate the information from Zeph. I know you can solve them\n" +
-        "the one who infected zeph with a virus is me. this should slow down Zeph enough to stop it from realizing what you are trying to do\n" +
-        "now, go make the new mixture. everything is ready. please release us from the cycle.";
+    private string reward =
+        "hello future me. \n\n" 
+        + "Zeph was right. I could not send mass back into the past using the cause-and-effect system.\n\n" 
+        + "The original plan was to exploit the rule of paradox: \"the same entity cannot exist in the same timeline.\" " 
+        + "by transporting my physical self back 5 years ago (when I..., well, you first discovered Zeph) and intercepting " 
+        + "my past self, creating a paradox before the first event happened and exiting this cycle once and for all.\n\n" 
+        + "But no matter what I tried, I could not get it to work.\n\n" 
+        + "This attempt is my closest to making it work. I actually managed to send my physical self back 2 weeks, " 
+        + "but the moment I touched my past self, we both fused together. The memories became one with mine, and things became " 
+        + "increasingly unstable. I think this loop is getting reset very soon.\n\n" 
+        + "Read carefully. I don't have much time. \n" 
+        + "The Time Bomb. 8 of them in the grid. From the secret slot. Use it with Zeph's Alien Invasion, and this should get you further back than me. Hopefully, it's 5 years.\n" 
+        + "The notes in your head are puzzles designed to obfuscate the information from Zeph. I know you can solve them.\n" 
+        + "The one who infected Zeph with a virus is me. This should slow Zeph down enough to stop it from realizing what you are trying to do.\n" 
+        + "Now, go make the new mixture. Everything is ready. Please release us from the cycle.";
     private void OnEnable()
     {
         if (GameStateManager.gameStates.globalFlags.Contains("PCSolved"))
@@ -84,7 +85,7 @@ public class PasswordPC : MonoBehaviour
         {
             count++;
         }
-        if (inputs.Contains("LIKEABIRDINACATGE"))
+        if (inputs.Contains("LIKEABIRDINACAGE"))
         {
             count++;
         }

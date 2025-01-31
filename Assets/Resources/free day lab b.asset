@@ -19,7 +19,7 @@ MonoBehaviour:
   DialogueNodeData:
   - NodeGUID: 78f3e5a6-70bf-46e1-8a6c-5d15e71e8873
     NPCNameText: Assistant B
-    DialogueText: (fustrated look)
+    DialogueText: (frustrated look)
     Trigger: []
     Position: {x: 244, y: 178.4}
   ExposedProperties: []

@@ -12,8 +12,10 @@ public class historyPanel : MonoBehaviour
     public Image image2;
     public Sprite[] resultsSprites;
     private int index = 0;
+
     private void Start()
     {
+        history = new List<string>();
         foreach (var item in GameStateManager.gameStates.globalFlags)
         {
             AddHistory(item);
@@ -84,32 +86,49 @@ public class historyPanel : MonoBehaviour
         switch (condition)
         {
             case "RECIPE_TimeBomb":
-                history.Add("TimeBomb");
+                DistinctHistoryAdd("TimeBomb", true);
                 break;
             case "RECIPE_AlienInvasion":
-                history.Add("AlienInvasion");
+                DistinctHistoryAdd("AlienInvasion", true);
                 break;
             case "RECIPE_StabilizerI":
-                history.Add("StabilizerI");
+                DistinctHistoryAdd("StabilizerI", true);
                 break;
             case "RECIPE_StabilizerII":
-                history.Add("StabilizerII");
+                DistinctHistoryAdd("StabilizerII", true);
                 break;
             case "RECIPE_EnhancedVision":
-                history.Add("EnhancedVision");
+                DistinctHistoryAdd("EnhancedVision", true);
                 break;
             case "RECIPE_Overheat":
-                history.Add("Overheat");
+                DistinctHistoryAdd("Overheat");
                 break;
             case "RECIPE_Explosive":
-                history.Add("Explosive");
+                DistinctHistoryAdd("Explosive");
                 break;
             case "RECIPE_Corrosion":
-                history.Add("Corrosion");
+                DistinctHistoryAdd("Corrosion");
                 break;
             case "RECIPE_RadiationPoisoning":
-                history.Add("RadiationPoisoning");
+                DistinctHistoryAdd("RadiationPoisoning");
                 break;
+        }
+    }
+
+    private void DistinctHistoryAdd(string s, bool important = false)
+    {
+        if (!history.Contains(s))
+        {
+            if (important)
+            {
+                history.Insert(0,s);
+            }
+            else
+            {
+                history.Add(s);
+            }
+            
+
         }
     }
     public void forwardButton()

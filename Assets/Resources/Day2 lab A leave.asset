@@ -22,12 +22,12 @@ MonoBehaviour:
   DialogueNodeData:
   - NodeGUID: 056bf245-4378-471d-8e73-0e25d9dc49c6
     NPCNameText: Assistant A
-    DialogueText: do you need anything?
+    DialogueText: Do you need anything?
     Trigger: []
     Position: {x: 268, y: 172}
   - NodeGUID: 0fbd5285-48be-4091-a508-6f9363929b55
     NPCNameText: NEW NPC
-    DialogueText: Dialogue Node
+    DialogueText: Dialogue node
     Trigger:
     - leave
     Position: {x: 749.6, y: 178.4}

@@ -30,21 +30,23 @@ MonoBehaviour:
     Position: {x: 219.2, y: 184.8}
   - NodeGUID: e9063b8b-6c5a-4691-86a5-c522ff512728
     NPCNameText: you
-    DialogueText: woah!  what the-
+    DialogueText: Woah! What the-
     Trigger:
     - Wait_1
     - leave
     - Glitch_4
+    - NewTLTitle_ALMOST GOOD ENDING
     - CauseeffectText_ending 3 finale
     - LoadTL_2
     Position: {x: 702.4, y: 477.6}
   - NodeGUID: c5377e0e-78a0-491e-abf8-6b70715dff70
     NPCNameText: you
-    DialogueText: woah!  what the-
+    DialogueText: Woah! What the-
     Trigger:
     - Wait_1
     - leave
     - Glitch_4
+    - NewTLTitle_ALMOST GOOD ENDING
     - CauseeffectText_ending 3 finale
     - LoadTL_2
     Position: {x: 703.2, y: 175.2}

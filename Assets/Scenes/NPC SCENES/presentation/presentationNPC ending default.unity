@@ -424,6 +424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: 0
   funcs:
+  - NewTLTitle_BAD ENDING
   - BlackScreenText_firstSequence
   - LoadTL_1
 --- !u!114 &1688025786

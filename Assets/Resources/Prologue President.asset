@@ -41,18 +41,18 @@ MonoBehaviour:
   - NodeGUID: 3f8b74e3-f1de-4e10-bab8-364831586d92
     NPCNameText: The President
     DialogueText: The evidence is right there in the database log and you are still
-      lying to the very end
+      lying to the very end.
     Trigger: []
     Position: {x: 1063.2, y: 70.399994}
   - NodeGUID: 03167107-eef2-428e-9100-65a80df8c78b
     NPCNameText: The President
     DialogueText: An hour ago a user that "just happened to" have all your verified
-      credentials tried to leak all our confidential documents
+      credentials tried to leak all our confidential documents.
     Trigger: []
     Position: {x: 1800.8, y: 72}
   - NodeGUID: dccc32b9-207b-4c1b-b283-68c11acdd81b
     NPCNameText: The President
-    DialogueText: Well who else could it be then? Enough of this. You know what happens
+    DialogueText: Well, who else could it be then? Enough of this. You know what happens
       to betrayers.
     Trigger: []
     Position: {x: 2716, y: 28}
@@ -66,8 +66,8 @@ MonoBehaviour:
     - SetDateTime_1_1
     - ChangeScene_HomePersonalRoom
     - Monologue_what was that?
-    - Monologue_why do I keep getting these wierd and surreal dream as of late?
-    - Monologue_huh... oh my...  its 2PM! I have to go to work right now!
+    - Monologue_why do I keep getting these weird and surreal dreams as of late?
+    - Monologue_huh... oh my... it's 2PM! I have to go to work right now!
     - FadeBlack_3
     - ChangeScene_WorkHallway
     - ChangeSetting_WorkHallwayNPC1

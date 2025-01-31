@@ -19,8 +19,7 @@ MonoBehaviour:
   DialogueNodeData:
   - NodeGUID: 714c5a67-f7b0-4049-9032-668799b76a23
     NPCNameText: Assistant A
-    DialogueText: please head to the elevator at the end of the hallway and go to
-      the lab. me and B already did the setup and waiting for you to start
+    DialogueText: Please head to the elevator at the end of the hallway and go to the lab. B and I have already done the setup and are waiting for you to start.
     Trigger: []
     Position: {x: 272, y: 189.59999}
   ExposedProperties: []

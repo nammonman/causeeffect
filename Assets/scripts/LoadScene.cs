@@ -22,8 +22,8 @@ public class LoadScene : MonoBehaviour
         { "Home good ending", new Vector3(-26, 3, -1) },
         { "WorkHallway", new Vector3(-2, 7, 61) },      
         { "WorkLab", new Vector3(-1, 7, -11) },
-        { "WorkPersonalRoom", new Vector3(0, 2, -8) },
-        { "WorkPresidentRoom", new Vector3(3, 2, 1) },
+        { "WorkPersonalRoom", new Vector3(0, 1.5f, -8) },
+        { "WorkPresidentRoom", new Vector3(3, 1.5f, 1) },
         { "presentation", new Vector3(18, 2, -8) },
         { "presentation tutorial", new Vector3(18, 2, -8) },
         { "presentation empty", new Vector3(16, 3, 5) },
@@ -156,7 +156,16 @@ public class LoadScene : MonoBehaviour
             ShowSecretText.currentSceneTexts.Add(item);
         }
         GameStateManager.setSecretText(GameStateManager.gameStates.canSeeSecretText);
+        GameStateManager.SetUpdateFlags();
         OnEnd?.Invoke();
+        if (sceneName != "MainMenu")
+        {
+            InGamePauseMenu.SetCursorVisible(false);
+        }
+        else
+        {
+            InGamePauseMenu.SetCursorVisible(true);
+        }
     }
 
     public void SelectCamera(string n)

@@ -50,7 +50,7 @@ public class GameStates
     public int causeEffectPower;
 
     //story flags
-    public List<string> localFlags;
+    public List<string> inventory;
     public List<string> globalFlags;
 
 }
@@ -62,9 +62,9 @@ public class GameStateManager : MonoBehaviour
     [SerializeField] Slider debugFixLevelSlider;
     [SerializeField] TMP_InputField debugFlagField;
     
-
     public static event Action<string> OnSceneUpdate;
     public static event Action OnTimeUpdate;
+    public static event Action OnFlagsUpdate;
     public static event Action<bool> OnUIEnable;
     public static event Action OnFadeIn;
     public static event Action OnFadeOut;
@@ -84,6 +84,8 @@ public class GameStateManager : MonoBehaviour
     public static event Action<bool> OnSecretText;
     public static event Action<string> OnMonologue;
 
+    private int flagsCount = 0;
+
     private void FixedUpdate()
     {
         if (DEBUGTEXT.enabled)
@@ -102,10 +104,17 @@ public class GameStateManager : MonoBehaviour
         gameStates.canReadSecretText = false;
         gameStates.completedZF = new List<string>();
         gameStates.globalFlags = new List<string>();
+        gameStates.inventory = new List<string>();
         debugFixLevelSlider.onValueChanged.AddListener(setFixLevelDebug);
+
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
-
+    
+    public static void SetUpdateFlags()
+    {
+        OnFlagsUpdate.Invoke();
+    }
     public void DebugAddFlags()
     {
         

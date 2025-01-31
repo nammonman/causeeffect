@@ -17,7 +17,7 @@ MonoBehaviour:
     PortName: Next
     TargetNodeGUID: 36fe0520-18b9-457f-9622-c25d898d6079
   - BaseNodeGUID: 36fe0520-18b9-457f-9622-c25d898d6079
-    PortName: nothing
+    PortName: Nothing
     TargetNodeGUID: d508c821-7cd9-43d1-a20d-58ac8b48e320
   - BaseNodeGUID: 36fe0520-18b9-457f-9622-c25d898d6079
     PortName: I'm going back to work now
@@ -25,18 +25,18 @@ MonoBehaviour:
   DialogueNodeData:
   - NodeGUID: 36fe0520-18b9-457f-9622-c25d898d6079
     NPCNameText: President's Assistant
-    DialogueText: do you need anything?
+    DialogueText: Do you need anything?
     Trigger: []
     Position: {x: 276, y: 182.4}
   - NodeGUID: d508c821-7cd9-43d1-a20d-58ac8b48e320
     NPCNameText: President's Assistant
-    DialogueText: Dialogue Node
+    DialogueText: Dialogue node
     Trigger:
     - leave
     Position: {x: 772.8, y: 116}
   - NodeGUID: 6c64c2a7-c29a-45f5-90e9-08d99c5aeb65
     NPCNameText: President's Assistant
-    DialogueText: please follow me to the door
+    DialogueText: Please follow me to the door.
     Trigger:
     - Wait_2
     - leave

@@ -45,93 +45,88 @@ public class NotebookSwitcher : MonoBehaviour
                 "3 Croutons\n\n" +
                 "Instructions:\n" +
                 "- Mix the lettuce and croutons together\n" +
-                "- cut the flavor with Caesar dressing\n" +
-                "- multiply the flavor with Parmesan cheese\n" +
-                "this shifts the flavor from boring to exciting!",
+                "- Cut the flavor with Caesar dressing\n" +
+                "- Multiply the flavor with Parmesan cheese\n" +
+                "This shifts the flavor from boring to exciting!",
 
                 "GOLDENKEY\n\n" +
                 "The “GOLDENKEY” can be used to unlock the first seal of the forbidden one.",
 
-                "Mixture Recipe\n\n" +
-                "- the one that makes me see things\n" +
-                "- the one that gives energy\n" +
-                "- the one that stabilizes the meteor",
-
                 "Treasure Hunt!\n\n" +
-                "\"Bpm nqzab tqma jmvmibp bpm apilm wn bpm bzmm.  \r\n\tBpm amkwvl pqlma eqbpqv bpm sqvo’a kpiujmz.  \r\n\tBpm bpqzl qa bcksml jmbemmv ntwwza wn bpm lizs bwemz.  \r\n\tKwttmkb itt bpzmm bw nwzu bpm nqzab smg bw bpm nqvit ivaemz.\"\r\n",
+                "\"Bpm nqzab tqma jmvmibp bpm apilm wn bpm bzmm.  \r\nBpm amkwvl pqlma eqbpqv bpm sqvo’a kpiujmz.  \r\nBpm bpqzl qa bcksml jmbemmv ntwwza wn bpm lizs bwemz.  \r\nKwttmkb itt bpzmm bw nwzu bpm nqzab smg bw bpm nqvit ivaemz.\"\r\n",
 
                 "Symbols\n\n" +
-                "stay hydrated\n" +
-                "the president's calling again\n" +
-                "be\"sides\" your front door\n" +
-                "happy birthday!\n\n" +
+                "Stay hydrated\n" +
+                "The president's calling again\n" +
+                "Be\"sides\" your front door\n" +
+                "Happy birthday!\n\n" +
                 "5 i 9 14 i 11",
 
                 "Good Old Days\n\n" +
-                "man, I missed when things were simpler. when I was a wee lad, if I wanted to type something out on a phone " +
+                "Man, I missed when things were simpler. When I was a wee lad, if I wanted to type something out on a phone " +
                 "I had to go like\n" +
                 "2228885574448886666555 9369999 6226999988877224 \n\n" +
-                "kids these days have it too easy!!!",
+                "Kids these days have it too easy!!!",
 
                 "Dear Diary #1\n\n" +
-                "have been getting weird dreams lately. one of them had a voice trying to tell me something but " +
-                "couldn't quite make out the meaning of it. at first I thought it happened because of stress from work " +
-                "and it will go away but it keeps coming back, clearer and clearer. now the voice sounds like myself " +
-                "\"traitor?\" \"aliens?\" \"hopelessness?\" why is this happening and what does it mean?",
+                "I have been getting weird dreams lately. One of them had a voice trying to tell me something but " +
+                "couldn't quite make out the meaning of it. At first, I thought it happened because of stress from work " +
+                "and it would go away, but it keeps coming back, clearer and clearer. Now the voice sounds like myself. " +
+                "\"Traitor?\" \"Aliens?\" \"Hopelessness?\" Why is this happening and what does it mean?",
 
                 "Dear Diary #2\n\n" +
-                "asked Zeph to scan my body and found a lot of Chronolencos energy inside me. this amount of Chronolencos " +
-                "is lethal to most lifeforms but somehow I am able to contain it. Zeph then used the Chronolencos in my " +
-                "body to install a special system that can transfer data across time\n\n" +
-                "the dreams tell me to be wary of Zeph. can I really trust this alien computer?",
+                "I asked Zeph to scan my body and found a lot of Chronolencos energy inside me. This amount of Chronolencos " +
+                "is lethal to most lifeforms, but somehow I am able to contain it. Zeph then used the Chronolencos in my " +
+                "body to install a special system that can transfer data across time.\n\n" +
+                "The dreams tell me to be wary of Zeph. Can I really trust this alien computer?",
 
                 "Dear Diary #3\n\n" +
-                "tried the time travel system for the first time. It actually works but gives me a massive headache. " +
-                "probsbly not good for my body and should not be used often.\n\n" +
-                "this time travel system can be used to extend the time to complete my research!",
+                "I tried the time travel system for the first time. It actually works but gives me a massive headache. " +
+                "Probably not good for my body and should not be used often.\n\n" +
+                "This time travel system can be used to extend the time to complete my research!",
 
                 "Dear Diary #4\n\n" +
-                "dreamt that the research project failed and Chronolencos has contaminated the earth. the earth is nothing " +
+                "I dreamt that the research project failed and Chronolencos had contaminated the earth. The earth is nothing " +
                 "but a wasteland.\n\n" +
-                "but Zeph told me that Chronolencos is now safe???" +
+                "But Zeph told me that Chronolencos is now safe???\n" +
                 "[][][][][][][][][][][][][][][][][]",
 
                 "Dear Diary #55\n\n" +
-                "so tired of this time travelling. no matter how many times I restarted the loop something seems to go wrong.\n\n" +
-                "how will I be able to account for everything\n\n" +
-                "when will this end...\n\n" +
-                "the cycle never ends",
+                "So tired of this time traveling. No matter how many times I restarted the loop, something seems to go wrong.\n\n" +
+                "How will I be able to account for everything\n\n" +
+                "When will this end...\n\n" +
+                "The cycle never ends.",
 
                 "Dear Diary #666\n\n" +
-                "when will this end...\n\n" +
-                "I even tried to break out of this cycle by death but it does not work. Zeph has a failsafe for everything. " +
-                "its like I am the \"main character\" of this story, carefully written by Zeph, forcing me back on the script " +
-                "everytime I stray away from it.\n\n" +
-                "why me? I don't know. It could have been anyone else but Zeph chose me for some reason.",
+                "When will this end...\n\n" +
+                "I even tried to break out of this cycle by death, but it does not work. Zeph has a failsafe for everything. " +
+                "It's like I am the \"main character\" of this story, carefully written by Zeph, forcing me back on the script " +
+                "every time I stray away from it.\n\n" +
+                "Why me? I don't know. It could have been anyone else, but Zeph chose me for some reason.",
 
                 "Dear Diary #7777\n\n" +
-                "it is not a dream. the \"dreams\" is showing me my last memories before restarting the cycle",
+                "It is not a dream. The \"dreams\" are showing me my last memories before restarting the cycle.",
 
                 "Dear Diary #88888\n\n" +
-                "my existence might be a very important variable to dertemine the future of this world\n\n" +
-                "can I remove myself from the variables? and will it change anything?",
+                "My existence might be a very important variable to determine the future of this world.\n\n" +
+                "Can I remove myself from the variables? And will it change anything?",
 
                 "Dear Diary #999999\n\n" +
-                "the plan to escape the cycle could be making a \"paradox event\".",
+                "The plan to escape the cycle could be making a \"paradox event\".",
 
                 "Dear Diary #NaN\n\n" +
-                "how long have I been here? don't know. don't even want to think about it. but I want out of this insanity.\n\n" +
-                "the preparation for creating the paradox is coming along but not quick enough.\n\n" +
-                "let me out",
+                "How long have I been here? Don't know. Don't even want to think about it. But I want out of this insanity.\n\n" +
+                "The preparation for creating the paradox is coming along but not quick enough.\n\n" +
+                "Let me out.",
 
                 "Dear Future Me\n\n" +
-                "the plan failed.\n\n" +
+                "The plan failed.\n\n" +
                 "I made a mistake.\n\n" +
-                "slowly losing memories.\n\n" +
-                "if you are reading this you probably have no recollection of what I am talking about.\n\n" +
-                "but don't worry about it. just deceode all the passwords and release yourself from the cycle.",
-
+                "Slowly losing memories.\n\n" +
+                "If you are reading this, you probably have no recollection of what I am talking about.\n\n" +
+                "But don't worry about it. Just decode all the passwords and release yourself from the cycle.",
             };
+
             notes4original = notes[4];
         }
 

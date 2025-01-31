@@ -19,7 +19,7 @@ MonoBehaviour:
   DialogueNodeData:
   - NodeGUID: a940b122-78bb-4fa9-921f-7ea7bcf60597
     NPCNameText: Assistant A
-    DialogueText: will we pull it off in time?
+    DialogueText: Will we pull it off in time?
     Trigger: []
     Position: {x: 255.2, y: 147.2}
   ExposedProperties: []

@@ -17,7 +17,7 @@ MonoBehaviour:
     PortName: Next
     TargetNodeGUID: b36cca82-2000-473d-b39a-6beb84cf280b
   - BaseNodeGUID: b36cca82-2000-473d-b39a-6beb84cf280b
-    PortName: yes. have you seen any?
+    PortName: Yes. Have you seen any?
     TargetNodeGUID: 5297d86f-efb0-47cc-880b-d7e4f55cfd9c
   - BaseNodeGUID: 5297d86f-efb0-47cc-880b-d7e4f55cfd9c
     PortName: thank you for letting me know
@@ -25,7 +25,7 @@ MonoBehaviour:
   DialogueNodeData:
   - NodeGUID: b36cca82-2000-473d-b39a-6beb84cf280b
     NPCNameText: Keeper
-    DialogueText: are you here to ask about the weird papers again?
+    DialogueText: Are you here to ask about the weird papers again?
     Trigger: []
     Position: {x: 219.2, y: 163.2}
   - NodeGUID: 5297d86f-efb0-47cc-880b-d7e4f55cfd9c
@@ -35,8 +35,7 @@ MonoBehaviour:
     Position: {x: 682.4, y: 173.59999}
   - NodeGUID: 7eac3e51-de27-4a44-b538-75486d767bb9
     NPCNameText: Keeper
-    DialogueText: Unfortunately though, I for got and already thrown it out with
-      the other trash
+    DialogueText: Unfortunately though, I forgot and already threw it out with the other trash
     Trigger:
     - AddFlag_Item3Location
     Position: {x: 1152.8, y: 192}

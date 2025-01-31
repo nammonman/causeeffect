@@ -478,9 +478,6 @@ MonoBehaviour:
   funcs:
   - ChangeScene_WorkPersonalRoom
   - ChangeSetting_WorkPersonalRoomNPC2
-  - Wait_1
-  - Monologue_...
-  - Monologue_what happened here?
 --- !u!4 &109994075
 Transform:
   m_ObjectHideFlags: 0
@@ -544,6 +541,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2290456240499071871, guid: 1ee2c0e2bba19db48a2874a0fa5e9305, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69338490a9a03234fbf5b8ce2686304c, type: 2}
     - target: {fileID: 2330696558920104819, guid: 1ee2c0e2bba19db48a2874a0fa5e9305, type: 3}
       propertyPath: firstDialogue
       value: 

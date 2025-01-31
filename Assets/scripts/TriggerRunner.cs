@@ -136,16 +136,26 @@ public class TriggerRunner : MonoBehaviour
                 }
                 else if (f[0] == "AddFlag")
                 {
-                    if (!GameStateManager.gameStates.globalFlags.Contains(f[1]))
+                    string flag = f[1];
+                    if (f.Length > 2)
                     {
-                        GameStateManager.gameStates.globalFlags.Add(f[1]);
+                        flag = f[1] + "_" + f[2];
+                    }
+                    if (!GameStateManager.gameStates.globalFlags.Contains(flag))
+                    {
+                        GameStateManager.gameStates.globalFlags.Add(flag);
                     }
                 }
                 else if (f[0] == "RemoveFlag")
                 {
-                    if (GameStateManager.gameStates.globalFlags.Contains(f[1]))
+                    string flag = f[1];
+                    if (f.Length > 2)
                     {
-                        GameStateManager.gameStates.globalFlags.Remove(f[1]);
+                        flag = f[1] + "_" + f[2];
+                    }
+                    if (GameStateManager.gameStates.globalFlags.Contains(flag))
+                    {
+                        GameStateManager.gameStates.globalFlags.Remove(flag);
                     }
                 }
                 else if (f[0] == "UnlockNote")

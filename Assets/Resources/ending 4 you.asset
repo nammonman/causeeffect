@@ -17,26 +17,26 @@ MonoBehaviour:
     PortName: Next
     TargetNodeGUID: 89441927-66e5-453c-ac2b-84347d457d75
   - BaseNodeGUID: 89441927-66e5-453c-ac2b-84347d457d75
-    PortName: '[touch]'
+    PortName: '[Touch]'
     TargetNodeGUID: e228fd3a-aebf-4f2c-9495-fb838380bd5f
   - BaseNodeGUID: 89441927-66e5-453c-ac2b-84347d457d75
-    PortName: '[HACKED DOCUMENT][tell about the future]'
+    PortName: '[HACKED DOCUMENT][Tell about the future]'
     TargetNodeGUID: 69647e3b-2e6f-4af4-a685-7598277b4f0f
   - BaseNodeGUID: 69647e3b-2e6f-4af4-a685-7598277b4f0f
-    PortName: '[hand over the secret government document]'
+    PortName: '[Hand over the secret government document]'
     TargetNodeGUID: b6a8059a-a7c1-4d5b-a2c8-502d81ef8041
   - BaseNodeGUID: b6a8059a-a7c1-4d5b-a2c8-502d81ef8041
-    PortName: 'you don''t have to understand. just spread this as far and wide as
+    PortName: 'You don''t have to understand. Just spread this as far and wide as
       possible and save humanity''s future '
     TargetNodeGUID: fbb798f3-f147-4834-ad10-a3905a85439b
   - BaseNodeGUID: fbb798f3-f147-4834-ad10-a3905a85439b
-    PortName: please trust me, for humanity's sake.
+    PortName: Please trust me. For humanity's sake.
     TargetNodeGUID: 7a2a851d-2034-43e4-9646-fca78d896420
   - BaseNodeGUID: 7a2a851d-2034-43e4-9646-fca78d896420
-    PortName: 'I don''t have much time left. The Paradox effect will get me soon. '
+    PortName: 'I don''t have much time left. The paradox effect will get me soon. '
     TargetNodeGUID: ac63adcd-f653-42e7-bed1-00557c2e6e2e
   - BaseNodeGUID: ac63adcd-f653-42e7-bed1-00557c2e6e2e
-    PortName: goodbye, myself.
+    PortName: Goodbye, myself.
     TargetNodeGUID: cc954eb5-faaa-4952-af67-a2c4af90ae7a
   DialogueNodeData:
   - NodeGUID: 89441927-66e5-453c-ac2b-84347d457d75
@@ -60,6 +60,7 @@ MonoBehaviour:
       Zeph gets to be in it is worth it
     - Glitch_5|Monologue_goodbye, Universe. goodbye, Zeph.
     - good ending finale
+    - NewTLTitle_GOOD ENDING
     Position: {x: 694.4, y: -54.399998}
   - NodeGUID: b6a8059a-a7c1-4d5b-a2c8-502d81ef8041
     NPCNameText: you
@@ -78,7 +79,7 @@ MonoBehaviour:
     Position: {x: 2160, y: 308.80002}
   - NodeGUID: ac63adcd-f653-42e7-bed1-00557c2e6e2e
     NPCNameText: you
-    DialogueText: ...I will try my best
+    DialogueText: ...I will try my best.
     Trigger: []
     Position: {x: 2607.2, y: 316}
   - NodeGUID: cc954eb5-faaa-4952-af67-a2c4af90ae7a
@@ -88,6 +89,7 @@ MonoBehaviour:
     - leave
     - Glitch_5
     - true ending finale
+    - NewTLTitle_TRUE ENDING
     Position: {x: 3063.2, y: 321.6}
   ExposedProperties: []
   CommentBlockData: []

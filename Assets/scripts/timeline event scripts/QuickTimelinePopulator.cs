@@ -23,31 +23,28 @@ public class QuickTimelinePopulator : MonoBehaviour
     public void setTimelineDisplay(TimelineEventDisplay timelineEventDisplay, TimelineEvent thisTimelineEvent)
     {
         timelineEventDisplay.eventNameText.text = thisTimelineEvent.title;
+        string[] t = { "MORNING", "AFTERNOON", "EVENING", "NIGHT" };
         timelineEventDisplay.dayNumText.text = "DAY " + thisTimelineEvent.day.ToString();
-        timelineEventDisplay.timeDayText.text = thisTimelineEvent.timeOfDay.ToString();
-        if (thisTimelineEvent.type == 0)
+        timelineEventDisplay.timeDayText.text = t[thisTimelineEvent.timeOfDay];
+        if (thisTimelineEvent.id == 0)
         {
-            // start day
-            timelineEventDisplay.bg.color = new Color32(85, 122, 138, 255);
+            // root
+            timelineEventDisplay.bg.color = new Color32(0, 12, 28, 255);
         }
-        else if (thisTimelineEvent.type == 1)
+        else if (thisTimelineEvent.id == 1)
         {
             // get
-            timelineEventDisplay.bg.color = new Color32(119, 158, 160, 255);
+            timelineEventDisplay.bg.color = new Color32(0, 12, 28, 255);
         }
-        else if (thisTimelineEvent.type == 2)
+        else if (thisTimelineEvent.name.EndsWith("ENDING"))
+        {
+            // ending event
+            timelineEventDisplay.bg.color = new Color32(156, 183, 181, 255);
+        }
+        else if (thisTimelineEvent.name == "PRESENT")
         {
             // key event
-            timelineEventDisplay.bg.color = new Color32(158, 184, 181, 255);
-        }
-        else if (thisTimelineEvent.type == 3)
-        {
-            // present
-            timelineEventDisplay.bg.color = new Color32(255, 255, 255, 25);
-        }
-        else
-        {
-            timelineEventDisplay.bg.color = new Color32(158, 184, 181, 255);
+            timelineEventDisplay.bg.color = new Color32(156, 183, 181, 155);
         }
     }
 

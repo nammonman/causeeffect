@@ -127,6 +127,7 @@ public class ZFInteraction : MonoBehaviour
             else
             {
                 GameStateManager.gameStates.globalFlags.Add("HACKED DOCUMENT");
+                GameStateManager.SetUpdateFlags();
                 if (GameStateManager.gameStates.globalFlags.Contains("FAIL HACK DOCUMENT"))
                 {
                     GameStateManager.gameStates.globalFlags.Remove("FAIL HACK DOCUMENT");

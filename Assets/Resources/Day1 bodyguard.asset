@@ -17,10 +17,10 @@ MonoBehaviour:
     PortName: Next
     TargetNodeGUID: 293a8bc5-555e-4d66-92c8-a053d48ba218
   - BaseNodeGUID: 293a8bc5-555e-4d66-92c8-a053d48ba218
-    PortName: can I go later? Can't you see I am busy right now
+    PortName: Can I go later? Can't you see I am busy right now?
     TargetNodeGUID: 43d6d52d-0b62-40f8-9120-637644bd3aef
   - BaseNodeGUID: 293a8bc5-555e-4d66-92c8-a053d48ba218
-    PortName: ah... ok I'll go see The President now
+    PortName: Ah... ok I'll go see The President now.
     TargetNodeGUID: 8f9f8235-77de-4f5d-abc6-d5c070246ab9
   - BaseNodeGUID: 43d6d52d-0b62-40f8-9120-637644bd3aef
     PortName: (wait, what health condition?)
@@ -28,13 +28,13 @@ MonoBehaviour:
   DialogueNodeData:
   - NodeGUID: 293a8bc5-555e-4d66-92c8-a053d48ba218
     NPCNameText: The President's assistant
-    DialogueText: Head Researcher, The President wants to see you
+    DialogueText: Head Researcher, The President wants to see you.
     Trigger: []
     Position: {x: 284.8, y: 165.59999}
   - NodeGUID: 43d6d52d-0b62-40f8-9120-637644bd3aef
     NPCNameText: The President's assistant
     DialogueText: I am sorry but you need to go right now. The President really wants
-      to hear about your health condition
+      to hear about your health condition.
     Trigger: []
     Position: {x: 766.4, y: 34.4}
   - NodeGUID: e4da2c4c-6552-4b4a-bd6a-330edc0cb9a8

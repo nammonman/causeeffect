@@ -17,26 +17,25 @@ MonoBehaviour:
     PortName: Next
     TargetNodeGUID: a3de8e53-1fa7-4a5e-a585-efc2e76dc796
   - BaseNodeGUID: a3de8e53-1fa7-4a5e-a585-efc2e76dc796
-    PortName: have you seen a piece of paper that has weird writing on it?
+    PortName: Have you seen a piece of paper that has weird writing on it?
     TargetNodeGUID: b4d53328-6dd5-4916-85c7-1d250aa510ca
   - BaseNodeGUID: b4d53328-6dd5-4916-85c7-1d250aa510ca
-    PortName: do you remember seeing it?
+    PortName: Do you remember seeing it?
     TargetNodeGUID: ad2c78eb-eb00-4ad1-ad1f-c726b55e42ad
   DialogueNodeData:
   - NodeGUID: a3de8e53-1fa7-4a5e-a585-efc2e76dc796
     NPCNameText: Keeper
-    DialogueText: oh, we meet again
+    DialogueText: Oh, we meet again
     Trigger: []
     Position: {x: 244, y: 188}
   - NodeGUID: b4d53328-6dd5-4916-85c7-1d250aa510ca
     NPCNameText: Keeper
-    DialogueText: I have probably thrown it away with other trash
+    DialogueText: I have probably thrown it away with all the other trash yesterday
     Trigger: []
     Position: {x: 710.4, y: 179.2}
   - NodeGUID: ad2c78eb-eb00-4ad1-ad1f-c726b55e42ad
     NPCNameText: Keeper
-    DialogueText: hmm... I think I saw a weird piece of paper in one of the plant
-      pots around here.
+    DialogueText: Hmm... I think I saw a weird piece of paper in one of the plant pots around here.
     Trigger:
     - AddFlag_Item1Location
     Position: {x: 1206.4, y: 180.8}

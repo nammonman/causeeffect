@@ -19,7 +19,7 @@ MonoBehaviour:
   DialogueNodeData:
   - NodeGUID: fedaac44-0333-4d9a-acf6-60d71df4f8d8
     NPCNameText: President's Assistant
-    DialogueText: please make sure that everything is ready for tomorrow's presentation
+    DialogueText: Please make sure that everything is ready for tomorrow's presentation.
     Trigger: []
     Position: {x: 288, y: 192}
   ExposedProperties: []

@@ -194,7 +194,7 @@ PrefabInstance:
     - target: {fileID: 2330696558920104819, guid: 1ee2c0e2bba19db48a2874a0fa5e9305, type: 3}
       propertyPath: secondDialogue
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: e48af52d16a15fe44871357be6cbe8ab, type: 2}
     - target: {fileID: 3303528231276238947, guid: 1ee2c0e2bba19db48a2874a0fa5e9305, type: 3}
       propertyPath: m_Name
       value: The Presedent

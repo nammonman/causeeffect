@@ -49,6 +49,7 @@ public class chemTableSlot : MonoBehaviour
         if (pause)
         {
             GameStateManager.setPausedState(true);
+            InGamePauseMenu.SetCursorVisible(true);
         }
         
     }
@@ -362,16 +363,23 @@ public class chemTableSlot : MonoBehaviour
     // สรุปผลตอนกด confirm
     public void sumOutput()
     {
+        if (sum_value[0] == 0 && sum_value[1] == 0 && sum_value[2] == 0 && sum_value[3] == 0)
+        {
+            // empty
+            return;
+        }
         if (specialCount == 8 && sum_value[0] < 8 && sum_value[1] < 48 && sum_value[2] > 18 && sum_value[3] > 28)
         {
             AddGlobalFlag("MIX_TimeBomb");
-            TriggerRunner.RunFuncsCaller(new List<string> { "Monologue_I have made \"TimeBomb\"" });
+            GameStateManager.SetUpdateFlags();
+            TriggerRunner.RunFuncsCaller(new List<string> { "Monologue_I have made \"Time Bomb\"" });
             GameStateManager.setNewTLTitle("TIMEBOMB GET");
             StartCoroutine(UnloadCurrentScene());
         }
         else if (sum_value[0] > 30 && sum_value[1] > 30 && sum_value[2] > 30 && sum_value[3] > 30 && GameStateManager.gameStates.globalFlags.Contains("RECIPE_AlienInvasion"))
         {
             AddGlobalFlag("MIX_AlienInvasion");
+            GameStateManager.SetUpdateFlags();
             TriggerRunner.RunFuncsCaller(new List<string> { "Monologue_I have made \"Alien Invasion\"" });
             GameStateManager.setNewTLTitle("ALIEN INVASION GET");
             StartCoroutine(UnloadCurrentScene());
@@ -379,6 +387,7 @@ public class chemTableSlot : MonoBehaviour
         else if (sum_value[1] == 10 && sum_value[2] == -40)
         {
             AddGlobalFlag("MIX_StabilizerI");
+            GameStateManager.SetUpdateFlags();
             TriggerRunner.RunFuncsCaller(new List<string> { "Monologue_I have made \"Stabilizer I\"" });
             GameStateManager.setNewTLTitle("STABILIZER I GET");
             if (GameStateManager.gameStates.globalFlags.Contains("MIX_StabilizerII"))
@@ -390,6 +399,7 @@ public class chemTableSlot : MonoBehaviour
         else if (sum_value[0] == 25 && sum_value[3] == 27)
         {
             AddGlobalFlag("MIX_StabilizerII");
+            GameStateManager.SetUpdateFlags();
             TriggerRunner.RunFuncsCaller(new List<string> { "Monologue_I have made \"Stabilizer II\"" });
             GameStateManager.setNewTLTitle("STABILIZER II GET");
             if (GameStateManager.gameStates.globalFlags.Contains("MIX_StabilizerI"))
@@ -401,6 +411,7 @@ public class chemTableSlot : MonoBehaviour
         else if (sum_value[0] == 22 && sum_value[1] == -6 && sum_value[2] == 20 && sum_value[3] == 32)
         {
             AddGlobalFlag("MIX_EnhancedVision");
+            GameStateManager.SetUpdateFlags();
             TriggerRunner.RunFuncsCaller(new List<string> { "Monologue_I have made \"Enhanced Vision\"" });
             GameStateManager.setNewTLTitle("ENHANCED VISION GET");
             StartCoroutine(UnloadCurrentScene());
@@ -435,13 +446,20 @@ public class chemTableSlot : MonoBehaviour
             TriggerRunner.RunFuncsCaller(new List<string> { "Monologue_this mixture doesn't do anything..." });
             StartCoroutine(UnloadCurrentScene());
         }
-        if (GameStateManager.gameStates.currentDay != 2)
+        if (!(GameStateManager.gameStates.currentDay == 2 && GameStateManager.gameStates.currentTimeOfDay < 1))
         {
             GameStateManager.setIncrementTime();
         }
+        for (int i = 0; i < chemTable.Count; i++)
+        {
+            for (int j = 0; j < chemTable[i].Count; j++)
+            {
+                chemTable[i][j] = 0; // ตั้งค่าใหม่เป็น 0
+            }
+        }
         pause = false;
         GameStateManager.setPausedState(false);
-        
+        InGamePauseMenu.SetCursorVisible(false);
     }
 
     private void AddGlobalFlag(string flag)

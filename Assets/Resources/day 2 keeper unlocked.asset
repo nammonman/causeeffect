@@ -19,7 +19,7 @@ MonoBehaviour:
   DialogueNodeData:
   - NodeGUID: d5ba92a8-541d-4657-b0fb-29f37597b991
     NPCNameText: Keeper
-    DialogueText: the door is unlocked. please head in
+    DialogueText: The door is unlocked. Please head in
     Trigger: []
     Position: {x: 252, y: 176}
   ExposedProperties: []

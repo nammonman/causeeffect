@@ -17,28 +17,25 @@ MonoBehaviour:
     PortName: Next
     TargetNodeGUID: 0620a586-59dc-4929-bf23-9deac71e3984
   - BaseNodeGUID: 0620a586-59dc-4929-bf23-9deac71e3984
-    PortName: hello. yeah, sorry about what happened last week. it has gotten a lot
-      better now
+    PortName: Hello. Yeah, sorry about what happened last week. It has gotten a lot better now.
     TargetNodeGUID: 1162f6cc-a0cf-40a1-b543-860d5ecf78ad
   - BaseNodeGUID: 1162f6cc-a0cf-40a1-b543-860d5ecf78ad
-    PortName: (strange?)
+    PortName: (Strange?)
     TargetNodeGUID: 714c5a67-f7b0-4049-9032-668799b76a23
   DialogueNodeData:
   - NodeGUID: 0620a586-59dc-4929-bf23-9deac71e3984
     NPCNameText: Assistant A
-    DialogueText: good morning, sir. how are you doing? have you gotten better?
+    DialogueText: Good morning, sir. How are you doing? Have you gotten better?
     Trigger: []
     Position: {x: 253.6, y: 160}
   - NodeGUID: 1162f6cc-a0cf-40a1-b543-860d5ecf78ad
     NPCNameText: Assistant A
-    DialogueText: thats great to hear. I was really worried because last week you
-      were acting very strange
+    DialogueText: That's great to hear. I was really worried because last week you were acting very strange.
     Trigger: []
     Position: {x: 777.6, y: 170.4}
   - NodeGUID: 714c5a67-f7b0-4049-9032-668799b76a23
     NPCNameText: Assistant A
-    DialogueText: anyway, please head to the elevator at the end of the hallway and
-      go to the lab. me and B already did the setup and waiting for you to start
+    DialogueText: Anyway, please head to the elevator at the end of the hallway and go to the lab. B and I already did the setup and are waiting for you to start.
     Trigger: []
     Position: {x: 1444, y: 164}
   ExposedProperties: []

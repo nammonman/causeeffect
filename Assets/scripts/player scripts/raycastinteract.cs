@@ -88,7 +88,7 @@ public class raycastinteract : MonoBehaviour
                         if (hitObject.collider.gameObject.name == "PC TRIGGER")
                         {
                             OnPCEnter?.Invoke();
-                            
+                            InGamePauseMenu.SetCursorVisible(true);
                         }
                         else if (hitObject.collider.gameObject.name == "control panel interact")
                         {
@@ -111,6 +111,7 @@ public class raycastinteract : MonoBehaviour
                         else if (hitObject.collider.gameObject.name.StartsWith("NEWSPAPER"))
                         {
                             hitObject.collider.gameObject.GetComponent<Newspaper>().readNewspaper();
+                            InGamePauseMenu.SetCursorVisible(true);
                         }
                         else
                         {
@@ -166,7 +167,7 @@ public class raycastinteract : MonoBehaviour
 
     public void JoinConversation()
     {
-        
+        InGamePauseMenu.SetCursorVisible(true);
         GameStateManager.setPausedState(true);
         GameStateManager.gameStates.canPause = false;
         GameStateManager.gameStates.isInDialogue = true;
@@ -183,6 +184,7 @@ public class raycastinteract : MonoBehaviour
         GameStateManager.gameStates.canPause = true;
         GameStateManager.gameStates.isInDialogue = false;
         GameStateManager.gameStates.canPlayerInteract = true;
+        InGamePauseMenu.SetCursorVisible(false);
     }
 
     private void OnEnable()

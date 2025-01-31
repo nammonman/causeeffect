@@ -55,11 +55,13 @@ public class EndingChooser : MonoBehaviour
         // flags: to be determined
         else if (!GameStateManager.gameStates.globalFlags.Contains("MIX_AlienInvasion") && GameStateManager.gameStates.globalFlags.Contains("MIX_TimeBomb"))
         {
+            funcs.Add("pause");
             funcs.Add("ChangeScene_Home good ending");
             funcs.Add("Monologue_darn it! did not go back far enough");
             funcs.Add("Monologue_Zeph is still there and thats...me");
             funcs.Add("one hell of a out of body experience");
             funcs.Add("I have to try to touch \"me\"");
+            funcs.Add("unpause");
         }
 
 

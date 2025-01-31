@@ -34,30 +34,30 @@ MonoBehaviour:
   DialogueNodeData:
   - NodeGUID: 3445948a-fa24-4ff3-a6b7-01f5ca3c90a9
     NPCNameText: The President
-    DialogueText: oh, hey. I hope the research project is going swiftly
+    DialogueText: Oh, hey. I hope the research project is going swiftly.
     Trigger: []
     Position: {x: 261.6, y: 176.8}
   - NodeGUID: 2091b283-0f1b-436d-a363-d35b1f40fa15
     NPCNameText: The President
-    DialogueText: Hmm,  Both of these pieces are works by a famous artist, painstakingly
-      acquired through auction
+    DialogueText: Hmm, both of these pieces are works by a famous artist, painstakingly
+      acquired through auction.
     Trigger: []
     Position: {x: 781.6, y: 161.59999}
   - NodeGUID: b1509601-afe2-40fc-89b7-05d6d37a820e
     NPCNameText: The President
-    DialogueText: "The one on the left involves a bird. It\u2019s the artist's 9th
-      piece and represents the freedom of life"
+    DialogueText: "The one on the left involves a bird. It’s the artist's 9th
+      piece and represents the freedom of life."
     Trigger: []
     Position: {x: 1482.4, y: 159.2}
   - NodeGUID: eeb5249f-8c8c-4b8b-bde0-faba100c2854
     NPCNameText: The President
-    DialogueText: "As for the one on the right, it's their 3rd piece. It represents\u2026
-      something very profound. Even I don\u2019t fully understand it."
+    DialogueText: "As for the one on the right, it's their 3rd piece. It represents…
+      something very profound. Even I don’t fully understand it."
     Trigger: []
     Position: {x: 2172.8, y: 164.8}
   - NodeGUID: 98d3baba-3146-4580-91dc-30c6dc862249
     NPCNameText: The President
-    DialogueText: I hope this answers your question
+    DialogueText: I hope this answers your question.
     Trigger: []
     Position: {x: 2987.2, y: 177.59999}
   - NodeGUID: cca927a5-7bb2-42c0-8fd3-9ca111168192

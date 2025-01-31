@@ -38,19 +38,19 @@ public class DreamTexts : MonoBehaviour
                 },
                 new DreamText
                 {
-                    text = "???: synchronization level: 38%",
+                    text = "???: Synchronization level: 38%",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "you betrayed me...",
+                    text = "You betrayed me...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "???: synchronization level: 54%",
+                    text = "???: Synchronization level: 54%",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
@@ -62,25 +62,25 @@ public class DreamTexts : MonoBehaviour
                 },
                 new DreamText
                 {
-                    text = "???: synchronization level: 79%",
+                    text = "???: Synchronization level: 79%",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "???: you should be proud that you are our first step to...",
+                    text = "???: You should be proud that you are our first step to...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "no...",
+                    text = "No...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "???: synchronization level: 100%",
+                    text = "???: Synchronization level: 100%",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
@@ -96,19 +96,19 @@ public class DreamTexts : MonoBehaviour
             {
                 new DreamText
                 {
-                    text = "a gunshot is fired. you have been shot.",
+                    text = "A gunshot is fired. You have been shot.",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "???: you could have avoided this if you accepted my offer",
+                    text = "???: You could have avoided this if you had accepted my offer",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "that thing will destroy humanity! why are you doing this?",
+                    text = "That thing will destroy humanity! Why are you doing this?",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
@@ -120,13 +120,13 @@ public class DreamTexts : MonoBehaviour
                 },
                 new DreamText
                 {
-                    text = "???: do you really think that I can't just get someone better than you to continue the project",
+                    text = "???: Do you really think that I can't just get someone better than you to continue the project?",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "???: you are not the main character, don't be stupid now.",
+                    text = "???: You are not the main character, don't be stupid now.",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
@@ -142,25 +142,25 @@ public class DreamTexts : MonoBehaviour
             {
                 new DreamText
                 {
-                    text = "A: no!!! its over for humanity!!!",
+                    text = "A: No!!! It's over for humanity!!!",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "B: not my son...",
+                    text = "B: Not my son...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "I could have stopped it. why...",
+                    text = "I could have stopped it. Why...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "let me redo this loop again... please...",
+                    text = "Let me redo this loop again... please...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
@@ -181,25 +181,25 @@ public class DreamTexts : MonoBehaviour
             {
                 new DreamText
                 {
-                    text = "no...",
+                    text = "No...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "???: breaking news. many nuclear weapons have been detonated by country...",
+                    text = "???: Breaking news. Many nuclear weapons have been detonated by-...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "its still not working...",
+                    text = "It's still not working...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "try... again...",
+                    text = "Try... again...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
@@ -214,25 +214,25 @@ public class DreamTexts : MonoBehaviour
             {
                 new DreamText
                 {
-                    text = "the war happened six times now...",
+                    text = "The war has happened six times now...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "those \"dreams\" really did happen in another timeline...",
+                    text = "Those \"dreams\" really did happen in another timeline...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "ZF: that is a possibility... before... failure...",
+                    text = "ZF: That is a possibility... before... failure...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "ZF: but the density of Chronolencos... breaks the system... return...",
+                    text = "ZF: But the density of Chronolencos... breaks the system... return...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
@@ -244,13 +244,13 @@ public class DreamTexts : MonoBehaviour
                 },
                 new DreamText
                 {
-                    text = "hello future me... failed the mission... the war rages on... it has been activated...",
+                    text = "Hello future me... failed the mission... the war rages on... it has been activated...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "The President is not tie only traitor... could be one of the assistants...",
+                    text = "The President is not the only traitor... it could be one of the assistants...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
@@ -271,7 +271,7 @@ public class DreamTexts : MonoBehaviour
             {
                 new DreamText
                 {
-                    text = "...countless variations of this war has happened...",
+                    text = "...countless variations of this war have happened...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
@@ -283,25 +283,25 @@ public class DreamTexts : MonoBehaviour
                 },
                 new DreamText
                 {
-                    text = "???: I was chosen by the Chronolenchos as the initializer. now I must challenge and evolve humans to become the ideal race",
+                    text = "???: I was chosen by the Chronolenchos as the initializer. Now I must challenge and evolve humans to become the ideal race",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "???: the Chronolenchos chose humans for a reason. now its your turn to evolve with us",
+                    text = "???: The Chronolenchos chose humans for a reason. Now it's your turn to evolve with us",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "you're A?...how...you were dead...",
+                    text = "You're A?... How... you were dead...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "A: my death was greatly exaggerated. I am now one with the Chronolenchos",
+                    text = "A: My death was greatly exaggerated. I am now one with the Chronolenchos",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
@@ -315,7 +315,7 @@ public class DreamTexts : MonoBehaviour
             {
                 new DreamText
                 {
-                    text = "what is that? are you kidding me!",
+                    text = "What is that? Are you kidding me!",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
@@ -327,19 +327,19 @@ public class DreamTexts : MonoBehaviour
                 },
                 new DreamText
                 {
-                    text = "answer me!",
+                    text = "Answer me!",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "ZF: sorry, head researcher, but it is mmy duty to stop humanity from using Chronolenchos",
+                    text = "ZF: Sorry, head researcher, but it is my duty to stop humanity from using Chronolenchos",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
                 new DreamText
                 {
-                    text = "ZF: but don't fear. humanity will be safe under our government",
+                    text = "ZF: But don't fear. Humanity will be safe under our government",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
@@ -353,7 +353,7 @@ public class DreamTexts : MonoBehaviour
             {
                 new DreamText
                 {
-                    text = "finally...",
+                    text = "Finally...",
                     playSoundFileName = ".mp3",
                     playEffectName = ""
                 },
@@ -390,6 +390,7 @@ public class DreamTexts : MonoBehaviour
             }
         },
     };
+
 
     public static Dictionary<string, Dream> blackScreenTexts = new Dictionary<string, Dream>
     {
@@ -430,37 +431,37 @@ public class DreamTexts : MonoBehaviour
                 {
                     new DreamText
                     {
-                        text = "The screen behind you changed to show the live camera feed from the lab",
+                        text = "The screen behind you changed to show the live camera feed from the lab.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "It is showing the result of you and your team's hard work",
+                        text = "It is showing the result of you and your team's hard work.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "\"The machine that could solve earth's impending energy crisis\"",
+                        text = "\"The machine that could solve Earth's impending energy crisis.\"",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "Noises and a very bright light starts emitting from the machine",
+                        text = "Noises and a very bright light start emitting from the machine.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "There it is! It is working just as planned",
+                        text = "There it is! It is working just as planned!",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "Applause fills the conference room",
+                        text = "Applause fills the conference room.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
@@ -472,26 +473,26 @@ public class DreamTexts : MonoBehaviour
                     },
                     new DreamText
                     {
-                        text = "Everything is going very well! you thought",
+                        text = "Everything is going very well! you thought.",
                         playSoundFileName = "",
                         playEffectName = ""
 
                     },
                     new DreamText
                     {
-                        text = "Too well..",
+                        text = "Too well...",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "A loud crack can be heard from the machine, video feed cuts and the room went silent",
+                        text = "A loud crack can be heard from the machine. The video feed cuts and the room falls silent.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "You have to explain this, head researcher...",
+                        text = "You have to explain this, Head Researcher...",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
@@ -531,7 +532,7 @@ public class DreamTexts : MonoBehaviour
                 {
                     new DreamText
                     {
-                        text = "<b>MISSION FAILED</b>\nCause of death: Abondoned mission",
+                        text = "<b>MISSION FAILED</b>\nCause of death: Abandoned mission",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
@@ -560,19 +561,19 @@ public class DreamTexts : MonoBehaviour
                     },
                     new DreamText
                     {
-                        text = "\"you have been diagnosed with head trauma so that is likely the cause of memory loss\"",
+                        text = "\"You have been diagnosed with head trauma, so that is likely the cause of memory loss.\"",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "\"do not worry though, as this is not life threathening and the memory loss is not permanent\"",
+                        text = "\"Do not worry though, as this is not life-threatening and the memory loss is not permanent.\"",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "\"just take it easy and your memory will slowly come back\"",
+                        text = "\"Just take it easy and your memory will slowly come back.\"",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
@@ -590,7 +591,7 @@ public class DreamTexts : MonoBehaviour
                     },
                     new DreamText
                     {
-                        text = "\"what are you???\"",
+                        text = "\"What are you???\"",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
@@ -607,37 +608,37 @@ public class DreamTexts : MonoBehaviour
                 {
                     new DreamText
                     {
-                        text = "A: this is the substance mixer",
+                        text = "A: This is the substance mixer.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "A: you can use the interface to create a mixture with certain properties",
+                        text = "A: You can use the interface to create a mixture with certain properties.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "A: simply drag a block from the right side to the middle grid to add it, and drag a block out to remove it",
+                        text = "A: Simply drag a block from the right side to the middle grid to add it, and drag a block out to remove it.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "A: you can also press [R] to rotate the blocks if needed",
+                        text = "A: You can also press [R] to rotate the blocks if needed.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "A: last but not least, just keep an eye on the 4 numbers on the top right and make sure it isn't in the dangerous list",
+                        text = "A: Last but not least, just keep an eye on the 4 numbers on the top left and make sure it isn't in the dangerous list.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "A: try creating a mixture.",
+                        text = "A: Try creating a mixture.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
@@ -654,19 +655,13 @@ public class DreamTexts : MonoBehaviour
                 {
                     new DreamText
                     {
-                        text = "you suddenly remember something...",
+                        text = "You suddenly remember something...",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "you see a destroyed machine",
-                        playSoundFileName = "",
-                        playEffectName = ""
-                    },
-                    new DreamText
-                    {
-                        text = "maybe its a fallen spacecraft or satellite?",
+                        text = "A weird machine came crashing down into your room.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
@@ -678,13 +673,7 @@ public class DreamTexts : MonoBehaviour
                     },
                     new DreamText
                     {
-                        text = "\"my codename is _____\" ",
-                        playSoundFileName = "",
-                        playEffectName = ""
-                    },
-                    new DreamText
-                    {
-                        text = "doesn't quite roll off the tongue, how about I call you \"Zeph\" instead?",
+                        text = "Is it a part of a fallen spacecraft or satellite?",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
@@ -696,19 +685,13 @@ public class DreamTexts : MonoBehaviour
                     },
                     new DreamText
                     {
-                        text = "\"do you agree to work with me?\"",
+                        text = "\"My codename is _____\"",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "for humanity, I agree!",
-                        playSoundFileName = "",
-                        playEffectName = ""
-                    },
-                    new DreamText
-                    {
-                        text = "even if I have to use alien technology...",
+                        text = "Doesn't quite roll off the tongue, how about I call you \"Zeph\" instead?",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
@@ -720,7 +703,31 @@ public class DreamTexts : MonoBehaviour
                     },
                     new DreamText
                     {
-                        text = "\"I have never seen such lifeform that can handle this much...\"",
+                        text = "\"Do you agree to work with me?\"",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "For humanity, I agree!",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "Even if I have to use alien technology...",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "...",
+                        playSoundFileName = "",
+                        playEffectName = ""
+                    },
+                    new DreamText
+                    {
+                        text = "\"I have never seen such a lifeform that can handle this much...\"",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
@@ -737,21 +744,20 @@ public class DreamTexts : MonoBehaviour
                 {
                     new DreamText
                     {
-                        text = "you suddenly remember something...",
+                        text = "You suddenly remember something...",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "are you an alien? a spy? or a weapon?",
+                        text = "Are you an alien? A spy? Or a weapon?",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
                         text = "\"[][][][][] I am [][][][] codename ZF-10 from [][][][][][][] 57412 [][] 411141463 [][][][]\"",
-                        playSoundFileName = "",
-                        playEffectName = ""
+                        playSoundFileName = "",playEffectName = ""
                     },
                     new DreamText
                     {
@@ -767,7 +773,7 @@ public class DreamTexts : MonoBehaviour
                     },
                     new DreamText
                     {
-                        text = "so this thing knows about the meteor...",
+                        text = "So this thing knows about the meteor...",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
@@ -779,25 +785,25 @@ public class DreamTexts : MonoBehaviour
                     },
                     new DreamText
                     {
-                        text = "\"thank you very much, Head Researcher\"",
+                        text = "\"Thank you very much, Head Researcher.\"",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "\"in exchange for repairing me, I will do my best to assist you in your research\"",
+                        text = "\"In exchange for repairing me, I will do my best to assist you in your research.\"",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "finally! I can communicate with this thing",
+                        text = "Finally! I can communicate with this thing.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "\"I hope we can assist each other in accomplishing our missions\"",
+                        text = "\"I hope we can assist each other in accomplishing our missions.\"",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
@@ -814,55 +820,55 @@ public class DreamTexts : MonoBehaviour
                 {
                     new DreamText
                     {
-                        text = "The screen behind you changed to show the live camera feed from the lab",
+                        text = "The screen behind you changed to show the live camera feed from the lab.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "It is showing the result of you and your team's hard work",
+                        text = "It is showing the result of you and your team's hard work.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "\"The machine that could solve earth's impending energy crisis\"",
+                        text = "\"The machine that could solve Earth's impending energy crisis.\"",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "Noises and a very bright light starts emitting from the machine",
+                        text = "Noises and a very bright light start emitting from the machine.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "There it is! It is working just as planned",
+                        text = "There it is! It is working just as planned!",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "Applause fills the conference room",
+                        text = "Applause fills the conference room.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "its time!",
+                        text = "It's time!",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "???: we are going to temporarily interrupt this presentation",
+                        text = "???: We are going to temporarily interrupt this presentation.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "???: Head Researcher, come with us. this is urgent",
+                        text = "???: Head Researcher, come with us. This is urgent.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
@@ -902,85 +908,85 @@ public class DreamTexts : MonoBehaviour
                 {
                     new DreamText
                     {
-                        text = "The screen behind you changed to show the live camera feed from the lab",
+                        text = "The screen behind you changed to show the live camera feed from the lab.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "It is showing the result of you and your team's hard work",
+                        text = "It is showing the result of you and your team's hard work.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "\"The machine that could solve earth's impending energy crisis\"",
+                        text = "\"The machine that could solve Earth's impending energy crisis.\"",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "Noises and a very bright light starts emitting from the machine",
+                        text = "Noises and a very bright light start emitting from the machine.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "There it is! It is working just as planned",
+                        text = "There it is! It is working just as planned!",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "Applause fills the conference room",
+                        text = "Applause fills the conference room.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "its time!",
+                        text = "It's time!",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "\"I also have something else to tell you\"",
+                        text = "\"I also have something else to tell you.\"",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "\"if you look at your phones right now there is a file that just opened\"",
+                        text = "\"If you look at your phones right now, there is a file that just opened.\"",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "\"please take a look at it\"",
+                        text = "\"Please take a look at it.\"",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "\"the true intentions of the government, who will be taking over this research project\"",
+                        text = "\"The true intentions of the government, who will be taking over this research project.\"",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "\"see it with your own eyes and-\"",
+                        text = "\"See it with your own eyes and-\"",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "before you can say the whole speech, everything turned bright.",
+                        text = "Before you can finish the whole speech, everything turned bright.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "light engulfs the entire room",
+                        text = "Light engulfs the entire room.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
@@ -997,25 +1003,25 @@ public class DreamTexts : MonoBehaviour
                 {
                     new DreamText
                     {
-                        text = "your duty is now over. I will take over from here",
+                        text = "Your duty is now over. I will take over from here.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "synchronization level: 38%\nthank you for being an important step in our plan",
+                        text = "Synchronization level: 38%\nThank you for being an important step in our plan.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "synchronization level: 79%\nplease be proud. assets as good as you are hard to come by",
+                        text = "Synchronization level: 79%\nPlease be proud. Assets as good as you are hard to come by.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
                     new DreamText
                     {
-                        text = "synchronization level: 100%\ncontinue with the next mission.",
+                        text = "Synchronization level: 100%\nContinue with the next mission.",
                         playSoundFileName = "",
                         playEffectName = ""
                     },
@@ -1067,7 +1073,7 @@ public class DreamTexts : MonoBehaviour
                 {
                     new DreamText
                     {
-                        text = "<b>MISSION FAILED</b>\nCause of death: sudden exposure to dangerous substance",
+                        text = "<b>MISSION FAILED</b>\nCause of death: Sudden exposure to dangerous substance",
                         playSoundFileName = "",
                         playEffectName = ""
                     },

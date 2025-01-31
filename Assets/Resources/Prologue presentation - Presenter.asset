@@ -36,7 +36,7 @@ MonoBehaviour:
     Position: {x: 912, y: 76.8}
   - NodeGUID: 4e448fbd-3893-4570-9912-3eb662208814
     NPCNameText: Presenter
-    DialogueText: whenever you are ready, press the red button.
+    DialogueText: Whenever you are ready, press the red button.
     Trigger: []
     Position: {x: 1456.8, y: 74.399994}
   ExposedProperties: []

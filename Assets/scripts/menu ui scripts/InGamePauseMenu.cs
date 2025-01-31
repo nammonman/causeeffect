@@ -63,7 +63,7 @@ public class InGamePauseMenu : MonoBehaviour
     {
         if (!quickTL.activeSelf)
         {
-
+            SetCursorVisible(true);
             GameStateManager.setPausedState(true);
             if (GameStateManager.gameStates.fixLevel >= 2)
             {
@@ -83,7 +83,7 @@ public class InGamePauseMenu : MonoBehaviour
     {
         if (!allTL.activeSelf)
         {
-
+            SetCursorVisible(true);
             GameStateManager.setPausedState(true);
             quickTL.SetActive(false);
             if (GameStateManager.gameStates.fixLevel >= 2)
@@ -100,7 +100,7 @@ public class InGamePauseMenu : MonoBehaviour
     {
         if (!notebook.activeSelf)
         {
-
+            SetCursorVisible(true);
             GameStateManager.setPausedState(true);
             quickTL.SetActive(false);
             allTL.SetActive(false);
@@ -117,6 +117,7 @@ public class InGamePauseMenu : MonoBehaviour
     {
         if (backgroundTL.activeSelf)
         {
+            SetCursorVisible(false);
             GameStateManager.setPausedState(false);
             quickTL.SetActive(false);
             allTL.SetActive(false);
@@ -190,8 +191,25 @@ public class InGamePauseMenu : MonoBehaviour
         }
         canUnPause = true;
     }
+
+    public static void SetCursorVisible(bool b)
+    {
+        Cursor.visible = b;
+        if (!Cursor.visible)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+    }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            SetCursorVisible(!Cursor.visible);
+        }
         if (GameStateManager.gameStates.canPause)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -205,6 +223,7 @@ public class InGamePauseMenu : MonoBehaviour
                         pauseWindow.SetActive(false);
                         canUnPause = false;
                         inPause = false;
+                        SetCursorVisible(false);
                     }
                     else
                     {
@@ -213,6 +232,7 @@ public class InGamePauseMenu : MonoBehaviour
                         GameStateManager.setPausedState(true);
                         pauseWindow.SetActive(true);
                         StartCoroutine(EnableUnPauseAfterDelay(0.5f));
+                        SetCursorVisible(true);
                     }
                 }
                 else
@@ -227,7 +247,7 @@ public class InGamePauseMenu : MonoBehaviour
 
             if (!inPause)
             {
-                if (Input.GetKey(KeyCode.Tab) && GameStateManager.gameStates.fixLevel >= 2)
+                if (Input.GetKey(KeyCode.Tab) && GameStateManager.gameStates.fixLevel >= 2 && GameStateManager.gameStates.CurrentSceneName != "Home")
                 {
                     keyHoldTimer += Mathf.Clamp(Time.deltaTime, 0, 2);
 
@@ -258,9 +278,9 @@ public class InGamePauseMenu : MonoBehaviour
                     {
                         int id = int.Parse(selectedGameObject.name);
                         Debug.Log("selected id: " + id);
-                        if (id == 999999) // forbidden id
+                        if (id == 999999 || id <= 1) // forbidden id
                         {
-                            loadingBar.value = 0;
+                            TriggerRunner.RunFuncsCaller(new List<string> { "Monologue_can't go there" });
                             return;
                         }
 
@@ -272,9 +292,9 @@ public class InGamePauseMenu : MonoBehaviour
                     {
                         int id = int.Parse(selectedGameObject.name);
                         Debug.Log("selected id: " + id);
-                        if (id == 999999) // forbidden id
+                        if (id == 999999 || id <= 1) // forbidden id
                         {
-                            loadingBar.value = 0;
+                            TriggerRunner.RunFuncsCaller(new List<string> { "Monologue_can't go there" });
                             return;
                         }
 

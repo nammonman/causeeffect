@@ -80,7 +80,7 @@ public class ZFTexts : MonoBehaviour
                     conversation = new List<(string speaker, string text, List<string> triggers)>
                     {
                         ("user", "how did you know me and who are you?", null),
-                        ("ZF", "so yo do not remember\n" +
+                        ("ZF", "so you do not remember\n" +
                         "3 years ago you partnered with me to accelerate your research and help me accomplish my goal of stopping a threat from a meteor",
                         new List<string>
                         {
@@ -89,7 +89,7 @@ public class ZFTexts : MonoBehaviour
                         }),
                         ("ZF", "let me introduce myself again\n" +
                         "\n" +
-                        "I am a []_[]_[]_[]_[] intelligence made by STAR alliance, formed by data captured from many scientists' brain, crystallized into a physical form\n" +
+                        "I am a []_[]_[]_[]_[] intelligence made by S.T.A.R. alliance, formed by data captured from many scientists' brain, crystallized into a physical form\n" +
                         "the codename is ZF-10 but for the earth's human you can call me \"Zeph\"\n" +
                         "my purpose is to help all lifeform extinguish the danger from \"Chronolenchos\"\n\n" +
                         "Chronolenchos is a form of energy released by the meteor\n",
@@ -151,7 +151,7 @@ public class ZFTexts : MonoBehaviour
                     conversation = new List<(string speaker, string text, List<string> triggers)>
                     {
                         ("user", "do you believe in luck and fate?", null),
-                        ("ZF", "I am the condensed thought of many scientists from the STAR alliance who all come from different planets and solar systems " +
+                        ("ZF", "I am the condensed thought of many scientists from the S.T.A.R. alliance who all come from different planets and solar systems " +
                         "with different beliefs and way of thinking\n\n" +
                         "but all of them believed in fate\n\n" +
                         "noone can prove its existence, yet it cannot be disproven\n\n" +
@@ -240,13 +240,6 @@ public class ZFTexts : MonoBehaviour
                         "accessing a \"secret\" database confirms the company president agreed to sign an agreement " +
                         "with the government, stating that the govt will secretly support the company in exchange for " +
                         "turning the renewable energy project into a weapon of mass destruction",
-                        null),
-                        ("ZF", "2 years ago the government suddenly got involved with your company, " +
-                        "granting research funds, sending personnel to inspect the results " +
-                        "and demanding the company to finish the energy machine as soon as possible\n\n" +
-                        "accessing a \"secret\" database confirms the company president agreed to sign an agreement " +
-                        "with the government, stating that the govt will secretly support the company in exchange for " +
-                        "turning the Chronolenchos energy project into a weapon of mass destruction",
                         null),
                         ("ZF", "I have calculated that the weapon, once used, will destroy everything in its path and " +
                         "contaminate the earth's atmosphere with Chronolenchos. if this weapon is used in a war " +

@@ -36,31 +36,27 @@ public class TimelineEventDisplay : MonoBehaviour
     {
         eventNameText.text = thisTimelineEvent.title;
         dayNumText.text = "DAY " + thisTimelineEvent.day.ToString();
-        string[] t = { "morning", "afternoon", "evening", "night" };
+        string[] t = { "MORNING", "AFTERNOON", "EVENING", "NIGHT" };
         timeDayText.text = t[thisTimelineEvent.timeOfDay];
-        if (thisTimelineEvent.type == 0)
+        if (thisTimelineEvent.id == 0)
         {
-            // start day
-            bg.color = new Color32(85, 122, 138, 255);
+            // root
+            bg.color = new Color32(0, 12, 28, 255);
         }
-        else if (thisTimelineEvent.type == 1)
+        else if (thisTimelineEvent.id == 1)
         {
             // get
-            bg.color = new Color32(119, 158, 160, 255);
+            bg.color = new Color32(0, 12, 28, 255);
         }
-        else if (thisTimelineEvent.type == 2)
+        else if (thisTimelineEvent.name.EndsWith("ENDING"))
+        {
+            // ending event
+            bg.color = new Color32(156, 183, 181, 255);
+        }
+        else if (thisTimelineEvent.name == "PRESENT")
         {
             // key event
-            bg.color = new Color32(158, 184, 181, 255);
-        }
-        else if (thisTimelineEvent.type == 3)
-        {
-            // present
-            bg.color = new Color32(255, 255, 255, 25);
-        }
-        else
-        {
-            bg.color = new Color32(158, 184, 181, 255);
+            bg.color = new Color32(156, 183, 181, 155);
         }
     }
     public void LoadAndDisplayImage(string filePath)
@@ -99,7 +95,7 @@ public class TimelineEventDisplay : MonoBehaviour
 
     public void selectCurrentTimeline()
     {
-        if (gameObject.GetComponent<TimelineEvent>().id == GameStateManager.gameStates.currentEventId)
+        if (gameObject.GetComponent<TimelineEvent>().id == GameStateManager.gameStates.currentEventId && !gameObject.GetComponent<TimelineEvent>().name.EndsWith("ENDING"))
         {
             selectTimeline();
             //Debug.Log(gameObject.GetComponent<TimelineEvent>().id);

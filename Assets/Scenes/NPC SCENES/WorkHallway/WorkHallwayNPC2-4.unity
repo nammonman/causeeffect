@@ -144,7 +144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!64 &109994069
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -478,9 +478,6 @@ MonoBehaviour:
   funcs:
   - ChangeScene_WorkPersonalRoom
   - ChangeSetting_WorkPersonalRoomNPC2
-  - Wait_1
-  - Monologue_...
-  - Monologue_what happened here?
 --- !u!4 &109994075
 Transform:
   m_ObjectHideFlags: 0
@@ -544,6 +541,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2290456240499071871, guid: 1ee2c0e2bba19db48a2874a0fa5e9305, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69338490a9a03234fbf5b8ce2686304c, type: 2}
     - target: {fileID: 2330696558920104819, guid: 1ee2c0e2bba19db48a2874a0fa5e9305, type: 3}
       propertyPath: firstDialogue
       value: 
@@ -918,7 +919,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1102876215
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1376,7 +1377,7 @@ MonoBehaviour:
   interactable: 1
   funcs:
   - ChangeScene_WorkLab
-  - ChangeSetting_WorkLabNPC
+  - ChangeSetting_WorkLabNPC2-5
 --- !u!4 &1858397204
 Transform:
   m_ObjectHideFlags: 0

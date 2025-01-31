@@ -6,16 +6,18 @@ public class NotebookItem : MonoBehaviour
 {
     private void OnEnable()
     {
-        if (GameStateManager.gameStates.globalFlags.Contains("Notebook"))
-        {
-            gameObject.tag = "Untagged";
-        }
         if (GameStateManager.gameStates.globalFlags.Contains("MIX_EnhancedVision"))
         {
             StartCoroutine(SecretTextUnlockSequence());
         }
     }
-
+    private void FixedUpdate()
+    {
+        if (gameObject.tag != "Untagged" && GameStateManager.gameStates.globalFlags.Contains("Notebook"))
+        {
+            gameObject.tag = "Untagged";
+        }
+    }
     public IEnumerator SecretTextUnlockSequence()
     {
         yield return null;

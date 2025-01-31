@@ -17,16 +17,16 @@ MonoBehaviour:
     PortName: Next
     TargetNodeGUID: 1200fd34-c45e-4aaf-8df7-2a6870222273
   - BaseNodeGUID: 1200fd34-c45e-4aaf-8df7-2a6870222273
-    PortName: why are you taking the leave?
+    PortName: Why are you taking leave?
     TargetNodeGUID: 8121c4ff-d9e7-432c-938d-115530a3f48b
   - BaseNodeGUID: 1200fd34-c45e-4aaf-8df7-2a6870222273
-    PortName: '[approve the leave]'
+    PortName: '[Allow leave]'
     TargetNodeGUID: 2381bb55-b70e-44db-8614-cab5f8bc35bd
   - BaseNodeGUID: 1200fd34-c45e-4aaf-8df7-2a6870222273
-    PortName: '[do not approve the leave]'
+    PortName: '[Deny leave]'
     TargetNodeGUID: ee5021ca-dc81-4990-9a78-179fa5773d31
   - BaseNodeGUID: 1200fd34-c45e-4aaf-8df7-2a6870222273
-    PortName: where is my room?
+    PortName: Where is my room?
     TargetNodeGUID: 2284d75d-3f71-495b-bc72-f56d253f9111
   - BaseNodeGUID: 2284d75d-3f71-495b-bc72-f56d253f9111
     PortName: ...
@@ -37,35 +37,35 @@ MonoBehaviour:
   DialogueNodeData:
   - NodeGUID: 1200fd34-c45e-4aaf-8df7-2a6870222273
     NPCNameText: Assistant B
-    DialogueText: what do you want from me
+    DialogueText: What do you want from me?
     Trigger: []
     Position: {x: 268.8, y: 132}
   - NodeGUID: 2284d75d-3f71-495b-bc72-f56d253f9111
     NPCNameText: Assistant B
-    DialogueText: are you actually capable of working if you cannot even remember
+    DialogueText: Are you actually capable of working if you cannot even remember
       that?
     Trigger: []
     Position: {x: 870.4, y: 489.6}
   - NodeGUID: 8121c4ff-d9e7-432c-938d-115530a3f48b
     NPCNameText: Assistant B
-    DialogueText: I am going to spend time on my kid's 11th birthday. way better
-      than dealing with this nonsense
+    DialogueText: I am going to spend time on my kid's 11th birthday. Way better
+      than dealing with this nonsense.
     Trigger: []
     Position: {x: 866.4, y: -113.600006}
   - NodeGUID: 885bd927-03c8-4d0a-9026-20aa4d8e7424
     NPCNameText: Assistant B
-    DialogueText: you'd better approve the leave...
+    DialogueText: You'd better approve the leave...
     Trigger: []
     Position: {x: 1524.8, y: -109.600006}
   - NodeGUID: 5b0ef2e9-b079-4ee7-bec1-043d0357a573
     NPCNameText: Assistant B
-    DialogueText: its room 201. but its currently locked from the inside. A already
-      asked someone to take care of it
+    DialogueText: It's room 201, but it's currently locked from the inside. A already
+      asked someone to take care of it.
     Trigger: []
     Position: {x: 1416, y: 493.60004}
   - NodeGUID: 2381bb55-b70e-44db-8614-cab5f8bc35bd
     NPCNameText: Assistant B
-    DialogueText: good.
+    DialogueText: Good.
     Trigger:
     - ChangeSetting_WorkLabNPC2-4
     - AddFlag_approveLeave

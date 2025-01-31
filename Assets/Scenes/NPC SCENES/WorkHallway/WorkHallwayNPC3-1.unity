@@ -1204,15 +1204,15 @@ MonoBehaviour:
     <align=left>8. The curved path of an object as it moves
     around a star, planet, or moon.</align>
 
-    
+
 
     <align=center><b>Down</b></align>
 
     <align=left>1.
     The distance light travels in one year.</align>
 
-    <align=left>3. A small
-    rocky body orbiting the sun, mainly found in the asteroid belt.</align>
+    <align=left>3. A small rocky
+    body orbiting the sun, mainly found in the asteroid belt.</align>
 
     <align=left>4.
     A celestial body orbiting a star, like Earth or Mars.</align>
@@ -1397,7 +1397,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1049267055
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2256,7 +2256,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 208759323}
 --- !u!33 &2009615023
 MeshFilter:
   m_ObjectHideFlags: 10

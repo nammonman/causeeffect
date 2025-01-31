@@ -18,8 +18,8 @@ MonoBehaviour:
     TargetNodeGUID: 45621ac6-a8f4-4007-a7e5-02cc4ebe3c1f
   DialogueNodeData:
   - NodeGUID: 45621ac6-a8f4-4007-a7e5-02cc4ebe3c1f
-    NPCNameText: The Presedent's assistant
-    DialogueText: please go talk to The President
+    NPCNameText: The President's assistant
+    DialogueText: Please go talk to The President.
     Trigger: []
     Position: {x: 313.6, y: 276.80002}
   ExposedProperties: []
